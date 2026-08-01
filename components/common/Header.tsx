@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calculator } from "lucide-react";
+import { JapaneseYen } from "lucide-react";
 
 import { Container } from "@/components/common/Container";
 import { HeaderNav } from "@/components/common/HeaderNav";
@@ -14,15 +14,17 @@ const navItems: MobileNavItem[] = [
 ];
 
 /**
- * 全ページ共通ヘッダー。ロゴ・ナビ（現在地ハイライト）・テーマ切替。
+ * 全ページ共通ヘッダー。グラス調・ロゴマーク・ナビ（現在地ハイライト）・テーマ切替。
  */
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
-      <Container className="flex h-14 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
-          <Calculator className="size-5 text-primary" aria-hidden />
-          <span>{siteConfig.name}</span>
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-lg">
+      <Container className="flex h-16 items-center justify-between gap-4">
+        <Link href="/" className="flex items-center gap-2.5 font-bold">
+          <span className="flex size-8 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-sm shadow-indigo-500/30">
+            <JapaneseYen className="size-4" aria-hidden />
+          </span>
+          <span className="text-base tracking-tight">{siteConfig.name}</span>
         </Link>
 
         <div className="flex items-center gap-1">

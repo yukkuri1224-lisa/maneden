@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import type { Tool } from "@/types/tools";
 
 /**
- * ツール紹介カード。公開済みはカード全体がリンク＋ホバー演出、準備中は非活性。
+ * ツール紹介カード。公開済みはカード全体がリンク＋ホバー演出（浮上・グロー）、準備中は非活性。
  */
 export function ToolCard({ tool }: { tool: Tool }) {
   const Icon = tool.icon;
@@ -21,15 +21,28 @@ export function ToolCard({ tool }: { tool: Tool }) {
   const card = (
     <Card
       className={cn(
-        "flex h-full flex-col transition-all",
+        "relative flex h-full flex-col overflow-hidden transition-all duration-300",
         isLive
-          ? "group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-md"
-          : "opacity-70",
+          ? "group-hover:-translate-y-1 group-hover:border-primary/30 group-hover:shadow-xl group-hover:shadow-indigo-500/10"
+          : "opacity-75",
       )}
     >
+      {isLive && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-10 -right-10 size-28 rounded-full bg-gradient-to-br from-indigo-500/25 to-sky-500/25 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+        />
+      )}
       <CardHeader>
         <div className="flex items-center gap-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+          <span
+            className={cn(
+              "flex size-11 shrink-0 items-center justify-center rounded-xl text-white shadow-sm",
+              isLive
+                ? "bg-gradient-to-br from-indigo-500 to-sky-500 shadow-indigo-500/30"
+                : "bg-muted-foreground/30",
+            )}
+          >
             <Icon className="size-5" aria-hidden />
           </span>
           <CardTitle className="flex-1 text-base">{tool.shortTitle}</CardTitle>
@@ -44,14 +57,14 @@ export function ToolCard({ tool }: { tool: Tool }) {
         <CardDescription className="flex-1">{tool.description}</CardDescription>
         <div
           className={cn(
-            "mt-4 inline-flex items-center gap-1 text-sm font-medium",
+            "mt-5 inline-flex items-center gap-1 text-sm font-semibold",
             isLive ? "text-primary" : "text-muted-foreground",
           )}
         >
           {isLive ? (
             <>
               使ってみる
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </>
           ) : (
             "近日公開"
@@ -62,7 +75,7 @@ export function ToolCard({ tool }: { tool: Tool }) {
   );
 
   if (!isLive) {
-    return card;
+    return <div className="h-full">{card}</div>;
   }
 
   return (
