@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | ビジネスの計算をまとめて無料で`,
+    default: `${siteConfig.name}｜税金・手取り・経営・不動産の無料計算ツール`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
