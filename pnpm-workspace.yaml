@@ -1,0 +1,5 @@
+# build スクリプトの実行を許可する依存（pnpm v10 はデフォルトで postinstall 等をブロックする）
+# sharp: next/image の画像最適化に使用 / unrs-resolver: ESLint の import 解決に使用
+onlyBuiltDependencies:
+  - sharp
+  - unrs-resolver

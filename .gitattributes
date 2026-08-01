@@ -1,0 +1,13 @@
+# 改行コードを LF に統一する。
+# WSL(LF) で編集し Windows Git(CRLF) でコミットしても、差分ノイズや警告を防ぐ。
+* text=auto eol=lf
+
+# バイナリファイルは変換しない
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.woff binary
+*.woff2 binary
