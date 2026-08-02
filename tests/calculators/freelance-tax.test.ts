@@ -99,16 +99,16 @@ describe("calculateFreelanceTax（統合・標準シナリオ）", () => {
     expect(result.nationalPension).toBe(210_000);
   });
 
-  it("課税所得（所得税ベース）", () => {
-    expect(result.taxableIncome).toBe(2_305_000);
+  it("課税所得（所得税ベース・基礎控除58万）", () => {
+    expect(result.taxableIncome).toBe(2_205_000);
   });
 
   it("所得税（復興特別所得税込み）", () => {
-    expect(result.incomeTax).toBe(135_700);
+    expect(result.incomeTax).toBe(125_500);
   });
 
-  it("住民税（所得割＋均等割＋森林環境税）", () => {
-    expect(result.residentTax).toBe(241_500);
+  it("住民税（所得割＋均等割4,000＋森林環境税1,000）", () => {
+    expect(result.residentTax).toBe(240_500);
   });
 
   it("免税なので消費税は0、登録時の負担額を invoiceImpact に持つ", () => {
@@ -117,9 +117,9 @@ describe("calculateFreelanceTax（統合・標準シナリオ）", () => {
   });
 
   it("負担合計・手取り・手取り率", () => {
-    expect(result.totalBurden).toBe(942_100);
-    expect(result.netIncome).toBe(3_057_900);
-    expect(result.netIncomeRate).toBeCloseTo(61.158, 2);
+    expect(result.totalBurden).toBe(930_900);
+    expect(result.netIncome).toBe(3_069_100);
+    expect(result.netIncomeRate).toBeCloseTo(61.382, 2);
   });
 });
 

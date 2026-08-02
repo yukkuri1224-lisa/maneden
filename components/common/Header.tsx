@@ -5,13 +5,9 @@ import { Container } from "@/components/common/Container";
 import { HeaderNav } from "@/components/common/HeaderNav";
 import { type MobileNavItem } from "@/components/common/MobileNav";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
-import { liveTools } from "@/lib/tools-registry";
 import { siteConfig } from "@/lib/site-config";
 
-const navItems: MobileNavItem[] = [
-  { href: "/tools", label: "ツール一覧" },
-  ...liveTools.map((tool) => ({ href: tool.href, label: tool.shortTitle })),
-];
+const navItems: MobileNavItem[] = [{ href: "/tools", label: "ツール一覧" }];
 
 /**
  * 全ページ共通ヘッダー。グラス調・ロゴマーク・ナビ（現在地ハイライト）・テーマ切替。

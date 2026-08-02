@@ -1,4 +1,10 @@
-import { Building2, Calculator, HandCoins, LineChart } from "lucide-react";
+import {
+  Building2,
+  Calculator,
+  Gift,
+  HandCoins,
+  LineChart,
+} from "lucide-react";
 
 import type { Tool, ToolCategory } from "@/types/tools";
 
@@ -29,6 +35,18 @@ export const tools: Tool[] = [
     icon: Calculator,
     status: "live",
     sitemapPriority: 1.0,
+  },
+  {
+    id: "furusato-tax",
+    href: "/tools/furusato-tax",
+    title: "ふるさと納税 上限額シミュレーター",
+    shortTitle: "ふるさと納税 上限",
+    description:
+      "年収と家族構成から、自己負担2,000円で済むふるさと納税の控除上限額の目安を計算します。",
+    category: "tax",
+    icon: Gift,
+    status: "live",
+    sitemapPriority: 0.9,
   },
   {
     id: "subsidy-finder",

@@ -175,13 +175,13 @@ export default function Home() {
                 </span>
               </div>
               <p className="text-gradient mt-1 text-4xl font-black tracking-tight tabular-nums">
-                ¥3,057,900
+                ¥3,069,100
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
                 手取り率{" "}
-                <span className="font-semibold text-foreground">61.2%</span> ・
+                <span className="font-semibold text-foreground">61.4%</span> ・
                 月あたり約{" "}
-                <span className="font-semibold text-foreground">25.4万円</span>
+                <span className="font-semibold text-foreground">25.6万円</span>
               </p>
 
               <div className="mt-6 flex items-center gap-5">
