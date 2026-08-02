@@ -3,9 +3,11 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import { parseLooseNumber } from "@/lib/parse";
 
 /**
  * スライダー＋数値入力が連動する共通の数値入力フィールド。
+ * 数値入力は全角・カンマを許容する（HIG #12）。
  */
 export function SliderField({
   id,
@@ -54,13 +56,12 @@ export function SliderField({
       <div className="flex items-center gap-2">
         <Input
           id={id}
-          type="number"
+          type="text"
           inputMode="decimal"
-          min={min}
-          max={max}
-          step={step}
           value={value}
-          onChange={(e) => onChange(clampNum(Number(e.target.value)))}
+          onChange={(e) =>
+            onChange(clampNum(parseLooseNumber(e.target.value) ?? min))
+          }
           className="tabular-nums"
         />
         <span className="text-sm text-muted-foreground">{unit}</span>

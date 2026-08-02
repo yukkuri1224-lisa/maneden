@@ -1,5 +1,6 @@
 "use client";
 
+import { DetailsSection } from "@/components/common/DetailsSection";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -26,6 +27,7 @@ import {
   SPOUSE_INCOME_MAX,
 } from "@/lib/calculators/freelance-tax/schema";
 import { formatManYen } from "@/lib/format";
+import { parseLooseNumber } from "@/lib/parse";
 
 import { BLUE_OPTIONS, CATEGORY_OPTIONS, INVOICE_OPTIONS } from "./options";
 
@@ -35,8 +37,8 @@ interface InputPanelProps {
 }
 
 function toInt(raw: string, min: number, max: number): number {
-  const n = Number(raw);
-  if (!Number.isFinite(n)) return min;
+  const n = parseLooseNumber(raw);
+  if (n === null) return min;
   return Math.min(Math.max(Math.round(n), min), max);
 }
 
@@ -75,11 +77,8 @@ function AmountField({
       />
       <Input
         id={id}
-        type="number"
+        type="text"
         inputMode="numeric"
-        min={min}
-        max={max}
-        step={AMOUNT_STEP}
         value={amount}
         onChange={(e) => onChange(toInt(e.target.value, min, max))}
         className="tabular-nums"
@@ -132,103 +131,109 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
             ))}
           </SelectContent>
         </Select>
+        <p className="text-xs text-muted-foreground">
+          電子申告＋複式簿記なら65万円。白色申告は0円です。
+        </p>
       </div>
 
-      <div className="space-y-2">
-        <Label>インボイス制度の区分</Label>
-        <Tabs
-          value={value.invoiceStatus}
-          onValueChange={(v) =>
-            onChange({ invoiceStatus: String(v) as InvoiceStatus })
-          }
-        >
-          <TabsList className="grid w-full grid-cols-4">
-            {INVOICE_OPTIONS.map((o) => (
-              <TabsTrigger key={o.value} value={o.value}>
-                {o.short}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </Tabs>
-        {value.invoiceStatus === "simplified" && (
-          <Select
-            value={String(value.businessCategory)}
+      <DetailsSection title="詳細設定（インボイス・扶養・配偶者など）">
+        <div className="space-y-2">
+          <Label>インボイス制度の区分</Label>
+          <Tabs
+            value={value.invoiceStatus}
             onValueChange={(v) =>
-              onChange({
-                businessCategory: Number(String(v)) as BusinessCategory,
-              })
+              onChange({ invoiceStatus: String(v) as InvoiceStatus })
             }
+          >
+            <TabsList className="grid w-full grid-cols-4">
+              {INVOICE_OPTIONS.map((o) => (
+                <TabsTrigger key={o.value} value={o.value}>
+                  {o.short}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
+          {value.invoiceStatus === "simplified" && (
+            <Select
+              value={String(value.businessCategory)}
+              onValueChange={(v) =>
+                onChange({
+                  businessCategory: Number(String(v)) as BusinessCategory,
+                })
+              }
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {CATEGORY_OPTIONS.map((o) => (
+                  <SelectItem key={o.value} value={String(o.value)}>
+                    {o.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+          <p className="text-xs text-muted-foreground">
+            免税事業者は消費税の納付が不要です。
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <Label>扶養家族の数</Label>
+          <Select
+            value={String(value.dependents)}
+            onValueChange={(v) => onChange({ dependents: Number(String(v)) })}
           >
             <SelectTrigger className="w-full">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {CATEGORY_OPTIONS.map((o) => (
-                <SelectItem key={o.value} value={String(o.value)}>
-                  {o.label}
+              {Array.from({ length: MAX_DEPENDENTS + 1 }, (_, i) => (
+                <SelectItem key={i} value={String(i)}>
+                  {i}人
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
-        )}
-      </div>
+        </div>
 
-      <div className="space-y-2">
-        <Label>扶養家族の数</Label>
-        <Select
-          value={String(value.dependents)}
-          onValueChange={(v) => onChange({ dependents: Number(String(v)) })}
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {Array.from({ length: MAX_DEPENDENTS + 1 }, (_, i) => (
-              <SelectItem key={i} value={String(i)}>
-                {i}人
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="flex items-center justify-between gap-4">
-        <Label htmlFor="spouse">配偶者控除</Label>
-        <Switch
-          id="spouse"
-          checked={value.hasSpouse}
-          onCheckedChange={(checked) => onChange({ hasSpouse: checked })}
-        />
-      </div>
-
-      {value.hasSpouse && (
-        <div className="space-y-2">
-          <Label htmlFor="spouseIncome">配偶者の年間所得</Label>
-          <Input
-            id="spouseIncome"
-            type="number"
-            inputMode="numeric"
-            min={0}
-            max={SPOUSE_INCOME_MAX}
-            value={value.spouseIncome}
-            onChange={(e) =>
-              onChange({
-                spouseIncome: toInt(e.target.value, 0, SPOUSE_INCOME_MAX),
-              })
-            }
-            className="tabular-nums"
+        <div className="flex items-center justify-between gap-4">
+          <Label htmlFor="spouse">配偶者控除</Label>
+          <Switch
+            id="spouse"
+            checked={value.hasSpouse}
+            onCheckedChange={(checked) => onChange({ hasSpouse: checked })}
           />
         </div>
-      )}
 
-      <div className="flex items-center justify-between gap-4">
-        <Label htmlFor="over40">40歳以上（介護保険）</Label>
-        <Switch
-          id="over40"
-          checked={value.isOver40}
-          onCheckedChange={(checked) => onChange({ isOver40: checked })}
-        />
-      </div>
+        {value.hasSpouse && (
+          <div className="space-y-2">
+            <Label htmlFor="spouseIncome">配偶者の年間所得</Label>
+            <Input
+              id="spouseIncome"
+              type="text"
+              inputMode="numeric"
+              value={value.spouseIncome}
+              onChange={(e) =>
+                onChange({
+                  spouseIncome: toInt(e.target.value, 0, SPOUSE_INCOME_MAX),
+                })
+              }
+              className="tabular-nums"
+            />
+          </div>
+        )}
+
+        <div className="flex items-center justify-between gap-4">
+          <Label htmlFor="over40">40歳以上（介護保険）</Label>
+          <Switch
+            id="over40"
+            checked={value.isOver40}
+            onCheckedChange={(checked) => onChange({ isOver40: checked })}
+          />
+        </div>
+      </DetailsSection>
     </div>
   );
 }

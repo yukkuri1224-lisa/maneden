@@ -1,5 +1,6 @@
 "use client";
 
+import { DetailsSection } from "@/components/common/DetailsSection";
 import { SliderField } from "@/components/common/SliderField";
 import { Label } from "@/components/ui/label";
 import {
@@ -71,52 +72,6 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
         onChange={(v) => onChange({ annualRent: v })}
       />
       <SliderField
-        id="exp"
-        label="諸経費率（家賃に対する）"
-        value={value.expenseRate}
-        min={EXPENSE_RATE_MIN}
-        max={EXPENSE_RATE_MAX}
-        step={EXPENSE_RATE_STEP}
-        unit="%"
-        format={(v) => `${v}%`}
-        hint="管理費・修繕・固定資産税などの目安"
-        onChange={(v) => onChange({ expenseRate: v })}
-      />
-      <SliderField
-        id="bld"
-        label="建物価格の割合"
-        value={value.buildingRatio}
-        min={BUILDING_RATIO_MIN}
-        max={BUILDING_RATIO_MAX}
-        step={BUILDING_RATIO_STEP}
-        unit="%"
-        format={(v) => `${v}%`}
-        hint="減価償却の対象（残りは土地）"
-        onChange={(v) => onChange({ buildingRatio: v })}
-      />
-
-      <div className="space-y-2">
-        <Label>建物構造</Label>
-        <Select
-          value={value.structure}
-          onValueChange={(v) =>
-            onChange({ structure: String(v) as BuildingStructure })
-          }
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {STRUCTURE_OPTIONS.map((o) => (
-              <SelectItem key={o.value} value={o.value}>
-                {o.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      <SliderField
         id="loan"
         label="借入額"
         value={value.loanAmount}
@@ -149,6 +104,56 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
         format={(v) => `${v}年`}
         onChange={(v) => onChange({ loanYears: v })}
       />
+
+      <DetailsSection title="詳細設定（諸経費・建物・構造）">
+        <SliderField
+          id="exp"
+          label="諸経費率（家賃に対する）"
+          value={value.expenseRate}
+          min={EXPENSE_RATE_MIN}
+          max={EXPENSE_RATE_MAX}
+          step={EXPENSE_RATE_STEP}
+          unit="%"
+          format={(v) => `${v}%`}
+          hint="管理費・修繕・固定資産税などの目安"
+          onChange={(v) => onChange({ expenseRate: v })}
+        />
+        <SliderField
+          id="bld"
+          label="建物価格の割合"
+          value={value.buildingRatio}
+          min={BUILDING_RATIO_MIN}
+          max={BUILDING_RATIO_MAX}
+          step={BUILDING_RATIO_STEP}
+          unit="%"
+          format={(v) => `${v}%`}
+          hint="減価償却の対象（残りは土地）"
+          onChange={(v) => onChange({ buildingRatio: v })}
+        />
+        <div className="space-y-2">
+          <Label>建物構造</Label>
+          <Select
+            value={value.structure}
+            onValueChange={(v) =>
+              onChange({ structure: String(v) as BuildingStructure })
+            }
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {STRUCTURE_OPTIONS.map((o) => (
+                <SelectItem key={o.value} value={o.value}>
+                  {o.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-muted-foreground">
+            減価償却の年数を決めます（RC47年・鉄骨34年・木造22年）。
+          </p>
+        </div>
+      </DetailsSection>
     </div>
   );
 }
