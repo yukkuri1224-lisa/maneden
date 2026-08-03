@@ -92,10 +92,17 @@ async function fetchCsvRows(docID) {
   } catch {
     return null;
   }
-  const key = Object.keys(files).find((k) => k.endsWith(".csv"));
+  const csvKeys = Object.keys(files).filter((k) => k.endsWith(".csv"));
+  // 有価証券報告書の本体（jpcrp...asr）を優先。無ければ最大サイズのCSV
+  const key =
+    csvKeys.find((k) => /jpcrp.*asr/i.test(k)) ??
+    csvKeys.sort((a, b) => files[b].length - files[a].length)[0];
   if (!key) return null;
   const text = Buffer.from(files[key]).toString("utf16le");
-  return text.split(/\r?\n/).map((line) => line.split("\t"));
+  // EDINETのCSVは各フィールドが二重引用符で囲まれている
+  return text
+    .split(/\r?\n/)
+    .map((line) => line.split("\t").map((f) => f.replace(/^"(.*)"$/s, "$1")));
 }
 
 function pickValue(rows, elementId) {
@@ -106,7 +113,11 @@ function pickValue(rows, elementId) {
     rowsForEl.find(
       (r) => /Current/.test(r[2] ?? "") && !/Prior/.test(r[2] ?? ""),
     ) ?? rowsForEl[0];
-  const n = Number(String(row[row.length - 1]).replace(/[^\d.-]/g, ""));
+  // 値は行の末尾側にある。空欄・ダッシュを除いた最後の値を採用
+  const raw = [...row]
+    .reverse()
+    .find((f) => f !== "" && f !== "－" && f !== "-");
+  const n = Number(String(raw ?? "").replace(/[^\d.-]/g, ""));
   return Number.isFinite(n) ? n : null;
 }
 

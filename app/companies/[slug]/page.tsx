@@ -70,9 +70,14 @@ export default async function CompanyPage({
       : null,
   ].filter((s): s is { label: string; value: string } => s !== null);
 
-  const related = companies
-    .filter((c) => c.industry === company.industry && c.slug !== company.slug)
-    .slice(0, 3);
+  const related =
+    company.industry && company.industry !== "その他"
+      ? companies
+          .filter(
+            (c) => c.industry === company.industry && c.slug !== company.slug,
+          )
+          .slice(0, 3)
+      : [];
 
   return (
     <Container className="py-10">
