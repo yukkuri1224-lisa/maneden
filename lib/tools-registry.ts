@@ -4,6 +4,7 @@ import {
   Gift,
   HandCoins,
   LineChart,
+  Wallet,
 } from "lucide-react";
 
 import type { Tool, ToolCategory } from "@/types/tools";
@@ -45,6 +46,18 @@ export const tools: Tool[] = [
       "年収と家族構成から、自己負担2,000円で済むふるさと納税の控除上限額の目安を計算します。",
     category: "tax",
     icon: Gift,
+    status: "live",
+    sitemapPriority: 0.9,
+  },
+  {
+    id: "salary-take-home",
+    href: "/tools/salary-take-home",
+    title: "会社員の手取り計算シミュレーター",
+    shortTitle: "会社員の手取り",
+    description:
+      "年収（額面）から、社会保険料・所得税・住民税を差し引いた手取り額をシミュレーションします。",
+    category: "tax",
+    icon: Wallet,
     status: "live",
     sitemapPriority: 0.9,
   },

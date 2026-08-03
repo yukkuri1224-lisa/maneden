@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "sample-shoji",
+    "name": "サンプル商事株式会社",
+    "securitiesCode": "0001",
+    "industry": "卸売業",
+    "averageSalary": 12500000,
+    "averageAge": 42.8,
+    "averageTenure": 17.2,
+    "employees": 4200,
+    "fiscalYear": "2024年3月期",
+    "sample": true
+  },
+  {
+    "slug": "demo-tech",
+    "name": "デモテック株式会社",
+    "securitiesCode": "0002",
+    "industry": "情報・通信業",
+    "averageSalary": 8200000,
+    "averageAge": 35.4,
+    "averageTenure": 8.9,
+    "employees": 1800,
+    "fiscalYear": "2024年3月期",
+    "sample": true
+  },
+  {
+    "slug": "maneden-motors",
+    "name": "マネデンモータース株式会社",
+    "securitiesCode": "0003",
+    "industry": "輸送用機器",
+    "averageSalary": 7600000,
+    "averageAge": 39.1,
+    "averageTenure": 15.6,
+    "employees": 38000,
+    "fiscalYear": "2024年3月期",
+    "sample": true
+  },
+  {
+    "slug": "sample-bank",
+    "name": "サンプル銀行株式会社",
+    "securitiesCode": "0004",
+    "industry": "銀行業",
+    "averageSalary": 8100000,
+    "averageAge": 38.7,
+    "averageTenure": 14.2,
+    "employees": 22000,
+    "fiscalYear": "2024年3月期",
+    "sample": true
+  },
+  {
+    "slug": "demo-foods",
+    "name": "デモフーズ株式会社",
+    "securitiesCode": "0005",
+    "industry": "食料品",
+    "averageSalary": 6400000,
+    "averageAge": 40.3,
+    "averageTenure": 16.1,
+    "employees": 5600,
+    "fiscalYear": "2024年3月期",
+    "sample": true
+  },
+  {
+    "slug": "sample-retail",
+    "name": "サンプルリテール株式会社",
+    "securitiesCode": "0006",
+    "industry": "小売業",
+    "averageSalary": 5300000,
+    "averageAge": 37.5,
+    "averageTenure": 11.8,
+    "employees": 12000,
+    "fiscalYear": "2024年3月期",
+    "sample": true
+  }
+]

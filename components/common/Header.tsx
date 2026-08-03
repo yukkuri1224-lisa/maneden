@@ -7,7 +7,10 @@ import { type MobileNavItem } from "@/components/common/MobileNav";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
 import { siteConfig } from "@/lib/site-config";
 
-const navItems: MobileNavItem[] = [{ href: "/tools", label: "ツール一覧" }];
+const navItems: MobileNavItem[] = [
+  { href: "/tools", label: "ツール一覧" },
+  { href: "/companies", label: "企業の年収" },
+];
 
 /**
  * 全ページ共通ヘッダー。グラス調・ロゴマーク・ナビ（現在地ハイライト）・テーマ切替。

@@ -56,6 +56,18 @@ export const TAX_TABLES = {
   },
   /** 国民年金保険料（2026年度想定・年額の概算） */
   nationalPension: { annual: 210_000 },
+  /**
+   * 会社員の社会保険料（協会けんぽ・全国平均的な概算）。
+   * 率は労使合計。本人負担は原則その半分（雇用保険を除く）。標準報酬月額の上限あり。
+   */
+  employeeSocialInsurance: {
+    healthRate: 0.1, // 健康保険料率（労使合計）
+    careRate: 0.016, // 介護保険料率（40〜64歳・労使合計）
+    pensionRate: 0.183, // 厚生年金保険料率（労使合計）
+    employmentRate: 0.006, // 雇用保険（労働者負担・一般の事業）
+    healthMonthlyCap: 1_390_000, // 健保の標準報酬月額の上限
+    pensionMonthlyCap: 650_000, // 厚年の標準報酬月額の上限
+  },
   consumptionTax: {
     /** 標準税率 */
     standardRate: 0.1,
