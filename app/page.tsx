@@ -21,6 +21,8 @@ import {
 } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById, tools } from "@/lib/tools-registry";
+import { companies } from "@/lib/companies/data";
+import { formatManYen } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const trustPoints = [
@@ -94,6 +96,7 @@ const heroLegend = [
 
 export default function Home() {
   const featured = getToolById("freelance-tax");
+  const topCompanies = companies.slice(0, 6);
 
   return (
     <>
@@ -245,16 +248,60 @@ export default function Home() {
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold text-primary">TOOLS</p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              目的に合わせて選べる4つのツール
+              目的に合わせて選べる6つのツール
             </h2>
             <p className="mt-3 text-muted-foreground">
               税金から経営指標、不動産、補助金まで。知りたい数字が、すぐ手に入る。
             </p>
           </div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {tools.map((tool) => (
               <ToolCard key={tool.id} tool={tool} />
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ===== 企業の平均年収 ===== */}
+      <section className="border-t bg-muted/30 py-20">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold text-primary">COMPANIES</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+              企業の平均年収を調べる
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              上場企業{companies.length.toLocaleString("ja-JP")}
+              社の平均年収を掲載。気になる企業から、手取り額もその場で計算できます。
+            </p>
+          </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {topCompanies.map((company) => (
+              <Link
+                key={company.slug}
+                href={`/companies/${company.slug}`}
+                className="group flex items-center justify-between gap-3 rounded-xl border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md"
+              >
+                <div className="min-w-0">
+                  <p className="truncate font-medium">{company.name}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {company.industry}
+                  </p>
+                </div>
+                <p className="text-gradient shrink-0 font-bold tabular-nums">
+                  {formatManYen(company.averageSalary, 0)}
+                </p>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/companies"
+              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+            >
+              企業の年収ランキングを見る
+              <ArrowRight className="size-4" />
+            </Link>
           </div>
         </Container>
       </section>
