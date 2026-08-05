@@ -100,7 +100,7 @@ export function RealEstateTool() {
               ? `${result.deadCrossYear}年目`
               : "発生せず"
           }でした！`}
-          hashtags={["不動産投資", "マネ電"]}
+          hashtags={["不動産投資", "まねでん"]}
           note="入力内容はURLに保存され、そのまま共有できます。"
         />
       </div>

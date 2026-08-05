@@ -8,7 +8,7 @@ import { tools } from "@/lib/tools-registry";
 export const metadata: Metadata = {
   title: "ツール一覧",
   description:
-    "マネ電で使える、税金・経営・不動産の計算＆シミュレーションツールの一覧。すべて登録不要・無料。",
+    "まねでんで使える、税金・経営・不動産の計算＆シミュレーションツールの一覧。すべて登録不要・無料。",
   alternates: { canonical: "/tools" },
 };
 

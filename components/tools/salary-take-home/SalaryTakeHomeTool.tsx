@@ -93,7 +93,7 @@ export function SalaryTakeHomeTool() {
           shareText={`年収${formatManYen(input.income, 0)}の手取りは${formatManYen(
             result.netIncome,
           )}（手取り率${result.netIncomeRate.toFixed(1)}%）でした！`}
-          hashtags={["手取り", "年収", "マネ電"]}
+          hashtags={["手取り", "年収", "まねでん"]}
           note="入力内容はURLに保存され、そのまま共有できます。"
         />
       </div>

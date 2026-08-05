@@ -95,7 +95,7 @@ export function FurusatoTool() {
           shareText={`ふるさと納税の控除上限額は${formatYen(
             result.donationLimit,
           )}（実質負担2,000円）でした！`}
-          hashtags={["ふるさと納税", "マネ電"]}
+          hashtags={["ふるさと納税", "まねでん"]}
           note="入力内容はURLに保存され、そのまま共有できます。"
         />
       </div>

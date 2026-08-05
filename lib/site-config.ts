@@ -4,7 +4,7 @@
  * （sitemap / robots / OGP / canonical のベース URL に使用）
  */
 export const siteConfig = {
-  name: "マネ電",
+  name: "まねでん",
   description:
     "登録不要・完全無料。フリーランスや個人事業主のための税金・経営・不動産の計算＆シミュレーションツール集。",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://maneden.com").replace(

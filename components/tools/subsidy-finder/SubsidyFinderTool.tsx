@@ -74,7 +74,7 @@ export function SubsidyFinderTool() {
         <ResultList matches={matches} />
         <ShareBar
           shareText={`${matches.length}件の補助金候補が見つかりました！`}
-          hashtags={["補助金", "マネ電"]}
+          hashtags={["補助金", "まねでん"]}
           note="入力内容はURLに保存され、そのまま共有できます。"
         />
       </div>

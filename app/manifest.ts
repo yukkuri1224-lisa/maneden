@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/site-config";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: siteConfig.name,
-    short_name: "マネ電",
+    short_name: "まねでん",
     description: siteConfig.description,
     start_url: "/",
     display: "standalone",

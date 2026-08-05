@@ -98,7 +98,7 @@ export function SaasMetricsTool() {
               ? `${result.ltvCacRatio.toFixed(1)}倍`
               : "—"
           }でした！`}
-          hashtags={["SaaS", "スタートアップ", "マネ電"]}
+          hashtags={["SaaS", "スタートアップ", "まねでん"]}
           note="入力内容はURLに保存され、そのまま共有できます。"
         />
       </div>

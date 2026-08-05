@@ -1,4 +1,4 @@
-# マネ電（maneden）
+# まねでん（maneden）
 
 登録不要・完全無料の、ビジネスパーソン／フリーランス向け計算・シミュレーションツール集。
 詳細な要件は [`REQUIREMENTS.md`](./REQUIREMENTS.md) を参照。

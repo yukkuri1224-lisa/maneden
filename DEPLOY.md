@@ -1,4 +1,4 @@
-# マネ電（maneden）公開手順（デプロイ）
+# まねでん（maneden）公開手順（デプロイ）
 
 Next.js 16 + Vercel を前提とした公開手順です。コマンドは **Windows の PowerShell**（`C:\Users\nre10\bizcalc-hub`）で実行します。
 
@@ -30,7 +30,7 @@ pnpm run build
 ```powershell
 # まだコミットしていなければ
 git add -A
-git commit -m "feat: マネ電 初回リリース"
+git commit -m "feat: まねでん 初回リリース"
 
 # GitHub にリポジトリを作成して push（gh CLI がある場合）
 gh repo create maneden --public --source=. --remote=origin --push

@@ -116,7 +116,7 @@ export function FreelanceTaxTool() {
           shareText={`売上${formatManYen(input.revenue, 0)}のフリーランスの手取りは${formatManYen(
             result.netIncome,
           )}（手取り率${result.netIncomeRate.toFixed(1)}%）でした！`}
-          hashtags={["フリーランス", "確定申告", "マネ電"]}
+          hashtags={["フリーランス", "確定申告", "まねでん"]}
           note="入力内容はURLに保存され、その条件のままシェアできます。"
         />
       </div>

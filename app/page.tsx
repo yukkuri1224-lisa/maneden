@@ -29,7 +29,7 @@ const trustPoints = [
   { icon: Gift, label: "完全無料" },
   { icon: Lock, label: "登録不要" },
   { icon: ShieldCheck, label: "データ送信なし" },
-  { icon: Sparkles, label: "ツール4種" },
+  { icon: Sparkles, label: "6つのツール" },
 ];
 
 const features = [
@@ -73,18 +73,19 @@ const steps = [
 
 const faqs = [
   {
-    question: "マネ電は本当に無料ですか？",
-    answer: "はい。すべてのツールが登録不要・完全無料でご利用いただけます。",
+    question: "まねでんは本当に無料ですか？",
+    answer:
+      "はい。すべてのツールが登録不要・無料です。開いてすぐ使え、利用回数の制限もありません。",
   },
   {
     question: "入力した金額は保存されますか？",
     answer:
-      "いいえ。計算はすべてお使いのブラウザ内で行われ、収入や経費などの情報が外部に送信・保存されることはありません。",
+      "いいえ。計算はすべてお使いのブラウザ内で行われ、収入や経費などの情報が外部のサーバーに送信・保存されることはありません。",
   },
   {
     question: "どんな計算ができますか？",
     answer:
-      "フリーランスの手取り・税金、SaaSのLTV/CAC、不動産の利回りとデッドクロス、補助金・助成金の受給額診断ができます。",
+      "フリーランス・副業の手取りと税金、会社員の手取り、ふるさと納税の上限額、補助金・助成金の受給額診断、SaaSのLTV／CAC、不動産の利回りとデッドクロスの計算ができます。",
   },
 ];
 
@@ -129,13 +130,13 @@ export default function Home() {
             </span>
 
             <h1 className="mt-6 text-4xl leading-[1.15] font-black tracking-tight sm:text-5xl lg:text-6xl">
-              お金の<span className="text-gradient">「？」</span>を、
+              税金や手取りの計算を、
               <br />
-              その場で<span className="text-gradient">「！」</span>に。
+              <span className="text-gradient">まとめて無料で。</span>
             </h1>
 
             <p className="mx-auto mt-5 max-w-lg text-base text-muted-foreground sm:text-lg lg:mx-0">
-              税金・経営・不動産——フリーランスや個人事業主の「いくら？」を、まとめて無料でシミュレーション。
+              フリーランス・個人事業主・会社員向けの計算ツールをそろえました。確定申告や手取り、ふるさと納税、不動産まで、登録なしでその場で試せます。
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
@@ -246,12 +247,11 @@ export default function Home() {
       <section className="py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold text-primary">TOOLS</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              目的に合わせて選べる6つのツール
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              6つの計算ツール
             </h2>
             <p className="mt-3 text-muted-foreground">
-              税金から経営指標、不動産、補助金まで。知りたい数字が、すぐ手に入る。
+              確定申告の手取りから、ふるさと納税の上限、補助金、不動産の利回りまで。用途に合わせて選べます。
             </p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -266,13 +266,12 @@ export default function Home() {
       <section className="border-t bg-muted/30 py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold text-primary">COMPANIES</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               企業の平均年収を調べる
             </h2>
             <p className="mt-3 text-muted-foreground">
               上場企業{companies.length.toLocaleString("ja-JP")}
-              社の平均年収を掲載。気になる企業から、手取り額もその場で計算できます。
+              社の平均年収を、有価証券報告書のデータから掲載しています。気になる企業の手取り額も、その場で計算できます。
             </p>
           </div>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -310,8 +309,7 @@ export default function Home() {
       <section className="border-y bg-muted/30 py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold text-primary">WHY マネ電</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               安心して使える理由
             </h2>
           </div>
@@ -348,8 +346,7 @@ export default function Home() {
       <section className="py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold text-primary">HOW IT WORKS</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               使い方は、3ステップ
             </h2>
           </div>
@@ -382,8 +379,7 @@ export default function Home() {
       <section className="border-t bg-muted/30 py-20">
         <Container className="max-w-3xl">
           <div className="text-center">
-            <p className="text-sm font-semibold text-primary">FAQ</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               よくあるご質問
             </h2>
           </div>
@@ -405,10 +401,10 @@ export default function Home() {
         <Container>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 to-sky-500 px-8 py-16 text-center text-white shadow-2xl shadow-indigo-500/25">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              今すぐ、あなたの数字を確かめよう
+              まずは手取りの計算から
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/85">
-              登録不要・完全無料。まずは手取り＆税金シミュレーターから。
+              登録不要・無料で使えます。手取り＆税金シミュレーターから試してみてください。
             </p>
             {featured && (
               <div className="mt-8">
