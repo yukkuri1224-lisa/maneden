@@ -136,7 +136,8 @@ async function main() {
       const rows = await fetchCsvRows(doc.docID);
       if (!rows) continue;
       const salary = pickValue(rows, ELEMENTS.averageSalary);
-      if (!salary) continue;
+      // 妥当な範囲外（桁違い等の抽出ミス）は除外
+      if (!salary || salary < 1_500_000 || salary > 25_000_000) continue;
       results.push({
         slug: secCode,
         name: doc.filerName,
