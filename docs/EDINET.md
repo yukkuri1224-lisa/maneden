@@ -48,6 +48,28 @@ git push
 - **文字コード**：EDINETのCSVは UTF-16LE 前提でデコードしています。
 - 数値がうまく取れない場合は、取得したCSVの1社分を確認し、要素IDやコンテキスト列の位置に合わせて調整します（初回実行後に一緒に微調整しましょう）。
 
+## 業種（33業種）を付与する
+
+EDINETには業種が無いため、初期は全社「その他」です。JPXの上場銘柄一覧で業種を付与できます。
+
+1. JPXの一覧をダウンロード（無料・登録不要）:
+   https://www.jpx.co.jp/markets/statistics-equities/misc/01.html
+   →「東証上場銘柄一覧 (Excel)」＝ `data_j.xls`
+2. 依存を追加（初回のみ）: `pnpm add -D xlsx`
+3. 実行:
+   ```powershell
+   node scripts/enrich-industry.mjs C:\Users\nre10\Downloads\data_j.xls
+   ```
+   → `companies.json` の各社 `industry` が33業種に更新されます。
+4. `git add -A && git commit -m "data: 企業の業種を付与" && git push`
+
+付与後は、各企業ページに正しい業種が表示され、「同じ業種の企業」導線が有効になります。
+
+## 異常値の除外
+
+- `lib/companies/data.ts` で平均年収が **150万〜2500万円** の範囲外は自動除外（桁違い等の抽出ミス対策）。
+- `fetch-edinet.mjs` も取得時に同じ範囲でスキップします。
+
 ## データの正確性・出典
 
 - 数値はすべて**有価証券報告書（公開情報）**が出典です。各企業ページにも出典と「最新値はEDINETで要確認」の注記を表示しています。
