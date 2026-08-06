@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolMeta } from "@/components/common/ToolMeta";
 import { FurusatoTool } from "@/components/tools/furusato-tax/FurusatoTool";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
@@ -146,6 +147,8 @@ export default function FurusatoTaxPage() {
         </section>
 
         <RelatedTools excludeId="furusato-tax" />
+
+        <ToolMeta updated="2026年8月6日" taxBasis />
       </div>
     </Container>
   );

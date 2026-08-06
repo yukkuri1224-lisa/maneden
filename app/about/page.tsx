@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
 import { ArticlePage } from "@/components/common/ArticlePage";
+import { JsonLd } from "@/components/common/JsonLd";
+import { organizationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "運営者情報・免責事項",
-  description: `${siteConfig.name} の運営者情報と免責事項について。`,
+  description: `${siteConfig.name} の運営者情報・データの出典・免責事項について。`,
   alternates: { canonical: "/about" },
 };
 
@@ -14,8 +16,9 @@ export default function AboutPage() {
     <ArticlePage
       title="運営者情報・免責事項"
       href="/about"
-      updated="2026年8月1日"
+      updated="2026年8月6日"
     >
+      <JsonLd data={organizationJsonLd()} />
       <p>
         {siteConfig.name}{" "}
         は、フリーランス・個人事業主・ビジネスパーソンが、税金や経営に関する「いくら？」をすばやく把握できるよう、登録不要・無料の計算ツールを提供する、個人運営のサイトです。
@@ -40,6 +43,33 @@ export default function AboutPage() {
         </li>
         <li>
           計算の根拠や用語をできるだけ明示し、結果に納得して使えることを重視します。
+        </li>
+      </ul>
+
+      <h2>データの出典</h2>
+      <ul>
+        <li>
+          <strong>企業の平均年収</strong>：各社が金融庁の開示システム
+          <a
+            href="https://disclosure2.edinet-fsa.go.jp/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            EDINET
+          </a>
+          に提出した<strong>有価証券報告書</strong>
+          の「平均年間給与」等の公開情報をもとに掲載しています。最新・正確な値は各社の有価証券報告書でご確認ください。
+        </li>
+        <li>
+          <strong>税率・控除・全国平均給与</strong>：
+          <a
+            href="https://www.nta.go.jp/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            国税庁
+          </a>
+          の公表資料（民間給与実態統計調査など）や各種公的情報を参照しています。税制は毎年改定されるため、各ツールに反映年度を明記しています。
         </li>
       </ul>
 

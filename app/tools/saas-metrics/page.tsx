@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolMeta } from "@/components/common/ToolMeta";
 import { SaasMetricsTool } from "@/components/tools/saas-metrics/SaasMetricsTool";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
@@ -139,6 +140,11 @@ export default function SaasMetricsPage() {
         </section>
 
         <RelatedTools excludeId="saas-metrics" />
+
+        <ToolMeta
+          updated="2026年8月6日"
+          basis="一般的な計算式（例: LTV＝ARPU÷解約率）に基づく試算です。事業の実態に合わせて指標を調整してください。"
+        />
       </div>
     </Container>
   );

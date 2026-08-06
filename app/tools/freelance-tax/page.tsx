@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolMeta } from "@/components/common/ToolMeta";
 import { FreelanceTaxTool } from "@/components/tools/freelance-tax/FreelanceTaxTool";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
@@ -181,6 +182,8 @@ export default function FreelanceTaxPage() {
         </section>
 
         <RelatedTools excludeId="freelance-tax" />
+
+        <ToolMeta updated="2026年8月6日" taxBasis />
       </div>
     </Container>
   );

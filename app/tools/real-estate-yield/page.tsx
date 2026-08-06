@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolMeta } from "@/components/common/ToolMeta";
 import { RealEstateTool } from "@/components/tools/real-estate-yield/RealEstateTool";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
@@ -149,6 +150,11 @@ export default function RealEstateYieldPage() {
         </section>
 
         <RelatedTools excludeId="real-estate-yield" />
+
+        <ToolMeta
+          updated="2026年8月6日"
+          basis="表面・実質利回りと減価償却の一般的な計算式に基づく概算です。税制や融資条件により実際の収支は変わります。"
+        />
       </div>
     </Container>
   );

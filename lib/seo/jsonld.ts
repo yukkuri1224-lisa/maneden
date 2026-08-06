@@ -99,3 +99,15 @@ export function webSiteJsonLd() {
     inLanguage: "ja",
   };
 }
+
+/** サイト運営者（発行者）を表す Organization 構造化データ */
+export function organizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}/icon.svg`,
+    email: siteConfig.email,
+  };
+}

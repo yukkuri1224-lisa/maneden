@@ -17,6 +17,7 @@ import { ToolCard } from "@/components/common/ToolCard";
 import { buttonVariants } from "@/components/ui/button";
 import {
   faqJsonLd,
+  organizationJsonLd,
   webApplicationJsonLd,
   webSiteJsonLd,
 } from "@/lib/seo/jsonld";
@@ -108,6 +109,7 @@ export default function Home() {
   return (
     <>
       <JsonLd data={webSiteJsonLd()} />
+      <JsonLd data={organizationJsonLd()} />
       <JsonLd
         data={webApplicationJsonLd({
           name: siteConfig.name,
