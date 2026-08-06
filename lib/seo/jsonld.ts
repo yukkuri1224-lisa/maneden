@@ -68,6 +68,26 @@ export function faqJsonLd(items: FaqJsonLdItem[]) {
   };
 }
 
+export interface ItemListEntry {
+  name: string;
+  /** 絶対 URL */
+  url: string;
+}
+
+/** ランキング・一覧を表す ItemList 構造化データ */
+export function itemListJsonLd(items: ItemListEntry[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+    })),
+  };
+}
+
 /** サイト全体を表す WebSite 構造化データ */
 export function webSiteJsonLd() {
   return {

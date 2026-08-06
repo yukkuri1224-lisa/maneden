@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { companies } from "@/lib/companies/data";
+import { INDUSTRY_SLUGS, NO_HUB_INDUSTRIES } from "@/lib/companies/industries";
 import { siteConfig } from "@/lib/site-config";
 import { tools } from "@/lib/tools-registry";
 
@@ -25,15 +26,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: tool.sitemapPriority,
   }));
 
+  const industryPages = Object.entries(INDUSTRY_SLUGS)
+    .filter(([name]) => !NO_HUB_INDUSTRIES.has(name))
+    .map(([, slug]) => ({
+      path: `/companies/industry/${slug}`,
+      priority: 0.7,
+    }));
+
   const companyPages = companies.map((company) => ({
     path: `/companies/${company.slug}`,
     priority: 0.6,
   }));
 
-  return [...staticPages, ...toolPages, ...companyPages].map((page) => ({
-    url: `${siteConfig.url}${page.path}`,
-    lastModified,
-    changeFrequency: "weekly",
-    priority: page.priority,
-  }));
+  return [...staticPages, ...toolPages, ...industryPages, ...companyPages].map(
+    (page) => ({
+      url: `${siteConfig.url}${page.path}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: page.priority,
+    }),
+  );
 }
