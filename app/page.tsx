@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -24,6 +25,11 @@ import { getToolById, tools } from "@/lib/tools-registry";
 import { companies } from "@/lib/companies/data";
 import { formatManYen } from "@/lib/format";
 import { cn } from "@/lib/utils";
+
+// トップは最重要 URL。canonical を明示する（title/description は layout の既定を継承）
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const trustPoints = [
   { icon: Gift, label: "完全無料" },

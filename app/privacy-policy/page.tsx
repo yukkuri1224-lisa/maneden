@@ -30,10 +30,9 @@ export default function PrivacyPolicyPage() {
 
       <h2>アクセス解析について</h2>
       <p>
-        当サイトでは、利用状況の把握のためにアクセス解析ツール（Google Analytics
-        等）を利用する場合があります。これらは Cookie
-        を使用してトラフィックデータを収集しますが、個人を特定する情報は含みません。ブラウザの設定により
-        Cookie を無効化することで、収集を拒否できます。
+        当サイトでは、利用状況の把握のために Vercel Analytics
+        を利用しています。Vercel Analytics は<strong>Cookie を使用せず</strong>
+        、個人を特定できる情報も収集しません。ページの表示回数や表示速度などの統計情報のみを匿名で集計します。
       </p>
 
       <h2>広告について</h2>
