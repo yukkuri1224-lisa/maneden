@@ -1,0 +1,86 @@
+"use client";
+
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
+
+import { ShareBar } from "@/components/common/ShareBar";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  calculateRetirementTax,
+  type RetirementTaxInput,
+} from "@/lib/calculators/retirement-tax";
+import {
+  DEFAULT_INPUT,
+  decodeInputFromParams,
+  encodeInputToParams,
+} from "@/lib/calculators/retirement-tax/schema";
+import { formatManYen, formatYen } from "@/lib/format";
+
+import { InputPanel } from "./InputPanel";
+import { ResultPanel } from "./ResultPanel";
+
+export function RetirementTaxTool() {
+  const searchParams = useSearchParams();
+  const [input, setInput] = useState<RetirementTaxInput>(() =>
+    decodeInputFromParams(new URLSearchParams(searchParams.toString())),
+  );
+
+  const update = useCallback((patch: Partial<RetirementTaxInput>) => {
+    setInput((prev) => ({ ...prev, ...patch }));
+  }, []);
+
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    window.history.replaceState(
+      null,
+      "",
+      `?${encodeInputToParams(input).toString()}`,
+    );
+  }, [input]);
+
+  const result = useMemo(() => calculateRetirementTax(input), [input]);
+
+  return (
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,340px)_1fr]">
+      <Card className="lg:sticky lg:top-20 lg:self-start">
+        <CardHeader>
+          <CardTitle className="text-base">条件を入力</CardTitle>
+          <CardAction>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setInput(DEFAULT_INPUT)}
+            >
+              リセット
+            </Button>
+          </CardAction>
+        </CardHeader>
+        <CardContent>
+          <InputPanel value={input} onChange={update} />
+        </CardContent>
+      </Card>
+
+      <div className="space-y-6">
+        <ResultPanel result={result} amount={input.amount} />
+        <ShareBar
+          shareText={`退職金${formatManYen(input.amount, 0)}（勤続${
+            input.yearsOfService
+          }年）の手取りは${formatYen(result.netAmount)}でした！`}
+          hashtags={["退職金", "まねでん"]}
+          note="入力内容はURLに保存され、そのまま共有できます。"
+        />
+      </div>
+    </div>
+  );
+}

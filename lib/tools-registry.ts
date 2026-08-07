@@ -6,6 +6,7 @@ import {
   HandCoins,
   Home,
   LineChart,
+  PiggyBank,
   Wallet,
 } from "lucide-react";
 
@@ -72,6 +73,18 @@ export const tools: Tool[] = [
       "時給から年収、年収から時給を相互に換算。日給・週給・月収もまとめて計算します。",
     category: "tax",
     icon: Clock,
+    status: "live",
+    sitemapPriority: 0.9,
+  },
+  {
+    id: "retirement-tax",
+    href: "/tools/retirement-tax",
+    title: "退職金の税金・手取り計算シミュレーター",
+    shortTitle: "退職金の税金",
+    description:
+      "退職金額と勤続年数から、退職所得控除・所得税・住民税を計算し、手取り額の目安を算出します。",
+    category: "tax",
+    icon: PiggyBank,
     status: "live",
     sitemapPriority: 0.9,
   },
