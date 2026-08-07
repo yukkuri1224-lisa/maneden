@@ -6,42 +6,50 @@ import { siteConfig } from "@/lib/site-config";
 import { tools } from "@/lib/tools-registry";
 
 /**
- * 動的サイトマップ生成。静的ページ + 全ツール + 企業ページを対象にする。
+ * 動的サイトマップ生成。静的ページ + 全ツール + 業種ハブ + 企業ページを対象にする。
+ * lastModified はビルド時刻ではなく「実際の更新日」を使う（毎回のビルドで無意味に変動させない）。
+ * データやコンテンツを更新したら、下記の日付定数を更新すること。
  */
-export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+const SITE_UPDATED = new Date("2026-08-07"); // トップ・ツール・法務など
+const DATA_UPDATED = new Date("2026-08-06"); // 企業年収データ（一覧・業種ハブ・各社ページ）
 
-  const staticPages: { path: string; priority: number }[] = [
-    { path: "/", priority: 1.0 },
-    { path: "/tools", priority: 0.9 },
-    { path: "/companies", priority: 0.8 },
-    { path: "/about", priority: 0.3 },
-    { path: "/privacy-policy", priority: 0.2 },
-    { path: "/terms", priority: 0.2 },
-    { path: "/contact", priority: 0.2 },
+type Entry = { path: string; priority: number; lastModified: Date };
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const staticPages: Entry[] = [
+    { path: "/", priority: 1.0, lastModified: SITE_UPDATED },
+    { path: "/tools", priority: 0.9, lastModified: SITE_UPDATED },
+    { path: "/companies", priority: 0.8, lastModified: DATA_UPDATED },
+    { path: "/about", priority: 0.3, lastModified: SITE_UPDATED },
+    { path: "/privacy-policy", priority: 0.2, lastModified: SITE_UPDATED },
+    { path: "/terms", priority: 0.2, lastModified: SITE_UPDATED },
+    { path: "/contact", priority: 0.2, lastModified: SITE_UPDATED },
   ];
 
-  const toolPages = tools.map((tool) => ({
+  const toolPages: Entry[] = tools.map((tool) => ({
     path: tool.href,
     priority: tool.sitemapPriority,
+    lastModified: SITE_UPDATED,
   }));
 
-  const industryPages = Object.entries(INDUSTRY_SLUGS)
+  const industryPages: Entry[] = Object.entries(INDUSTRY_SLUGS)
     .filter(([name]) => !NO_HUB_INDUSTRIES.has(name))
     .map(([, slug]) => ({
       path: `/companies/industry/${slug}`,
       priority: 0.7,
+      lastModified: DATA_UPDATED,
     }));
 
-  const companyPages = companies.map((company) => ({
+  const companyPages: Entry[] = companies.map((company) => ({
     path: `/companies/${company.slug}`,
     priority: 0.6,
+    lastModified: DATA_UPDATED,
   }));
 
   return [...staticPages, ...toolPages, ...industryPages, ...companyPages].map(
     (page) => ({
       url: `${siteConfig.url}${page.path}`,
-      lastModified,
+      lastModified: page.lastModified,
       changeFrequency: "weekly",
       priority: page.priority,
     }),

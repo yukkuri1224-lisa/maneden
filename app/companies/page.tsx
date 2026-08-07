@@ -3,11 +3,14 @@ import Link from "next/link";
 
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
+import { JsonLd } from "@/components/common/JsonLd";
 import { CompanyList } from "@/components/companies/CompanyList";
 import { companies } from "@/lib/companies/data";
 import { hasIndustryHub, industrySlug } from "@/lib/companies/industries";
 import { listIndustryStats } from "@/lib/companies/stats";
 import { formatManYen } from "@/lib/format";
+import { datasetJsonLd } from "@/lib/seo/jsonld";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "企業の平均年収ランキング",
@@ -24,6 +27,22 @@ export default function CompaniesPage() {
 
   return (
     <Container className="py-10">
+      <JsonLd
+        data={datasetJsonLd({
+          name: "上場企業の平均年収データ",
+          description: `国内上場企業${companies.length.toLocaleString(
+            "ja-JP",
+          )}社の平均年収・平均年齢・平均勤続年数・従業員数を有価証券報告書ベースでまとめたデータセット。業種別ランキングや会社名検索から閲覧できます。`,
+          url: `${siteConfig.url}/companies`,
+          keywords: [
+            "平均年収",
+            "上場企業",
+            "有価証券報告書",
+            "年収ランキング",
+            "業種別",
+          ],
+        })}
+      />
       <Breadcrumb
         items={[
           { name: "ホーム", href: "/" },

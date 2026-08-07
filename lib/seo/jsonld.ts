@@ -111,3 +111,32 @@ export function organizationJsonLd() {
     email: siteConfig.email,
   };
 }
+
+export interface DatasetJsonLdParams {
+  name: string;
+  description: string;
+  /** 絶対 URL */
+  url: string;
+  keywords?: string[];
+}
+
+/** データセット（企業年収データ群など）を表す Dataset 構造化データ */
+export function datasetJsonLd(params: DatasetJsonLdParams) {
+  const publisher = {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  };
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    keywords: params.keywords,
+    inLanguage: "ja",
+    isAccessibleForFree: true,
+    creator: publisher,
+    publisher,
+  };
+}
