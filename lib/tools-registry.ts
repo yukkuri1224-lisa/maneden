@@ -4,6 +4,7 @@ import {
   Clock,
   Gift,
   HandCoins,
+  Home,
   LineChart,
   Wallet,
 } from "lucide-react";
@@ -109,6 +110,18 @@ export const tools: Tool[] = [
     icon: Building2,
     status: "live",
     sitemapPriority: 0.8,
+  },
+  {
+    id: "mortgage",
+    href: "/tools/mortgage",
+    title: "住宅ローン返済シミュレーター",
+    shortTitle: "住宅ローン返済",
+    description:
+      "借入額・金利・期間から毎月の返済額と総返済額を計算。繰上返済による利息の軽減・期間短縮の効果もわかります。",
+    category: "real-estate",
+    icon: Home,
+    status: "live",
+    sitemapPriority: 0.9,
   },
 ];
 
