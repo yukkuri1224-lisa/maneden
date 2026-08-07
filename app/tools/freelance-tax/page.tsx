@@ -91,10 +91,7 @@ export default function FreelanceTaxPage() {
         </Suspense>
       </div>
 
-      <AdSlot
-        className="mt-10"
-        label="クラウド会計ソフト（freee・マネーフォワード等）"
-      />
+      <AdSlot className="mt-10" />
 
       {/* SEO ロングフォーム */}
       <div className="mt-14 space-y-12">

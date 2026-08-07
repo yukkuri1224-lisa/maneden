@@ -1,6 +1,7 @@
 import {
   Building2,
   Calculator,
+  Clock,
   Gift,
   HandCoins,
   LineChart,
@@ -58,6 +59,18 @@ export const tools: Tool[] = [
       "年収（額面）から、社会保険料・所得税・住民税を差し引いた手取り額をシミュレーションします。",
     category: "tax",
     icon: Wallet,
+    status: "live",
+    sitemapPriority: 0.9,
+  },
+  {
+    id: "hourly-wage",
+    href: "/tools/hourly-wage",
+    title: "時給・年収の変換シミュレーター",
+    shortTitle: "時給↔年収 変換",
+    description:
+      "時給から年収、年収から時給を相互に換算。日給・週給・月収もまとめて計算します。",
+    category: "tax",
+    icon: Clock,
     status: "live",
     sitemapPriority: 0.9,
   },

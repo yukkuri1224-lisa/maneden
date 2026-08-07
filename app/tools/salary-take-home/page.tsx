@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 
 import { AdSlot } from "@/components/common/AdSlot";
@@ -73,6 +74,12 @@ export default function SalaryTakeHomePage() {
           ※
           協会けんぽ・全国平均的な料率での概算です。都道府県や勤務先の制度により実額は異なります。
         </p>
+        <p className="mt-2 text-xs text-muted-foreground">
+          <Link href="/companies" className="text-primary underline">
+            上場企業の平均年収ランキング
+          </Link>
+          から、気になる企業の年収で手取りをすぐ試せます。
+        </p>
       </div>
 
       <div className="mt-8">
@@ -85,7 +92,7 @@ export default function SalaryTakeHomePage() {
         </Suspense>
       </div>
 
-      <AdSlot className="mt-10" label="転職・年収アップ関連サービス" />
+      <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
         <section>

@@ -81,7 +81,7 @@ export default function SaasMetricsPage() {
         </Suspense>
       </div>
 
-      <AdSlot className="mt-10" label="SaaS向け分析・会計ツール" />
+      <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
         <section>

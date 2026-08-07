@@ -84,7 +84,7 @@ export default function RealEstateYieldPage() {
         </Suspense>
       </div>
 
-      <AdSlot className="mt-10" label="不動産投資・ローン比較サービス" />
+      <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
         <section>

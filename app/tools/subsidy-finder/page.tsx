@@ -88,7 +88,7 @@ export default function SubsidyFinderPage() {
         </Suspense>
       </div>
 
-      <AdSlot className="mt-10" label="補助金申請サポート・専門家紹介" />
+      <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
         <section>

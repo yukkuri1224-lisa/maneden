@@ -52,6 +52,18 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+
+            <p className="mt-6 text-sm font-semibold">データ</p>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li>
+                <Link
+                  href="/companies"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  企業の平均年収ランキング
+                </Link>
+              </li>
+            </ul>
           </div>
 
           <div>

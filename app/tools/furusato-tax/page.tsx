@@ -85,7 +85,7 @@ export default function FurusatoTaxPage() {
         </Suspense>
       </div>
 
-      <AdSlot className="mt-10" label="ふるさと納税ポータルサイト" />
+      <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
         <section>
