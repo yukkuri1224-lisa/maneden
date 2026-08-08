@@ -1,17 +1,24 @@
 import type { MetadataRoute } from "next";
 
-import { companies } from "@/lib/companies/data";
 import { INDUSTRY_SLUGS, NO_HUB_INDUSTRIES } from "@/lib/companies/industries";
 import { siteConfig } from "@/lib/site-config";
 import { tools } from "@/lib/tools-registry";
 
 /**
- * 動的サイトマップ生成。静的ページ + 全ツール + 業種ハブ + 企業ページを対象にする。
+ * 動的サイトマップ生成。静的ページ + 全ツール + 業種ハブを対象にする。
+ *
+ * 個別の企業ページ（/companies/[slug]・約1,555枚）は、あえてサイトマップに載せない。
+ * テンプレート的で薄いため Google に「Crawled - currently not indexed」と判断されやすく、
+ * 大量に送信するとクロール予算とサイト品質評価を薄めてしまうため。
+ * これらは noindex ではなく（index 許可のまま）、企業一覧・業種ハブからの内部リンクで
+ * 引き続きクロール可能で、価値があると判断されたページは自然にインデックスされる。
+ * 年収データはより内容の厚い業種ハブ（33枚）と一覧に集約して露出させる。
+ *
  * lastModified はビルド時刻ではなく「実際の更新日」を使う（毎回のビルドで無意味に変動させない）。
  * データやコンテンツを更新したら、下記の日付定数を更新すること。
  */
-const SITE_UPDATED = new Date("2026-08-07"); // トップ・ツール・法務など
-const DATA_UPDATED = new Date("2026-08-06"); // 企業年収データ（一覧・業種ハブ・各社ページ）
+const SITE_UPDATED = new Date("2026-08-09"); // トップ・ツール・法務・サイトマップ構成など
+const DATA_UPDATED = new Date("2026-08-06"); // 企業年収データ（一覧・業種ハブ）
 
 type Entry = { path: string; priority: number; lastModified: Date };
 
@@ -40,18 +47,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: DATA_UPDATED,
     }));
 
-  const companyPages: Entry[] = companies.map((company) => ({
-    path: `/companies/${company.slug}`,
-    priority: 0.6,
-    lastModified: DATA_UPDATED,
+  return [...staticPages, ...toolPages, ...industryPages].map((page) => ({
+    url: `${siteConfig.url}${page.path}`,
+    lastModified: page.lastModified,
+    changeFrequency: "weekly",
+    priority: page.priority,
   }));
-
-  return [...staticPages, ...toolPages, ...industryPages, ...companyPages].map(
-    (page) => ({
-      url: `${siteConfig.url}${page.path}`,
-      lastModified: page.lastModified,
-      changeFrequency: "weekly",
-      priority: page.priority,
-    }),
-  );
 }

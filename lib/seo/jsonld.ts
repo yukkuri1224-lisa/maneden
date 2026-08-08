@@ -136,6 +136,8 @@ export function datasetJsonLd(params: DatasetJsonLdParams) {
     keywords: params.keywords,
     inLanguage: "ja",
     isAccessibleForFree: true,
+    // Google の Dataset 推奨項目。利用条件は当サイトの利用規約に従う。
+    license: `${siteConfig.url}/terms`,
     creator: publisher,
     publisher,
   };
