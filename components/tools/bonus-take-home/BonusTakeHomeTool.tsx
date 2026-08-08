@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 
 import { ShareBar } from "@/components/common/ShareBar";
@@ -25,6 +26,13 @@ import { formatManYen, formatYen } from "@/lib/format";
 
 import { InputPanel } from "./InputPanel";
 import { ResultPanel } from "./ResultPanel";
+
+const BreakdownChart = dynamic(() => import("./BreakdownChart"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-72 w-full animate-pulse rounded-lg bg-muted" />
+  ),
+});
 
 export function BonusTakeHomeTool() {
   const searchParams = useSearchParams();
@@ -73,6 +81,14 @@ export function BonusTakeHomeTool() {
 
       <div className="space-y-6">
         <ResultPanel result={result} />
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">賞与の内訳</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <BreakdownChart result={result} />
+          </CardContent>
+        </Card>
         <ShareBar
           shareText={`賞与${formatManYen(input.bonus, 0)}の手取りは${formatYen(
             result.netBonus,

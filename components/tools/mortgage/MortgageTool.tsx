@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 
 import { ShareBar } from "@/components/common/ShareBar";
@@ -25,6 +26,13 @@ import { formatManYen, formatYen } from "@/lib/format";
 
 import { InputPanel } from "./InputPanel";
 import { ResultPanel } from "./ResultPanel";
+
+const BreakdownChart = dynamic(() => import("./BreakdownChart"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-72 w-full animate-pulse rounded-lg bg-muted" />
+  ),
+});
 
 export function MortgageTool() {
   const searchParams = useSearchParams();
@@ -80,6 +88,16 @@ export function MortgageTool() {
 
       <div className="space-y-6">
         <ResultPanel result={result} />
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">
+              返済額の内訳（元金・利息）
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <BreakdownChart result={result} />
+          </CardContent>
+        </Card>
         <ShareBar
           shareText={`借入${formatManYen(input.principal, 0)}・金利${
             input.annualRatePercent
