@@ -33,7 +33,14 @@ export function MortgageTool() {
   );
 
   const update = useCallback((patch: Partial<MortgageInput>) => {
-    setInput((prev) => ({ ...prev, ...patch }));
+    setInput((prev) => {
+      const next = { ...prev, ...patch };
+      // 繰上返済の時期が返済期間を超えないようにする
+      if (next.prepaymentAfterYears > next.years) {
+        next.prepaymentAfterYears = next.years;
+      }
+      return next;
+    });
   }, []);
 
   const isFirstRender = useRef(true);
