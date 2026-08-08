@@ -1,8 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
 
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
@@ -13,16 +12,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  calculateFreelanceTax,
-  type FreelanceTaxInput,
-} from "@/lib/calculators/freelance-tax";
+import { calculateFreelanceTax } from "@/lib/calculators/freelance-tax";
 import {
   DEFAULT_INPUT,
   decodeInputFromParams,
   encodeInputToParams,
 } from "@/lib/calculators/freelance-tax/schema";
 import { formatManYen } from "@/lib/format";
+import { useUrlSyncedInput } from "@/lib/hooks/use-url-synced-input";
 
 import { BreakdownDetails } from "./BreakdownDetails";
 import { InputPanel } from "./InputPanel";
@@ -43,28 +40,11 @@ const RevenueSimulationChart = dynamic(
 );
 
 export function FreelanceTaxTool() {
-  const searchParams = useSearchParams();
-  const [input, setInput] = useState<FreelanceTaxInput>(() =>
-    decodeInputFromParams(new URLSearchParams(searchParams.toString())),
-  );
-
-  const update = useCallback((patch: Partial<FreelanceTaxInput>) => {
-    setInput((prev) => ({ ...prev, ...patch }));
-  }, []);
-
-  // 入力変更後に URL を同期する（副作用なので描画後に実行。初回マウントはスキップ）
-  const isFirstRender = useRef(true);
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    window.history.replaceState(
-      null,
-      "",
-      `?${encodeInputToParams(input).toString()}`,
-    );
-  }, [input]);
+  const {
+    input,
+    setInput,
+    patch: update,
+  } = useUrlSyncedInput(decodeInputFromParams, encodeInputToParams);
 
   const result = useMemo(() => calculateFreelanceTax(input), [input]);
 

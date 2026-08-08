@@ -1,8 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo } from "react";
 import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
 
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
@@ -23,6 +22,7 @@ import {
   encodeInputToParams,
 } from "@/lib/calculators/mortgage/schema";
 import { formatManYen, formatYen } from "@/lib/format";
+import { useUrlSyncedInput } from "@/lib/hooks/use-url-synced-input";
 
 import { InputPanel } from "./InputPanel";
 import { ResultPanel } from "./ResultPanel";
@@ -35,34 +35,24 @@ const BreakdownChart = dynamic(() => import("./BreakdownChart"), {
 });
 
 export function MortgageTool() {
-  const searchParams = useSearchParams();
-  const [input, setInput] = useState<MortgageInput>(() =>
-    decodeInputFromParams(new URLSearchParams(searchParams.toString())),
+  const { input, setInput } = useUrlSyncedInput(
+    decodeInputFromParams,
+    encodeInputToParams,
   );
 
-  const update = useCallback((patch: Partial<MortgageInput>) => {
-    setInput((prev) => {
-      const next = { ...prev, ...patch };
-      // 繰上返済の時期が返済期間を超えないようにする
-      if (next.prepaymentAfterYears > next.years) {
-        next.prepaymentAfterYears = next.years;
-      }
-      return next;
-    });
-  }, []);
-
-  const isFirstRender = useRef(true);
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    window.history.replaceState(
-      null,
-      "",
-      `?${encodeInputToParams(input).toString()}`,
-    );
-  }, [input]);
+  const update = useCallback(
+    (patch: Partial<MortgageInput>) => {
+      setInput((prev) => {
+        const next = { ...prev, ...patch };
+        // 繰上返済の時期が返済期間を超えないようにする
+        if (next.prepaymentAfterYears > next.years) {
+          next.prepaymentAfterYears = next.years;
+        }
+        return next;
+      });
+    },
+    [setInput],
+  );
 
   const result = useMemo(() => calculateMortgage(input), [input]);
 

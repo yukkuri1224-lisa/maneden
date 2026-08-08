@@ -1,8 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { ArrowRight, Building2 } from "lucide-react";
 
 import { ShareBar } from "@/components/common/ShareBar";
@@ -14,43 +13,25 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  calculateHourlyWage,
-  type HourlyWageInput,
-} from "@/lib/calculators/hourly-wage";
+import { calculateHourlyWage } from "@/lib/calculators/hourly-wage";
 import {
   DEFAULT_INPUT,
   decodeInputFromParams,
   encodeInputToParams,
 } from "@/lib/calculators/hourly-wage/schema";
 import { formatManYen, formatYen } from "@/lib/format";
+import { useUrlSyncedInput } from "@/lib/hooks/use-url-synced-input";
 import { cn } from "@/lib/utils";
 
 import { InputPanel } from "./InputPanel";
 import { ResultPanel } from "./ResultPanel";
 
 export function HourlyWageTool() {
-  const searchParams = useSearchParams();
-  const [input, setInput] = useState<HourlyWageInput>(() =>
-    decodeInputFromParams(new URLSearchParams(searchParams.toString())),
-  );
-
-  const update = useCallback((patch: Partial<HourlyWageInput>) => {
-    setInput((prev) => ({ ...prev, ...patch }));
-  }, []);
-
-  const isFirstRender = useRef(true);
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    window.history.replaceState(
-      null,
-      "",
-      `?${encodeInputToParams(input).toString()}`,
-    );
-  }, [input]);
+  const {
+    input,
+    setInput,
+    patch: update,
+  } = useUrlSyncedInput(decodeInputFromParams, encodeInputToParams);
 
   const result = useMemo(() => calculateHourlyWage(input), [input]);
 

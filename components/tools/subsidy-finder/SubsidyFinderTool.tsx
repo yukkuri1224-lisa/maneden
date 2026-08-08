@@ -1,7 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useMemo } from "react";
 
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
@@ -12,41 +11,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  findSubsidies,
-  type SubsidyInput,
-} from "@/lib/calculators/subsidy-finder";
+import { findSubsidies } from "@/lib/calculators/subsidy-finder";
 import {
   DEFAULT_INPUT,
   decodeInputFromParams,
   encodeInputToParams,
 } from "@/lib/calculators/subsidy-finder/schema";
+import { useUrlSyncedInput } from "@/lib/hooks/use-url-synced-input";
 
 import { InputPanel } from "./InputPanel";
 import { ResultList } from "./ResultList";
 
 export function SubsidyFinderTool() {
-  const searchParams = useSearchParams();
-  const [input, setInput] = useState<SubsidyInput>(() =>
-    decodeInputFromParams(new URLSearchParams(searchParams.toString())),
-  );
-
-  const update = useCallback((patch: Partial<SubsidyInput>) => {
-    setInput((prev) => ({ ...prev, ...patch }));
-  }, []);
-
-  const isFirstRender = useRef(true);
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    window.history.replaceState(
-      null,
-      "",
-      `?${encodeInputToParams(input).toString()}`,
-    );
-  }, [input]);
+  const {
+    input,
+    setInput,
+    patch: update,
+  } = useUrlSyncedInput(decodeInputFromParams, encodeInputToParams);
 
   const matches = useMemo(() => findSubsidies(input), [input]);
 

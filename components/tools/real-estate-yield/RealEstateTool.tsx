@@ -1,8 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
 
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
@@ -13,15 +12,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  calculateRealEstate,
-  type RealEstateInput,
-} from "@/lib/calculators/real-estate-yield";
+import { calculateRealEstate } from "@/lib/calculators/real-estate-yield";
 import {
   DEFAULT_INPUT,
   decodeInputFromParams,
   encodeInputToParams,
 } from "@/lib/calculators/real-estate-yield/schema";
+import { useUrlSyncedInput } from "@/lib/hooks/use-url-synced-input";
 
 import { InputPanel } from "./InputPanel";
 import { ResultPanel } from "./ResultPanel";
@@ -34,27 +31,11 @@ const CashFlowChart = dynamic(() => import("./CashFlowChart"), {
 });
 
 export function RealEstateTool() {
-  const searchParams = useSearchParams();
-  const [input, setInput] = useState<RealEstateInput>(() =>
-    decodeInputFromParams(new URLSearchParams(searchParams.toString())),
-  );
-
-  const update = useCallback((patch: Partial<RealEstateInput>) => {
-    setInput((prev) => ({ ...prev, ...patch }));
-  }, []);
-
-  const isFirstRender = useRef(true);
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    window.history.replaceState(
-      null,
-      "",
-      `?${encodeInputToParams(input).toString()}`,
-    );
-  }, [input]);
+  const {
+    input,
+    setInput,
+    patch: update,
+  } = useUrlSyncedInput(decodeInputFromParams, encodeInputToParams);
 
   const result = useMemo(() => calculateRealEstate(input), [input]);
 

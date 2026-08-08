@@ -1,8 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
 
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
@@ -13,16 +12,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  calculateBonusTakeHome,
-  type BonusTakeHomeInput,
-} from "@/lib/calculators/bonus-take-home";
+import { calculateBonusTakeHome } from "@/lib/calculators/bonus-take-home";
 import {
   DEFAULT_INPUT,
   decodeInputFromParams,
   encodeInputToParams,
 } from "@/lib/calculators/bonus-take-home/schema";
 import { formatManYen, formatYen } from "@/lib/format";
+import { useUrlSyncedInput } from "@/lib/hooks/use-url-synced-input";
 
 import { InputPanel } from "./InputPanel";
 import { ResultPanel } from "./ResultPanel";
@@ -35,27 +32,11 @@ const BreakdownChart = dynamic(() => import("./BreakdownChart"), {
 });
 
 export function BonusTakeHomeTool() {
-  const searchParams = useSearchParams();
-  const [input, setInput] = useState<BonusTakeHomeInput>(() =>
-    decodeInputFromParams(new URLSearchParams(searchParams.toString())),
-  );
-
-  const update = useCallback((patch: Partial<BonusTakeHomeInput>) => {
-    setInput((prev) => ({ ...prev, ...patch }));
-  }, []);
-
-  const isFirstRender = useRef(true);
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    window.history.replaceState(
-      null,
-      "",
-      `?${encodeInputToParams(input).toString()}`,
-    );
-  }, [input]);
+  const {
+    input,
+    setInput,
+    patch: update,
+  } = useUrlSyncedInput(decodeInputFromParams, encodeInputToParams);
 
   const result = useMemo(() => calculateBonusTakeHome(input), [input]);
 
