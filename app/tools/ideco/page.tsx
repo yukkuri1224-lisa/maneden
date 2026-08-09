@@ -41,8 +41,7 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title:
-    "iDeCo（イデコ）節税シミュレーター｜掛金でいくら税金が安くなるか無料計算",
+  title: "iDeCo（イデコ）節税シミュレーター｜掛金の節税効果はいくらか無料計算",
   description,
   alternates: { canonical: tool.href },
   openGraph: {

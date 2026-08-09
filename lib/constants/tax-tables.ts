@@ -83,4 +83,32 @@ export const TAX_TABLES = {
       6: 0.4,
     },
   },
+  /**
+   * 贈与税（暦年課税）。速算表: 税額 = 課税価格 × rate − deduction。
+   * 課税価格 = その年の贈与合計 − 基礎控除(110万円)。
+   * special=特例贈与財産（直系尊属→18歳以上の子・孫）、general=一般贈与財産（それ以外）。
+   */
+  giftTax: {
+    basicDeduction: 1_100_000,
+    general: [
+      { upTo: 2_000_000, rate: 0.1, deduction: 0 },
+      { upTo: 3_000_000, rate: 0.15, deduction: 100_000 },
+      { upTo: 4_000_000, rate: 0.2, deduction: 250_000 },
+      { upTo: 6_000_000, rate: 0.3, deduction: 650_000 },
+      { upTo: 10_000_000, rate: 0.4, deduction: 1_250_000 },
+      { upTo: 15_000_000, rate: 0.45, deduction: 1_750_000 },
+      { upTo: 30_000_000, rate: 0.5, deduction: 2_500_000 },
+      { upTo: Number.POSITIVE_INFINITY, rate: 0.55, deduction: 4_000_000 },
+    ],
+    special: [
+      { upTo: 2_000_000, rate: 0.1, deduction: 0 },
+      { upTo: 4_000_000, rate: 0.15, deduction: 100_000 },
+      { upTo: 6_000_000, rate: 0.2, deduction: 300_000 },
+      { upTo: 10_000_000, rate: 0.3, deduction: 900_000 },
+      { upTo: 15_000_000, rate: 0.4, deduction: 1_900_000 },
+      { upTo: 30_000_000, rate: 0.45, deduction: 2_650_000 },
+      { upTo: 45_000_000, rate: 0.5, deduction: 4_150_000 },
+      { upTo: Number.POSITIVE_INFINITY, rate: 0.55, deduction: 6_400_000 },
+    ],
+  },
 } as const;
