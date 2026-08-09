@@ -36,7 +36,7 @@ const trustPoints = [
   { icon: Gift, label: "完全無料" },
   { icon: Lock, label: "登録不要" },
   { icon: ShieldCheck, label: "データ送信なし" },
-  { icon: Sparkles, label: "6つのツール" },
+  { icon: Sparkles, label: `${tools.length}種類のツール` },
 ];
 
 const features = [
@@ -256,7 +256,7 @@ export default function Home() {
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              6つの計算ツール
+              {tools.length}種類の計算ツール
             </h2>
             <p className="mt-3 text-muted-foreground">
               確定申告の手取りから、ふるさと納税の上限、補助金、不動産の利回りまで。用途に合わせて選べます。

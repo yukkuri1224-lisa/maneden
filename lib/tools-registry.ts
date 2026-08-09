@@ -8,6 +8,7 @@ import {
   Home,
   LineChart,
   PiggyBank,
+  TrendingUp,
   Wallet,
 } from "lucide-react";
 
@@ -98,6 +99,18 @@ export const tools: Tool[] = [
       "賞与の額面から社会保険料と所得税を差し引いた手取り額を概算。手取り率もひと目でわかります。",
     category: "tax",
     icon: Coins,
+    status: "live",
+    sitemapPriority: 0.9,
+  },
+  {
+    id: "ideco",
+    href: "/tools/ideco",
+    title: "iDeCo（イデコ）節税シミュレーター",
+    shortTitle: "iDeCo節税",
+    description:
+      "年収と毎月の掛金から、iDeCoの掛金でいくら節税できるかを概算。所得税・住民税の年間軽減額と60歳までの累計節税額がわかります。",
+    category: "tax",
+    icon: TrendingUp,
     status: "live",
     sitemapPriority: 0.9,
   },
