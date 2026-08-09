@@ -142,3 +142,43 @@ export function datasetJsonLd(params: DatasetJsonLdParams) {
     publisher,
   };
 }
+
+export interface ArticleJsonLdParams {
+  headline: string;
+  description: string;
+  /** 絶対 URL */
+  url: string;
+  /** 公開日（ISO） */
+  datePublished: string;
+  /** 更新日（ISO） */
+  dateModified: string;
+}
+
+/** ガイド記事を表す Article 構造化データ */
+export function articleJsonLd(params: ArticleJsonLdParams) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: params.headline,
+    description: params.description,
+    url: params.url,
+    mainEntityOfPage: params.url,
+    datePublished: params.datePublished,
+    dateModified: params.dateModified,
+    inLanguage: "ja",
+    author: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/icon.svg`,
+      },
+    },
+  };
+}

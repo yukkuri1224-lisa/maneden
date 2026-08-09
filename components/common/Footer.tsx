@@ -64,6 +64,18 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
+
+            <p className="mt-6 text-sm font-semibold">ガイド</p>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li>
+                <Link
+                  href="/guides"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  お金のガイド
+                </Link>
+              </li>
+            </ul>
           </div>
 
           <div>

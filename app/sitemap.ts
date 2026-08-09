@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { INDUSTRY_SLUGS, NO_HUB_INDUSTRIES } from "@/lib/companies/industries";
+import { guides } from "@/lib/guides";
 import { siteConfig } from "@/lib/site-config";
 import { tools } from "@/lib/tools-registry";
 
@@ -17,7 +18,7 @@ import { tools } from "@/lib/tools-registry";
  * lastModified はビルド時刻ではなく「実際の更新日」を使う（毎回のビルドで無意味に変動させない）。
  * データやコンテンツを更新したら、下記の日付定数を更新すること。
  */
-const SITE_UPDATED = new Date("2026-08-09"); // トップ・ツール・法務・サイトマップ構成など
+const SITE_UPDATED = new Date("2026-08-10"); // トップ・ツール・法務・サイトマップ構成など
 const DATA_UPDATED = new Date("2026-08-06"); // 企業年収データ（一覧・業種ハブ）
 
 type Entry = { path: string; priority: number; lastModified: Date };
@@ -47,10 +48,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: DATA_UPDATED,
     }));
 
-  return [...staticPages, ...toolPages, ...industryPages].map((page) => ({
-    url: `${siteConfig.url}${page.path}`,
-    lastModified: page.lastModified,
-    changeFrequency: "weekly",
-    priority: page.priority,
-  }));
+  const guidePages: Entry[] = [
+    { path: "/guides", priority: 0.6, lastModified: SITE_UPDATED },
+    ...guides.map((g) => ({
+      path: g.href,
+      priority: 0.7,
+      lastModified: new Date(g.updatedISO),
+    })),
+  ];
+
+  return [...staticPages, ...toolPages, ...industryPages, ...guidePages].map(
+    (page) => ({
+      url: `${siteConfig.url}${page.path}`,
+      lastModified: page.lastModified,
+      changeFrequency: "weekly",
+      priority: page.priority,
+    }),
+  );
 }
