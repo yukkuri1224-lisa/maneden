@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Zen_Kaku_Gothic_New } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -88,6 +89,20 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <SpeedInsights />
+
+        {/* Google Analytics 4（gtag.js）。next/script で読み込む */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QFB3PRTB6D"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QFB3PRTB6D');
+          `}
+        </Script>
       </body>
     </html>
   );

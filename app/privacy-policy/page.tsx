@@ -30,9 +30,35 @@ export default function PrivacyPolicyPage() {
 
       <h2>アクセス解析について</h2>
       <p>
-        当サイトでは、利用状況の把握のために Vercel Analytics
-        を利用しています。Vercel Analytics は<strong>Cookie を使用せず</strong>
+        当サイトでは、利用状況の把握のために Vercel Analytics と Google
+        アナリティクス（GA4）を利用しています。
+      </p>
+      <p>
+        Vercel Analytics は<strong>Cookie を使用せず</strong>
         、個人を特定できる情報も収集しません。ページの表示回数や表示速度などの統計情報のみを匿名で集計します。
+      </p>
+      <p>
+        Google アナリティクスは、トラフィックデータの収集のために
+        <strong>Cookie を使用</strong>
+        します。このデータは匿名で収集されており、個人を特定するものではありません。収集された情報は
+        Google
+        社のプライバシーポリシーに基づいて管理されます。データが収集・処理される仕組みについては{" "}
+        <a
+          href="https://policies.google.com/technologies/partner-sites"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Google のポリシーと規約
+        </a>
+        をご確認ください。ブラウザの設定や{" "}
+        <a
+          href="https://tools.google.com/dlpage/gaoptout?hl=ja"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Google アナリティクス オプトアウト アドオン
+        </a>
+        により、収集を無効化することもできます。
       </p>
 
       <h2>広告について</h2>
