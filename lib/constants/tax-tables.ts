@@ -111,4 +111,24 @@ export const TAX_TABLES = {
       { upTo: Number.POSITIVE_INFINITY, rate: 0.55, deduction: 6_400_000 },
     ],
   },
+  /**
+   * 相続税。基礎控除 = 3,000万円 + 600万円 × 法定相続人の数。
+   * 速算表は「法定相続分に応ずる各人の取得金額」に対して 税額 = 取得金額 × rate − deduction。
+   * spouseReliefFloor=配偶者の税額軽減の下限（1.6億円。法定相続分と比べて多い方まで非課税）。
+   */
+  inheritanceTax: {
+    basicDeductionFixed: 30_000_000,
+    basicDeductionPerHeir: 6_000_000,
+    spouseReliefFloor: 160_000_000,
+    brackets: [
+      { upTo: 10_000_000, rate: 0.1, deduction: 0 },
+      { upTo: 30_000_000, rate: 0.15, deduction: 500_000 },
+      { upTo: 50_000_000, rate: 0.2, deduction: 2_000_000 },
+      { upTo: 100_000_000, rate: 0.3, deduction: 7_000_000 },
+      { upTo: 200_000_000, rate: 0.4, deduction: 17_000_000 },
+      { upTo: 300_000_000, rate: 0.45, deduction: 27_000_000 },
+      { upTo: 600_000_000, rate: 0.5, deduction: 42_000_000 },
+      { upTo: Number.POSITIVE_INFINITY, rate: 0.55, deduction: 72_000_000 },
+    ],
+  },
 } as const;

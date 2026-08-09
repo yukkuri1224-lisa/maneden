@@ -11,6 +11,16 @@ export function formatManYen(value: number, digits = 1): string {
   })}万円`;
 }
 
+/** 大きな金額を「1億2,000万円」形式に整形（相続・資産など億単位向け） */
+export function formatOkuMan(value: number): string {
+  const rounded = Math.max(0, Math.round(value));
+  const oku = Math.floor(rounded / 100_000_000);
+  const man = Math.round((rounded % 100_000_000) / 10_000);
+  if (oku > 0 && man > 0) return `${oku}億${man.toLocaleString("ja-JP")}万円`;
+  if (oku > 0) return `${oku}億円`;
+  return `${man.toLocaleString("ja-JP")}万円`;
+}
+
 /** 割合を「61.2%」形式に整形 */
 export function formatPercent(value: number, digits = 1): string {
   return `${value.toFixed(digits)}%`;
