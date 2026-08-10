@@ -9,6 +9,7 @@ import { siteConfig } from "@/lib/site-config";
 
 const navItems: MobileNavItem[] = [
   { href: "/tools", label: "ツール一覧" },
+  { href: "/guides", label: "ガイド" },
   { href: "/companies", label: "企業の年収" },
 ];
 

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Calculator, Sprout, TrendingUp } from "lucide-react";
+import { Calculator, Sprout, TrendingUp } from "lucide-react";
 
-import { Breadcrumb } from "@/components/common/Breadcrumb";
-import { Container } from "@/components/common/Container";
+import { GuideArticle } from "@/components/guides/GuideArticle";
+import { GuideSection } from "@/components/guides/GuideSection";
 import { JsonLd } from "@/components/common/JsonLd";
-import { buttonVariants } from "@/components/ui/button";
 import { getGuideBySlug } from "@/lib/guides";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
@@ -15,6 +14,15 @@ const guide = getGuideBySlug("ideco-vs-nisa")!;
 
 const description =
   "iDeCoと新NISAの違いを比較表で整理し、どちらから始めるべきか、併用するメリットと注意点、会社員の使い分けまで解説。iDeCoの節税額と新NISAの将来額はシミュレーターで確かめられます。";
+
+const toc = [
+  { id: "hikaku", label: "iDeCoと新NISAの違い" },
+  { id: "docchi", label: "どっちから始める？" },
+  { id: "merit", label: "併用するメリット" },
+  { id: "chuui", label: "併用の注意点" },
+  { id: "keisan", label: "数字で確かめる" },
+  { id: "faq", label: "よくあるご質問" },
+];
 
 const faqs = [
   {
@@ -73,11 +81,7 @@ const compareRows = [
     nisa: "360万円（つみたて120＋成長240）",
     ideco: "約14.4万〜81.6万円（区分による）",
   },
-  {
-    label: "引き出し",
-    nisa: "いつでも可能",
-    ideco: "原則60歳まで不可",
-  },
+  { label: "引き出し", nisa: "いつでも可能", ideco: "原則60歳まで不可" },
   { label: "口座管理手数料", nisa: "基本なし", ideco: "あり" },
   {
     label: "向いている人",
@@ -111,7 +115,7 @@ export default function IdecoVsNisaGuide() {
   const url = `${siteConfig.url}${guide.href}`;
 
   return (
-    <Container className="py-8">
+    <>
       <JsonLd
         data={articleJsonLd({
           headline: guide.title,
@@ -130,212 +134,160 @@ export default function IdecoVsNisaGuide() {
       />
       <JsonLd data={faqJsonLd(faqs)} />
 
-      <Breadcrumb
-        items={[
-          { name: "ホーム", href: "/" },
-          { name: "ガイド", href: "/guides" },
-          { name: guide.shortTitle, href: guide.href },
-        ]}
-      />
-
-      <article className="mt-4">
-        <h1 className="text-2xl font-bold sm:text-3xl">{guide.title}</h1>
-        <p className="mt-1 text-xs text-muted-foreground">
-          最終更新日: {guide.updated}
-        </p>
-        <p className="mt-4 max-w-2xl text-muted-foreground">{description}</p>
-
-        {/* 結論先出し */}
-        <div className="mt-6 rounded-2xl border border-primary/30 bg-primary/5 p-5">
-          <p className="text-sm font-semibold text-foreground">
-            結論から言うと
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      <GuideArticle guide={guide} toc={toc}>
+        <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:p-6">
+          <p className="text-sm font-bold text-primary">結論から言うと</p>
+          <p className="mt-2 text-[15px] leading-7 text-muted-foreground">
             多くの会社員は、
-            <strong className="text-foreground">
+            <strong className="font-semibold text-foreground">
               まず新NISA（つみたて投資枠）から始め、家計に余裕があればiDeCoも併用
             </strong>
             するのが分かりやすい順番です。新NISAは
-            <strong className="text-foreground">
+            <strong className="font-semibold text-foreground">
               いつでも引き出せる柔軟さ
             </strong>
             、iDeCoは
-            <strong className="text-foreground">
+            <strong className="font-semibold text-foreground">
               掛金が全額所得控除になり“今の税金”も軽くなる
             </strong>
             のが強み。所得が高い人ほどiDeCoの節税効果が大きくなります。
           </p>
         </div>
 
-        <div className="mt-10 max-w-2xl space-y-10 text-sm leading-relaxed text-muted-foreground">
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              iDeCoと新NISAの違い（比較表）
-            </h2>
-            <p className="mt-3">
-              どちらも「運用益が非課税」という共通点がありますが、目的・引き出しやすさ・税メリットが異なります。
-            </p>
-            <div className="mt-4 overflow-x-auto">
-              <table className="w-full min-w-[520px] border-collapse text-sm">
-                <thead>
-                  <tr className="border-b">
-                    <th className="py-2 pr-3 text-left font-semibold text-foreground"></th>
-                    <th className="px-3 py-2 text-left font-semibold text-foreground">
-                      新NISA
-                    </th>
-                    <th className="px-3 py-2 text-left font-semibold text-foreground">
-                      iDeCo
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {compareRows.map((row) => (
-                    <tr key={row.label} className="border-b align-top">
-                      <th className="py-3 pr-3 text-left font-medium text-foreground">
-                        {row.label}
-                      </th>
-                      <td className="px-3 py-3">{row.nisa}</td>
-                      <td className="px-3 py-3">{row.ideco}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              どっちから始める？
-            </h2>
-            <p className="mt-3">迷ったら、次の順番が基本です。</p>
-            <ul className="mt-3 list-disc space-y-1.5 pl-5">
-              <li>
-                <strong className="text-foreground">
-                  ① 生活防衛資金を確保
-                </strong>
-                （生活費の3〜6か月分。投資より先に）
-              </li>
-              <li>
-                <strong className="text-foreground">
-                  ② 新NISA（つみたて投資枠）
-                </strong>
-                で少額から積立を始める
-              </li>
-              <li>
-                <strong className="text-foreground">③ 余裕が出たらiDeCo</strong>
-                も併用して、老後資金と節税を上乗せ
-              </li>
-            </ul>
-            <p className="mt-3">
-              ただし、
-              <strong className="text-foreground">
-                所得税率が高い方や、老後資金を確実に積み立てたい方
-              </strong>
-              は、iDeCoの優先度が上がります。iDeCoは60歳まで引き出せないぶん、「強制的に老後資金を貯められる」という利点にもなります。
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              併用するメリット
-            </h2>
-            <ul className="mt-3 list-disc space-y-1.5 pl-5">
-              <li>
-                両方の非課税枠を同時に使い、運用益への課税をどちらも回避できる
-              </li>
-              <li>
-                iDeCoの掛金は所得控除になるため、
-                <strong className="text-foreground">
-                  今払っている税金も軽く
-                </strong>
-                なる（新NISAにはないメリット）
-              </li>
-              <li>
-                新NISAはいつでも引き出せるので、急な出費に対応しつつ、iDeCoで老後資金を確実に確保できる
-              </li>
-              <li>
-                役割分担：
-                <strong className="text-foreground">
-                  新NISA＝いつでも使える資産／iDeCo＝老後専用の器
-                </strong>
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-foreground">併用の注意点</h2>
-            <ul className="mt-3 list-disc space-y-1.5 pl-5">
-              <li>
-                iDeCoは
-                <strong className="text-foreground">
-                  原則60歳まで引き出せない
-                </strong>
-                。無理な掛金は家計を圧迫するので、続けられる額に
-              </li>
-              <li>iDeCoは口座管理手数料がかかる</li>
-              <li>掛金には上限がある（iDeCoは加入区分で異なる）</li>
-              <li>
-                いきなり両方“満額”を目指さず、少額から始めて徐々に増やすのが無理がない
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              数字で確かめる
-            </h2>
-            <p className="mt-3">
-              「自分の場合はいくら得になるのか」は、実際に計算するのがいちばんです。無料・登録不要で試せます。
-            </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
-              {toolCtas.map((c) => (
-                <Link
-                  key={c.href}
-                  href={c.href}
-                  className="group rounded-xl border p-4 transition-colors hover:border-primary/50 hover:bg-muted/40"
-                >
-                  <c.icon className="size-5 text-primary" aria-hidden />
-                  <p className="mt-2 font-semibold text-foreground group-hover:text-primary">
-                    {c.title}
-                  </p>
-                  <p className="mt-1 text-xs">{c.desc}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              よくあるご質問
-            </h2>
-            <dl className="mt-4 space-y-4">
-              {faqs.map((faq) => (
-                <div key={faq.question}>
-                  <dt className="font-semibold text-foreground">
-                    {faq.question}
-                  </dt>
-                  <dd className="mt-1">{faq.answer}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-
-          <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 text-foreground">
-            ⚠️
-            本記事は一般的な情報提供を目的とした解説で、特定の金融商品を推奨するものではありません。制度の詳細や最新の条件は公式情報をご確認のうえ、ご自身の判断で行ってください。
+        <GuideSection id="hikaku" title="iDeCoと新NISAの違い（比較表）">
+          <p>
+            どちらも「運用益が非課税」という共通点がありますが、目的・引き出しやすさ・税メリットが異なります。
           </p>
-        </div>
+          <div className="overflow-x-auto rounded-xl border">
+            <table className="w-full min-w-[520px] border-collapse text-sm">
+              <thead className="bg-muted/50">
+                <tr>
+                  <th className="p-3 text-left font-semibold text-foreground"></th>
+                  <th className="p-3 text-left font-semibold text-foreground">
+                    新NISA
+                  </th>
+                  <th className="p-3 text-left font-semibold text-foreground">
+                    iDeCo
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {compareRows.map((row, i) => (
+                  <tr
+                    key={row.label}
+                    className={cn(
+                      "border-t align-top",
+                      i % 2 === 1 && "bg-muted/20",
+                    )}
+                  >
+                    <th className="p-3 text-left font-medium text-foreground">
+                      {row.label}
+                    </th>
+                    <td className="p-3">{row.nisa}</td>
+                    <td className="p-3">{row.ideco}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </GuideSection>
 
-        <div className="mt-10">
-          <Link
-            href="/guides"
-            className={cn(buttonVariants({ variant: "outline" }))}
-          >
-            ほかのガイドを見る
-            <ArrowRight className="size-4" />
-          </Link>
-        </div>
-      </article>
-    </Container>
+        <GuideSection id="docchi" title="どっちから始める？">
+          <p>迷ったら、次の順番が基本です。</p>
+          <ul className="list-disc space-y-1.5 pl-5">
+            <li>
+              <strong>① 生活防衛資金を確保</strong>
+              （生活費の3〜6か月分。投資より先に）
+            </li>
+            <li>
+              <strong>② 新NISA（つみたて投資枠）</strong>
+              で少額から積立を始める
+            </li>
+            <li>
+              <strong>③ 余裕が出たらiDeCo</strong>
+              も併用して、老後資金と節税を上乗せ
+            </li>
+          </ul>
+          <p>
+            ただし、
+            <strong>所得税率が高い方や、老後資金を確実に積み立てたい方</strong>
+            は、iDeCoの優先度が上がります。iDeCoは60歳まで引き出せないぶん、「強制的に老後資金を貯められる」という利点にもなります。
+          </p>
+        </GuideSection>
+
+        <GuideSection id="merit" title="併用するメリット">
+          <ul className="list-disc space-y-1.5 pl-5">
+            <li>
+              両方の非課税枠を同時に使い、運用益への課税をどちらも回避できる
+            </li>
+            <li>
+              iDeCoの掛金は所得控除になるため、
+              <strong>今払っている税金も軽く</strong>
+              なる（新NISAにはないメリット）
+            </li>
+            <li>
+              新NISAはいつでも引き出せるので、急な出費に対応しつつ、iDeCoで老後資金を確実に確保できる
+            </li>
+            <li>
+              役割分担：
+              <strong>新NISA＝いつでも使える資産／iDeCo＝老後専用の器</strong>
+            </li>
+          </ul>
+        </GuideSection>
+
+        <GuideSection id="chuui" title="併用の注意点">
+          <ul className="list-disc space-y-1.5 pl-5">
+            <li>
+              iDeCoは<strong>原則60歳まで引き出せない</strong>
+              。無理な掛金は家計を圧迫するので、続けられる額に
+            </li>
+            <li>iDeCoは口座管理手数料がかかる</li>
+            <li>掛金には上限がある（iDeCoは加入区分で異なる）</li>
+            <li>
+              いきなり両方“満額”を目指さず、少額から始めて徐々に増やすのが無理がない
+            </li>
+          </ul>
+        </GuideSection>
+
+        <GuideSection id="keisan" title="数字で確かめる">
+          <p>
+            「自分の場合はいくら得になるのか」は、実際に計算するのがいちばんです。無料・登録不要で試せます。
+          </p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {toolCtas.map((c) => (
+              <Link
+                key={c.href}
+                href={c.href}
+                className="group rounded-xl border p-4 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+              >
+                <c.icon className="size-5 text-primary" aria-hidden />
+                <p className="mt-2 font-semibold text-foreground group-hover:text-primary">
+                  {c.title}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">{c.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </GuideSection>
+
+        <GuideSection id="faq" title="よくあるご質問">
+          <dl className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="rounded-xl border bg-card p-4">
+                <dt className="font-semibold text-foreground">
+                  {faq.question}
+                </dt>
+                <dd className="mt-2">{faq.answer}</dd>
+              </div>
+            ))}
+          </dl>
+        </GuideSection>
+
+        <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-4 text-sm leading-7 text-muted-foreground">
+          ⚠️
+          本記事は一般的な情報提供を目的とした解説で、特定の金融商品を推奨するものではありません。制度の詳細や最新の条件は公式情報をご確認のうえ、ご自身の判断で行ってください。
+        </p>
+      </GuideArticle>
+    </>
   );
 }

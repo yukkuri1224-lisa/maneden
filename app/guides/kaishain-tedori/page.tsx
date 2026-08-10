@@ -1,20 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Clock, Coins, Wallet } from "lucide-react";
+import { Clock, Coins, Wallet } from "lucide-react";
 
-import { Breadcrumb } from "@/components/common/Breadcrumb";
-import { Container } from "@/components/common/Container";
+import { GuideArticle } from "@/components/guides/GuideArticle";
+import { GuideSection } from "@/components/guides/GuideSection";
 import { JsonLd } from "@/components/common/JsonLd";
-import { buttonVariants } from "@/components/ui/button";
 import { getGuideBySlug } from "@/lib/guides";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
-import { cn } from "@/lib/utils";
 
 const guide = getGuideBySlug("kaishain-tedori")!;
 
 const description =
   "額面（年収）と手取りの違い、給料から引かれる社会保険料・所得税・住民税の中身、手取りの目安、手取りを増やす方法をやさしく解説。自分の手取りはシミュレーターで計算できます。";
+
+const toc = [
+  { id: "chigai", label: "額面と手取りの違い" },
+  { id: "hikareru", label: "給料から引かれるもの" },
+  { id: "fuyasu", label: "手取りを増やすには" },
+  { id: "keisan", label: "自分の手取りを計算する" },
+  { id: "faq", label: "よくあるご質問" },
+];
 
 const faqs = [
   {
@@ -96,7 +102,7 @@ export default function KaishainTedoriGuide() {
   const url = `${siteConfig.url}${guide.href}`;
 
   return (
-    <Container className="py-8">
+    <>
       <JsonLd
         data={articleJsonLd({
           headline: guide.title,
@@ -115,156 +121,118 @@ export default function KaishainTedoriGuide() {
       />
       <JsonLd data={faqJsonLd(faqs)} />
 
-      <Breadcrumb
-        items={[
-          { name: "ホーム", href: "/" },
-          { name: "ガイド", href: "/guides" },
-          { name: guide.shortTitle, href: guide.href },
-        ]}
-      />
-
-      <article className="mt-4">
-        <h1 className="text-2xl font-bold sm:text-3xl">{guide.title}</h1>
-        <p className="mt-1 text-xs text-muted-foreground">
-          最終更新日: {guide.updated}
-        </p>
-        <p className="mt-4 max-w-2xl text-muted-foreground">{description}</p>
-
-        <div className="mt-6 rounded-2xl border border-primary/30 bg-primary/5 p-5">
-          <p className="text-sm font-semibold text-foreground">
-            ひとことで言うと
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      <GuideArticle guide={guide} toc={toc}>
+        <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:p-6">
+          <p className="text-sm font-bold text-primary">ひとことで言うと</p>
+          <p className="mt-2 text-[15px] leading-7 text-muted-foreground">
             手取りとは、
-            <strong className="text-foreground">
+            <strong className="font-semibold text-foreground">
               額面（年収・総支給）から社会保険料と税金（所得税・住民税）を引いた、実際に使えるお金
             </strong>
             のことです。手取りはおおむね額面の
-            <strong className="text-foreground">75〜85%</strong>
+            <strong className="font-semibold text-foreground">75〜85%</strong>
             が目安で、年収が高くなるほど（所得税率が上がるため）その割合は下がっていきます。
           </p>
         </div>
 
-        <div className="mt-10 max-w-2xl space-y-10 text-sm leading-relaxed text-muted-foreground">
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              額面と手取りの違い
-            </h2>
-            <p className="mt-3">
-              求人票や給与明細に載る
-              <strong className="text-foreground">「額面（総支給）」</strong>
-              は、税金や社会保険料を引く前の金額です。そこから天引きされたあとに、実際に口座へ振り込まれるのが
-              <strong className="text-foreground">「手取り」</strong>
-              です。生活に使えるのは手取りなので、家計や転職の判断は手取りで見るのが実感に近くなります。
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              給料から引かれるもの
-            </h2>
-            <div className="mt-4 space-y-3">
-              {deductions.map((d) => (
-                <div key={d.title} className="rounded-xl border p-4">
-                  <p className="font-semibold text-foreground">{d.title}</p>
-                  <p className="mt-1 text-xs">{d.body}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-4">
-              これらを合計したものが額面から引かれ、残りが手取りになります。社会保険料は年齢（40歳以上は介護保険）や年収で、税金は課税所得や家族構成で変わります。
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              手取りを増やすには
-            </h2>
-            <p className="mt-3">
-              使える控除を活用すると、同じ額面でも手取り（正確には手元に残るお金）を増やせます。
-            </p>
-            <ul className="mt-3 list-disc space-y-1.5 pl-5">
-              <li>
-                <strong className="text-foreground">iDeCo</strong>
-                ：掛金が全額所得控除になり、所得税・住民税が軽くなる
-              </li>
-              <li>
-                <strong className="text-foreground">ふるさと納税</strong>
-                ：実質2,000円の負担で返礼品を受け取れる
-              </li>
-              <li>
-                配偶者控除・扶養控除・医療費控除など、使える控除を漏らさない
-              </li>
-            </ul>
-            <p className="mt-3">
-              くわしくは
-              <Link href="/guides/ideco-vs-nisa">
-                iDeCoと新NISAの使い分けガイド
-              </Link>
-              や
-              <Link href="/guides/furusato-nouzei">
-                ふるさと納税の仕組みガイド
-              </Link>
-              もあわせてご覧ください。
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              自分の手取りを計算する
-            </h2>
-            <p className="mt-3">
-              手取りは年収・年齢・家族構成で変わります。自分の場合の金額は、無料・登録不要のツールで確認できます。
-            </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
-              {toolCtas.map((c) => (
-                <Link
-                  key={c.href}
-                  href={c.href}
-                  className="group rounded-xl border p-4 transition-colors hover:border-primary/50 hover:bg-muted/40"
-                >
-                  <c.icon className="size-5 text-primary" aria-hidden />
-                  <p className="mt-2 font-semibold text-foreground group-hover:text-primary">
-                    {c.title}
-                  </p>
-                  <p className="mt-1 text-xs">{c.desc}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-foreground">
-              よくあるご質問
-            </h2>
-            <dl className="mt-4 space-y-4">
-              {faqs.map((faq) => (
-                <div key={faq.question}>
-                  <dt className="font-semibold text-foreground">
-                    {faq.question}
-                  </dt>
-                  <dd className="mt-1">{faq.answer}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-
-          <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 text-foreground">
-            ⚠️
-            本記事は一般的な情報提供を目的とした解説です。手取りの割合はあくまで目安で、実際の金額は各人の年収・年齢・家族構成・お住まいの自治体により異なります。
+        <GuideSection id="chigai" title="額面と手取りの違い">
+          <p>
+            求人票や給与明細に載る<strong>「額面（総支給）」</strong>
+            は、税金や社会保険料を引く前の金額です。そこから天引きされたあとに、実際に口座へ振り込まれるのが
+            <strong>「手取り」</strong>
+            です。生活に使えるのは手取りなので、家計や転職の判断は手取りで見るのが実感に近くなります。
           </p>
-        </div>
+        </GuideSection>
 
-        <div className="mt-10">
-          <Link
-            href="/guides"
-            className={cn(buttonVariants({ variant: "outline" }))}
-          >
-            ほかのガイドを見る
-            <ArrowRight className="size-4" />
-          </Link>
-        </div>
-      </article>
-    </Container>
+        <GuideSection id="hikareru" title="給料から引かれるもの">
+          <div className="space-y-3">
+            {deductions.map((d) => (
+              <div key={d.title} className="rounded-xl border p-4">
+                <p className="font-semibold text-foreground">{d.title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{d.body}</p>
+              </div>
+            ))}
+          </div>
+          <p>
+            これらを合計したものが額面から引かれ、残りが手取りになります。社会保険料は年齢（40歳以上は介護保険）や年収で、税金は課税所得や家族構成で変わります。
+          </p>
+        </GuideSection>
+
+        <GuideSection id="fuyasu" title="手取りを増やすには">
+          <p>
+            使える控除を活用すると、同じ額面でも手取り（正確には手元に残るお金）を増やせます。
+          </p>
+          <ul className="list-disc space-y-1.5 pl-5">
+            <li>
+              <strong>iDeCo</strong>
+              ：掛金が全額所得控除になり、所得税・住民税が軽くなる
+            </li>
+            <li>
+              <strong>ふるさと納税</strong>
+              ：実質2,000円の負担で返礼品を受け取れる
+            </li>
+            <li>
+              配偶者控除・扶養控除・医療費控除など、使える控除を漏らさない
+            </li>
+          </ul>
+          <p>
+            くわしくは
+            <Link
+              href="/guides/ideco-vs-nisa"
+              className="font-medium text-primary underline underline-offset-2"
+            >
+              iDeCoと新NISAの使い分けガイド
+            </Link>
+            や
+            <Link
+              href="/guides/furusato-nouzei"
+              className="font-medium text-primary underline underline-offset-2"
+            >
+              ふるさと納税の仕組みガイド
+            </Link>
+            もあわせてご覧ください。
+          </p>
+        </GuideSection>
+
+        <GuideSection id="keisan" title="自分の手取りを計算する">
+          <p>
+            手取りは年収・年齢・家族構成で変わります。自分の場合の金額は、無料・登録不要のツールで確認できます。
+          </p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {toolCtas.map((c) => (
+              <Link
+                key={c.href}
+                href={c.href}
+                className="group rounded-xl border p-4 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+              >
+                <c.icon className="size-5 text-primary" aria-hidden />
+                <p className="mt-2 font-semibold text-foreground group-hover:text-primary">
+                  {c.title}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">{c.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </GuideSection>
+
+        <GuideSection id="faq" title="よくあるご質問">
+          <dl className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="rounded-xl border bg-card p-4">
+                <dt className="font-semibold text-foreground">
+                  {faq.question}
+                </dt>
+                <dd className="mt-2">{faq.answer}</dd>
+              </div>
+            ))}
+          </dl>
+        </GuideSection>
+
+        <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-4 text-sm leading-7 text-muted-foreground">
+          ⚠️
+          本記事は一般的な情報提供を目的とした解説です。手取りの割合はあくまで目安で、実際の金額は各人の年収・年齢・家族構成・お住まいの自治体により異なります。
+        </p>
+      </GuideArticle>
+    </>
   );
 }
