@@ -30,6 +30,17 @@ export const guides: Guide[] = [
     publishedISO: "2026-08-10",
     updatedISO: "2026-08-10",
   },
+  {
+    slug: "furusato-nouzei",
+    href: "/guides/furusato-nouzei",
+    title: "ふるさと納税とは？仕組み・限度額・やり方をやさしく解説",
+    shortTitle: "ふるさと納税の仕組み",
+    description:
+      "ふるさと納税の仕組み（実質2,000円で返礼品と税の控除）、限度額の決まり方、やり方（ワンストップ特例・確定申告）、注意点をやさしく解説。自分の上限額はシミュレーターで確認できます。",
+    updated: "2026年8月10日",
+    publishedISO: "2026-08-10",
+    updatedISO: "2026-08-10",
+  },
 ];
 
 export function getGuideBySlug(slug: string): Guide | undefined {
