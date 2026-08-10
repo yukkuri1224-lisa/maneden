@@ -41,6 +41,17 @@ export const guides: Guide[] = [
     publishedISO: "2026-08-10",
     updatedISO: "2026-08-10",
   },
+  {
+    slug: "kaishain-tedori",
+    href: "/guides/kaishain-tedori",
+    title: "会社員の手取りはどう決まる？額面との違いと計算方法を解説",
+    shortTitle: "会社員の手取りの決まり方",
+    description:
+      "額面（年収）と手取りの違い、給料から引かれる社会保険料・所得税・住民税の中身、手取りの目安、手取りを増やす方法をやさしく解説。自分の手取りはシミュレーターで計算できます。",
+    updated: "2026年8月10日",
+    publishedISO: "2026-08-10",
+    updatedISO: "2026-08-10",
+  },
 ];
 
 export function getGuideBySlug(slug: string): Guide | undefined {
