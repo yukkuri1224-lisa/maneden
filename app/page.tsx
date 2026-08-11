@@ -22,7 +22,8 @@ import {
   webSiteJsonLd,
 } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
-import { getToolById, tools } from "@/lib/tools-registry";
+import { getToolById, toolCategories, tools } from "@/lib/tools-registry";
+import { guides } from "@/lib/guides";
 import { companies } from "@/lib/companies/data";
 import { formatManYen } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -92,7 +93,7 @@ const faqs = [
   {
     question: "どんな計算ができますか？",
     answer:
-      "フリーランス・副業の手取りと税金、会社員の手取り、ふるさと納税の上限額、補助金・助成金の受給額診断、SaaSのLTV／CAC、不動産の利回りとデッドクロスの計算ができます。",
+      "フリーランス・会社員の手取りや税金、ふるさと納税の上限、iDeCoの節税や新NISAの積立、退職金やボーナスの手取り、贈与税・相続税、住宅ローンや不動産の利回りまで、幅広いお金の計算ができます。iDeCoと新NISAの使い分けなどのガイド記事も掲載しています。",
   },
 ];
 
@@ -262,16 +263,82 @@ export default function Home() {
               確定申告の手取りから、ふるさと納税の上限、補助金、不動産の利回りまで。用途に合わせて選べます。
             </p>
           </div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {tools.map((tool) => (
-              <ToolCard key={tool.id} tool={tool} />
+          <div className="mt-12 space-y-12">
+            {toolCategories.map((category) => {
+              const categoryTools = tools.filter(
+                (tool) => tool.category === category.id,
+              );
+              if (categoryTools.length === 0) return null;
+              return (
+                <div key={category.id}>
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-lg font-bold">{category.name}</h3>
+                    <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+                      {categoryTools.length}ツール
+                    </span>
+                    <span className="h-px flex-1 bg-border" aria-hidden />
+                  </div>
+                  <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {categoryTools.map((tool) => (
+                      <ToolCard key={tool.id} tool={tool} />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* ===== お金のガイド ===== */}
+      <section className="border-t bg-muted/30 py-20">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              お金のガイド
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              税金・節税・資産形成のポイントを、まねでんの計算ツールで数字を確かめながら学べる解説記事です。
+            </p>
+          </div>
+          <div className="mt-12 grid gap-5 sm:grid-cols-3">
+            {guides.map((g) => (
+              <Link
+                key={g.slug}
+                href={g.href}
+                className="group flex flex-col rounded-2xl border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+              >
+                <p className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
+                  <BookOpen className="size-3.5" aria-hidden />
+                  お金のガイド · 約{g.readingMinutes}分
+                </p>
+                <h3 className="mt-2 leading-snug font-bold group-hover:text-primary">
+                  {g.shortTitle}
+                </h3>
+                <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+                  {g.description}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                  読む
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </Link>
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/guides"
+              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+            >
+              すべてのガイドを見る
+              <ArrowRight className="size-4" />
+            </Link>
           </div>
         </Container>
       </section>
 
       {/* ===== 企業の平均年収 ===== */}
-      <section className="border-t bg-muted/30 py-20">
+      <section className="border-t py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
