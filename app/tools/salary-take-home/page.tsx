@@ -139,6 +139,10 @@ export default function SalaryTakeHomePage() {
             上場企業の平均年収ランキング
           </Link>
           から、気になる企業の年収で手取りをすぐ試せます。
+          <Link href="/take-home" className="ml-1 text-primary underline">
+            年収別の手取り一覧
+          </Link>
+          もご覧いただけます。
         </p>
       </div>
 

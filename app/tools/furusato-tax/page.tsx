@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 
 import { AdSlot } from "@/components/common/AdSlot";
@@ -92,6 +93,12 @@ export default function FurusatoTaxPage() {
         <p className="mt-2 text-xs text-muted-foreground">
           ※
           本計算は目安です。他の控除の有無で上限は変わります。正確な金額は寄付先・自治体でご確認ください。
+        </p>
+        <p className="mt-2 text-xs text-muted-foreground">
+          <Link href="/furusato" className="text-primary underline">
+            年収別ふるさと納税 上限額一覧
+          </Link>
+          から、年収ごとの目安をすぐ確認できます。
         </p>
       </div>
 

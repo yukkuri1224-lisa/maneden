@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { INDUSTRY_SLUGS, NO_HUB_INDUSTRIES } from "@/lib/companies/industries";
 import { guides } from "@/lib/guides";
+import { INCOME_LEVELS } from "@/lib/longtail/levels";
 import { siteConfig } from "@/lib/site-config";
 import { tools } from "@/lib/tools-registry";
 
@@ -18,8 +19,9 @@ import { tools } from "@/lib/tools-registry";
  * lastModified はビルド時刻ではなく「実際の更新日」を使う（毎回のビルドで無意味に変動させない）。
  * データやコンテンツを更新したら、下記の日付定数を更新すること。
  */
-const SITE_UPDATED = new Date("2026-08-10"); // トップ・ツール・法務・サイトマップ構成など
+const SITE_UPDATED = new Date("2026-08-13"); // トップ・ツール・法務・サイトマップ構成など
 const DATA_UPDATED = new Date("2026-08-06"); // 企業年収データ（一覧・業種ハブ）
+const LONGTAIL_UPDATED = new Date("2026-08-13"); // 年収別ロングテール（手取り・ふるさと納税）
 
 type Entry = { path: string; priority: number; lastModified: Date };
 
@@ -58,12 +60,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticPages, ...toolPages, ...industryPages, ...guidePages].map(
-    (page) => ({
-      url: `${siteConfig.url}${page.path}`,
-      lastModified: page.lastModified,
-      changeFrequency: "weekly",
-      priority: page.priority,
-    }),
-  );
+  const longtailPages: Entry[] = [
+    { path: "/take-home", priority: 0.6, lastModified: LONGTAIL_UPDATED },
+    { path: "/furusato", priority: 0.6, lastModified: LONGTAIL_UPDATED },
+    ...INCOME_LEVELS.flatMap((l) => [
+      {
+        path: `/take-home/${l.slug}`,
+        priority: 0.6,
+        lastModified: LONGTAIL_UPDATED,
+      },
+      {
+        path: `/furusato/${l.slug}`,
+        priority: 0.6,
+        lastModified: LONGTAIL_UPDATED,
+      },
+    ]),
+  ];
+
+  return [
+    ...staticPages,
+    ...toolPages,
+    ...industryPages,
+    ...guidePages,
+    ...longtailPages,
+  ].map((page) => ({
+    url: `${siteConfig.url}${page.path}`,
+    lastModified: page.lastModified,
+    changeFrequency: "weekly",
+    priority: page.priority,
+  }));
 }
