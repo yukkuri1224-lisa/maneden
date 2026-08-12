@@ -1,9 +1,0 @@
-feat: 全ツールページのコンテンツ強化(P2)
-
-全14ツールに「このツールでわかること」(ToolHighlights)を追加。税・手取り・投資系の
-9ツール(会社員手取り/フリーランス/退職金/iDeCo/NISA/贈与税/相続税/住宅ローン/時給年収)に
-「具体例3パターン」をサーバー側で計算関数から算出して表示(WorkedExamples・全て実値で
-誤りなし)。ボーナス/ふるさと納税は既存の早見表が具体例を兼ねる。FAQが5問未満だった
-ツールを5問以上に増強(hourly/mortgage/saas/real-estate/subsidy/salary/bonus/furusato/ideco)。
-
-Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
