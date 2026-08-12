@@ -242,6 +242,28 @@ export default async function CompanyPage({
           条件を入れて手取りを計算する
           <ArrowRight className="size-4" />
         </Link>
+
+        <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-t pt-4 text-sm">
+          <span className="text-muted-foreground">関連する計算ツール:</span>
+          <Link
+            href="/tools/bonus-take-home"
+            className="font-medium text-primary underline underline-offset-2"
+          >
+            ボーナスの手取り
+          </Link>
+          <Link
+            href="/tools/furusato-tax"
+            className="font-medium text-primary underline underline-offset-2"
+          >
+            ふるさと納税の上限額
+          </Link>
+          <Link
+            href="/tools/ideco"
+            className="font-medium text-primary underline underline-offset-2"
+          >
+            iDeCoの節税額
+          </Link>
+        </div>
       </div>
 
       <p className="mt-6 text-xs text-muted-foreground">
