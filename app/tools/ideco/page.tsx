@@ -6,13 +6,67 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
+import { WorkedExamples } from "@/components/common/WorkedExamples";
 import { IdecoTool } from "@/components/tools/ideco/IdecoTool";
+import { calculateIdeco } from "@/lib/calculators/ideco";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
 
 const tool = getToolById("ideco")!;
+
+/** 具体例（サーバー側で実際の計算関数から算出した概算） */
+const idecoExamples = (
+  [
+    {
+      title: "年収400万・掛金1.2万円・35歳",
+      income: 4_000_000,
+      m: 12_000,
+      age: 35,
+    },
+    {
+      title: "年収600万・掛金2.3万円・40歳",
+      income: 6_000_000,
+      m: 23_000,
+      age: 40,
+    },
+    {
+      title: "年収800万・掛金2.3万円・45歳",
+      income: 8_000_000,
+      m: 23_000,
+      age: 45,
+    },
+  ] as const
+).map((c) => {
+  const r = calculateIdeco({
+    income: c.income,
+    monthlyContribution: c.m,
+    age: c.age,
+    category: "company-no-pension",
+  });
+  return {
+    title: c.title,
+    note: "会社員（企業年金なし）",
+    rows: [
+      {
+        label: "年間掛金",
+        value: `${r.annualContribution.toLocaleString("ja-JP")}円`,
+      },
+      {
+        label: "年間の節税額",
+        value: `約${Math.round(r.annualTaxSaved).toLocaleString("ja-JP")}円`,
+        strong: true,
+      },
+      {
+        label: "60歳までの累計節税",
+        value: `約${formatManYen(r.totalTaxSaved, 0)}`,
+      },
+    ],
+  };
+});
 
 const description =
   "iDeCo（イデコ）の掛金でいくら節税できるかを、年収と毎月の掛金から概算。所得税・住民税の年間軽減額と、60歳までの累計節税額がわかります。会社員・公務員向け、登録不要・無料。";
@@ -37,6 +91,11 @@ const faqs = [
     question: "注意点はありますか？",
     answer:
       "iDeCoの資産は原則60歳まで引き出せません。また口座管理手数料がかかります。本ツールの節税額は概算で、配偶者控除・扶養控除などは考慮していません。実際の控除額は年末調整や確定申告で確定します。",
+  },
+  {
+    question: "iDeCoの節税はどうやって受けますか（年末調整・確定申告）？",
+    answer:
+      "掛金は全額が「小規模企業共済等掛金控除」の対象です。会社員は、年末に届く「小規模企業共済等掛金払込証明書」を使って年末調整で申告できます（口座振替の場合）。自営業の方や年末調整で出し忘れた場合は、確定申告で控除します。申告して初めて所得税・住民税が軽減されます。",
   },
 ];
 
@@ -90,6 +149,14 @@ export default function IdecoPage() {
         </Suspense>
       </div>
 
+      <ToolHighlights
+        items={[
+          "年収と毎月の掛金から、iDeCoの掛金でいくら節税できるか（所得税・住民税の年間軽減額）がわかります。",
+          "加入区分（会社員・公務員など）ごとの掛金上限を反映して計算できます。",
+          "60歳までの累計節税額と、実質の負担額の目安を確認できます。",
+        ]}
+      />
+
       <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
@@ -133,6 +200,11 @@ export default function IdecoPage() {
             </p>
           </div>
         </section>
+
+        <WorkedExamples
+          description="年収・掛金・年齢別に、iDeCoの節税額を計算した目安です（会社員・企業年金なしの場合）。"
+          examples={idecoExamples}
+        />
 
         <section>
           <h2 className="text-xl font-bold">用語集</h2>

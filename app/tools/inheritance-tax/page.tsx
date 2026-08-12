@@ -6,13 +6,63 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
+import { WorkedExamples } from "@/components/common/WorkedExamples";
 import { InheritanceTaxTool } from "@/components/tools/inheritance-tax/InheritanceTaxTool";
+import { calculateInheritanceTax } from "@/lib/calculators/inheritance-tax";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
 
 const tool = getToolById("inheritance-tax")!;
+
+/** 具体例（サーバー側で実際の計算関数から算出した概算） */
+const inheritanceExamples = [
+  {
+    title: "遺産1億円・配偶者＋子2人",
+    estate: 100_000_000,
+    hasSpouse: true,
+    children: 2,
+  },
+  {
+    title: "遺産1億円・子2人のみ",
+    estate: 100_000_000,
+    hasSpouse: false,
+    children: 2,
+  },
+  {
+    title: "遺産2億円・配偶者＋子2人",
+    estate: 200_000_000,
+    hasSpouse: true,
+    children: 2,
+  },
+].map((c) => {
+  const r = calculateInheritanceTax(c);
+  const rows = [
+    { label: "遺産総額", value: formatManYen(c.estate, 0) },
+    { label: "基礎控除", value: `−${formatManYen(r.basicDeduction, 0)}` },
+    {
+      label: "相続税の総額",
+      value: `約${formatManYen(r.totalTax, 0)}`,
+      strong: true,
+    },
+  ];
+  if (r.hasSpouseRelief) {
+    rows.push({
+      label: "配偶者軽減後の合計",
+      value: `約${formatManYen(r.taxAfterSpouseRelief, 0)}`,
+    });
+  }
+  return {
+    title: c.title,
+    note: r.hasSpouseRelief
+      ? "配偶者が法定相続分を取得した場合"
+      : "配偶者の税額軽減なし",
+    rows,
+  };
+});
 
 const description =
   "相続税が、遺産総額と法定相続人（配偶者・子）からいくらかかるかを無料で計算。基礎控除、法定相続分による按分、配偶者の税額軽減まで反映して、相続税の総額と実際の負担の目安がわかります。登録不要。";
@@ -95,6 +145,14 @@ export default function InheritanceTaxPage() {
         </Suspense>
       </div>
 
+      <ToolHighlights
+        items={[
+          "遺産総額と法定相続人（配偶者・子）から、相続税の総額の目安がわかります。",
+          "基礎控除「3,000万円＋600万円×法定相続人の数」を反映して、課税されるかを確認できます。",
+          "配偶者の税額軽減を適用した後の税額まで試算できます。",
+        ]}
+      />
+
       <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
@@ -129,6 +187,11 @@ export default function InheritanceTaxPage() {
             </div>
           </div>
         </section>
+
+        <WorkedExamples
+          description="遺産総額・相続人の構成別に、相続税の総額を計算した目安です（配偶者・子が相続人の場合。生命保険の非課税枠・小規模宅地等の特例・財産評価は考慮していません）。"
+          examples={inheritanceExamples}
+        />
 
         <section>
           <h2 className="text-xl font-bold">用語集</h2>

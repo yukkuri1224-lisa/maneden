@@ -6,13 +6,58 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
+import { WorkedExamples } from "@/components/common/WorkedExamples";
 import { NisaTool } from "@/components/tools/nisa/NisaTool";
+import { calculateNisa } from "@/lib/calculators/nisa";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
 
 const tool = getToolById("nisa")!;
+
+/** 具体例（サーバー側で実際の計算関数から算出した概算） */
+const nisaExamples = [
+  {
+    title: "毎月3万円・利回り5%・20年",
+    initialLumpSum: 0,
+    monthlyContribution: 30_000,
+    annualReturnPercent: 5,
+    years: 20,
+  },
+  {
+    title: "毎月5万円・利回り5%・20年",
+    initialLumpSum: 0,
+    monthlyContribution: 50_000,
+    annualReturnPercent: 5,
+    years: 20,
+  },
+  {
+    title: "毎月1万円・利回り3%・30年",
+    initialLumpSum: 0,
+    monthlyContribution: 10_000,
+    annualReturnPercent: 3,
+    years: 30,
+  },
+].map((c) => {
+  const r = calculateNisa(c);
+  return {
+    title: c.title,
+    note: "非課税メリット＝運用益にかかる税金（20.315%）が非課税になる額",
+    rows: [
+      { label: "積立元本", value: formatManYen(r.totalPrincipal, 0) },
+      { label: "運用益", value: `＋${formatManYen(r.totalGain, 0)}` },
+      {
+        label: "評価額",
+        value: `約${formatManYen(r.futureValue, 0)}`,
+        strong: true,
+      },
+      { label: "非課税メリット", value: `約${formatManYen(r.taxSaved, 0)}` },
+    ],
+  };
+});
 
 const description =
   "新NISA（旧つみたてNISA）で毎月いくら積み立てると将来いくらになるかを、複利でシミュレーション。初期一括にも対応し、運用益と非課税メリット（本来かかる約20%の税金）、年ごとの資産推移がわかります。登録不要・無料。";
@@ -101,6 +146,14 @@ export default function NisaPage() {
         </Suspense>
       </div>
 
+      <ToolHighlights
+        items={[
+          "毎月の積立額・想定利回り・年数から、新NISAの将来の評価額と運用益を複利で計算できます。",
+          "運用益が非課税になることによるメリット額（通常かかる20.315%の税金）がわかります。",
+          "年ごとの資産推移と、非課税保有限度額1,800万円に到達する時期を確認できます。",
+        ]}
+      />
+
       <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
@@ -134,6 +187,11 @@ export default function NisaPage() {
             </p>
           </div>
         </section>
+
+        <WorkedExamples
+          description="毎月の積立額・利回り・年数別に、将来の評価額と非課税メリットを計算した目安です（利回りが一定と仮定した複利の概算）。"
+          examples={nisaExamples}
+        />
 
         <section>
           <h2 className="text-xl font-bold">用語集</h2>

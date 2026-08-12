@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
 import { FurusatoTool } from "@/components/tools/furusato-tax/FurusatoTool";
 import {
@@ -45,6 +46,11 @@ const faqs = [
     question: "年収別の限度額早見表はありますか？",
     answer:
       "はい。このページ下部に、年収300万〜2,000万円・家族構成別（独身／夫婦／子あり）のふるさと納税 限度額の早見表を掲載しています。社会保険料は年収の約15%で概算した目安です。ご自身の正確な金額は、上部のシミュレーターで社会保険料や扶養の条件を入れて計算してください。",
+  },
+  {
+    question: "上限額は「いつの年収」で計算しますか？",
+    answer:
+      "ふるさと納税の控除は、寄付した年（1〜12月）の所得に対する住民税・所得税から行われます。そのため上限額は、前年の年収ではなく「寄付する年の見込み年収」で判断します。年の途中では確定しないため、直近の年収や見込みをもとに、上限の8〜9割程度に抑えておくと安心です。",
   },
 ];
 
@@ -98,6 +104,14 @@ export default function FurusatoTaxPage() {
           <FurusatoTool />
         </Suspense>
       </div>
+
+      <ToolHighlights
+        items={[
+          "年収と家族構成から、自己負担2,000円で済むふるさと納税の控除上限額の目安がわかります。",
+          "会社員（給与）だけでなく、個人事業主（事業所得）の上限も計算できます。",
+          "年収別・家族構成別の限度額早見表で、おおよその金額をすぐに確認できます。",
+        ]}
+      />
 
       <AdSlot className="mt-10" />
 

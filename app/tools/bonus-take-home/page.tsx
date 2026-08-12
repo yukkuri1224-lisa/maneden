@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
 import { BonusTakeHomeTool } from "@/components/tools/bonus-take-home/BonusTakeHomeTool";
 import {
@@ -45,6 +46,11 @@ const faqs = [
     question: "ボーナス額面50万・70万・100万の手取りはいくらですか？",
     answer:
       "月給30万円（年収約360万円層）・40歳未満・扶養なしの目安で、額面50万円は約41万円、70万円は約57万円、100万円は約82万円が手取りになります（いずれも手取り率およそ82%）。ページ下部の早見表に額面20万〜200万円まで掲載しています。年収が高いほど所得税率が上がり手取り率は下がります。",
+  },
+  {
+    question: "同じ額面でも人によって手取りが違うのはなぜですか？",
+    answer:
+      "ボーナスの所得税（源泉徴収）は「前月の給与」と扶養人数に応じた税率で決まるため、額面が同じでも月給や扶養状況で手取りが変わります。また40歳以上は介護保険料が上乗せされ、健康保険料率は加入する保険者・都道府県で差があります。ご自身の条件は上のシミュレーターで計算してください。",
   },
 ];
 
@@ -98,6 +104,14 @@ export default function BonusTakeHomePage() {
           <BonusTakeHomeTool />
         </Suspense>
       </div>
+
+      <ToolHighlights
+        items={[
+          "ボーナス（賞与）の額面から、社会保険料と所得税を差し引いた手取り額と手取り率がわかります。",
+          "健康保険・厚生年金・雇用保険（40歳以上は介護保険）の内訳を確認できます。",
+          "額面50万・70万・100万など、金額別の手取り目安を早見表で比較できます。",
+        ]}
+      />
 
       <AdSlot className="mt-10" />
 

@@ -6,13 +6,56 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
+import { WorkedExamples } from "@/components/common/WorkedExamples";
 import { RetirementTaxTool } from "@/components/tools/retirement-tax/RetirementTaxTool";
+import { calculateRetirementTax } from "@/lib/calculators/retirement-tax";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
 
 const tool = getToolById("retirement-tax")!;
+
+/** 具体例（サーバー側で実際の計算関数から算出した概算） */
+const retirementExamples = [
+  {
+    title: "退職金1,000万円・勤続20年",
+    amount: 10_000_000,
+    yearsOfService: 20,
+    isExecutive: false,
+  },
+  {
+    title: "退職金2,000万円・勤続30年",
+    amount: 20_000_000,
+    yearsOfService: 30,
+    isExecutive: false,
+  },
+  {
+    title: "退職金1,500万円・勤続10年",
+    amount: 15_000_000,
+    yearsOfService: 10,
+    isExecutive: false,
+  },
+].map((c) => {
+  const r = calculateRetirementTax(c);
+  const yen = (v: number) => `−${Math.round(v).toLocaleString("ja-JP")}円`;
+  return {
+    title: c.title,
+    note: `退職所得控除 ${formatManYen(r.deduction, 0)}`,
+    rows: [
+      { label: "退職金", value: formatManYen(c.amount, 0) },
+      { label: "所得税", value: yen(r.incomeTax) },
+      { label: "住民税", value: yen(r.residentTax) },
+      {
+        label: "手取り",
+        value: `約${formatManYen(r.netAmount, 0)}`,
+        strong: true,
+      },
+    ],
+  };
+});
 
 const description =
   "退職金の額と勤続年数から、退職所得控除・所得税・住民税を計算し、手取り額の目安を算出。勤続年数が長いほど税負担が軽くなる仕組みもわかります。登録不要・無料。";
@@ -96,6 +139,14 @@ export default function RetirementTaxPage() {
         </Suspense>
       </div>
 
+      <ToolHighlights
+        items={[
+          "退職金の額と勤続年数から、退職所得控除・所得税・住民税を引いた手取り額がわかります。",
+          "勤続年数に応じた退職所得控除の額と、課税対象になる「退職所得」を確認できます。",
+          "控除の範囲内で税金がかからないか、いくらから課税されるかを試算できます。",
+        ]}
+      />
+
       <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
@@ -131,6 +182,11 @@ export default function RetirementTaxPage() {
             </div>
           </div>
         </section>
+
+        <WorkedExamples
+          description="退職金額・勤続年数別に、税額と手取りを計算した目安です（「退職所得の受給に関する申告書」を提出した一般従業員の場合）。"
+          examples={retirementExamples}
+        />
 
         <section>
           <h2 className="text-xl font-bold">用語集</h2>

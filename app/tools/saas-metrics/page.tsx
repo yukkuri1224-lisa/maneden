@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
 import { SaasMetricsTool } from "@/components/tools/saas-metrics/SaasMetricsTool";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
@@ -32,6 +33,16 @@ const faqs = [
     question: "CAC 回収期間とは何ですか？",
     answer:
       "獲得コスト（CAC）を、顧客あたりの月間粗利で割った月数です。一般に 12 ヶ月以内が目安とされます。",
+  },
+  {
+    question: "解約率（チャーンレート）はどう定義しますか？",
+    answer:
+      "一般には「その期間に解約した顧客数 ÷ 期初の顧客数」で求めるカスタマーチャーン（顧客数ベース）と、失った月次売上で見るレベニューチャーン（金額ベース）があります。本ツールは月次の解約率を前提に LTV を概算します。年間で見る場合は月次に換算してご利用ください。",
+  },
+  {
+    question: "LTV/CAC が高すぎる場合は問題ありますか？",
+    answer:
+      "LTV/CAC が極端に高い（例: 5 以上が続く）場合、獲得への投資が不足して成長機会を逃している可能性があります。3 前後を目安に、回収期間とあわせて、投資を増やす余地がないかを検討するのが一般的です。",
   },
 ];
 
@@ -80,6 +91,14 @@ export default function SaasMetricsPage() {
           <SaasMetricsTool />
         </Suspense>
       </div>
+
+      <ToolHighlights
+        items={[
+          "解約率・ARPU・CAC から LTV と LTV/CAC 比率を算出し、事業の健全性を可視化できます。",
+          "CAC 回収期間（顧客獲得コストを何ヶ月で回収できるか）がわかります。",
+          "数値を変えながら、ユニットエコノミクスの改善余地を検討できます。",
+        ]}
+      />
 
       <AdSlot className="mt-10" />
 

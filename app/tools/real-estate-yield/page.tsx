@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
 import { RealEstateTool } from "@/components/tools/real-estate-yield/RealEstateTool";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
@@ -32,6 +33,16 @@ const faqs = [
     question: "この診断はどこまで正確ですか？",
     answer:
       "概算です。実際は購入諸費用・空室・家賃下落・税金・修繕などが影響します。投資判断は税理士・不動産の専門家にもご相談ください。",
+  },
+  {
+    question: "実質利回りは何%あれば良いですか？",
+    answer:
+      "エリアや築年数で大きく異なりますが、一般に区分マンションで実質3〜5%前後、一棟物件で5〜8%前後が一つの目安とされます。表面利回りが高くても、諸経費・空室・修繕を差し引いた実質利回りとローン金利の差（イールドギャップ）が確保できているかが重要です。",
+  },
+  {
+    question: "新築と中古で利回りの見方は変わりますか？",
+    answer:
+      "新築は利回りが低めでも空室・修繕リスクが小さく、中古は利回りが高めでも修繕費や設備更新の負担が読みにくい傾向があります。中古では特に、減価償却の残存年数とデッドクロスの発生時期をあわせて確認することが大切です。",
   },
 ];
 
@@ -83,6 +94,14 @@ export default function RealEstateYieldPage() {
           <RealEstateTool />
         </Suspense>
       </div>
+
+      <ToolHighlights
+        items={[
+          "表面利回りと実質利回りを算出し、物件の収益性を比較できます。",
+          "減価償却とローン返済から、デッドクロス（黒字なのに資金繰りが苦しくなる時期）の発生を予測できます。",
+          "諸経費や空室率を変えて、より現実的なキャッシュフローを試算できます。",
+        ]}
+      />
 
       <AdSlot className="mt-10" />
 

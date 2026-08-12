@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
 import { SubsidyFinderTool } from "@/components/tools/subsidy-finder/SubsidyFinderTool";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
@@ -32,6 +33,16 @@ const faqs = [
     question: "個人事業主でも対象になりますか？",
     answer:
       "多くの制度は中小企業・小規模事業者として個人事業主も対象になります。ただし制度ごとに要件が異なるため、詳細は各公式サイトでご確認ください。",
+  },
+  {
+    question: "補助金と助成金の違いは何ですか？",
+    answer:
+      "助成金は主に厚生労働省が所管し、要件を満たせば原則受給できるものが多い一方、補助金は経済産業省・自治体などが所管し、予算や採択枠があるため申請しても採択されないことがあります。どちらも原則あと払い（精算払い）で、先に費用を支出する必要があります。",
+  },
+  {
+    question: "申請すれば必ずもらえますか？",
+    answer:
+      "いいえ。特に補助金は審査・採択があり、事業計画の内容で採否が決まります。また対象経費・上限額・公募期間が制度ごとに定められています。本ツールの金額はあくまで概算の目安で、受給を保証するものではありません。必ず各制度の公募要領をご確認ください。",
   },
 ];
 
@@ -87,6 +98,14 @@ export default function SubsidyFinderPage() {
           <SubsidyFinderTool />
         </Suspense>
       </div>
+
+      <ToolHighlights
+        items={[
+          "業種・規模・地域・投資目的から、該当しそうな補助金・助成金と概算受給額レンジがわかります。",
+          "複数の制度を比較して、自社が使えそうな制度の当たりをつけられます。",
+          "申請前に、要件のイメージと準備すべき方向性をつかめます。",
+        ]}
+      />
 
       <AdSlot className="mt-10" />
 

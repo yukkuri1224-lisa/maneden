@@ -6,13 +6,61 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
+import { WorkedExamples } from "@/components/common/WorkedExamples";
 import { MortgageTool } from "@/components/tools/mortgage/MortgageTool";
+import { calculateMortgage } from "@/lib/calculators/mortgage";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
 
 const tool = getToolById("mortgage")!;
+
+/** 具体例（サーバー側で実際の計算関数から算出した概算） */
+const mortgageExamples = [
+  {
+    title: "3,000万円・金利1.0%・35年",
+    principal: 30_000_000,
+    annualRatePercent: 1.0,
+    years: 35,
+  },
+  {
+    title: "4,000万円・金利1.5%・35年",
+    principal: 40_000_000,
+    annualRatePercent: 1.5,
+    years: 35,
+  },
+  {
+    title: "3,000万円・金利0.5%・35年",
+    principal: 30_000_000,
+    annualRatePercent: 0.5,
+    years: 35,
+  },
+].map((c) => {
+  const r = calculateMortgage({
+    principal: c.principal,
+    annualRatePercent: c.annualRatePercent,
+    years: c.years,
+    prepayment: 0,
+    prepaymentAfterYears: 0,
+  });
+  return {
+    title: c.title,
+    note: "元利均等返済・ボーナス返済なし",
+    rows: [
+      { label: "借入額", value: formatManYen(c.principal, 0) },
+      {
+        label: "毎月の返済額",
+        value: `約${Math.round(r.monthlyPayment).toLocaleString("ja-JP")}円`,
+        strong: true,
+      },
+      { label: "総返済額", value: `約${formatManYen(r.totalPayment, 0)}` },
+      { label: "うち利息", value: `約${formatManYen(r.totalInterest, 0)}` },
+    ],
+  };
+});
 
 const description =
   "借入額・金利・返済期間から、住宅ローンの毎月の返済額と総返済額・総利息を元利均等で計算。繰上返済（期間短縮型）による利息の軽減額と短縮できる期間もわかります。登録不要・無料。";
@@ -32,6 +80,16 @@ const faqs = [
     question: "ここでの返済額は正確ですか？",
     answer:
       "概算です。実際には金融機関ごとの端数処理、保証料や団体信用生命保険料の有無などで変わります。契約前に必ず金融機関の試算をご確認ください。",
+  },
+  {
+    question: "元利均等返済と元金均等返済の違いは何ですか？",
+    answer:
+      "元利均等返済は毎月の返済額（元金＋利息）が一定で、家計の管理がしやすい反面、総利息はやや多くなります。元金均等返済は毎月返す元金が一定で、当初の返済額は大きいものの総利息を抑えられます。本ツールは、住宅ローンで一般的な元利均等返済で計算しています。",
+  },
+  {
+    question: "繰上返済は「期間短縮型」と「返済額軽減型」どちらが得ですか？",
+    answer:
+      "利息の軽減効果が大きいのは一般に期間短縮型です。返済期間そのものを縮めるため、支払う利息の総額を大きく減らせます。返済額軽減型は毎月の負担を下げたいときに向きます。本ツールの繰上返済は期間短縮型で、軽減できる利息と短縮される期間を試算できます。",
   },
 ];
 
@@ -85,6 +143,14 @@ export default function MortgagePage() {
         </Suspense>
       </div>
 
+      <ToolHighlights
+        items={[
+          "借入額・金利・返済期間から、毎月の返済額と総返済額・総利息がわかります。",
+          "元利均等返済で、返済額に占める元金と利息の割合を確認できます。",
+          "繰上返済による利息の軽減額と、返済期間の短縮効果を試算できます。",
+        ]}
+      />
+
       <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
@@ -113,6 +179,11 @@ export default function MortgagePage() {
             </div>
           </div>
         </section>
+
+        <WorkedExamples
+          description="借入額・金利別に、毎月の返済額と総返済額を計算した目安です（元利均等返済・ボーナス返済なし）。"
+          examples={mortgageExamples}
+        />
 
         <section>
           <h2 className="text-xl font-bold">用語集</h2>

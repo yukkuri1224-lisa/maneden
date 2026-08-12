@@ -7,13 +7,63 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
+import { WorkedExamples } from "@/components/common/WorkedExamples";
 import { SalaryTakeHomeTool } from "@/components/tools/salary-take-home/SalaryTakeHomeTool";
+import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
 
 const tool = getToolById("salary-take-home")!;
+
+/** 具体例（サーバー側で実際の計算関数から算出した概算） */
+const salaryExamples = [
+  {
+    title: "年収400万円・独身",
+    note: "扶養なし・39歳以下",
+    income: 4_000_000,
+    isOver40: false,
+    hasSpouse: false,
+    dependents: 0,
+  },
+  {
+    title: "年収600万円・配偶者＋子1人",
+    note: "子は16歳以上（扶養1人）・39歳以下",
+    income: 6_000_000,
+    isOver40: false,
+    hasSpouse: true,
+    dependents: 1,
+  },
+  {
+    title: "年収900万円・独身・40代",
+    note: "介護保険料を含む",
+    income: 9_000_000,
+    isOver40: true,
+    hasSpouse: false,
+    dependents: 0,
+  },
+].map((c) => {
+  const r = calculateSalaryTakeHome(c);
+  const yen = (v: number) => `−${Math.round(v).toLocaleString("ja-JP")}円`;
+  return {
+    title: c.title,
+    note: c.note,
+    rows: [
+      { label: "額面年収", value: formatManYen(c.income, 0) },
+      { label: "社会保険料", value: yen(r.socialInsurance) },
+      { label: "所得税", value: yen(r.incomeTax) },
+      { label: "住民税", value: yen(r.residentTax) },
+      {
+        label: "手取り",
+        value: `約${formatManYen(r.netIncome, 0)}`,
+        strong: true,
+      },
+    ],
+  };
+});
 
 const description =
   "年収（額面）を入力するだけで、健康保険・厚生年金・雇用保険と所得税・住民税を差し引いた会社員の手取り額を概算。手取り率や内訳グラフも表示。登録不要・無料。";
@@ -38,6 +88,11 @@ const faqs = [
     question: "手取りをだいたいで計算したいのですが、目安はありますか？",
     answer:
       "ざっくりの目安なら、年収300万円で手取り約240万円、年収400万円で約315万円、年収500万円で約390万円、年収600万円で約460万円、年収700万円で約530万円、年収800万円で約590万円ほどです（独身・扶養なしの概算）。より正確な手取りは、上の計算ツールに年齢や家族構成を入れて計算してください。",
+  },
+  {
+    question: "住民税は入社1年目から引かれますか？",
+    answer:
+      "住民税は前年の所得に対して課税され、翌年6月からの給与天引き（特別徴収）で納めます。そのため入社1年目は住民税がかからず、2年目の6月から引かれ始めるのが一般的です。本ツールは年間ベースの概算のため、住民税を含めた金額を表示します。",
   },
 ];
 
@@ -97,6 +152,14 @@ export default function SalaryTakeHomePage() {
         </Suspense>
       </div>
 
+      <ToolHighlights
+        items={[
+          "年収（額面）から、社会保険料・所得税・住民税を差し引いた手取り額と手取り率がわかります。",
+          "健康保険・厚生年金・雇用保険（40歳以上は介護保険）の内訳を確認できます。",
+          "扶養家族の人数や配偶者控除を反映して、家族構成別の手取りを比較できます。",
+        ]}
+      />
+
       <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
@@ -125,6 +188,11 @@ export default function SalaryTakeHomePage() {
             </div>
           </div>
         </section>
+
+        <WorkedExamples
+          description="年収・家族構成別に、手取り額の内訳を計算した目安です（協会けんぽ・全国平均的な料率での概算）。"
+          examples={salaryExamples}
+        />
 
         <section>
           <h2 className="text-xl font-bold">用語集</h2>

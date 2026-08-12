@@ -6,13 +6,45 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
+import { WorkedExamples } from "@/components/common/WorkedExamples";
 import { GiftTaxTool } from "@/components/tools/gift-tax/GiftTaxTool";
+import { calculateGiftTax } from "@/lib/calculators/gift-tax";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
 
 const tool = getToolById("gift-tax")!;
+
+/** 具体例（サーバー側で実際の計算関数から算出した概算） */
+const giftExamples = (
+  [
+    { title: "500万円・特例贈与", amount: 5_000_000, giftType: "special" },
+    { title: "500万円・一般贈与", amount: 5_000_000, giftType: "general" },
+    { title: "1,000万円・特例贈与", amount: 10_000_000, giftType: "special" },
+  ] as const
+).map((c) => {
+  const r = calculateGiftTax({ amount: c.amount, giftType: c.giftType });
+  return {
+    title: c.title,
+    note:
+      c.giftType === "special"
+        ? "直系尊属→18歳以上の子・孫"
+        : "上記以外（兄弟・夫婦など）",
+    rows: [
+      { label: "もらった額", value: formatManYen(c.amount, 0) },
+      { label: "基礎控除", value: `−${formatManYen(r.basicDeduction, 0)}` },
+      {
+        label: "贈与税",
+        value: `約${Math.round(r.taxAmount).toLocaleString("ja-JP")}円`,
+        strong: true,
+      },
+      { label: "手元に残る額", value: `約${formatManYen(r.netAmount, 0)}` },
+    ],
+  };
+});
 
 const description =
   "贈与税（暦年課税）が、もらった金額からいくらかかるかを無料で計算。基礎控除110万円を引いた課税価格に、特例贈与・一般贈与それぞれの税率を適用し、手元に残る額まで概算します。登録不要。";
@@ -95,6 +127,14 @@ export default function GiftTaxPage() {
         </Suspense>
       </div>
 
+      <ToolHighlights
+        items={[
+          "1年間にもらった金額から、基礎控除110万円を引いた贈与税額（暦年課税）がわかります。",
+          "特例贈与（親・祖父母から18歳以上の子・孫へ）と一般贈与の税率の違いを比較できます。",
+          "贈与税を引いて手元に残る金額まで確認できます。",
+        ]}
+      />
+
       <AdSlot className="mt-10" />
 
       <div className="mt-14 space-y-12">
@@ -130,6 +170,11 @@ export default function GiftTaxPage() {
             </p>
           </div>
         </section>
+
+        <WorkedExamples
+          description="もらった金額・贈与の種類別に、贈与税額を計算した目安です（暦年課税・その年に他の贈与がない場合）。"
+          examples={giftExamples}
+        />
 
         <section>
           <h2 className="text-xl font-bold">用語集</h2>

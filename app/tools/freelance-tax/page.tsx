@@ -6,13 +6,72 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
+import { ToolHighlights } from "@/components/common/ToolHighlights";
 import { ToolMeta } from "@/components/common/ToolMeta";
+import { WorkedExamples } from "@/components/common/WorkedExamples";
 import { FreelanceTaxTool } from "@/components/tools/freelance-tax/FreelanceTaxTool";
+import { calculateFreelanceTax } from "@/lib/calculators/freelance-tax";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
 
 const tool = getToolById("freelance-tax")!;
+
+/** 具体例（サーバー側で実際の計算関数から算出した概算） */
+const freelanceExamples = (
+  [
+    {
+      title: "売上400万・経費80万",
+      revenue: 4_000_000,
+      expenses: 800_000,
+      invoiceStatus: "exempt",
+      note: "免税事業者・青色65万・単身",
+    },
+    {
+      title: "売上700万・経費150万",
+      revenue: 7_000_000,
+      expenses: 1_500_000,
+      invoiceStatus: "exempt",
+      note: "免税事業者・青色65万・単身",
+    },
+    {
+      title: "売上1,000万・経費200万",
+      revenue: 10_000_000,
+      expenses: 2_000_000,
+      invoiceStatus: "simplified-2wari",
+      note: "課税（2割特例）・青色65万・単身",
+    },
+  ] as const
+).map((c) => {
+  const r = calculateFreelanceTax({
+    revenue: c.revenue,
+    expenses: c.expenses,
+    blueReturnDeduction: 650_000,
+    dependents: 0,
+    hasSpouse: false,
+    spouseIncome: 0,
+    invoiceStatus: c.invoiceStatus,
+    businessCategory: 5,
+    isOver40: false,
+  });
+  return {
+    title: c.title,
+    note: c.note,
+    rows: [
+      { label: "売上", value: formatManYen(c.revenue, 0) },
+      {
+        label: "税・社会保険の合計",
+        value: `約${formatManYen(r.totalBurden, 0)}`,
+      },
+      {
+        label: "手取り",
+        value: `約${formatManYen(r.netIncome, 0)}`,
+        strong: true,
+      },
+    ],
+  };
+});
 
 const description =
   "売上と経費を入力するだけで、所得税・住民税・国保・消費税とインボイス影響、年間手取り額をリアルタイムに概算。登録不要・完全無料。";
@@ -96,6 +155,14 @@ export default function FreelanceTaxPage() {
         </Suspense>
       </div>
 
+      <ToolHighlights
+        items={[
+          "売上と経費から、所得税・住民税・国民健康保険・国民年金・消費税と年間手取り額がわかります。",
+          "インボイス登録（課税事業者）による負担の増加額（2割特例・簡易課税・本則課税）を比較できます。",
+          "青色申告特別控除や扶養の条件を変えて、手取りの違いを試算できます。",
+        ]}
+      />
+
       <AdSlot className="mt-10" />
 
       {/* SEO ロングフォーム */}
@@ -140,6 +207,11 @@ export default function FreelanceTaxPage() {
             </div>
           </div>
         </section>
+
+        <WorkedExamples
+          description="売上・経費・インボイス区分別に、税・社会保険料を引いた手取りを計算した目安です（青色申告特別控除65万円・単身・国保は全国平均的なモデル）。"
+          examples={freelanceExamples}
+        />
 
         <section>
           <h2 className="text-xl font-bold">用語集</h2>
