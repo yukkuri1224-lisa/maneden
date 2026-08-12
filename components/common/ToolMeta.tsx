@@ -1,6 +1,8 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { TAX_YEAR } from "@/lib/constants/tax-tables";
+import { TOOL_SOURCES } from "@/lib/constants/tool-sources";
 
 /**
  * ツールページ末尾の「計算の前提・出典・最終更新日」ブロック。
@@ -10,6 +12,7 @@ export function ToolMeta({
   updated,
   taxBasis,
   basis,
+  toolId,
 }: {
   /** 最終更新日（例: "2026年8月6日"） */
   updated: string;
@@ -17,8 +20,11 @@ export function ToolMeta({
   taxBasis?: boolean;
   /** ツール固有の前提・注意（任意） */
   basis?: ReactNode;
+  /** 出典リンクを引くためのツールID（lib/constants/tool-sources） */
+  toolId?: string;
 }) {
   const reiwaYear = TAX_YEAR - 2018;
+  const sources = toolId ? TOOL_SOURCES[toolId] : undefined;
 
   return (
     <section
@@ -41,6 +47,33 @@ export function ToolMeta({
         </p>
       )}
       {basis && <p className={taxBasis ? "mt-1" : undefined}>{basis}</p>}
+
+      {sources && sources.length > 0 && (
+        <p className="mt-2">
+          <span className="font-medium text-foreground">計算根拠・出典：</span>
+          {sources.map((s, i) => (
+            <span key={s.href}>
+              {i > 0 && "／"}
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                {s.label}
+              </a>
+            </span>
+          ))}
+        </p>
+      )}
+
+      <p className="mt-2">
+        本サイトの計算結果は概算です。詳しくは
+        <Link href="/disclaimer" className="underline">
+          免責事項
+        </Link>
+        をご確認ください。
+      </p>
       <p className="mt-1">最終更新日: {updated}</p>
     </section>
   );

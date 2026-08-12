@@ -164,7 +164,7 @@ export default function SalaryTakeHomePage() {
 
         <RelatedTools excludeId="salary-take-home" />
 
-        <ToolMeta updated="2026年8月6日" taxBasis />
+        <ToolMeta updated="2026年8月6日" taxBasis toolId="salary-take-home" />
       </div>
     </Container>
   );

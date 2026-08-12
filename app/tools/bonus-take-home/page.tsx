@@ -231,6 +231,7 @@ export default function BonusTakeHomePage() {
         <RelatedTools excludeId="bonus-take-home" />
 
         <ToolMeta
+          toolId="bonus-take-home"
           updated="2026年8月8日"
           taxBasis
           basis="社会保険料は協会けんぽ・全国平均的な料率での概算です。所得税は賞与による年間所得税の増加分をもとにした概算で、給与天引きの源泉徴収額とは多少異なります。"

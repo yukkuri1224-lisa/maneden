@@ -171,6 +171,7 @@ export default function RetirementTaxPage() {
         <RelatedTools excludeId="retirement-tax" />
 
         <ToolMeta
+          toolId="retirement-tax"
           updated="2026年8月7日"
           taxBasis
           basis="退職所得の分離課税による概算です。同一年に複数の退職金がある場合や、住民税の細かな調整は反映していません。"

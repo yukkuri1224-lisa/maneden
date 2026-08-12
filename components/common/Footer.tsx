@@ -6,7 +6,8 @@ import { tools } from "@/lib/tools-registry";
 import { siteConfig } from "@/lib/site-config";
 
 const siteLinks = [
-  { href: "/about", label: "運営者情報・免責事項" },
+  { href: "/about", label: "運営者情報" },
+  { href: "/disclaimer", label: "免責事項" },
   { href: "/privacy-policy", label: "プライバシーポリシー" },
   { href: "/terms", label: "利用規約" },
   { href: "/contact", label: "お問い合わせ" },

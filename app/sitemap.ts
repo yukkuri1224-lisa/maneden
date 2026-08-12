@@ -29,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/tools", priority: 0.9, lastModified: SITE_UPDATED },
     { path: "/companies", priority: 0.8, lastModified: DATA_UPDATED },
     { path: "/about", priority: 0.3, lastModified: SITE_UPDATED },
+    { path: "/disclaimer", priority: 0.2, lastModified: SITE_UPDATED },
     { path: "/privacy-policy", priority: 0.2, lastModified: SITE_UPDATED },
     { path: "/terms", priority: 0.2, lastModified: SITE_UPDATED },
     { path: "/contact", priority: 0.2, lastModified: SITE_UPDATED },

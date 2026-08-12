@@ -153,6 +153,7 @@ export default function SubsidyFinderPage() {
         <RelatedTools excludeId="subsidy-finder" />
 
         <ToolMeta
+          toolId="subsidy-finder"
           updated="2026年8月6日"
           basis="掲載する制度名・受給額は概算の目安です。実際の要件・金額・公募期間は、各制度の公式サイトや公募要領で必ずご確認ください。"
         />

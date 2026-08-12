@@ -7,11 +7,13 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { buttonVariants } from "@/components/ui/button";
+import { calculateFurusato } from "@/lib/calculators/furusato-tax";
 import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
 import { companies, getCompanyBySlug } from "@/lib/companies/data";
 import { hasIndustryHub, industrySlug } from "@/lib/companies/industries";
 import { getCompanyRanking } from "@/lib/companies/stats";
 import { NATIONAL_AVERAGE_SALARY } from "@/lib/constants/national-salary";
+import { TAX_YEAR } from "@/lib/constants/tax-tables";
 import { formatManYen } from "@/lib/format";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -69,12 +71,22 @@ export default async function CompanyPage({
   const nationalRatio = (company.averageSalary / national.value).toFixed(1);
 
   // 手取り目安（独身・扶養なし。年齢が分かれば介護保険の対象かを反映）
+  const isOver40 = (company.averageAge ?? 0) >= 40;
   const takeHome = calculateSalaryTakeHome({
     income: company.averageSalary,
-    isOver40: (company.averageAge ?? 0) >= 40,
+    isOver40,
     hasSpouse: false,
     dependents: 0,
-  }).netIncome;
+  });
+  const monthlyTakeHome = takeHome.netIncome / 12;
+  // この年収でのふるさと納税上限額（上で算出した社会保険料を用いた概算）
+  const furusatoLimit = calculateFurusato({
+    incomeType: "salary",
+    income: company.averageSalary,
+    socialInsurance: takeHome.socialInsurance,
+    hasSpouse: false,
+    dependents: 0,
+  }).donationLimit;
 
   const hubSlug = hasIndustryHub(company.industry)
     ? industrySlug(company.industry)
@@ -225,23 +237,111 @@ export default async function CompanyPage({
         ))}
       </div>
 
-      {/* 手取り計算への導線（目安をその場で表示） */}
-      <div className="mt-8 rounded-2xl border bg-accent/40 p-6">
-        <p className="font-semibold">この年収の手取りの目安</p>
-        <p className="text-gradient mt-1 text-3xl font-black tabular-nums">
-          約{formatManYen(takeHome, 0)}
+      {/* 手取り内訳（サーバー側で静的生成 → クローラー可読・ロングテール獲得） */}
+      <section className="mt-10 rounded-2xl border bg-accent/40 p-6">
+        <h2 className="text-xl font-bold sm:text-2xl">
+          {company.name}の平均年収{formatManYen(company.averageSalary, 0)}
+          、手取りはいくら？
+        </h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          年収{formatManYen(company.averageSalary, 0)}（
+          {company.averageAge != null ? `${company.averageAge}歳・` : ""}
+          独身・扶養なし・協会けんぽの全国平均料率
+          {isOver40 ? "・介護保険料を含む" : ""}
+          ）で計算した場合の、手取りの内訳の目安です。
         </p>
-        <p className="mt-1 text-sm text-muted-foreground">
-          {company.name}の平均年収 {formatManYen(company.averageSalary, 0)}{" "}
-          をもとにした概算です（独身・扶養なしの場合）。家族構成などの条件を反映して詳しく計算できます。
+
+        <div className="mt-4 overflow-x-auto rounded-xl border bg-background">
+          <table className="w-full border-collapse text-sm">
+            <tbody>
+              <tr className="border-b">
+                <th scope="row" className="px-4 py-3 text-left font-medium">
+                  額面年収
+                </th>
+                <td className="px-4 py-3 text-right tabular-nums">
+                  {company.averageSalary.toLocaleString("ja-JP")}円
+                </td>
+              </tr>
+              <tr className="border-b">
+                <th
+                  scope="row"
+                  className="px-4 py-3 text-left font-medium text-muted-foreground"
+                >
+                  社会保険料
+                </th>
+                <td className="px-4 py-3 text-right text-muted-foreground tabular-nums">
+                  −
+                  {Math.round(takeHome.socialInsurance).toLocaleString("ja-JP")}
+                  円
+                </td>
+              </tr>
+              <tr className="border-b">
+                <th
+                  scope="row"
+                  className="px-4 py-3 text-left font-medium text-muted-foreground"
+                >
+                  所得税（復興特別所得税含む）
+                </th>
+                <td className="px-4 py-3 text-right text-muted-foreground tabular-nums">
+                  −{Math.round(takeHome.incomeTax).toLocaleString("ja-JP")}円
+                </td>
+              </tr>
+              <tr className="border-b">
+                <th
+                  scope="row"
+                  className="px-4 py-3 text-left font-medium text-muted-foreground"
+                >
+                  住民税
+                </th>
+                <td className="px-4 py-3 text-right text-muted-foreground tabular-nums">
+                  −{Math.round(takeHome.residentTax).toLocaleString("ja-JP")}円
+                </td>
+              </tr>
+              <tr className="bg-muted/40">
+                <th scope="row" className="px-4 py-3 text-left font-bold">
+                  手取り
+                </th>
+                <td className="px-4 py-3 text-right font-bold tabular-nums">
+                  約{Math.round(takeHome.netIncome).toLocaleString("ja-JP")}円
+                  <span className="ml-1 text-xs font-normal text-muted-foreground">
+                    （月あたり約{formatManYen(monthlyTakeHome, 1)}）
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="mt-3 text-sm text-muted-foreground">
+          手取り率は約{takeHome.netIncomeRate.toFixed(1)}%
+          {furusatoLimit > 0 && (
+            <>
+              。この年収なら
+              <strong className="text-foreground">
+                ふるさと納税は約{formatManYen(furusatoLimit, 0)}
+              </strong>
+              まで、自己負担2,000円で寄付できる目安です
+            </>
+          )}
+          。
         </p>
-        <Link
-          href={`/tools/salary-take-home?inc=${company.averageSalary}`}
-          className={cn(buttonVariants({ size: "lg" }), "mt-4")}
-        >
-          条件を入れて手取りを計算する
-          <ArrowRight className="size-4" />
-        </Link>
+
+        <div className="mt-5 flex flex-col gap-2 border-t pt-4 sm:flex-row sm:flex-wrap">
+          <Link
+            href={`/tools/salary-take-home?inc=${company.averageSalary}`}
+            className={cn(buttonVariants({ size: "lg" }))}
+          >
+            扶養・居住地を変えて手取りを計算する
+            <ArrowRight className="size-4" />
+          </Link>
+          <Link
+            href={`/tools/furusato-tax?inc=${company.averageSalary}`}
+            className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+          >
+            この年収でふるさと納税の上限額を計算する
+            <ArrowRight className="size-4" />
+          </Link>
+        </div>
 
         <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-t pt-4 text-sm">
           <span className="text-muted-foreground">関連する計算ツール:</span>
@@ -252,19 +352,13 @@ export default async function CompanyPage({
             ボーナスの手取り
           </Link>
           <Link
-            href="/tools/furusato-tax"
-            className="font-medium text-primary underline underline-offset-2"
-          >
-            ふるさと納税の上限額
-          </Link>
-          <Link
             href="/tools/ideco"
             className="font-medium text-primary underline underline-offset-2"
           >
             iDeCoの節税額
           </Link>
         </div>
-      </div>
+      </section>
 
       <p className="mt-6 text-xs text-muted-foreground">
         ※ 平均年間給与は有価証券報告書ベースの
@@ -289,6 +383,37 @@ export default async function CompanyPage({
         </a>
         （{national.year}）によります。
       </p>
+
+      <section
+        aria-label="出典と更新情報"
+        className="mt-6 rounded-xl border bg-muted/30 p-4 text-xs leading-relaxed text-muted-foreground"
+      >
+        <p>
+          <span className="font-medium text-foreground">出典：</span>
+          {company.name}
+          の平均年間給与・平均年齢・平均勤続年数・従業員数は、同社が金融庁
+          <a
+            href="https://disclosure2.edinet-fsa.go.jp/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            EDINET
+          </a>
+          に提出した有価証券報告書の公開情報に基づきます。順位・偏差は、当サイト掲載の
+          {ranking.overallTotal.toLocaleString("ja-JP")}
+          社（{company.industry}は{ranking.industryCount}
+          社）を母数とした集計です。
+        </p>
+        <p className="mt-2">
+          手取り額・税額は{TAX_YEAR}年度の税制・料率に基づく概算です。詳しくは
+          <Link href="/disclaimer" className="underline">
+            免責事項
+          </Link>
+          をご確認ください。
+        </p>
+        <p className="mt-1">最終更新日: 2026年8月12日</p>
+      </section>
 
       {related.length > 0 && (
         <div className="mt-12">

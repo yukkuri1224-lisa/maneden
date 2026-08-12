@@ -170,6 +170,7 @@ export default function InheritanceTaxPage() {
         <RelatedTools excludeId="inheritance-tax" />
 
         <ToolMeta
+          toolId="inheritance-tax"
           updated="2026年8月10日"
           taxBasis
           basis="配偶者・子が相続人となる場合の概算です。父母・兄弟姉妹が相続人のケース、生命保険・退職金の非課税枠、2割加算、小規模宅地等の特例、財産の評価は考慮していません。実際の申告は税理士にご相談ください。"

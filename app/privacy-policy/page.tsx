@@ -63,8 +63,45 @@ export default function PrivacyPolicyPage() {
 
       <h2>広告について</h2>
       <p>
-        当サイトは、第三者配信の広告サービスやアフィリエイトプログラムを利用する場合があります。これらの事業者が
-        Cookie を用いて利用者の興味に応じた広告を表示することがあります。
+        当サイトは、第三者配信の広告サービス（
+        <strong>Google AdSense</strong>
+        など）を利用しており、Cookie
+        を使用して利用者の興味に応じた広告を配信する場合があります。第三者配信事業者が
+        Cookie を使用することで、当サイトや他サイトへの
+        アクセス情報に基づいた広告を表示できます。
+      </p>
+      <p>
+        Google
+        などの第三者配信事業者による広告のパーソナライズ（Cookieの使用）は、
+        <a
+          href="https://www.google.com/settings/ads"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          広告設定
+        </a>
+        から無効にできます。また、
+        <a
+          href="https://www.aboutads.info/choices/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          aboutads.info
+        </a>
+        では、参加している第三者配信事業者の Cookie
+        を一括で無効化できます。Google
+        がどのように広告で情報を使用するかについては、
+        <a
+          href="https://policies.google.com/technologies/ads"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Google の広告に関するポリシー
+        </a>
+        をご確認ください。
+      </p>
+      <p>
+        このほか、当サイトはアフィリエイトプログラムを利用する場合があります。広告部分には「PR」と表示します。
       </p>
 
       <h2>お問い合わせ</h2>

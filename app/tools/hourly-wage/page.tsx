@@ -167,6 +167,7 @@ export default function HourlyWagePage() {
         <RelatedTools excludeId="hourly-wage" />
 
         <ToolMeta
+          toolId="hourly-wage"
           updated="2026年8月7日"
           basis="年間52週・入力した労働時間をもとにした概算です。金額はすべて額面（税・社会保険を引く前）で、手取りではありません。"
         />

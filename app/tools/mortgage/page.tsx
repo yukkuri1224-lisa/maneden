@@ -153,6 +153,7 @@ export default function MortgagePage() {
         <RelatedTools excludeId="mortgage" />
 
         <ToolMeta
+          toolId="mortgage"
           updated="2026年8月7日"
           basis="元利均等返済方式による概算です。金融機関ごとの端数処理・保証料・団体信用生命保険料等は含みません。契約前に金融機関の試算をご確認ください。"
         />

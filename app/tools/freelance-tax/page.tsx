@@ -185,7 +185,7 @@ export default function FreelanceTaxPage() {
 
         <RelatedTools excludeId="freelance-tax" />
 
-        <ToolMeta updated="2026年8月6日" taxBasis />
+        <ToolMeta updated="2026年8月6日" taxBasis toolId="freelance-tax" />
       </div>
     </Container>
   );

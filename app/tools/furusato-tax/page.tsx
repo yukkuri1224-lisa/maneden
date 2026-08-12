@@ -223,7 +223,7 @@ export default function FurusatoTaxPage() {
 
         <RelatedTools excludeId="furusato-tax" />
 
-        <ToolMeta updated="2026年8月6日" taxBasis />
+        <ToolMeta updated="2026年8月6日" taxBasis toolId="furusato-tax" />
       </div>
     </Container>
   );

@@ -6,6 +6,12 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: import.meta.dirname,
   },
+  async redirects() {
+    return [
+      // 慣用的な短い法務URLを正規ページへ集約する。
+      { source: "/privacy", destination: "/privacy-policy", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

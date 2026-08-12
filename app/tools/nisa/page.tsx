@@ -174,6 +174,7 @@ export default function NisaPage() {
         <RelatedTools excludeId="nisa" />
 
         <ToolMeta
+          toolId="nisa"
           updated="2026年8月10日"
           basis="想定利回りが一定で続くと仮定した複利の概算です。実際の運用成績は変動し、手数料・分配金・為替・税制改正等は考慮していません。元本割れの可能性があり、特定の金融商品を推奨するものではありません。投資はご自身の判断と責任で行ってください。"
         />

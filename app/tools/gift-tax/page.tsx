@@ -170,6 +170,7 @@ export default function GiftTaxPage() {
         <RelatedTools excludeId="gift-tax" />
 
         <ToolMeta
+          toolId="gift-tax"
           updated="2026年8月10日"
           taxBasis
           basis="暦年課税による概算です。相続時精算課税や住宅取得資金・教育資金等の非課税特例、相続開始前の贈与加算は考慮していません。土地・建物は別途、評価額の算定が必要です。"
