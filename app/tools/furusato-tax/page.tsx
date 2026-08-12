@@ -8,6 +8,11 @@ import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
 import { ToolMeta } from "@/components/common/ToolMeta";
 import { FurusatoTool } from "@/components/tools/furusato-tax/FurusatoTool";
+import {
+  buildFurusatoTable,
+  FURUSATO_TABLE_COLUMNS,
+} from "@/lib/calculators/furusato-tax/reference";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
@@ -15,7 +20,10 @@ import { getToolById } from "@/lib/tools-registry";
 const tool = getToolById("furusato-tax")!;
 
 const description =
-  "年収（給与／事業所得）と家族構成から、自己負担2,000円で済むふるさと納税の控除上限額の目安を計算。寄付額と自己負担の関係もグラフで可視化。登録不要・無料。";
+  "年収（給与／事業所得）と家族構成から、自己負担2,000円で済むふるさと納税の控除上限額の目安を計算。年収別の限度額早見表つき。寄付額と自己負担の関係もグラフで可視化。登録不要・無料。";
+
+/** ビルド時に生成する年収別の限度額早見表 */
+const furusatoTable = buildFurusatoTable();
 
 const faqs = [
   {
@@ -33,10 +41,16 @@ const faqs = [
     answer:
       "あくまで目安です。医療費控除・住宅ローン控除などの他の控除があると上限額は変わります。正確な金額は、寄付先ポータルの詳細シミュレーションやお住まいの自治体でご確認ください。",
   },
+  {
+    question: "年収別の限度額早見表はありますか？",
+    answer:
+      "はい。このページ下部に、年収300万〜2,000万円・家族構成別（独身／夫婦／子あり）のふるさと納税 限度額の早見表を掲載しています。社会保険料は年収の約15%で概算した目安です。ご自身の正確な金額は、上部のシミュレーターで社会保険料や扶養の条件を入れて計算してください。",
+  },
 ];
 
 export const metadata: Metadata = {
-  title: "ふるさと納税 上限額シミュレーター｜自己負担2,000円の目安を無料計算",
+  title:
+    "ふるさと納税 限度額シミュレーター＆年収別早見表｜自己負担2,000円の目安を無料計算",
   description,
   alternates: { canonical: tool.href },
   openGraph: {
@@ -86,6 +100,67 @@ export default function FurusatoTaxPage() {
       </div>
 
       <AdSlot className="mt-10" />
+
+      <section className="mt-14">
+        <h2 className="text-xl font-bold">ふるさと納税 限度額の年収別早見表</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          給与年収と家族構成から、自己負担2,000円で済むふるさと納税の
+          <strong className="text-foreground">控除上限額の目安</strong>
+          をまとめた早見表です。まずはこの表でおおよその金額をつかみ、
+          正確な額は上のシミュレーターで社会保険料や扶養の条件を入れて確認してください。
+        </p>
+        <div className="mt-5 overflow-x-auto rounded-xl border">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="bg-muted/60">
+                <th className="sticky left-0 z-10 bg-muted/60 px-3 py-3 text-left font-semibold whitespace-nowrap">
+                  給与年収
+                </th>
+                {FURUSATO_TABLE_COLUMNS.map((col) => (
+                  <th
+                    key={col.key}
+                    className="px-3 py-3 text-right font-semibold whitespace-nowrap"
+                  >
+                    {col.label}
+                    <span className="block text-[11px] font-normal text-muted-foreground">
+                      {col.note}
+                    </span>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {furusatoTable.map((row, i) => (
+                <tr
+                  key={row.income}
+                  className={i % 2 === 1 ? "bg-muted/30" : undefined}
+                >
+                  <th
+                    scope="row"
+                    className={`sticky left-0 z-10 px-3 py-2.5 text-left font-semibold whitespace-nowrap tabular-nums ${
+                      i % 2 === 1 ? "bg-muted/30" : "bg-background"
+                    }`}
+                  >
+                    {formatManYen(row.income, 0)}
+                  </th>
+                  {row.limits.map((limit, j) => (
+                    <td
+                      key={FURUSATO_TABLE_COLUMNS[j].key}
+                      className="px-3 py-2.5 text-right whitespace-nowrap tabular-nums"
+                    >
+                      {limit.toLocaleString("ja-JP")}円
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+          ※
+          給与所得者を前提に、社会保険料を年収の約15%で概算した目安です。子は高校生（16〜18歳＝一般の扶養控除の対象）を想定しています。医療費控除・住宅ローン控除など他の控除がある場合や、共働きで配偶者控除を受けない場合などは上限が変わります。大学生（特定扶養）や中学生以下の子は本表と条件が異なります。
+        </p>
+      </section>
 
       <div className="mt-14 space-y-12">
         <section>

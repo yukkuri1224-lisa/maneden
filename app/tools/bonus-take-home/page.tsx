@@ -8,6 +8,11 @@ import { JsonLd } from "@/components/common/JsonLd";
 import { RelatedTools } from "@/components/common/RelatedTools";
 import { ToolMeta } from "@/components/common/ToolMeta";
 import { BonusTakeHomeTool } from "@/components/tools/bonus-take-home/BonusTakeHomeTool";
+import {
+  BONUS_TABLE_MONTHLY_SALARY,
+  buildBonusTable,
+} from "@/lib/calculators/bonus-take-home/reference";
+import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
@@ -15,7 +20,10 @@ import { getToolById } from "@/lib/tools-registry";
 const tool = getToolById("bonus-take-home")!;
 
 const description =
-  "ボーナス（賞与）の額面から、健康保険・厚生年金・雇用保険と所得税を差し引いた手取り額を概算。手取り率もひと目でわかります。登録不要・無料。";
+  "ボーナス（賞与）の額面から、健康保険・厚生年金・雇用保険と所得税を差し引いた手取り額を概算。額面50万・70万・100万などの手取り早見表つき。手取り率もひと目でわかります。登録不要・無料。";
+
+/** ビルド時に生成する額面別の手取り早見表 */
+const bonusTable = buildBonusTable();
 
 const faqs = [
   {
@@ -33,10 +41,16 @@ const faqs = [
     answer:
       "社会保険料はほぼ一致しますが、所得税は概算です。実際の源泉徴収税額は「前月の給与」と扶養人数に応じた税率表で決まり、最終的な税額は年末調整で精算されます。",
   },
+  {
+    question: "ボーナス額面50万・70万・100万の手取りはいくらですか？",
+    answer:
+      "月給30万円（年収約360万円層）・40歳未満・扶養なしの目安で、額面50万円は約41万円、70万円は約57万円、100万円は約82万円が手取りになります（いずれも手取り率およそ82%）。ページ下部の早見表に額面20万〜200万円まで掲載しています。年収が高いほど所得税率が上がり手取り率は下がります。",
+  },
 ];
 
 export const metadata: Metadata = {
-  title: "ボーナス（賞与）手取り計算シミュレーター｜額面から手取り額を無料計算",
+  title:
+    "ボーナス手取り計算シミュレーター＆額面別早見表｜50万・70万・100万の手取り",
   description,
   alternates: { canonical: tool.href },
   openGraph: {
@@ -86,6 +100,71 @@ export default function BonusTakeHomePage() {
       </div>
 
       <AdSlot className="mt-10" />
+
+      <section className="mt-14">
+        <h2 className="text-xl font-bold">ボーナス手取り 額面別早見表</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          ボーナス（賞与）の額面ごとに、社会保険料・所得税を引いた
+          <strong className="text-foreground">手取り額と手取り率の目安</strong>
+          をまとめた早見表です。月給
+          {formatManYen(BONUS_TABLE_MONTHLY_SALARY, 0)}
+          （年収約360万円層）・40歳未満・扶養なしを前提にしています。
+        </p>
+        <div className="mt-5 overflow-x-auto rounded-xl border">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="bg-muted/60">
+                <th className="px-3 py-3 text-left font-semibold whitespace-nowrap">
+                  額面
+                </th>
+                <th className="px-3 py-3 text-right font-semibold whitespace-nowrap">
+                  社会保険料
+                </th>
+                <th className="px-3 py-3 text-right font-semibold whitespace-nowrap">
+                  所得税
+                </th>
+                <th className="px-3 py-3 text-right font-semibold whitespace-nowrap">
+                  手取り
+                </th>
+                <th className="px-3 py-3 text-right font-semibold whitespace-nowrap">
+                  手取り率
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {bonusTable.map((row, i) => (
+                <tr
+                  key={row.amount}
+                  className={i % 2 === 1 ? "bg-muted/30" : undefined}
+                >
+                  <th
+                    scope="row"
+                    className="px-3 py-2.5 text-left font-semibold whitespace-nowrap tabular-nums"
+                  >
+                    {formatManYen(row.amount, 0)}
+                  </th>
+                  <td className="px-3 py-2.5 text-right whitespace-nowrap text-muted-foreground tabular-nums">
+                    -{row.socialInsurance.toLocaleString("ja-JP")}円
+                  </td>
+                  <td className="px-3 py-2.5 text-right whitespace-nowrap text-muted-foreground tabular-nums">
+                    -{row.incomeTax.toLocaleString("ja-JP")}円
+                  </td>
+                  <td className="px-3 py-2.5 text-right font-semibold whitespace-nowrap tabular-nums">
+                    {row.netBonus.toLocaleString("ja-JP")}円
+                  </td>
+                  <td className="px-3 py-2.5 text-right whitespace-nowrap tabular-nums">
+                    {row.netRate.toFixed(1)}%
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+          ※
+          社会保険料は協会けんぽ・全国平均的な料率での概算、所得税は賞与によって増える年間所得税額からの概算です。手取り率は月給や年収・扶養で変わります。ご自身の条件は上のシミュレーターで計算してください。
+        </p>
+      </section>
 
       <div className="mt-14 space-y-12">
         <section>

@@ -5,6 +5,11 @@ import {
   selfPayment,
   type FurusatoInput,
 } from "@/lib/calculators/furusato-tax";
+import {
+  buildFurusatoTable,
+  FURUSATO_TABLE_COLUMNS,
+  FURUSATO_TABLE_INCOMES,
+} from "@/lib/calculators/furusato-tax/reference";
 
 function baseInput(overrides: Partial<FurusatoInput> = {}): FurusatoInput {
   return {
@@ -73,5 +78,36 @@ describe("calculateFurusato（エッジ・区分）", () => {
     const single = calculateFurusato(baseInput());
     const withDeps = calculateFurusato(baseInput({ dependents: 2 }));
     expect(withDeps.donationLimit).toBeLessThan(single.donationLimit);
+  });
+});
+
+describe("ふるさと納税 早見表（buildFurusatoTable）", () => {
+  const rows = buildFurusatoTable();
+
+  it("年収行の数だけ行が生成される", () => {
+    expect(rows.length).toBe(FURUSATO_TABLE_INCOMES.length);
+  });
+
+  it("各行はカラム数と同じ数の上限額を持つ", () => {
+    for (const row of rows) {
+      expect(row.limits.length).toBe(FURUSATO_TABLE_COLUMNS.length);
+    }
+  });
+
+  it("年収500万・独身（社保15%概算）は約6万円台", () => {
+    const row = rows.find((r) => r.income === 5_000_000)!;
+    // 社保750,000＝年収の15%。単体テストの前提と一致し 61,600 になる
+    expect(row.limits[0]).toBe(61_600);
+  });
+
+  it("同じ年収では扶養が増えるほど上限は下がる（独身 ≥ 夫婦＋子）", () => {
+    const row = rows.find((r) => r.income === 7_000_000)!;
+    expect(row.limits[0]).toBeGreaterThanOrEqual(row.limits[3]);
+  });
+
+  it("年収が上がるほど独身の上限は単調に増える", () => {
+    for (let i = 1; i < rows.length; i++) {
+      expect(rows[i].limits[0]).toBeGreaterThanOrEqual(rows[i - 1].limits[0]);
+    }
   });
 });
