@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 等級表など公式データの受け渡し用（コミットしない）
+tmp-data/
