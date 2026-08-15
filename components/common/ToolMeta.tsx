@@ -68,7 +68,7 @@ export function ToolMeta({
       )}
 
       <p className="mt-2">
-        本サイトの計算結果は概算です。詳しくは
+        本ツールは税理士による監修を受けたものではなく、税務相談・個別の税務助言ではありません。計算結果は概算です。詳しくは
         <Link href="/disclaimer" className="underline">
           免責事項
         </Link>
