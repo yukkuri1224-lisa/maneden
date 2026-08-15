@@ -46,7 +46,11 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
           value={value.giftType}
           onValueChange={(v) => onChange({ giftType: String(v) as GiftType })}
         >
-          <SelectTrigger id="giftType" className="w-full">
+          <SelectTrigger
+            id="giftType"
+            className="w-full"
+            aria-label="贈与の種類"
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

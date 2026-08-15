@@ -45,7 +45,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
             onChange({ category: String(v) as IdecoCategory })
           }
         >
-          <SelectTrigger id="category" className="w-full">
+          <SelectTrigger id="category" className="w-full" aria-label="加入区分">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

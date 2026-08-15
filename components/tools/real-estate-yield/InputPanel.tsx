@@ -138,7 +138,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
               onChange({ structure: String(v) as BuildingStructure })
             }
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full" aria-label="建物構造">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>

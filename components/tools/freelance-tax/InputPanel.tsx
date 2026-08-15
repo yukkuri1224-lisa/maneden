@@ -120,7 +120,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
             })
           }
         >
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="w-full" aria-label="青色申告特別控除">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -162,7 +162,10 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
                 })
               }
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger
+                className="w-full"
+                aria-label="簡易課税のみなし仕入率"
+              >
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -185,7 +188,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
             value={String(value.dependents)}
             onValueChange={(v) => onChange({ dependents: Number(String(v)) })}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full" aria-label="扶養家族の数">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>

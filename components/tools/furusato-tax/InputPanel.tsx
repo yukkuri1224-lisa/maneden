@@ -88,7 +88,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
           value={String(value.dependents)}
           onValueChange={(v) => onChange({ dependents: Number(String(v)) })}
         >
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="w-full" aria-label="扶養家族の数">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
