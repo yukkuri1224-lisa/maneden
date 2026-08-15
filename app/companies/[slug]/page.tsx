@@ -15,6 +15,7 @@ import { getCompanyRanking } from "@/lib/companies/stats";
 import { NATIONAL_AVERAGE_SALARY } from "@/lib/constants/national-salary";
 import { TAX_YEAR } from "@/lib/constants/tax-tables";
 import { formatManYen } from "@/lib/format";
+import { faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -142,6 +143,59 @@ export default async function CompanyPage({
   if (profileParts.length > 0)
     introSentences.push(`${profileParts.join("、")}です。`);
 
+  // 企業ページ固有のFAQ（すべて掲載データ・計算結果からの事実。推測なし）
+  const companyFaqs: { question: string; answer: string }[] = [
+    {
+      question: `${company.name}の平均年収はいくらですか？`,
+      answer: `有価証券報告書ベースで${formatManYen(
+        company.averageSalary,
+        0,
+      )}です。全国平均（${national.year}・約${formatManYen(
+        national.value,
+        0,
+      )}）の約${nationalRatio}倍で、${company.industry}${
+        ranking.industryCount
+      }社の中では第${ranking.industryRank}位、全上場${ranking.overallTotal.toLocaleString(
+        "ja-JP",
+      )}社中${ranking.overallRank.toLocaleString("ja-JP")}位です。`,
+    },
+    {
+      question: `${company.name}の平均年収での手取りはいくらですか？`,
+      answer: `額面${formatManYen(
+        company.averageSalary,
+        0,
+      )}（独身・扶養なしの概算）の場合、社会保険料・所得税・住民税を差し引いた手取りは約${formatManYen(
+        takeHome.netIncome,
+        0,
+      )}です。手取り率は約${takeHome.netIncomeRate.toFixed(
+        1,
+      )}%、月あたり約${formatManYen(monthlyTakeHome, 1)}が目安です。`,
+    },
+  ];
+  if (profileParts.length > 0) {
+    companyFaqs.push({
+      question: `${company.name}の平均年齢・勤続年数・従業員数は？`,
+      answer: `有価証券報告書によると、${profileParts.join("、")}です。`,
+    });
+  }
+  if (furusatoLimit > 0) {
+    companyFaqs.push({
+      question: `${company.name}の年収だとふるさと納税はいくらまでできますか？`,
+      answer: `年収${formatManYen(
+        company.averageSalary,
+        0,
+      )}（独身・扶養なし）なら、控除上限額は約${formatManYen(
+        furusatoLimit,
+        0,
+      )}が目安です。この範囲内なら自己負担2,000円で寄付でき、他の控除があると上限は変わります。`,
+    });
+  }
+  companyFaqs.push({
+    question: "この平均年収データの出典は何ですか？",
+    answer:
+      "各社が金融庁の開示システムEDINETに提出した有価証券報告書の「平均年間給与」等の公開情報に基づく概算です。最新・正確な値は各社の有価証券報告書でご確認ください。",
+  });
+
   return (
     <Container className="py-10">
       <JsonLd
@@ -153,6 +207,7 @@ export default async function CompanyPage({
           url: `${siteConfig.url}/companies/${company.slug}`,
         }}
       />
+      <JsonLd data={faqJsonLd(companyFaqs)} />
       <Breadcrumb
         items={[
           { name: "ホーム", href: "/" },
@@ -383,6 +438,20 @@ export default async function CompanyPage({
         </a>
         （{national.year}）によります。
       </p>
+
+      <section className="mt-12">
+        <h2 className="text-lg font-semibold">
+          {company.name}の年収・手取りに関するよくある質問
+        </h2>
+        <dl className="mt-4 space-y-4 text-sm">
+          {companyFaqs.map((faq) => (
+            <div key={faq.question}>
+              <dt className="font-semibold">{faq.question}</dt>
+              <dd className="mt-1 text-muted-foreground">{faq.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
       <section
         aria-label="出典と更新情報"
