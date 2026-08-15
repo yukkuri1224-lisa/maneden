@@ -3,6 +3,7 @@
 import { useCallback, useMemo } from "react";
 import dynamic from "next/dynamic";
 
+import { LazyMount } from "@/components/common/LazyMount";
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
 import {
@@ -85,7 +86,9 @@ export function MortgageTool() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <BreakdownChart result={result} />
+            <LazyMount placeholderClassName="h-72 w-full animate-pulse rounded-lg bg-muted">
+              <BreakdownChart result={result} />
+            </LazyMount>
           </CardContent>
         </Card>
         <ShareBar

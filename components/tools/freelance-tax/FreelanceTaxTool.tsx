@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 
+import { LazyMount } from "@/components/common/LazyMount";
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
 import {
@@ -77,7 +78,9 @@ export function FreelanceTaxTool() {
               <CardTitle className="text-base">税金・社会保険の内訳</CardTitle>
             </CardHeader>
             <CardContent>
-              <TaxBreakdownChart result={result} />
+              <LazyMount placeholderClassName="h-56 w-full animate-pulse rounded-lg bg-muted">
+                <TaxBreakdownChart result={result} />
+              </LazyMount>
             </CardContent>
           </Card>
           <Card>
@@ -85,7 +88,9 @@ export function FreelanceTaxTool() {
               <CardTitle className="text-base">売上別の手取り推移</CardTitle>
             </CardHeader>
             <CardContent>
-              <RevenueSimulationChart input={input} />
+              <LazyMount placeholderClassName="h-56 w-full animate-pulse rounded-lg bg-muted">
+                <RevenueSimulationChart input={input} />
+              </LazyMount>
             </CardContent>
           </Card>
         </div>

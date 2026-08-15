@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 
+import { LazyMount } from "@/components/common/LazyMount";
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
 import {
@@ -69,7 +70,9 @@ export function SaasMetricsTool() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CohortChart input={input} />
+            <LazyMount placeholderClassName="h-64 w-full animate-pulse rounded-lg bg-muted">
+              <CohortChart input={input} />
+            </LazyMount>
           </CardContent>
         </Card>
 

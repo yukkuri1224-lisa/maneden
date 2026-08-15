@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 
+import { LazyMount } from "@/components/common/LazyMount";
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
 import {
@@ -68,10 +69,12 @@ export function RealEstateTool() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CashFlowChart
-              schedule={result.schedule}
-              deadCrossYear={result.deadCrossYear}
-            />
+            <LazyMount placeholderClassName="h-64 w-full animate-pulse rounded-lg bg-muted">
+              <CashFlowChart
+                schedule={result.schedule}
+                deadCrossYear={result.deadCrossYear}
+              />
+            </LazyMount>
           </CardContent>
         </Card>
 
