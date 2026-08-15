@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 
+import { LazyMount } from "@/components/common/LazyMount";
 import { ShareBar } from "@/components/common/ShareBar";
 import { Button } from "@/components/ui/button";
 import {
@@ -69,7 +70,9 @@ export function FurusatoTool() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <DonationChart result={result} />
+            <LazyMount placeholderClassName="h-64 w-full animate-pulse rounded-lg bg-muted">
+              <DonationChart result={result} />
+            </LazyMount>
           </CardContent>
         </Card>
         <ShareBar
