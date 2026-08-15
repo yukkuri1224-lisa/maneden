@@ -18,11 +18,35 @@ export const TOOL_SOURCES: Record<string, ToolSource[]> = {
       label: "国税庁 No.2260 所得税の税率",
       href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
     },
+    {
+      label: "協会けんぽ 令和8年度 都道府県別 健康保険・介護保険料率",
+      href: "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+    },
+    {
+      label: "日本年金機構 厚生年金保険料額表",
+      href: "https://www.nenkin.go.jp/service/kounen/hokenryo/ryogaku/ryogakuhyo/index.html",
+    },
+    {
+      label: "厚生労働省 令和8年度 雇用保険料率",
+      href: "https://jsite.mhlw.go.jp/tokyo-hellowork/list/tachikawa/kyushokusha/koyouhokenryouritu08.html",
+    },
   ],
   "bonus-take-home": [
     {
       label: "国税庁 No.2523 賞与に対する源泉徴収",
       href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2523.htm",
+    },
+    {
+      label: "協会けんぽ 令和8年度 都道府県別 健康保険・介護保険料率",
+      href: "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+    },
+    {
+      label: "日本年金機構 厚生年金保険料額表",
+      href: "https://www.nenkin.go.jp/service/kounen/hokenryo/ryogaku/ryogakuhyo/index.html",
+    },
+    {
+      label: "厚生労働省 令和8年度 雇用保険料率",
+      href: "https://jsite.mhlw.go.jp/tokyo-hellowork/list/tachikawa/kyushokusha/koyouhokenryouritu08.html",
     },
   ],
   "furusato-tax": [
