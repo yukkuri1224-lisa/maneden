@@ -90,12 +90,13 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
 
-        {/* Google Analytics 4（gtag.js）。next/script で読み込む */}
+        {/* Google Analytics 4（gtag.js）。計測はアイドル後で十分なため lazyOnload で
+            初期描画・ハイドレーションのメインスレッド競合を避ける（TBT削減） */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-QFB3PRTB6D"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
