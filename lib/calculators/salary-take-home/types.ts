@@ -7,6 +7,8 @@ export interface SalaryTakeHomeInput {
   hasSpouse: boolean;
   /** 扶養親族の数（16歳以上の一般扶養） */
   dependents: number;
+  /** 都道府県スラッグ（協会けんぽの健康保険料率。未指定＝東京都） */
+  prefecture?: string;
 }
 
 export interface SalaryTakeHomeResult {

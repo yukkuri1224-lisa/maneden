@@ -20,11 +20,12 @@ function baseInput(
 describe("calculateSalaryTakeHome（年収500万・単身・40歳未満）", () => {
   const r = calculateSalaryTakeHome(baseInput());
 
-  it("社会保険料（本人負担・約14.75%）", () => {
-    expect(r.socialInsurance).toBe(737_500);
-    expect(r.pensionInsurance).toBe(457_500); // 厚生年金 9.15%
-    expect(r.healthInsurance).toBe(250_000); // 健保 5%
-    expect(r.employmentInsurance).toBe(30_000); // 雇用 0.6%
+  it("社会保険料（本人負担・東京都・標準報酬月額の等級表ベース）", () => {
+    // 年収500万→月収41.67万→標準報酬月額41万等級。公式保険料額表と1円一致
+    expect(r.socialInsurance).toBe(723_148);
+    expect(r.pensionInsurance).toBe(450_180); // 41万×18.3%÷2×12
+    expect(r.healthInsurance).toBe(247_968); // 41万×(9.85%+0.23%子育て)÷2×12
+    expect(r.employmentInsurance).toBe(25_000); // 年収×0.5%
   });
 
   it("給与所得（給与所得控除後）", () => {
@@ -32,13 +33,13 @@ describe("calculateSalaryTakeHome（年収500万・単身・40歳未満）", () 
   });
 
   it("所得税・住民税", () => {
-    expect(r.incomeTax).toBe(129_300);
-    expect(r.residentTax).toBe(244_200);
+    expect(r.incomeTax).toBe(130_700);
+    expect(r.residentTax).toBe(245_600);
   });
 
-  it("手取りと手取り率（年収500万は約389万・78%）", () => {
-    expect(r.netIncome).toBe(3_889_000);
-    expect(r.netIncomeRate).toBeCloseTo(77.78, 2);
+  it("手取りと手取り率（年収500万・東京は約390万・78%）", () => {
+    expect(r.netIncome).toBe(3_900_552);
+    expect(r.netIncomeRate).toBeCloseTo(78.01, 2);
   });
 });
 

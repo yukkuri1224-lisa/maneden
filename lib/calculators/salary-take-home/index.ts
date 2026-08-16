@@ -1,3 +1,5 @@
+import { calculateSocialInsurance } from "@/lib/calculators/social-insurance";
+import { DEFAULT_PREFECTURE_SLUG } from "@/lib/constants/insurance-rates";
 import { TAX_TABLES } from "@/lib/constants/tax-tables";
 
 import type { SalaryTakeHomeInput, SalaryTakeHomeResult } from "./types";
@@ -37,22 +39,20 @@ export function calculateSalaryTakeHome(
 ): SalaryTakeHomeResult {
   const it = TAX_TABLES.incomeTax;
   const rt = TAX_TABLES.residentTax;
-  const si = TAX_TABLES.employeeSocialInsurance;
 
   const income = Math.max(0, input.income);
   const dependents = Math.max(0, Math.floor(input.dependents));
 
-  // 社会保険料（本人負担・標準報酬月額の上限を考慮）
-  const monthly = income / 12;
-  const healthBase = Math.min(monthly, si.healthMonthlyCap) * 12;
-  const pensionBase = Math.min(monthly, si.pensionMonthlyCap) * 12;
-  const healthInsurance =
-    healthBase * ((si.healthRate + (input.isOver40 ? si.careRate : 0)) / 2);
-  const pensionInsurance = pensionBase * (si.pensionRate / 2);
-  const employmentInsurance = income * si.employmentRate;
-  const socialInsurance = Math.round(
-    healthInsurance + pensionInsurance + employmentInsurance,
-  );
+  // 社会保険料（本人負担）＝都道府県別料率＋標準報酬月額の等級表で計算（公式と1円一致）
+  const social = calculateSocialInsurance({
+    annualIncome: income,
+    prefectureSlug: input.prefecture ?? DEFAULT_PREFECTURE_SLUG,
+    isOver40: input.isOver40,
+  });
+  const healthInsurance = social.healthInsurance;
+  const pensionInsurance = social.pensionInsurance;
+  const employmentInsurance = social.employmentInsurance;
+  const socialInsurance = social.total;
 
   // 給与所得
   const salaryIncome = clampMin0(income - salaryIncomeDeduction(income));
@@ -95,9 +95,9 @@ export function calculateSalaryTakeHome(
   return {
     salaryIncome,
     socialInsurance,
-    healthInsurance: Math.round(healthInsurance),
-    pensionInsurance: Math.round(pensionInsurance),
-    employmentInsurance: Math.round(employmentInsurance),
+    healthInsurance,
+    pensionInsurance,
+    employmentInsurance,
     taxableIncomeIncomeTax,
     taxableIncomeResident,
     incomeTax,
