@@ -132,7 +132,7 @@ export default function SalaryTakeHomePage() {
         <p className="mt-3 max-w-2xl text-muted-foreground">{description}</p>
         <p className="mt-2 text-xs text-muted-foreground">
           ※
-          協会けんぽ・全国平均的な料率での概算です。都道府県や勤務先の制度により実額は異なります。
+          選択した都道府県（既定は東京都）の協会けんぽ料率（令和8年度）と標準報酬月額の等級表で計算した概算です。勤務先の健康保険組合など制度により実額は異なります。
         </p>
         <p className="mt-2 text-xs text-muted-foreground">
           <Link href="/companies" className="text-primary underline">
@@ -194,7 +194,7 @@ export default function SalaryTakeHomePage() {
         </section>
 
         <WorkedExamples
-          description="年収・家族構成別に、手取り額の内訳を計算した目安です（協会けんぽ・全国平均的な料率での概算）。"
+          description="年収・家族構成別に、手取り額の内訳を計算した目安です（東京都・協会けんぽ令和8年度・標準報酬月額の等級表ベース）。"
           examples={salaryExamples}
         />
 

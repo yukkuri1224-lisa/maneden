@@ -17,6 +17,10 @@ import {
   INCOME_STEP,
   MAX_DEPENDENTS,
 } from "@/lib/calculators/salary-take-home/schema";
+import {
+  DEFAULT_PREFECTURE_SLUG,
+  PREFECTURES,
+} from "@/lib/constants/insurance-rates";
 import { formatManYen } from "@/lib/format";
 
 interface InputPanelProps {
@@ -39,6 +43,28 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
         hint="ボーナス込みの年間総支給額"
         onChange={(v) => onChange({ income: v })}
       />
+
+      <div className="space-y-2">
+        <Label>都道府県（健康保険料率）</Label>
+        <Select
+          value={value.prefecture ?? DEFAULT_PREFECTURE_SLUG}
+          onValueChange={(v) => onChange({ prefecture: String(v) })}
+        >
+          <SelectTrigger className="w-full" aria-label="都道府県">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {PREFECTURES.map((p) => (
+              <SelectItem key={p.slug} value={p.slug}>
+                {p.name}（健保{(p.rate * 100).toFixed(2)}%）
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <p className="text-xs text-muted-foreground">
+          協会けんぽの健康保険料率は都道府県で異なります（令和8年度）。
+        </p>
+      </div>
 
       <div className="flex items-center justify-between gap-4">
         <Label htmlFor="over40">40歳以上（介護保険）</Label>
