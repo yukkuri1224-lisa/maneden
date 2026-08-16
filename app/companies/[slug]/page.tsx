@@ -301,7 +301,7 @@ export default async function CompanyPage({
         <p className="mt-2 text-sm text-muted-foreground">
           年収{formatManYen(company.averageSalary, 0)}（
           {company.averageAge != null ? `${company.averageAge}歳・` : ""}
-          独身・扶養なし・協会けんぽの全国平均料率
+          独身・扶養なし・東京都の協会けんぽ令和8年度料率
           {isOver40 ? "・介護保険料を含む" : ""}
           ）で計算した場合の、手取りの内訳の目安です。
         </p>

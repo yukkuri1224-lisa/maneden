@@ -42,7 +42,7 @@ export default function TakeHomeHubPage() {
         年収別の手取り一覧
       </h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        年収（額面）ごとの手取り額の目安です（独身・扶養なし・協会けんぽの全国平均料率での概算）。金額をクリックすると、社会保険料・所得税・住民税の内訳や月あたりの手取りを確認できます。
+        年収（額面）ごとの手取り額の目安です（独身・扶養なし・東京都の協会けんぽ令和8年度料率での概算）。金額をクリックすると、社会保険料・所得税・住民税の内訳や月あたりの手取りを確認できます。
       </p>
 
       <div className="mt-8 overflow-x-auto rounded-xl border">
