@@ -8,7 +8,7 @@ import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { buttonVariants } from "@/components/ui/button";
 import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
-import { TAX_YEAR } from "@/lib/constants/tax-tables";
+import { TAX_TABLES, TAX_YEAR } from "@/lib/constants/tax-tables";
 import { formatManYen } from "@/lib/format";
 import {
   adjacentLevels,
@@ -82,6 +82,23 @@ export default async function TakeHomeLevelPage({
   const note = TAKE_HOME_NOTES[level.man];
   const { prev, next } = adjacentLevels(level.man);
 
+  // ページ固有のユニークデータ（近似重複回避＋AI引用向け）：限界税率・隣接年収帯との手取り率差
+  const marginalRate =
+    TAX_TABLES.incomeTax.brackets.find(
+      (b) => r.taxableIncomeIncomeTax <= b.upTo,
+    )?.rate ?? 0;
+  const rateOf = (man?: number) =>
+    man == null
+      ? null
+      : calculateSalaryTakeHome({
+          income: man * 10_000,
+          isOver40: false,
+          hasSpouse: false,
+          dependents: 0,
+        }).netIncomeRate;
+  const prevRate = rateOf(prev?.man);
+  const nextRate = rateOf(next?.man);
+
   const yen = (v: number) => `${Math.round(v).toLocaleString("ja-JP")}円`;
 
   const faqs = [
@@ -152,12 +169,28 @@ export default async function TakeHomeLevelPage({
         ]}
       />
 
-      <h1 className="mt-4 text-2xl font-bold sm:text-3xl">
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+          令和{TAX_YEAR - 2018}年度（{TAX_YEAR}年）税制で計算
+        </span>
+        <span className="text-xs text-muted-foreground">
+          最終更新：2026年8月13日
+        </span>
+      </div>
+      <h1 className="mt-2 text-2xl font-bold sm:text-3xl">
         年収{level.man}万円の手取りはいくら？
       </h1>
-      <p className="mt-3 max-w-2xl text-muted-foreground">
-        年収{level.man}
-        万円（額面・独身・扶養なし・東京都の協会けんぽ令和8年度料率）の場合、社会保険料・所得税・住民税を差し引いた手取りの目安と、その内訳を解説します。
+      {/* AEO: H1直下に直接回答＋引用可能な数値 */}
+      <p className="mt-3 max-w-2xl text-[15px] leading-7">
+        <strong className="text-foreground">
+          年収{level.man}万円の手取りは約{formatManYen(r.netIncome, 0)}
+          （月あたり約{formatManYen(monthly, 1)}・手取り率
+          {r.netIncomeRate.toFixed(1)}%）です。
+        </strong>{" "}
+        額面から社会保険料 約{formatManYen(r.socialInsurance, 0)}・所得税 約
+        {formatManYen(r.incomeTax, 0)}・住民税 約
+        {formatManYen(r.residentTax, 0)}
+        が差し引かれます（東京都・独身・扶養なし・協会けんぽ令和8年度の概算）。
       </p>
 
       {/* 結論 */}
@@ -232,9 +265,47 @@ export default async function TakeHomeLevelPage({
         </table>
       </div>
 
+      {/* 数字で見る（ページ固有のユニークデータ） */}
+      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-xl border p-4">
+          <p className="text-xs text-muted-foreground">手取り率</p>
+          <p className="mt-1 text-lg font-semibold tabular-nums">
+            {r.netIncomeRate.toFixed(1)}%
+          </p>
+          {(prevRate != null || nextRate != null) && (
+            <p className="mt-1 text-xs text-muted-foreground tabular-nums">
+              {prev && prevRate != null
+                ? `${prev.man}万→${prevRate.toFixed(1)}% `
+                : ""}
+              {next && nextRate != null
+                ? `／${next.man}万→${nextRate.toFixed(1)}%`
+                : ""}
+            </p>
+          )}
+        </div>
+        <div className="rounded-xl border p-4">
+          <p className="text-xs text-muted-foreground">所得税の限界税率</p>
+          <p className="mt-1 text-lg font-semibold tabular-nums">
+            {Math.round(marginalRate * 100)}%
+          </p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            課税所得が属する税率帯
+          </p>
+        </div>
+        <div className="rounded-xl border p-4">
+          <p className="text-xs text-muted-foreground">月あたりの手取り</p>
+          <p className="mt-1 text-lg font-semibold tabular-nums">
+            約{formatManYen(monthly, 1)}
+          </p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            賞与込み・12等分の目安
+          </p>
+        </div>
+      </div>
+
       {/* 年収帯特有の注意点 */}
       {note && (
-        <div className="mt-6 rounded-xl border-l-4 border-primary bg-muted/30 p-4">
+        <div className="mt-4 rounded-xl border-l-4 border-primary bg-muted/30 p-4">
           <p className="text-sm font-semibold">
             年収{level.man}万円の帯で押さえておきたいポイント
           </p>
