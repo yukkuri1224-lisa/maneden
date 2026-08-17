@@ -17,6 +17,7 @@ import { ToolCard } from "@/components/common/ToolCard";
 import { buttonVariants } from "@/components/ui/button";
 import {
   faqJsonLd,
+  itemListJsonLd,
   organizationJsonLd,
   webApplicationJsonLd,
   webSiteJsonLd,
@@ -28,8 +29,10 @@ import { companies } from "@/lib/companies/data";
 import { formatManYen } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
-// トップは最重要 URL。canonical を明示する（title/description は layout の既定を継承）
+// トップは最重要 URL。canonical と、SERPスニペットを使い切る説明文を明示する。
 export const metadata: Metadata = {
+  description:
+    "年収の手取り・ふるさと納税の上限・退職金や贈与税まで、税金とお金の計算が登録不要・完全無料で完結。会社員もフリーランスも使えるシミュレーター14種と、上場企業の平均年収データを収録。",
   alternates: { canonical: "/" },
 };
 
@@ -119,6 +122,14 @@ export default function Home() {
         })}
       />
       <JsonLd data={faqJsonLd(faqs)} />
+      <JsonLd
+        data={itemListJsonLd(
+          tools.map((tool) => ({
+            name: tool.title,
+            url: `${siteConfig.url}${tool.href}`,
+          })),
+        )}
+      />
 
       {/* ===== ヒーロー ===== */}
       <section className="relative overflow-hidden border-b">
