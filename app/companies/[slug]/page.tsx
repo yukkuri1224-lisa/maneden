@@ -258,7 +258,7 @@ export default async function CompanyPage({
       <div className="mt-3 flex flex-wrap gap-2">
         <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary tabular-nums">
           {company.industry} {ranking.industryRank}位
-          <span className="ml-1 font-normal text-primary/70">
+          <span className="ml-1 font-normal text-primary">
             / {ranking.industryCount}社
           </span>
         </span>
