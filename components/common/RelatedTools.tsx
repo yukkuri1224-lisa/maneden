@@ -1,4 +1,7 @@
+import { JsonLd } from "@/components/common/JsonLd";
 import { ToolCard } from "@/components/common/ToolCard";
+import { itemListJsonLd } from "@/lib/seo/jsonld";
+import { siteConfig } from "@/lib/site-config";
 import { getToolById, tools } from "@/lib/tools-registry";
 
 /** 関連セクションに表示するツール数 */
@@ -24,6 +27,14 @@ export function RelatedTools({ excludeId }: { excludeId?: string }) {
 
   return (
     <section>
+      <JsonLd
+        data={itemListJsonLd(
+          related.map((tool) => ({
+            name: tool.title,
+            url: `${siteConfig.url}${tool.href}`,
+          })),
+        )}
+      />
       <h2 className="text-lg font-semibold">あわせて使えるツール</h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {related.map((tool) => (

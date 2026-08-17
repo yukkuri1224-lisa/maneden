@@ -16,7 +16,7 @@ import { getCompanyRanking } from "@/lib/companies/stats";
 import { NATIONAL_AVERAGE_SALARY } from "@/lib/constants/national-salary";
 import { TAX_YEAR } from "@/lib/constants/tax-tables";
 import { formatManYen } from "@/lib/format";
-import { datasetJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
+import { datasetJsonLd, faqJsonLd, itemListJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -563,6 +563,14 @@ export default async function CompanyPage({
 
       {related.length > 0 && (
         <div className="mt-12">
+          <JsonLd
+            data={itemListJsonLd(
+              related.map((c) => ({
+                name: `${c.name}の平均年収`,
+                url: `${siteConfig.url}/companies/${c.slug}`,
+              })),
+            )}
+          />
           <h2 className="text-lg font-semibold">
             同じ{company.industry}の企業
           </h2>
