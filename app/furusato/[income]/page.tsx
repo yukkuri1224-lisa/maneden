@@ -86,6 +86,9 @@ export default async function FurusatoLevelPage({
   const limit = furusatoLimitFor(level.income);
   const note = FURUSATO_NOTES[level.man];
   const { prev, next } = adjacentLevels(level.man);
+  // ページ固有のユニークデータ（近似重複回避）：隣接年収帯の上限額
+  const prevLimit = prev ? furusatoLimitFor(prev.man * 10_000) : null;
+  const nextLimit = next ? furusatoLimitFor(next.man * 10_000) : null;
 
   const faqs = [
     {
@@ -138,12 +141,24 @@ export default async function FurusatoLevelPage({
         ]}
       />
 
-      <h1 className="mt-4 text-2xl font-bold sm:text-3xl">
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+          令和{TAX_YEAR - 2018}年度（{TAX_YEAR}年）税制で計算
+        </span>
+        <span className="text-xs text-muted-foreground">
+          最終更新：2026年8月13日
+        </span>
+      </div>
+      <h1 className="mt-2 text-2xl font-bold sm:text-3xl">
         年収{level.man}万円のふるさと納税上限額は？
       </h1>
-      <p className="mt-3 max-w-2xl text-muted-foreground">
-        年収{level.man}
-        万円（独身・扶養なし）の場合に、自己負担2,000円で寄付できるふるさと納税の控除上限額の目安と、その計算方法・注意点を解説します。
+      {/* AEO: H1直下に直接回答＋引用可能な数値 */}
+      <p className="mt-3 max-w-2xl text-[15px] leading-7">
+        <strong className="text-foreground">
+          年収{level.man}万円（独身・扶養なし）のふるさと納税の控除上限額は約
+          {formatManYen(limit, 0)}が目安です。
+        </strong>{" "}
+        この金額までなら実質的な自己負担2,000円で寄付でき、超えた分は自己負担になります。配偶者控除や住宅ローン控除・iDeCoなどがあると上限は下がります。
       </p>
 
       {/* 結論 */}
@@ -157,6 +172,19 @@ export default async function FurusatoLevelPage({
         <p className="mt-2 text-sm text-muted-foreground">
           独身・扶養なしの場合の目安
         </p>
+        {(prevLimit != null || nextLimit != null) && (
+          <p className="mt-2 text-xs text-muted-foreground tabular-nums">
+            {prev && prevLimit != null
+              ? `年収${prev.man}万→約${formatManYen(prevLimit, 0)}`
+              : ""}
+            {prev && prevLimit != null && next && nextLimit != null
+              ? " ／ "
+              : ""}
+            {next && nextLimit != null
+              ? `年収${next.man}万→約${formatManYen(nextLimit, 0)}`
+              : ""}
+          </p>
+        )}
       </div>
 
       {/* 年収帯特有の注意点 */}
