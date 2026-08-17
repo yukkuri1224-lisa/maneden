@@ -15,7 +15,7 @@ import { getCompanyRanking } from "@/lib/companies/stats";
 import { NATIONAL_AVERAGE_SALARY } from "@/lib/constants/national-salary";
 import { TAX_YEAR } from "@/lib/constants/tax-tables";
 import { formatManYen } from "@/lib/format";
-import { faqJsonLd } from "@/lib/seo/jsonld";
+import { datasetJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -208,6 +208,26 @@ export default async function CompanyPage({
         }}
       />
       <JsonLd data={faqJsonLd(companyFaqs)} />
+      <JsonLd
+        data={datasetJsonLd({
+          name: `${company.name}の平均年収データ（有価証券報告書ベース）`,
+          description: `${company.name}（${company.industry}）の平均年間給与${formatManYen(
+            company.averageSalary,
+            0,
+          )}、${company.averageAge != null ? `平均年齢${company.averageAge}歳、` : ""}${
+            company.averageTenure != null
+              ? `平均勤続年数${company.averageTenure}年、`
+              : ""
+          }${company.employees != null ? `従業員数${company.employees.toLocaleString("ja-JP")}人。` : ""}金融庁EDINETの有価証券報告書の公開情報に基づく。`,
+          url: `${siteConfig.url}/companies/${company.slug}`,
+          keywords: [
+            company.name,
+            "平均年収",
+            company.industry,
+            "有価証券報告書",
+          ],
+        })}
+      />
       <Breadcrumb
         items={[
           { name: "ホーム", href: "/" },
@@ -232,6 +252,34 @@ export default async function CompanyPage({
       <h1 className="mt-1 text-2xl font-bold sm:text-3xl">
         {company.name}の平均年収
       </h1>
+
+      {/* 順位バッジ（スキャン性・重要指標を最上部に） */}
+      <div className="mt-3 flex flex-wrap gap-2">
+        <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary tabular-nums">
+          {company.industry} {ranking.industryRank}位
+          <span className="ml-1 font-normal text-primary/70">
+            / {ranking.industryCount}社
+          </span>
+        </span>
+        <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-sm font-semibold tabular-nums">
+          全上場 {ranking.overallRank.toLocaleString("ja-JP")}位
+          <span className="ml-1 font-normal text-muted-foreground">
+            / {ranking.overallTotal.toLocaleString("ja-JP")}社
+          </span>
+        </span>
+      </div>
+
+      {/* AEO: H1直下に直接回答＋引用可能な数値 */}
+      <p className="mt-3 max-w-2xl text-[15px] leading-7">
+        <strong className="text-foreground">
+          {company.name}の平均年収は{formatManYen(company.averageSalary, 0)}、
+          {company.industry}
+          {ranking.industryCount}社中{ranking.industryRank}位です。
+        </strong>{" "}
+        この年収の手取りは約{formatManYen(takeHome.netIncome, 0)}
+        （月あたり約{formatManYen(monthlyTakeHome, 1)}
+        ）が目安です（有価証券報告書ベース・東京都・独身の概算）。
+      </p>
 
       <div className="mt-6 rounded-2xl border bg-gradient-to-b from-primary/5 to-background p-6 text-center sm:p-8">
         <p className="text-sm text-muted-foreground">
