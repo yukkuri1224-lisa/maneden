@@ -207,7 +207,10 @@ export default async function TakeHomeLevelPage({
       </div>
 
       {/* 内訳表 */}
-      <div className="mt-8 overflow-x-auto rounded-xl border">
+      <h2 className="mt-10 text-lg font-bold">
+        年収{level.man}万円の手取りの内訳
+      </h2>
+      <div className="mt-3 overflow-x-auto rounded-xl border">
         <table className="w-full border-collapse text-sm">
           <tbody>
             <tr className="border-b">
@@ -292,7 +295,10 @@ export default async function TakeHomeLevelPage({
       </div>
 
       {/* 数字で見る（ページ固有のユニークデータ） */}
-      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+      <h3 className="mt-8 text-base font-bold">
+        数字で見る年収{level.man}万円
+      </h3>
+      <div className="mt-3 grid gap-3 sm:grid-cols-3">
         <div className="rounded-xl border p-4">
           <p className="text-xs text-muted-foreground">手取り率</p>
           <p className="mt-1 text-lg font-semibold tabular-nums">

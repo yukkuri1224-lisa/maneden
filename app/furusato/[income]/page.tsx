@@ -233,6 +233,9 @@ export default async function FurusatoLevelPage({
               万円（独身・扶養なし）では、控除上限額は約
               {formatManYen(limit, 0)}が目安です。
             </p>
+            <h3 className="text-base font-bold text-foreground">
+              上限額の計算式
+            </h3>
             <p>
               上限額は「住民税の所得割額 × 20% ÷（90% − 所得税率 × 1.021）＋
               2,000円」で概算できます。年収が上がるほど住民税の所得割額が増えるため上限も大きくなりますが、

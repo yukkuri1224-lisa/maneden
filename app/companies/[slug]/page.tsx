@@ -355,7 +355,8 @@ export default async function CompanyPage({
           ）で計算した場合の、手取りの内訳の目安です。
         </p>
 
-        <div className="mt-4 overflow-x-auto rounded-xl border bg-background">
+        <h3 className="mt-5 text-base font-bold">手取りの内訳</h3>
+        <div className="mt-3 overflow-x-auto rounded-xl border bg-background">
           <table className="w-full border-collapse text-sm">
             <tbody>
               <tr className="border-b">
