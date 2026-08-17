@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 
+import { BreakdownBar } from "@/components/common/BreakdownBar";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
@@ -263,6 +264,31 @@ export default async function TakeHomeLevelPage({
             </tr>
           </tbody>
         </table>
+      </div>
+
+      {/* 額面に占める内訳を色分けバーで可視化 */}
+      <div className="mt-4 rounded-xl border p-4">
+        <BreakdownBar
+          formatValue={(v) => formatManYen(v, 0)}
+          segments={[
+            {
+              label: "手取り",
+              value: r.netIncome,
+              colorClass: "bg-emerald-500",
+            },
+            {
+              label: "社会保険料",
+              value: r.socialInsurance,
+              colorClass: "bg-sky-500",
+            },
+            { label: "所得税", value: r.incomeTax, colorClass: "bg-amber-500" },
+            {
+              label: "住民税",
+              value: r.residentTax,
+              colorClass: "bg-violet-500",
+            },
+          ]}
+        />
       </div>
 
       {/* 数字で見る（ページ固有のユニークデータ） */}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 
+import { BreakdownBar } from "@/components/common/BreakdownBar";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
@@ -413,6 +414,34 @@ export default async function CompanyPage({
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div className="mt-4">
+          <BreakdownBar
+            formatValue={(v) => formatManYen(v, 0)}
+            segments={[
+              {
+                label: "手取り",
+                value: takeHome.netIncome,
+                colorClass: "bg-emerald-500",
+              },
+              {
+                label: "社会保険料",
+                value: takeHome.socialInsurance,
+                colorClass: "bg-sky-500",
+              },
+              {
+                label: "所得税",
+                value: takeHome.incomeTax,
+                colorClass: "bg-amber-500",
+              },
+              {
+                label: "住民税",
+                value: takeHome.residentTax,
+                colorClass: "bg-violet-500",
+              },
+            ]}
+          />
         </div>
 
         <p className="mt-3 text-sm text-muted-foreground">
