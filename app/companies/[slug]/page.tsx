@@ -547,7 +547,9 @@ export default async function CompanyPage({
           >
             EDINET
           </a>
-          に提出した有価証券報告書の公開情報に基づきます。順位・偏差は、当サイト掲載の
+          に提出した有価証券報告書の公開情報に基づきます（EDINET
+          の書類検索で証券コード 「{company.securitiesCode}
+          」から同社の有価証券報告書をご確認いただけます）。順位・偏差は、当サイト掲載の
           {ranking.overallTotal.toLocaleString("ja-JP")}
           社（{company.industry}は{ranking.industryCount}
           社）を母数とした集計です。
