@@ -50,6 +50,8 @@ export const metadata: Metadata = {
     description: siteConfig.description,
   },
   robots: { index: true, follow: true },
+  // Google AdSense のサイト確認用メタタグ（静的 head に出力され view-source で確認可能）
+  other: { "google-adsense-account": "ca-pub-6626208471378682" },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
     apple: [{ url: "/icon.svg" }],
@@ -89,6 +91,16 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <SpeedInsights />
+
+        {/* Google AdSense。afterInteractive でハイドレーション後に読み込む（審査・配信の推奨方式）。
+            発行者ID: ca-pub-6626208471378682 */}
+        <Script
+          id="google-adsense"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6626208471378682"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+          async
+        />
 
         {/* Google Analytics 4（gtag.js）。計測はアイドル後で十分なため lazyOnload で
             初期描画・ハイドレーションのメインスレッド競合を避ける（TBT削減） */}
