@@ -59,8 +59,9 @@ export async function renderOgImage(p: {
       { name: "Noto Sans JP", data: bold, weight: 700, style: "normal" },
       { name: "Noto Sans JP", data: regular, weight: 400, style: "normal" },
     ];
-  } catch {
-    // フォント取得失敗時はフォントなしで描画する
+  } catch (error) {
+    // フォント取得失敗時はフォントなしで描画する（原因を追えるよう警告を残す）
+    console.warn("OGP フォントの取得に失敗しました", error);
     fonts = undefined;
   }
 

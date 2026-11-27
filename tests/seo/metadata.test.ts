@@ -50,3 +50,31 @@ describe("pageMetadata", () => {
     expect(og.publishedTime).toBe("2026-08-01");
   });
 });
+
+describe("pageMetadata の OGP 画像パス", () => {
+  const imgs = (path: string, image?: string) => {
+    const m = pageMetadata({ title: "t", description: "d", path, image });
+    return {
+      og: (m.openGraph?.images as { url: string }[])[0].url,
+      tw: (m.twitter as { images?: string[] }).images,
+    };
+  };
+
+  it.each([
+    ["/tools/x", "/tools/x/opengraph-image"],
+    ["/guides/x", "/guides/x/opengraph-image"],
+    ["/about", "/opengraph-image"],
+    ["/take-home/500", "/opengraph-image"],
+    ["/tools", "/opengraph-image"],
+  ])("%s の画像は %s", (path, expected) => {
+    const r = imgs(path);
+    expect(r.og).toBe(expected);
+    expect(r.tw).toEqual([expected]);
+  });
+
+  it("image 指定が優先される", () => {
+    const r = imgs("/tools/x", "/custom.png");
+    expect(r.og).toBe("/custom.png");
+    expect(r.tw).toEqual(["/custom.png"]);
+  });
+});
