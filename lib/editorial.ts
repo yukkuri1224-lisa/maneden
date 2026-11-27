@@ -40,3 +40,7 @@ export const author: EditorialPerson = {
  * 例: { name: "山田 太郎", role: "監修", qualifications: ["税理士（登録番号 000000）"], bio: "...", profileUrl: "https://..." }
  */
 export const reviewer = null as EditorialPerson | null;
+
+/** 生成AIの利用状況（記事末尾の執筆・確認体制に表示）。運営者回答（2026-11-27）: 利用している */
+export const AI_USE_SUMMARY =
+  "構成案・下書き・校正に生成AIを使用しています。数値は公式資料から取り、運営者が一次情報と照合してから公開しています。";

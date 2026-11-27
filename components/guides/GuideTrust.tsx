@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 
 import {
+  AI_USE_SUMMARY,
   author,
   CONTACT_PATH,
   EDITORIAL_POLICY_PATH,
@@ -75,6 +76,8 @@ export function GuideTrust({ guide }: { guide: Guide }) {
               ? `${reviewer.name}（${reviewer.qualifications.join("・")}）`
               : "なし（税理士・FP等の有資格者による監修は受けていません）"}
           </dd>
+          <dt className="font-medium text-foreground">AIの利用</dt>
+          <dd>{AI_USE_SUMMARY}</dd>
           <dt className="font-medium text-foreground">確認方法</dt>
           <dd>
             公開前に、記載した税率・制度を上記の一次情報と照合しています。詳しくは
