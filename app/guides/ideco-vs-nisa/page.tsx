@@ -123,6 +123,7 @@ export default function IdecoVsNisaGuide() {
           url,
           datePublished: guide.publishedISO,
           dateModified: guide.updatedISO,
+          citations: guide.sources,
         })}
       />
       <JsonLd

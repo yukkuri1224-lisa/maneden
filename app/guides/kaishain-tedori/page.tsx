@@ -110,6 +110,7 @@ export default function KaishainTedoriGuide() {
           url,
           datePublished: guide.publishedISO,
           dateModified: guide.updatedISO,
+          citations: guide.sources,
         })}
       />
       <JsonLd

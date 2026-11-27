@@ -1,6 +1,11 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import {
+  CONTACT_PATH,
+  EDITORIAL_POLICY_PATH,
+  METHODOLOGY_PATH,
+} from "@/lib/editorial";
 import { TAX_YEAR } from "@/lib/constants/tax-tables";
 import { TOOL_SOURCES } from "@/lib/constants/tool-sources";
 
@@ -72,7 +77,19 @@ export function ToolMeta({
         <Link href="/disclaimer" className="underline">
           免責事項
         </Link>
-        をご確認ください。
+        をご確認ください。データの出典と検証方法は
+        <Link href={METHODOLOGY_PATH} className="underline">
+          計算方法と検証
+        </Link>
+        、制作の方針は
+        <Link href={EDITORIAL_POLICY_PATH} className="underline">
+          編集方針
+        </Link>
+        に掲載しています。計算の誤りにお気づきの場合は
+        <Link href={CONTACT_PATH} className="underline">
+          お問い合わせ
+        </Link>
+        からお知らせください。
       </p>
       <p className="mt-1">最終更新日: {updated}</p>
     </section>
