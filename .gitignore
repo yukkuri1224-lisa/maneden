@@ -46,3 +46,6 @@ tmp-data/
 # Playwright の実行結果（期待画像 e2e/__screenshots__ はコミットする）
 /test-results/
 /playwright-report/
+
+# UI レビューサイクルの撮影画像（pnpm ui:capture の出力。レビュー記録は docs/ui-reviews/ に残す）
+/reviews/

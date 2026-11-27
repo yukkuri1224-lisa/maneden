@@ -16,6 +16,7 @@
     "test:visual": "playwright test e2e/visual.spec.ts",
     "test:visual:update": "playwright test e2e/visual.spec.ts --update-snapshots",
     "test:a11y": "playwright test e2e/a11y.spec.ts",
+    "ui:capture": "playwright test --project=capture --workers=1",
     "prepare": "husky"
   },
   "lint-staged": {
