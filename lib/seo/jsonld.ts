@@ -9,6 +9,24 @@ import { siteConfig } from "@/lib/site-config";
 export const ORGANIZATION_ID = `${siteConfig.url}/#organization`;
 export const WEBSITE_ID = `${siteConfig.url}/#website`;
 
+const ORGANIZATION_LOGO = {
+  "@type": "ImageObject",
+  url: `${siteConfig.url}/logo.png`,
+  width: 512,
+  height: 512,
+} as const;
+
+/** 各ページ内で完結して解決できる Organization 参照（@id + 基本情報 + ロゴ） */
+export function organizationRef() {
+  return {
+    "@type": "Organization",
+    "@id": ORGANIZATION_ID,
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: ORGANIZATION_LOGO,
+  };
+}
+
 export interface BreadcrumbJsonLdItem {
   name: string;
   /** 絶対 URL */
@@ -102,7 +120,7 @@ export function webSiteJsonLd() {
     url: siteConfig.url,
     description: siteConfig.description,
     inLanguage: "ja",
-    publisher: { "@id": ORGANIZATION_ID },
+    publisher: organizationRef(),
   };
 }
 
@@ -114,12 +132,7 @@ export function organizationJsonLd() {
     "@id": ORGANIZATION_ID,
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: {
-      "@type": "ImageObject",
-      url: `${siteConfig.url}/logo.png`,
-      width: 512,
-      height: 512,
-    },
+    logo: ORGANIZATION_LOGO,
     email: siteConfig.email,
   };
 }
@@ -134,7 +147,7 @@ export interface DatasetJsonLdParams {
 
 /** データセット（企業年収データ群など）を表す Dataset 構造化データ */
 export function datasetJsonLd(params: DatasetJsonLdParams) {
-  const publisher = { "@id": ORGANIZATION_ID };
+  const publisher = organizationRef();
   return {
     "@context": "https://schema.org",
     "@type": "Dataset",
@@ -174,11 +187,7 @@ export function articleJsonLd(params: ArticleJsonLdParams) {
     datePublished: params.datePublished,
     dateModified: params.dateModified,
     inLanguage: "ja",
-    author: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    publisher: { "@id": ORGANIZATION_ID },
+    author: organizationRef(),
+    publisher: organizationRef(),
   };
 }

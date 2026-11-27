@@ -5,6 +5,7 @@ import {
   WEBSITE_ID,
   articleJsonLd,
   datasetJsonLd,
+  organizationRef,
   organizationJsonLd,
   webSiteJsonLd,
 } from "@/lib/seo/jsonld";
@@ -26,7 +27,7 @@ describe("構造化データ", () => {
     const w = webSiteJsonLd();
     expect(WEBSITE_ID).toBe("https://maneden.com/#website");
     expect(w["@id"]).toBe("https://maneden.com/#website");
-    expect(w.publisher).toEqual({ "@id": "https://maneden.com/#organization" });
+    expect(w.publisher).toEqual(organizationRef());
   });
 
   it("Article の publisher は @id 参照、author は Organization", () => {
@@ -37,12 +38,8 @@ describe("構造化データ", () => {
       datePublished: "2026-01-01",
       dateModified: "2026-01-02",
     });
-    expect(a.publisher).toEqual({ "@id": ORGANIZATION_ID });
-    expect(a.author).toEqual({
-      "@type": "Organization",
-      name: "まねでん",
-      url: "https://maneden.com",
-    });
+    expect(a.publisher).toEqual(organizationRef());
+    expect(a.author).toEqual(organizationRef());
   });
 
   it("Dataset の creator / publisher は @id 参照", () => {
@@ -51,7 +48,24 @@ describe("構造化データ", () => {
       description: "d",
       url: "https://maneden.com/companies",
     });
-    expect(d.creator).toEqual({ "@id": ORGANIZATION_ID });
-    expect(d.publisher).toEqual({ "@id": ORGANIZATION_ID });
+    expect(d.creator).toEqual(organizationRef());
+    expect(d.publisher).toEqual(organizationRef());
+  });
+});
+
+describe("organizationRef", () => {
+  it("@type/@id/name/logo を自己完結で持つ", () => {
+    expect(organizationRef()).toEqual({
+      "@type": "Organization",
+      "@id": "https://maneden.com/#organization",
+      name: "まねでん",
+      url: "https://maneden.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://maneden.com/logo.png",
+        width: 512,
+        height: 512,
+      },
+    });
   });
 });
