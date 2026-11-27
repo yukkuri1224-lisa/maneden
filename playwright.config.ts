@@ -33,8 +33,18 @@ export default defineConfig({
     reducedMotion: "reduce",
   },
   projects: [
-    { name: "sp", use: { viewport: { width: 390, height: 844 } } },
-    { name: "pc", use: { viewport: { width: 1440, height: 900 } } },
+    {
+      name: "sp",
+      use: { viewport: { width: 390, height: 844 } },
+      testIgnore: /capture\.spec\.ts/,
+    },
+    {
+      name: "pc",
+      use: { viewport: { width: 1440, height: 900 } },
+      testIgnore: /capture\.spec\.ts/,
+    },
+    // UI レビューサイクルの撮影専用（`pnpm ui:capture`）。回帰テストには含めない
+    { name: "capture", testMatch: /capture\.spec\.ts/ },
   ],
   webServer: {
     command: `pnpm start -p ${PORT}`,
