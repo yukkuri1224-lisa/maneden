@@ -19,11 +19,11 @@ export function ResultPanel({ result }: { result: GiftTaxResult }) {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-gradient-to-b from-primary/5 to-background p-6 text-center sm:p-8">
+      <div className="rounded-md border bg-card p-6 text-center sm:p-8">
         <p className="text-sm font-medium text-muted-foreground">
           贈与税額（概算）
         </p>
-        <p className="text-gradient mt-1 text-4xl font-black tracking-tight tabular-nums sm:text-6xl">
+        <p className="mt-1 text-4xl font-bold text-primary tabular-nums sm:text-6xl">
           {formatYen(tax)}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">

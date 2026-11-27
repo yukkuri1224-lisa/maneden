@@ -33,10 +33,10 @@ export const CATEGORY_OPTIONS: { value: BusinessCategory; label: string }[] = [
 
 /** グラフの配色（インディゴ→ブルー→シアン→スカイ→スレート） */
 export const CHART_COLORS = {
-  netIncome: "#4f46e5", // indigo-600
-  incomeTax: "#3b82f6", // blue-500
-  residentTax: "#06b6d4", // cyan-500
-  nationalHealthInsurance: "#38bdf8", // sky-400
-  nationalPension: "#818cf8", // indigo-400
-  consumptionTax: "#94a3b8", // slate-400
+  netIncome: "var(--chart-1)", // indigo-600
+  incomeTax: "var(--chart-4)", // blue-500
+  residentTax: "var(--chart-4)", // cyan-500
+  nationalHealthInsurance: "var(--chart-2)", // sky-400
+  nationalPension: "var(--chart-3)", // indigo-400
+  consumptionTax: "var(--chart-5)", // slate-400
 } as const;

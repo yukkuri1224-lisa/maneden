@@ -95,7 +95,7 @@ export default function BonusTakeHomePage() {
       <div className="mt-8">
         <Suspense
           fallback={
-            <div className="h-96 w-full animate-pulse rounded-xl bg-muted" />
+            <div className="h-96 w-full animate-pulse rounded-md bg-muted" />
           }
         >
           <BonusTakeHomeTool />
@@ -121,7 +121,7 @@ export default function BonusTakeHomePage() {
           {formatManYen(BONUS_TABLE_MONTHLY_SALARY, 0)}
           （年収約360万円層）・40歳未満・扶養なしを前提にしています。
         </p>
-        <div className="mt-5 overflow-x-auto rounded-xl border">
+        <div className="mt-5 overflow-x-auto rounded-md border">
           <table className="w-full border-collapse text-sm">
             <thead>
               <tr className="bg-muted/60">

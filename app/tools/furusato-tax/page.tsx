@@ -102,7 +102,7 @@ export default function FurusatoTaxPage() {
       <div className="mt-8">
         <Suspense
           fallback={
-            <div className="h-96 w-full animate-pulse rounded-xl bg-muted" />
+            <div className="h-96 w-full animate-pulse rounded-md bg-muted" />
           }
         >
           <FurusatoTool />
@@ -127,7 +127,7 @@ export default function FurusatoTaxPage() {
           をまとめた早見表です。まずはこの表でおおよその金額をつかみ、
           正確な額は上のシミュレーターで社会保険料や扶養の条件を入れて確認してください。
         </p>
-        <div className="mt-5 overflow-x-auto rounded-xl border">
+        <div className="mt-5 overflow-x-auto rounded-md border">
           <table className="w-full border-collapse text-sm">
             <thead>
               <tr className="bg-muted/60">

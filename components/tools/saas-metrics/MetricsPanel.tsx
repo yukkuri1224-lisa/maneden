@@ -51,11 +51,11 @@ export function MetricsPanel({ result }: { result: SaasMetricsResult }) {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-gradient-to-b from-primary/5 to-background p-6 text-center sm:p-8">
+      <div className="rounded-md border bg-card p-6 text-center sm:p-8">
         <p className="text-sm font-medium text-muted-foreground">
           顧客生涯価値 LTV（粗利ベース）
         </p>
-        <p className="mt-1 bg-gradient-to-r from-indigo-600 to-sky-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent tabular-nums sm:text-6xl">
+        <p className="mt-1 text-4xl font-bold text-primary tabular-nums sm:text-6xl">
           {formatYen(ltv)}
         </p>
         <div className="mt-3 inline-flex items-center gap-2 text-sm text-muted-foreground">

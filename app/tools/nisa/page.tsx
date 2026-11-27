@@ -136,7 +136,7 @@ export default function NisaPage() {
       <div className="mt-8">
         <Suspense
           fallback={
-            <div className="h-96 w-full animate-pulse rounded-xl bg-muted" />
+            <div className="h-96 w-full animate-pulse rounded-md bg-muted" />
           }
         >
           <NisaTool />
@@ -178,7 +178,7 @@ export default function NisaPage() {
                 通常は運用益に20.315％の税金がかかりますが、NISA口座なら非課税です。長期・高利回りになるほど、この非課税メリットの金額は大きくなります。
               </p>
             </div>
-            <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 text-foreground">
+            <p className="rounded-md border border-chart-3/40 bg-chart-3/10 p-3 text-foreground">
               ⚠️
               投資は元本が保証されません。想定利回りはあくまで仮定で、実際には値下がりする年もあります。余裕資金で、長期・分散を基本に、ご自身の判断で行ってください。
             </p>

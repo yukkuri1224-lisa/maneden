@@ -79,7 +79,7 @@ export default function SubsidyFinderPage() {
         <p className="mt-3 max-w-2xl text-muted-foreground">{description}</p>
       </div>
 
-      <div className="mt-6 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300">
+      <div className="mt-6 rounded-md border border-chart-3/40 bg-chart-3/10 p-4 text-sm text-foreground">
         ⚠️
         補助金・助成金の制度内容・補助率・上限額・要件は毎年（公募回ごとに）変わります。本診断は
         <strong>概算・目安</strong>
@@ -89,7 +89,7 @@ export default function SubsidyFinderPage() {
       <div className="mt-8">
         <Suspense
           fallback={
-            <div className="h-96 w-full animate-pulse rounded-xl bg-muted" />
+            <div className="h-96 w-full animate-pulse rounded-md bg-muted" />
           }
         >
           <SubsidyFinderTool />

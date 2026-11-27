@@ -128,7 +128,7 @@ export default function FurusatoNouzeiGuide() {
       <JsonLd data={faqJsonLd(faqs)} />
 
       <GuideArticle guide={guide} toc={toc}>
-        <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:p-6">
+        <div className="rounded-md border border-primary/30 bg-primary/5 p-5 sm:p-6">
           <p className="text-sm font-bold text-primary">ひとことで言うと</p>
           <p className="mt-2 text-[15px] leading-7 text-muted-foreground">
             ふるさと納税は、
@@ -175,7 +175,7 @@ export default function FurusatoNouzeiGuide() {
         <GuideSection id="yarikata" title="やり方（4ステップ）">
           <div className="grid gap-3 sm:grid-cols-2">
             {steps.map((s) => (
-              <div key={s.title} className="rounded-xl border p-4">
+              <div key={s.title} className="rounded-md border p-4">
                 <p className="font-semibold text-foreground">{s.title}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{s.desc}</p>
               </div>
@@ -185,7 +185,7 @@ export default function FurusatoNouzeiGuide() {
 
         <GuideSection id="onestop" title="ワンストップ特例と確定申告の違い">
           <p>控除の手続きには2つの方法があります。どちらか一方で申請します。</p>
-          <div className="overflow-x-auto rounded-xl border">
+          <div className="overflow-x-auto rounded-md border">
             <table className="w-full min-w-[520px] border-collapse text-sm">
               <thead className="bg-muted/50">
                 <tr>
@@ -244,7 +244,7 @@ export default function FurusatoNouzeiGuide() {
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
               href="/tools/furusato-tax"
-              className="group rounded-xl border p-4 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+              className="group rounded-md border p-4 transition-colors hover:border-primary/50"
             >
               <Gift className="size-5 text-primary" aria-hidden />
               <p className="mt-2 font-semibold text-foreground group-hover:text-primary">
@@ -256,7 +256,7 @@ export default function FurusatoNouzeiGuide() {
             </Link>
             <Link
               href="/tools/salary-take-home"
-              className="group rounded-xl border p-4 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+              className="group rounded-md border p-4 transition-colors hover:border-primary/50"
             >
               <Calculator className="size-5 text-primary" aria-hidden />
               <p className="mt-2 font-semibold text-foreground group-hover:text-primary">
@@ -272,7 +272,7 @@ export default function FurusatoNouzeiGuide() {
         <GuideSection id="faq" title="よくあるご質問">
           <dl className="space-y-4">
             {faqs.map((faq) => (
-              <div key={faq.question} className="rounded-xl border bg-card p-4">
+              <div key={faq.question} className="rounded-md border bg-card p-4">
                 <dt className="font-semibold text-foreground">
                   {faq.question}
                 </dt>
@@ -282,7 +282,7 @@ export default function FurusatoNouzeiGuide() {
           </dl>
         </GuideSection>
 
-        <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-4 text-sm leading-7 text-muted-foreground">
+        <p className="rounded-md border border-chart-3/40 bg-chart-3/10 p-4 text-sm leading-7 text-muted-foreground">
           ⚠️
           本記事は一般的な情報提供を目的とした解説です。限度額はあくまで目安で、実際の控除額は各人の所得や他の控除により異なります。制度の詳細や最新の条件は、総務省やお住まいの自治体の公式情報をご確認ください。
         </p>

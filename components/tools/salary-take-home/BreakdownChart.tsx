@@ -6,10 +6,10 @@ import type { SalaryTakeHomeResult } from "@/lib/calculators/salary-take-home";
 import { formatYen } from "@/lib/format";
 
 const COLORS = {
-  net: "#4f46e5",
-  social: "#38bdf8",
-  income: "#3b82f6",
-  resident: "#94a3b8",
+  net: "var(--chart-1)",
+  social: "var(--chart-2)",
+  income: "var(--chart-4)",
+  resident: "var(--chart-5)",
 };
 
 export default function BreakdownChart({

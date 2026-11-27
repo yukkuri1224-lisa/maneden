@@ -36,7 +36,7 @@ export function WorkedExamples({
       )}
       <div className="mt-5 grid gap-4 sm:grid-cols-3">
         {examples.map((ex) => (
-          <div key={ex.title} className="rounded-xl border p-4">
+          <div key={ex.title} className="rounded-md border p-4">
             <p className="text-sm font-semibold">{ex.title}</p>
             {ex.note && (
               <p className="mt-1 text-xs text-muted-foreground">{ex.note}</p>

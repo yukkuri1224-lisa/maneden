@@ -18,11 +18,11 @@ export function ResultHero({
   const net = useCountUp(result.netIncome);
 
   return (
-    <div className="rounded-2xl border bg-gradient-to-b from-primary/5 to-background p-6 text-center sm:p-8">
+    <div className="rounded-md border bg-card p-6 text-center sm:p-8">
       <p className="text-sm font-medium text-muted-foreground">
         年間手取り額（概算）
       </p>
-      <p className="mt-1 bg-gradient-to-r from-indigo-600 to-sky-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent tabular-nums sm:text-6xl">
+      <p className="mt-1 text-4xl font-bold text-primary tabular-nums sm:text-6xl">
         {formatYen(net)}
       </p>
       <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-muted-foreground">

@@ -37,7 +37,7 @@ export function GuideToc({
 
   if (variant === "inline") {
     return (
-      <details className="mb-10 rounded-xl border bg-muted/30 p-4 lg:hidden">
+      <details className="mb-10 rounded-md border bg-muted/30 p-4 lg:hidden">
         <summary className="cursor-pointer text-sm font-semibold">目次</summary>
         <ul className="mt-3 space-y-2 text-sm">
           {items.map((item) => (

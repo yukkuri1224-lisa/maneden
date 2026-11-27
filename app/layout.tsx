@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Zen_Kaku_Gothic_New } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Noto_Serif_JP,
+  Zen_Kaku_Gothic_New,
+} from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -25,6 +30,15 @@ const geistMono = Geist_Mono({
 const zenKaku = Zen_Kaku_Gothic_New({
   variable: "--font-jp",
   weight: ["400", "500", "700", "900"],
+  subsets: ["latin"],
+  display: "swap",
+  preload: false,
+});
+
+// 見出し用の明朝（design-system/maneden/MASTER.md「4. 文字」）
+const notoSerifJp = Noto_Serif_JP({
+  variable: "--font-serif-jp",
+  weight: ["600", "700"],
   subsets: ["latin"],
   display: "swap",
   preload: false,
@@ -67,8 +81,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#fbfaf6" },
+    { media: "(prefers-color-scheme: dark)", color: "#14171f" },
   ],
 };
 
@@ -84,7 +98,7 @@ export default function RootLayout({
     <html
       lang="ja"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${zenKaku.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${zenKaku.variable} ${notoSerifJp.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

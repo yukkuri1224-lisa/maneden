@@ -113,6 +113,10 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
       <div className="space-y-2">
         <Label>青色申告特別控除</Label>
         <Select
+          items={BLUE_OPTIONS.map((o) => ({
+            value: String(o.value),
+            label: o.label,
+          }))}
           value={String(value.blueReturnDeduction)}
           onValueChange={(v) =>
             onChange({
@@ -155,6 +159,10 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
           </Tabs>
           {value.invoiceStatus === "simplified" && (
             <Select
+              items={CATEGORY_OPTIONS.map((o) => ({
+                value: String(o.value),
+                label: o.label,
+              }))}
               value={String(value.businessCategory)}
               onValueChange={(v) =>
                 onChange({
@@ -185,6 +193,10 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
         <div className="space-y-2">
           <Label>扶養家族の数</Label>
           <Select
+            items={Array.from({ length: MAX_DEPENDENTS + 1 }, (_, i) => ({
+              value: String(i),
+              label: `${i}人`,
+            }))}
             value={String(value.dependents)}
             onValueChange={(v) => onChange({ dependents: Number(String(v)) })}
           >

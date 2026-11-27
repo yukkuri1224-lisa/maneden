@@ -6,9 +6,9 @@ import type { RetirementTaxResult } from "@/lib/calculators/retirement-tax";
 import { formatYen } from "@/lib/format";
 
 const COLORS = {
-  net: "#4f46e5",
-  income: "#3b82f6",
-  resident: "#94a3b8",
+  net: "var(--chart-1)",
+  income: "var(--chart-4)",
+  resident: "var(--chart-5)",
 };
 
 export default function BreakdownChart({

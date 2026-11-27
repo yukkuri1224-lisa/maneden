@@ -61,14 +61,14 @@ export default function CohortChart({ input }: { input: SaasMetricsInput }) {
           <Line
             type="monotone"
             dataKey="累積粗利"
-            stroke="#4f46e5"
+            stroke="var(--chart-1)"
             strokeWidth={2}
             dot={false}
           />
           <Line
             type="monotone"
             dataKey="獲得コスト"
-            stroke="#94a3b8"
+            stroke="var(--chart-5)"
             strokeWidth={2}
             strokeDasharray="5 5"
             dot={false}

@@ -67,20 +67,20 @@ export default function DonationChart({ result }: { result: FurusatoResult }) {
           {result.donationLimit > 0 && (
             <ReferenceLine
               x={result.donationLimit / 10_000}
-              stroke="#4f46e5"
+              stroke="var(--chart-1)"
               strokeDasharray="4 4"
               label={{
                 value: "上限",
                 position: "top",
                 fontSize: 10,
-                fill: "#4f46e5",
+                fill: "var(--chart-1)",
               }}
             />
           )}
           <Line
             type="monotone"
             dataKey="自己負担"
-            stroke="#4f46e5"
+            stroke="var(--chart-1)"
             strokeWidth={2}
             dot={false}
           />

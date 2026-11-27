@@ -6,9 +6,9 @@ import type { BonusTakeHomeResult } from "@/lib/calculators/bonus-take-home";
 import { formatYen } from "@/lib/format";
 
 const COLORS = {
-  net: "#4f46e5",
-  social: "#38bdf8",
-  income: "#3b82f6",
+  net: "var(--chart-1)",
+  social: "var(--chart-2)",
+  income: "var(--chart-4)",
 };
 
 export default function BreakdownChart({

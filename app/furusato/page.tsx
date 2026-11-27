@@ -63,7 +63,7 @@ export default function FurusatoHubPage() {
         年収（額面）ごとの、自己負担2,000円で寄付できるふるさと納税の控除上限額の目安です（独身・扶養なしの概算）。年収をクリックすると、計算方法や家族構成・控除による違いを確認できます。
       </p>
 
-      <div className="mt-8 overflow-x-auto rounded-xl border">
+      <div className="mt-8 overflow-x-auto rounded-md border">
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr className="bg-muted/60">

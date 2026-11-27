@@ -133,6 +133,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
         <div className="space-y-2">
           <Label>建物構造</Label>
           <Select
+            items={STRUCTURE_OPTIONS}
             value={value.structure}
             onValueChange={(v) =>
               onChange({ structure: String(v) as BuildingStructure })

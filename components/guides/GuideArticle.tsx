@@ -24,7 +24,7 @@ export function GuideArticle({
 }) {
   return (
     <>
-      <div className="border-b bg-gradient-to-b from-primary/[0.08] via-primary/[0.03] to-background">
+      <div className="border-b bg-muted">
         <Container className="py-8 sm:py-10">
           <Breadcrumb
             items={[
@@ -67,7 +67,7 @@ export function GuideArticle({
             <GuideToc items={toc} variant="inline" />
             <div className="max-w-2xl space-y-12">{children}</div>
 
-            <div className="mt-14 max-w-2xl rounded-2xl border bg-muted/30 p-5">
+            <div className="mt-14 max-w-2xl rounded-md border bg-muted/30 p-5">
               <p className="text-sm font-semibold text-foreground">
                 この記事をシェア
               </p>

@@ -127,7 +127,7 @@ export default function IdecoVsNisaGuide() {
       <JsonLd data={faqJsonLd(faqs)} />
 
       <GuideArticle guide={guide} toc={toc}>
-        <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:p-6">
+        <div className="rounded-md border border-primary/30 bg-primary/5 p-5 sm:p-6">
           <p className="text-sm font-bold text-primary">結論から言うと</p>
           <p className="mt-2 text-[15px] leading-7 text-muted-foreground">
             多くの会社員は、
@@ -150,7 +150,7 @@ export default function IdecoVsNisaGuide() {
           <p>
             どちらも「運用益が非課税」という共通点がありますが、目的・引き出しやすさ・税メリットが異なります。
           </p>
-          <div className="overflow-x-auto rounded-xl border">
+          <div className="overflow-x-auto rounded-md border">
             <table className="w-full min-w-[520px] border-collapse text-sm">
               <thead className="bg-muted/50">
                 <tr>
@@ -250,7 +250,7 @@ export default function IdecoVsNisaGuide() {
               <Link
                 key={c.href}
                 href={c.href}
-                className="group rounded-xl border p-4 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+                className="group rounded-md border p-4 transition-colors hover:border-primary/50"
               >
                 <c.icon className="size-5 text-primary" aria-hidden />
                 <p className="mt-2 font-semibold text-foreground group-hover:text-primary">
@@ -265,7 +265,7 @@ export default function IdecoVsNisaGuide() {
         <GuideSection id="faq" title="よくあるご質問">
           <dl className="space-y-4">
             {faqs.map((faq) => (
-              <div key={faq.question} className="rounded-xl border bg-card p-4">
+              <div key={faq.question} className="rounded-md border bg-card p-4">
                 <dt className="font-semibold text-foreground">
                   {faq.question}
                 </dt>
@@ -275,7 +275,7 @@ export default function IdecoVsNisaGuide() {
           </dl>
         </GuideSection>
 
-        <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-4 text-sm leading-7 text-muted-foreground">
+        <p className="rounded-md border border-chart-3/40 bg-chart-3/10 p-4 text-sm leading-7 text-muted-foreground">
           ⚠️
           本記事は一般的な情報提供を目的とした解説で、特定の金融商品を推奨するものではありません。制度の詳細や最新の条件は公式情報をご確認のうえ、ご自身の判断で行ってください。
         </p>

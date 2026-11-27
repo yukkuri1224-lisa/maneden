@@ -29,7 +29,7 @@ export function ToolMeta({
   return (
     <section
       aria-label="計算の前提と更新情報"
-      className="rounded-xl border bg-muted/30 p-4 text-xs leading-relaxed text-muted-foreground"
+      className="rounded-md border bg-muted/30 p-4 text-xs leading-relaxed text-muted-foreground"
     >
       {taxBasis && (
         <p>

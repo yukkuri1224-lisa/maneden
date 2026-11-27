@@ -93,7 +93,7 @@ export function CompanyList({
       )}
 
       {items.length === 0 ? (
-        <p className="rounded-xl border border-dashed p-8 text-center text-sm text-muted-foreground">
+        <p className="rounded-md border border-dashed p-8 text-center text-sm text-muted-foreground">
           条件に合う企業が見つかりませんでした。
         </p>
       ) : (
@@ -104,7 +104,7 @@ export function CompanyList({
               href={`/companies/${company.slug}`}
               className="group block h-full"
             >
-              <div className="relative flex h-full flex-col rounded-xl border p-5 transition-all group-hover:-translate-y-0.5 group-hover:border-primary/30 group-hover:shadow-md">
+              <div className="relative flex h-full flex-col rounded-md border p-5 transition-colors group-hover:border-primary/30">
                 <span className="absolute top-4 right-4 text-xs font-semibold text-muted-foreground tabular-nums">
                   #{start + index + 1}
                 </span>
@@ -117,7 +117,7 @@ export function CompanyList({
                   </span>
                 </div>
                 <h2 className="mt-3 pr-6 font-semibold">{company.name}</h2>
-                <p className="text-gradient mt-2 text-2xl font-bold tabular-nums">
+                <p className="mt-2 text-2xl font-bold text-primary tabular-nums">
                   {formatManYen(company.averageSalary, 0)}
                 </p>
                 <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">

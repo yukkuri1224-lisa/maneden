@@ -16,10 +16,7 @@ export function GuideSection({
   return (
     <section id={id} className="scroll-mt-24">
       <h2 className="flex items-center gap-3 text-2xl font-bold tracking-tight text-foreground">
-        <span
-          className="h-6 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-sky-400"
-          aria-hidden
-        />
+        <span className="h-6 w-1 rounded-full bg-highlight" aria-hidden />
         {title}
       </h2>
       <div className="mt-4 space-y-4 text-[15px] leading-7 text-muted-foreground [&_strong]:font-semibold [&_strong]:text-foreground">

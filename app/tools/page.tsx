@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
-import { ToolCard } from "@/components/common/ToolCard";
-import { tools } from "@/lib/tools-registry";
+import { ToolCard, ToolIndex } from "@/components/common/ToolCard";
+import { toolCategories, tools } from "@/lib/tools-registry";
 import { itemListJsonLd } from "@/lib/seo/jsonld";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { siteConfig } from "@/lib/site-config";
@@ -33,14 +33,34 @@ export default function ToolsPage() {
           { name: "ツール一覧", href: "/tools" },
         ]}
       />
-      <h1 className="mt-4 text-2xl font-bold">ツール一覧</h1>
-      <p className="mt-2 text-muted-foreground">
+      <h1 className="mt-4 text-3xl font-bold sm:text-4xl">ツール一覧</h1>
+      <p className="mt-3 max-w-2xl text-muted-foreground">
         目的に合わせて計算ツールを選べます。すべて登録不要・無料でご利用いただけます。
       </p>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tools.map((tool) => (
-          <ToolCard key={tool.id} tool={tool} />
-        ))}
+      <div className="mt-10 flex flex-col gap-12">
+        {toolCategories.map((category) => {
+          const categoryTools = tools.filter(
+            (tool) => tool.category === category.id,
+          );
+          if (categoryTools.length === 0) return null;
+          return (
+            <section key={category.id}>
+              <h2 className="text-xl font-bold">
+                {category.name}
+                <span className="ml-2 font-sans text-sm font-normal text-muted-foreground">
+                  {categoryTools.length}件
+                </span>
+              </h2>
+              <div className="mt-4">
+                <ToolIndex>
+                  {categoryTools.map((tool) => (
+                    <ToolCard key={tool.id} tool={tool} />
+                  ))}
+                </ToolIndex>
+              </div>
+            </section>
+          );
+        })}
       </div>
     </Container>
   );

@@ -16,7 +16,7 @@ export function RelatedGuides({ currentSlug }: { currentSlug: string }) {
           <Link
             key={g.slug}
             href={g.href}
-            className="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+            className="group flex flex-col rounded-md border p-6 transition-colors hover:border-primary/50"
           >
             <p className="text-xs font-medium text-primary">
               お金のガイド · 約{g.readingMinutes}分

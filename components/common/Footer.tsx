@@ -18,12 +18,12 @@ const siteLinks = [
  */
 export function Footer() {
   return (
-    <footer className="mt-24 border-t bg-muted/30">
+    <footer className="mt-24 border-t bg-muted">
       <Container className="py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/" className="flex items-center gap-2.5 font-bold">
-              <span className="flex size-8 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white">
+              <span className="flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
                 <JapaneseYen className="size-4" aria-hidden />
               </span>
               <span>{siteConfig.name}</span>
