@@ -1,0 +1,31 @@
+{
+  "pc:companies": {},
+  "pc:company-1301": {},
+  "pc:editorial-policy": {},
+  "pc:furusato-500": {},
+  "pc:guide-kaishain-tedori": {},
+  "pc:home": {},
+  "pc:industry-services": {},
+  "pc:take-home-500": {},
+  "pc:tool-furusato-tax": {
+    "color-contrast": 1
+  },
+  "pc:tool-nisa": {},
+  "pc:tool-salary-take-home": {},
+  "pc:tools": {},
+  "sp:companies": {},
+  "sp:company-1301": {},
+  "sp:editorial-policy": {},
+  "sp:furusato-500": {},
+  "sp:guide-kaishain-tedori": {},
+  "sp:home": {},
+  "sp:industry-services": {},
+  "sp:take-home-500": {},
+  "sp:tool-furusato-tax": {
+    "color-contrast": 1,
+    "scrollable-region-focusable": 1
+  },
+  "sp:tool-nisa": {},
+  "sp:tool-salary-take-home": {},
+  "sp:tools": {}
+}
