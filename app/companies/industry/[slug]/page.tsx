@@ -61,6 +61,7 @@ export default async function IndustryHubPage({
   const { companies, average, count } = getIndustryStats(industry);
   if (count === 0) notFound();
 
+  const listItems = toListItems(companies);
   const national = NATIONAL_AVERAGE_SALARY;
   const diff = average - national.value;
   const diffText =
@@ -97,11 +98,11 @@ export default async function IndustryHubPage({
       </p>
 
       <div className="mt-8">
-        <CompanyList companies={toListItems(companies)} />
+        <CompanyList companies={listItems} />
       </div>
 
       <CompanyIndex
-        companies={toListItems(companies)}
+        companies={listItems}
         heading={`${industry}の全${count}社一覧`}
       />
 

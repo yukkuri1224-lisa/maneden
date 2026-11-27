@@ -17,14 +17,16 @@ async function loadGoogleFont(
   const url = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@${weight}&text=${encodeURIComponent(
     text,
   )}`;
-  const css = await (
-    await fetch(url, { headers: { "User-Agent": "Mozilla/4.0" } })
-  ).text();
+  const cssRes = await fetch(url, { headers: { "User-Agent": "Mozilla/4.0" } });
+  if (!cssRes.ok) throw new Error("OGP フォント CSS の取得に失敗しました");
+  const css = await cssRes.text();
   const src = css.match(
     /src:\s*url\((.+?)\)\s*format\('(?:truetype|opentype)'\)/,
   );
   if (!src) throw new Error("OGP フォントの取得に失敗しました");
-  return (await fetch(src[1])).arrayBuffer();
+  const fontRes = await fetch(src[1]);
+  if (!fontRes.ok) throw new Error("OGP フォントファイルの取得に失敗しました");
+  return fontRes.arrayBuffer();
 }
 
 /** 長い説明文を max 文字に切り詰める（超過時は「…」付き） */

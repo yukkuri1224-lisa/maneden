@@ -65,6 +65,8 @@ export const metadata: Metadata = pageMetadata({
   description,
   path: guide.href,
   type: "article",
+  publishedTime: guide.publishedISO,
+  modifiedTime: guide.updatedISO,
 });
 
 const steps = [

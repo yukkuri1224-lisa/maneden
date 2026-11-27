@@ -4,9 +4,18 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
+import { CompanyIndex } from "@/components/companies/CompanyIndex";
 import { CompanyList } from "@/components/companies/CompanyList";
-import { companies, toListItems } from "@/lib/companies/data";
-import { hasIndustryHub, industrySlug } from "@/lib/companies/industries";
+import {
+  companies,
+  companiesWithoutHub,
+  toListItems,
+} from "@/lib/companies/data";
+import {
+  NO_HUB_INDUSTRIES,
+  hasIndustryHub,
+  industrySlug,
+} from "@/lib/companies/industries";
 import { listIndustryStats } from "@/lib/companies/stats";
 import { formatManYen } from "@/lib/format";
 import { datasetJsonLd } from "@/lib/seo/jsonld";
@@ -25,6 +34,9 @@ export default function CompaniesPage() {
   const industries = listIndustryStats().filter((s) =>
     hasIndustryHub(s.industry),
   );
+
+  const noHub = toListItems(companiesWithoutHub());
+  const noHubLabel = Array.from(NO_HUB_INDUSTRIES).join("・");
 
   return (
     <Container className="py-10">
@@ -87,6 +99,13 @@ export default function CompaniesPage() {
       <div className="mt-8">
         <CompanyList companies={toListItems(companies)} filterable />
       </div>
+
+      {noHub.length > 0 && (
+        <CompanyIndex
+          companies={noHub}
+          heading={`${noHubLabel}の業種の企業一覧（${noHub.length}社）`}
+        />
+      )}
     </Container>
   );
 }

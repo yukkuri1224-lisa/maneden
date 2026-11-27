@@ -1,3 +1,4 @@
+import { hasIndustryHub } from "./industries";
 import companiesJson from "./companies.json";
 import type { Company, CompanyListItem } from "./types";
 
@@ -12,6 +13,11 @@ export const companies: Company[] = (companiesJson as Company[])
 
 export function getCompanyBySlug(slug: string): Company | undefined {
   return companies.find((c) => c.slug === slug);
+}
+
+/** 業種ハブを持たない業種（「その他」等）の企業。ハブ経由で辿れないため一覧ページに直接リンクを出す */
+export function companiesWithoutHub(): Company[] {
+  return companies.filter((c) => !hasIndustryHub(c.industry));
 }
 
 /** 一覧表示用の軽量項目に変換する（順序は保持） */
