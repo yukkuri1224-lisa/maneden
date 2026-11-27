@@ -84,20 +84,16 @@ for (const vp of CAPTURE_VIEWPORTS) {
       const dir = join(outDir, vp.name);
       mkdirSync(dir, { recursive: true });
       for (let i = 0; i < count; i++) {
-        const y = i * vp.height;
         const file = join(
           dir,
           `${state.name}-${String(i + 1).padStart(2, "0")}.png`,
         );
+        // 実際にスクロールしてから画面を撮る。fullPage の切り出しだと、横スクロール枠の
+        // 中身（早見表など）が描かれずに空白になることがあった（cycle-1 で確認）
+        await page.evaluate((y) => window.scrollTo(0, y), i * vp.height);
+        await page.waitForTimeout(150);
         await page.screenshot({
           path: file,
-          fullPage: true,
-          clip: {
-            x: 0,
-            y,
-            width: vp.width,
-            height: Math.min(vp.height, fullHeight - y),
-          },
           animations: "disabled",
           caret: "hide",
         });
