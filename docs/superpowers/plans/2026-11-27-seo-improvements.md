@@ -34,6 +34,7 @@
 ### Task 1: メタデータヘルパーと全ページへの適用（担当: メタデータ）
 
 **Files:**
+
 - Create: `lib/seo/metadata.ts`
 - Create: `tests/seo/metadata.test.ts`
 - Modify: `lib/site-config.ts`（description 更新）
@@ -42,20 +43,23 @@
 - Modify: `metadata` / `generateMetadata` を持つ全 `app/**/page.tsx`（トップ、/tools と各ツール 14、/companies・業種ハブ・企業ページ、/guides と各ガイド 3、/take-home・/furusato とその動的ルート、about/disclaimer/privacy-policy/terms/contact）
 
 **Interfaces:**
+
 - Produces:
+
   ```ts
   export interface PageMetadataParams {
-    title: string;            // <title> 用（テンプレートで「 | まねでん」が付く）
+    title: string; // <title> 用（テンプレートで「 | まねでん」が付く）
     description: string;
-    path: string;             // "/" 始まり。canonical と og:url に使う
-    ogTitle?: string;         // 省略時 title
+    path: string; // "/" 始まり。canonical と og:url に使う
+    ogTitle?: string; // 省略時 title
     type?: "website" | "article"; // 既定 "website"
-    publishedTime?: string;   // article のとき ISO
+    publishedTime?: string; // article のとき ISO
     modifiedTime?: string;
   }
   export function pageMetadata(p: PageMetadataParams): Metadata;
   export const DEFAULT_OG_IMAGE = "/opengraph-image";
   ```
+
   戻り値: `title`, `description`, `alternates.canonical = path`, `openGraph = { type, locale: "ja_JP", siteName, url: siteConfig.url + (path === "/" ? "" : path), title: ogTitle ?? title, description, images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: ogTitle ?? title }], publishedTime?, modifiedTime? }`, `twitter = { card: "summary_large_image", title: ogTitle ?? title, description, images: [DEFAULT_OG_IMAGE] }`。
 
 - [ ] **Step 1: 失敗するテストを書く** — `tests/seo/metadata.test.ts`
@@ -80,23 +84,30 @@
   - `app/layout.tsx` の openGraph/twitter: title を layout の default title と同じ文字列に、url はそのまま、`images` は指定しない（ルートの opengraph-image ファイルが付く）。
   - `app/robots.ts` から `host` を削除。
 - [ ] **Step 6: 検証** — `pnpm run typecheck && pnpm run lint && pnpm test && pnpm build` が通る。ビルド後、次を確認:
-  `grep -o '<meta property="og:[a-z:_]*" content="[^"]*"' .next/server/app/about.html` に og:url=`https://maneden.com/about`・og:image・og:site_name が出る。`.next/server/app/tools/nisa.html` と `.next/server/app/take-home/500.html` と `.next/server/app/guides/furusato-nouzei.html` に og:image・og:site_name・twitter:image が出る。ガイドの `<title>` に「まねでん」が 1 回だけ。`grep -c Host .next/server/app/robots.txt.body`（または `/robots.txt` 相当の出力）が 0。
+      `grep -o '<meta property="og:[a-z:_]*" content="[^"]*"' .next/server/app/about.html` に og:url=`https://maneden.com/about`・og:image・og:site_name が出る。`.next/server/app/tools/nisa.html` と `.next/server/app/take-home/500.html` と `.next/server/app/guides/furusato-nouzei.html` に og:image・og:site_name・twitter:image が出る。ガイドの `<title>` に「まねでん」が 1 回だけ。`grep -c Host .next/server/app/robots.txt.body`（または `/robots.txt` 相当の出力）が 0。
 - [ ] **Step 7: コミット** `feat(seo): メタデータ生成を共通化し全ページの OGP・Twitter カードを補完`
 
 ### Task 2: ページ別 OGP 画像（担当: OGP 画像）
 
 **Files:**
+
 - Create: `lib/seo/og-image.tsx`
 - Modify: `app/opengraph-image.tsx`（描画を共通関数に委譲）
 - Create: `app/tools/<id>/opengraph-image.tsx` × 14（`lib/tools-registry.ts` の全ツール）
 - Create: `app/guides/<slug>/opengraph-image.tsx` × 3
 
 **Interfaces:**
+
 - Consumes: Task 1 の `DEFAULT_OG_IMAGE`（ページ固有画像がファイル規約で上書きすることを前提）
 - Produces:
+
   ```ts
   export const OG_SIZE = { width: 1200, height: 630 };
-  export async function renderOgImage(p: { title: string; tagline: string; badges?: string[] }): Promise<ImageResponse>;
+  export async function renderOgImage(p: {
+    title: string;
+    tagline: string;
+    badges?: string[];
+  }): Promise<ImageResponse>;
   ```
 
 - [ ] **Step 1:** 既存 `app/opengraph-image.tsx` のレイアウト・配色・フォント取得を `renderOgImage` に移す。フォント取得（`loadGoogleFont`）が失敗した場合は `fonts` なしで描画する（try/catch）。ルートはこの関数を呼ぶだけにし、見た目は変えない。
@@ -108,6 +119,7 @@
 ### Task 3: 構造化データの重複解消と補完（担当: 構造化データ）
 
 **Files:**
+
 - Modify: `lib/seo/jsonld.ts`
 - Create: `tests/seo/jsonld.test.ts`
 - Create: `public/logo.png`（512×512、`public/icon.svg` をラスタライズ。Playwright の chromium で SVG を描画してスクリーンショット）
@@ -115,6 +127,7 @@
 - Modify: `app/tools/page.tsx`, `app/take-home/page.tsx`, `app/furusato/page.tsx`（ItemList 追加）
 
 **Interfaces:**
+
 - Consumes: 既存 `itemListJsonLd(items: ItemListEntry[])`（変更しない）
 - Produces: `ORGANIZATION_ID = \`${siteConfig.url}/#organization\``、`WEBSITE_ID = \`${siteConfig.url}/#website\``
 
@@ -132,6 +145,7 @@
 ### Task 4: 企業ページのクロール導線と一覧の軽量化（担当: クロール・パフォーマンス）
 
 **Files:**
+
 - Modify: `lib/companies/types.ts`（表示用型の追加）
 - Modify: `lib/companies/data.ts`（変換関数の追加）
 - Modify: `components/companies/CompanyList.tsx`（props 型を軽量型に）
@@ -140,11 +154,19 @@
 - Create: `tests/companies/list-items.test.ts`
 
 **Interfaces:**
+
 - Produces:
+
   ```ts
-  export type CompanyListItem = Pick<Company, "slug" | "name" | "industry" | "averageSalary">;
+  export type CompanyListItem = Pick<
+    Company,
+    "slug" | "name" | "industry" | "averageSalary"
+  >;
   export function toListItems(companies: Company[]): CompanyListItem[];
-  export function CompanyIndex(props: { companies: CompanyListItem[]; heading: string }): JSX.Element;
+  export function CompanyIndex(props: {
+    companies: CompanyListItem[];
+    heading: string;
+  }): JSX.Element;
   ```
 
 - [ ] **Step 1: 失敗するテスト** — `toListItems` が 4 キーだけを持つオブジェクトを同順で返す（`Object.keys(item).sort()` が `["averageSalary","industry","name","slug"]`）、入力配列の長さと順序を保つ。
