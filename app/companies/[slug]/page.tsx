@@ -37,7 +37,7 @@ export async function generateMetadata({
     company.averageSalary,
     0,
   )}｜手取りも計算`;
-  const description = `${company.name}（${company.industry}）の平均年収を全国平均・業種平均と比較。平均年齢・勤続年数・従業員数を有価証券報告書ベースで掲載し、この年収での手取り額も計算できます。`;
+  const description = `${company.name}（${company.industry}）の平均年収を全国平均・業種平均と比較。平均年齢・勤続年数を有価証券報告書ベースで掲載し、この年収での手取り額も計算できます。`;
 
   return {
     title,
@@ -175,7 +175,7 @@ export default async function CompanyPage({
   ];
   if (profileParts.length > 0) {
     companyFaqs.push({
-      question: `${company.name}の平均年齢・勤続年数・従業員数は？`,
+      question: `${company.name}の平均年齢・勤続年数は？`,
       answer: `有価証券報告書によると、${profileParts.join("、")}です。`,
     });
   }
@@ -538,7 +538,7 @@ export default async function CompanyPage({
         <p>
           <span className="font-medium text-foreground">出典：</span>
           {company.name}
-          の平均年間給与・平均年齢・平均勤続年数・従業員数は、同社が金融庁
+          の平均年間給与・平均年齢・平均勤続年数は、同社が金融庁
           <a
             href="https://disclosure2.edinet-fsa.go.jp/"
             target="_blank"

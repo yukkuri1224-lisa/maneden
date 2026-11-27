@@ -15,7 +15,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "企業の平均年収ランキング",
   description:
-    "上場企業約1,500社の平均年収・平均年齢・従業員数を有価証券報告書ベースで掲載。業種別ランキングや会社名検索から、気になる企業の年収と手取り額を確認できます。",
+    "上場企業約1,500社の平均年収・平均年齢・勤続年数を有価証券報告書ベースで掲載。業種別ランキングや会社名検索から、気になる企業の年収と手取り額を確認できます。",
   alternates: { canonical: "/companies" },
 };
 
@@ -32,7 +32,7 @@ export default function CompaniesPage() {
           name: "上場企業の平均年収データ",
           description: `国内上場企業${companies.length.toLocaleString(
             "ja-JP",
-          )}社の平均年収・平均年齢・平均勤続年数・従業員数を有価証券報告書ベースでまとめたデータセット。業種別ランキングや会社名検索から閲覧できます。`,
+          )}社の平均年収・平均年齢・平均勤続年数を有価証券報告書ベースでまとめたデータセット。業種別ランキングや会社名検索から閲覧できます。`,
           url: `${siteConfig.url}/companies`,
           keywords: [
             "平均年収",
@@ -53,7 +53,7 @@ export default function CompaniesPage() {
         企業の平均年収ランキング
       </h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        上場企業の平均年収・平均年齢・従業員数（有価証券報告書ベース）。全
+        上場企業の平均年収・平均年齢・勤続年数（有価証券報告書ベース）。全
         {companies.length.toLocaleString("ja-JP")}
         社を平均年収の高い順に掲載しています。業種で絞り込むか、会社名で検索してください。気になる企業から、手取り額もその場で計算できます。
       </p>
