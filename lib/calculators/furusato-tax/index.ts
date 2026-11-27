@@ -1,3 +1,9 @@
+import {
+  basicDeductionIncomeTax,
+  residentBasicDeduction,
+  residentSalaryIncome,
+  salaryIncomeAfterDeduction,
+} from "@/lib/calculators/common/salary-income";
 import { TAX_TABLES } from "@/lib/constants/tax-tables";
 
 import type { FurusatoInput, FurusatoResult } from "./types";
@@ -9,16 +15,6 @@ function clampMin0(value: number): number {
 function floorTo(value: number, unit: number): number {
   if (value <= 0) return 0;
   return Math.floor(value / unit) * unit;
-}
-
-/** 給与所得控除（2020年分以降の標準式） */
-function salaryIncomeDeduction(salary: number): number {
-  if (salary <= 1_625_000) return 550_000;
-  if (salary <= 1_800_000) return salary * 0.4 - 100_000;
-  if (salary <= 3_600_000) return salary * 0.3 + 80_000;
-  if (salary <= 6_600_000) return salary * 0.2 + 440_000;
-  if (salary <= 8_500_000) return salary * 0.1 + 1_100_000;
-  return 1_950_000;
 }
 
 /** 所得税の限界税率（課税所得が属するブラケットの税率） */
@@ -43,21 +39,23 @@ export function calculateFurusato(input: FurusatoInput): FurusatoResult {
   const dependents = Math.max(0, Math.floor(input.dependents));
 
   // 総所得（給与→給与所得、事業→事業所得そのまま）
+  // 所得税は令和8年分、住民税は令和9年度分の控除で求める。上限額は住民税の所得割が基準で、
+  // 所得税側の改正は「限界税率」を通じてのみ上限額に効く。
   const totalIncome =
-    input.incomeType === "salary"
-      ? clampMin0(income - salaryIncomeDeduction(income))
-      : income;
+    input.incomeType === "salary" ? salaryIncomeAfterDeduction(income) : income;
+  const totalIncomeResident =
+    input.incomeType === "salary" ? residentSalaryIncome(income) : income;
 
   const spouseIT = input.hasSpouse ? it.spouseDeduction : 0;
   const spouseRT = input.hasSpouse ? rt.spouseDeduction : 0;
 
   const deductionsIncomeTax =
-    it.basicDeduction.base +
+    basicDeductionIncomeTax(totalIncome) +
     dependents * it.dependentDeduction +
     spouseIT +
     socialInsurance;
   const deductionsResident =
-    rt.basicDeduction +
+    residentBasicDeduction() +
     dependents * rt.dependentDeduction +
     spouseRT +
     socialInsurance;
@@ -67,7 +65,7 @@ export function calculateFurusato(input: FurusatoInput): FurusatoResult {
     1000,
   );
   const taxableIncomeResident = floorTo(
-    clampMin0(totalIncome - deductionsResident),
+    clampMin0(totalIncomeResident - deductionsResident),
     1000,
   );
 

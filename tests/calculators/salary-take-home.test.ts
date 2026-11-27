@@ -32,14 +32,16 @@ describe("calculateSalaryTakeHome（年収500万・単身・40歳未満）", () 
     expect(r.salaryIncome).toBe(3_560_000);
   });
 
-  it("所得税・住民税", () => {
-    expect(r.incomeTax).toBe(130_700);
+  it("所得税・住民税（所得税は令和8年分・基礎控除104万円）", () => {
+    // 課税所得 = 3,560,000 − 基礎控除1,040,000 − 社保723,148 = 1,796,852 → 1,796,000
+    // 所得税 = 1,796,000×5% = 89,800、復興税 1,885 → 91,685 → 百円未満切捨て 91,600
+    expect(r.incomeTax).toBe(91_600);
     expect(r.residentTax).toBe(245_600);
   });
 
-  it("手取りと手取り率（年収500万・東京は約390万・78%）", () => {
-    expect(r.netIncome).toBe(3_900_552);
-    expect(r.netIncomeRate).toBeCloseTo(78.01, 2);
+  it("手取りと手取り率（年収500万・東京は約394万・78.8%）", () => {
+    expect(r.netIncome).toBe(3_939_652);
+    expect(r.netIncomeRate).toBeCloseTo(78.79, 2);
   });
 });
 

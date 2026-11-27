@@ -99,12 +99,14 @@ describe("calculateFreelanceTax（統合・標準シナリオ）", () => {
     expect(result.nationalPension).toBe(210_000);
   });
 
-  it("課税所得（所得税ベース・基礎控除58万）", () => {
-    expect(result.taxableIncome).toBe(2_205_000);
+  it("課税所得（所得税ベース・令和8年分の基礎控除104万円）", () => {
+    // 事業所得3,350,000 − 基礎控除1,040,000 − 社保564,900 = 1,745,100 → 1,745,000
+    expect(result.taxableIncome).toBe(1_745_000);
   });
 
   it("所得税（復興特別所得税込み）", () => {
-    expect(result.incomeTax).toBe(125_500);
+    // 1,745,000×5% = 87,250、復興税1,832 → 89,082 → 89,000
+    expect(result.incomeTax).toBe(89_000);
   });
 
   it("住民税（所得割＋均等割4,000＋森林環境税1,000）", () => {
@@ -117,9 +119,9 @@ describe("calculateFreelanceTax（統合・標準シナリオ）", () => {
   });
 
   it("負担合計・手取り・手取り率", () => {
-    expect(result.totalBurden).toBe(930_900);
-    expect(result.netIncome).toBe(3_069_100);
-    expect(result.netIncomeRate).toBeCloseTo(61.382, 2);
+    expect(result.totalBurden).toBe(894_400);
+    expect(result.netIncome).toBe(3_105_600);
+    expect(result.netIncomeRate).toBeCloseTo(62.112, 2);
   });
 });
 
