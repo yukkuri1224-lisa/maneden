@@ -46,7 +46,8 @@ export const CAPTURE_TARGETS: CaptureTarget[] = [
   {
     name: "home",
     path: "/",
-    maxSegments: 8,
+    // 375 幅では 9 画面を超える（8 では CTA 帯とフッターが切れた）
+    maxSegments: 12,
     states: [{ name: "default" }, { name: "dark", dark: true, segments: 2 }],
   },
   {
