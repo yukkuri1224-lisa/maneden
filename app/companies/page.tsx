@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { CompanyList } from "@/components/companies/CompanyList";
-import { companies } from "@/lib/companies/data";
+import { companies, toListItems } from "@/lib/companies/data";
 import { hasIndustryHub, industrySlug } from "@/lib/companies/industries";
 import { listIndustryStats } from "@/lib/companies/stats";
 import { formatManYen } from "@/lib/format";
@@ -85,7 +85,7 @@ export default function CompaniesPage() {
       </div>
 
       <div className="mt-8">
-        <CompanyList companies={companies} filterable />
+        <CompanyList companies={toListItems(companies)} filterable />
       </div>
     </Container>
   );

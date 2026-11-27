@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
+import { CompanyIndex } from "@/components/companies/CompanyIndex";
 import { CompanyList } from "@/components/companies/CompanyList";
+import { toListItems } from "@/lib/companies/data";
 import {
   INDUSTRY_SLUGS,
   NO_HUB_INDUSTRIES,
@@ -95,8 +97,13 @@ export default async function IndustryHubPage({
       </p>
 
       <div className="mt-8">
-        <CompanyList companies={companies} />
+        <CompanyList companies={toListItems(companies)} />
       </div>
+
+      <CompanyIndex
+        companies={toListItems(companies)}
+        heading={`${industry}の全${count}社一覧`}
+      />
 
       <div className="mt-10">
         <Link

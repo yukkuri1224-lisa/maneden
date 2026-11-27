@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Building2, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import type { Company } from "@/lib/companies/types";
+import type { CompanyListItem } from "@/lib/companies/types";
 import { formatManYen } from "@/lib/format";
 
 const PER_PAGE = 30;
@@ -14,7 +14,7 @@ export function CompanyList({
   companies,
   filterable = false,
 }: {
-  companies: Company[];
+  companies: CompanyListItem[];
   /** 業種フィルタ＋社名検索の UI を表示するか（一覧トップ用） */
   filterable?: boolean;
 }) {
