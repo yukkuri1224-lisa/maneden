@@ -30,8 +30,10 @@ Claude Code がこのリポジトリで作業するときに自動で読み込�
 | 23 | test-driven-development | TDD | obra/superpowers @ 22f0b46 (MIT) |
 | 24 | requesting-code-review | コードレビュー依頼 | obra/superpowers @ 22f0b46 (MIT) |
 | 25 | verification-before-completion | 完了前の検証 | obra/superpowers @ 22f0b46 (MIT) |
+| 26 | ui-ux-pro-max | UI/UX 設計・デザインシステム生成 | nextlevelbuilder/ui-ux-pro-max-skill @ 11ca2b3 (MIT) |
+| 27 | shadcn | shadcn/ui の追加・構成・スタイリング規約 | shadcn-ui/ui @ 0e5b2e6 (MIT) |
 
-ライセンス本文: `LICENSE.superpowers`（MIT, Jesse Vincent）、`LICENSE.marketingskills`（MIT, Corey Haines）、
+ライセンス本文: `LICENSE.ui-ux-pro-max`（MIT）、`LICENSE.shadcn`（MIT）、`LICENSE.superpowers`（MIT, Jesse Vincent）、`LICENSE.marketingskills`（MIT, Corey Haines）、
 anthropics/skills 由来は各スキルフォルダ内の `LICENSE.txt`。
 
 ## 更新方法
