@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/common/JsonLd";
 import { getGuideBySlug } from "@/lib/guides";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const guide = getGuideBySlug("kaishain-tedori")!;
 
@@ -50,17 +51,13 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "会社員の手取りはどう決まる？額面との違いと計算方法を解説｜まねでん",
+export const metadata: Metadata = pageMetadata({
+  title: "会社員の手取りはどう決まる？額面との違いと計算方法を解説",
+  ogTitle: guide.title,
   description,
-  alternates: { canonical: guide.href },
-  openGraph: {
-    type: "article",
-    title: guide.title,
-    description,
-    url: `${siteConfig.url}${guide.href}`,
-  },
-};
+  path: guide.href,
+  type: "article",
+});
 
 const deductions = [
   {

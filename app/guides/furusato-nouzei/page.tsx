@@ -9,6 +9,7 @@ import { getGuideBySlug } from "@/lib/guides";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const guide = getGuideBySlug("furusato-nouzei")!;
 
@@ -58,17 +59,13 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "ふるさと納税とは？仕組み・限度額・やり方をやさしく解説｜まねでん",
+export const metadata: Metadata = pageMetadata({
+  title: "ふるさと納税とは？仕組み・限度額・やり方をやさしく解説",
+  ogTitle: guide.title,
   description,
-  alternates: { canonical: guide.href },
-  openGraph: {
-    type: "article",
-    title: guide.title,
-    description,
-    url: `${siteConfig.url}${guide.href}`,
-  },
-};
+  path: guide.href,
+  type: "article",
+});
 
 const steps = [
   {

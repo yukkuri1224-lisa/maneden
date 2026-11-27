@@ -16,6 +16,7 @@ import { NATIONAL_AVERAGE_SALARY } from "@/lib/constants/national-salary";
 import { formatManYen } from "@/lib/format";
 import { itemListJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export function generateStaticParams() {
   return Object.entries(INDUSTRY_SLUGS)
@@ -39,16 +40,11 @@ export async function generateMetadata({
     0,
   )}。有価証券報告書ベースで平均年収の高い順にランキング。気になる企業の手取りもその場で計算できます。`;
 
-  return {
+  return pageMetadata({
     title,
     description,
-    alternates: { canonical: `/companies/industry/${slug}` },
-    openGraph: {
-      title,
-      description,
-      url: `${siteConfig.url}/companies/industry/${slug}`,
-    },
-  };
+    path: `/companies/industry/${slug}`,
+  });
 }
 
 export default async function IndustryHubPage({

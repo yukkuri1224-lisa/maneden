@@ -7,18 +7,17 @@ import { calculateFurusato } from "@/lib/calculators/furusato-tax";
 import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
 import { formatManYen } from "@/lib/format";
 import { INCOME_LEVELS } from "@/lib/longtail/levels";
-import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const title = "年収別ふるさと納税 上限額一覧｜300万〜1500万円の目安";
 const description =
   "年収300万〜1,500万円のふるさと納税 控除上限額（独身・扶養なしの目安）を一覧で確認。各年収のページで自己負担2,000円で寄付できる額の計算方法と注意点を解説しています。";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title,
   description,
-  alternates: { canonical: "/furusato" },
-  openGraph: { title, description, url: `${siteConfig.url}/furusato` },
-};
+  path: "/furusato",
+});
 
 const rows = INCOME_LEVELS.map((l) => {
   const s = calculateSalaryTakeHome({

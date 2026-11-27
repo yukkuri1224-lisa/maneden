@@ -12,6 +12,7 @@ import { SubsidyFinderTool } from "@/components/tools/subsidy-finder/SubsidyFind
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const tool = getToolById("subsidy-finder")!;
 
@@ -46,16 +47,12 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "補助金・助成金 診断｜受給できそうな制度と概算額を無料でチェック",
+  ogTitle: tool.title,
   description,
-  alternates: { canonical: tool.href },
-  openGraph: {
-    title: tool.title,
-    description,
-    url: `${siteConfig.url}${tool.href}`,
-  },
-};
+  path: tool.href,
+});
 
 export default function SubsidyFinderPage() {
   return (

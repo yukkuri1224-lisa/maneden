@@ -11,13 +11,14 @@ import { listIndustryStats } from "@/lib/companies/stats";
 import { formatManYen } from "@/lib/format";
 import { datasetJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "企業の平均年収ランキング",
   description:
     "上場企業約1,500社の平均年収・平均年齢・従業員数を有価証券報告書ベースで掲載。業種別ランキングや会社名検索から、気になる企業の年収と手取り額を確認できます。",
-  alternates: { canonical: "/companies" },
-};
+  path: "/companies",
+});
 
 export default function CompaniesPage() {
   // ハブのある業種を平均年収の高い順に（チップの内部リンク用）

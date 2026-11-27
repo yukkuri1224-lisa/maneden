@@ -8,20 +8,17 @@ import { JsonLd } from "@/components/common/JsonLd";
 import { guides } from "@/lib/guides";
 import { itemListJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const description =
   "税金・節税・資産形成のポイントを、まねでんの計算ツールで数字を確かめながら学べる解説記事。iDeCoと新NISAの使い分け、ふるさと納税の仕組み、会社員の手取りなど。";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "お金のガイド",
+  ogTitle: `お金のガイド | ${siteConfig.name}`,
   description,
-  alternates: { canonical: "/guides" },
-  openGraph: {
-    title: `お金のガイド | ${siteConfig.name}`,
-    description,
-    url: `${siteConfig.url}/guides`,
-  },
-};
+  path: "/guides",
+});
 
 export default function GuidesPage() {
   const [featured, ...rest] = guides;

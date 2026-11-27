@@ -4,13 +4,14 @@ import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { ToolCard } from "@/components/common/ToolCard";
 import { tools } from "@/lib/tools-registry";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "ツール一覧",
   description:
     "まねでんで使える、税金・経営・不動産の計算＆シミュレーションツールの一覧。すべて登録不要・無料。",
-  alternates: { canonical: "/tools" },
-};
+  path: "/tools",
+});
 
 export default function ToolsPage() {
   return (

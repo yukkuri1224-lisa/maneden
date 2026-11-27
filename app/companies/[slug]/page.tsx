@@ -19,6 +19,7 @@ import { formatManYen } from "@/lib/format";
 import { datasetJsonLd, faqJsonLd, itemListJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export function generateStaticParams() {
   return companies.map((company) => ({ slug: company.slug }));
@@ -39,16 +40,7 @@ export async function generateMetadata({
   )}｜手取りも計算`;
   const description = `${company.name}（${company.industry}）の平均年収を全国平均・業種平均と比較。平均年齢・勤続年数・従業員数を有価証券報告書ベースで掲載し、この年収での手取り額も計算できます。`;
 
-  return {
-    title,
-    description,
-    alternates: { canonical: `/companies/${slug}` },
-    openGraph: {
-      title,
-      description,
-      url: `${siteConfig.url}/companies/${slug}`,
-    },
-  };
+  return pageMetadata({ title, description, path: `/companies/${slug}` });
 }
 
 /** 差額を「190万円上回り」のように整形（絶対値＋上回る/下回る） */

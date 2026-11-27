@@ -9,6 +9,8 @@ import { Header } from "@/components/common/Header";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
+const defaultTitle = `${siteConfig.name}｜税金・手取り・経営・不動産の無料計算ツール`;
+
 const geistSans = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
@@ -31,7 +33,7 @@ const zenKaku = Zen_Kaku_Gothic_New({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name}｜税金・手取り・経営・不動産の無料計算ツール`,
+    default: defaultTitle,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -41,12 +43,12 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: siteConfig.name,
+    title: defaultTitle,
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: defaultTitle,
     description: siteConfig.description,
   },
   robots: { index: true, follow: true },

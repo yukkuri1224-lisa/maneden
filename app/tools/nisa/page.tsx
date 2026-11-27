@@ -15,6 +15,7 @@ import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const tool = getToolById("nisa")!;
 
@@ -95,17 +96,13 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title:
     "新NISA・つみたてNISA 積立シミュレーター｜毎月いくらで将来いくら？複利で無料計算",
+  ogTitle: tool.title,
   description,
-  alternates: { canonical: tool.href },
-  openGraph: {
-    title: tool.title,
-    description,
-    url: `${siteConfig.url}${tool.href}`,
-  },
-};
+  path: tool.href,
+});
 
 export default function NisaPage() {
   return (

@@ -15,6 +15,7 @@ import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
 import { ToolCard } from "@/components/common/ToolCard";
 import { buttonVariants } from "@/components/ui/button";
+import { pageMetadata } from "@/lib/seo/metadata";
 import {
   faqJsonLd,
   itemListJsonLd,
@@ -30,11 +31,16 @@ import { formatManYen } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 // トップは最重要 URL。canonical と、SERPスニペットを使い切る説明文を明示する。
-export const metadata: Metadata = {
+const HOME_TITLE = `${siteConfig.name}｜税金・手取り・経営・不動産の無料計算ツール`;
+const homeMetadata = pageMetadata({
+  title: HOME_TITLE,
   description:
     "年収の手取り・ふるさと納税の上限・退職金や贈与税まで、税金とお金の計算が登録不要・完全無料で完結。会社員もフリーランスも使えるシミュレーター14種と上場企業の平均年収データを収録。",
-  alternates: { canonical: "/" },
-};
+  path: "/",
+});
+// <title> は layout の default を使うため title を除く（og:title は HOME_TITLE）
+delete homeMetadata.title;
+export const metadata: Metadata = homeMetadata;
 
 const trustPoints = [
   { icon: Gift, label: "完全無料" },

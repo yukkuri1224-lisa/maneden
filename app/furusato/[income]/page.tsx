@@ -20,6 +20,7 @@ import {
 import { articleJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export const dynamicParams = false;
 
@@ -62,16 +63,7 @@ export async function generateMetadata({
     0,
   )}が目安。自己負担2,000円で寄付できる金額の計算方法と、家族構成・控除による違いを解説します。`;
 
-  return {
-    title,
-    description,
-    alternates: { canonical: `/furusato/${income}` },
-    openGraph: {
-      title,
-      description,
-      url: `${siteConfig.url}/furusato/${income}`,
-    },
-  };
+  return pageMetadata({ title, description, path: `/furusato/${income}` });
 }
 
 export default async function FurusatoLevelPage({

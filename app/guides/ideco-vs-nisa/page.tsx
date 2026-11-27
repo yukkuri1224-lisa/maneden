@@ -9,6 +9,7 @@ import { getGuideBySlug } from "@/lib/guides";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const guide = getGuideBySlug("ideco-vs-nisa")!;
 
@@ -52,18 +53,14 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title:
     "iDeCoと新NISA、どっちから始める？併用のメリットと使い分け｜比較ガイド",
+  ogTitle: guide.title,
   description,
-  alternates: { canonical: guide.href },
-  openGraph: {
-    type: "article",
-    title: guide.title,
-    description,
-    url: `${siteConfig.url}${guide.href}`,
-  },
-};
+  path: guide.href,
+  type: "article",
+});
 
 const compareRows = [
   {

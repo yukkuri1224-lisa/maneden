@@ -12,6 +12,7 @@ import { RealEstateTool } from "@/components/tools/real-estate-yield/RealEstateT
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const tool = getToolById("real-estate-yield")!;
 
@@ -46,16 +47,12 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "不動産利回り＆デッドクロス診断｜表面・実質利回りと発生年を無料計算",
+  ogTitle: tool.title,
   description,
-  alternates: { canonical: tool.href },
-  openGraph: {
-    title: tool.title,
-    description,
-    url: `${siteConfig.url}${tool.href}`,
-  },
-};
+  path: tool.href,
+});
 
 export default function RealEstateYieldPage() {
   return (

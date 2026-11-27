@@ -6,18 +6,17 @@ import { Container } from "@/components/common/Container";
 import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
 import { formatManYen } from "@/lib/format";
 import { INCOME_LEVELS } from "@/lib/longtail/levels";
-import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const title = "年収別の手取り一覧｜300万〜1500万円の手取り額を早見";
 const description =
   "年収300万〜1,500万円の手取り額（独身・扶養なしの概算）を一覧で確認。各年収のページで社会保険料・所得税・住民税の内訳と月あたりの手取りを解説しています。";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title,
   description,
-  alternates: { canonical: "/take-home" },
-  openGraph: { title, description, url: `${siteConfig.url}/take-home` },
-};
+  path: "/take-home",
+});
 
 const rows = INCOME_LEVELS.map((l) => {
   const r = calculateSalaryTakeHome({

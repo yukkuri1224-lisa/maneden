@@ -4,12 +4,14 @@ import { ArticlePage } from "@/components/common/ArticlePage";
 import { JsonLd } from "@/components/common/JsonLd";
 import { organizationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "運営者情報・免責事項",
-  description: `${siteConfig.name} の運営者情報・データの出典・免責事項について。`,
-  alternates: { canonical: "/about" },
-};
+  description:
+    "まねでんの運営者情報。運営方針、計算ロジックと税率データの出典（国税庁・EDINET など）、更新方針、免責事項、お問い合わせ先をまとめています。",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

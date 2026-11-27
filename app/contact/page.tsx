@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 
 import { ArticlePage } from "@/components/common/ArticlePage";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "お問い合わせ",
-  description: `${siteConfig.name} へのお問い合わせについて。`,
-  alternates: { canonical: "/contact" },
-};
+  description:
+    "まねでんへのお問い合わせ窓口。計算結果の誤りの報告、ツールへの要望、掲載データの修正依頼などはメールで受け付けています。",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

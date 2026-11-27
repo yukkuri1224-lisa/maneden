@@ -20,6 +20,7 @@ import {
 import { articleJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export const dynamicParams = false;
 
@@ -52,16 +53,7 @@ export async function generateMetadata({
     0,
   )}%）。社会保険料・所得税・住民税の内訳と、月あたりの手取り、家族構成による違いまで解説します。`;
 
-  return {
-    title,
-    description,
-    alternates: { canonical: `/take-home/${income}` },
-    openGraph: {
-      title,
-      description,
-      url: `${siteConfig.url}/take-home/${income}`,
-    },
-  };
+  return pageMetadata({ title, description, path: `/take-home/${income}` });
 }
 
 export default async function TakeHomeLevelPage({
