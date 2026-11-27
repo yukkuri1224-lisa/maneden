@@ -3,11 +3,14 @@ import Link from "next/link";
 
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
+import { JsonLd } from "@/components/common/JsonLd";
 import { calculateFurusato } from "@/lib/calculators/furusato-tax";
 import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
 import { formatManYen } from "@/lib/format";
 import { INCOME_LEVELS } from "@/lib/longtail/levels";
+import { itemListJsonLd } from "@/lib/seo/jsonld";
 import { pageMetadata } from "@/lib/seo/metadata";
+import { siteConfig } from "@/lib/site-config";
 
 const title = "年収別ふるさと納税 上限額一覧｜300万〜1500万円の目安";
 const description =
@@ -39,6 +42,14 @@ const rows = INCOME_LEVELS.map((l) => {
 export default function FurusatoHubPage() {
   return (
     <Container className="py-10">
+      <JsonLd
+        data={itemListJsonLd(
+          INCOME_LEVELS.map((l) => ({
+            name: `年収${l.man}万円のふるさと納税上限額`,
+            url: `${siteConfig.url}/furusato/${l.slug}`,
+          })),
+        )}
+      />
       <Breadcrumb
         items={[
           { name: "ホーム", href: "/" },

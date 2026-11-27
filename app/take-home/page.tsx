@@ -3,10 +3,13 @@ import Link from "next/link";
 
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
+import { JsonLd } from "@/components/common/JsonLd";
 import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
 import { formatManYen } from "@/lib/format";
 import { INCOME_LEVELS } from "@/lib/longtail/levels";
+import { itemListJsonLd } from "@/lib/seo/jsonld";
 import { pageMetadata } from "@/lib/seo/metadata";
+import { siteConfig } from "@/lib/site-config";
 
 const title = "年収別の手取り一覧｜300万〜1500万円の手取り額を早見";
 const description =
@@ -31,6 +34,14 @@ const rows = INCOME_LEVELS.map((l) => {
 export default function TakeHomeHubPage() {
   return (
     <Container className="py-10">
+      <JsonLd
+        data={itemListJsonLd(
+          INCOME_LEVELS.map((l) => ({
+            name: `年収${l.man}万円の手取り`,
+            url: `${siteConfig.url}/take-home/${l.slug}`,
+          })),
+        )}
+      />
       <Breadcrumb
         items={[
           { name: "ホーム", href: "/" },

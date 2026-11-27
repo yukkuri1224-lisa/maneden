@@ -6,7 +6,7 @@ import { GuideArticle } from "@/components/guides/GuideArticle";
 import { GuideSection } from "@/components/guides/GuideSection";
 import { JsonLd } from "@/components/common/JsonLd";
 import { getGuideBySlug } from "@/lib/guides";
-import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
+import { articleJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -121,13 +121,6 @@ export default function IdecoVsNisaGuide() {
           datePublished: guide.publishedISO,
           dateModified: guide.updatedISO,
         })}
-      />
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "ホーム", url: `${siteConfig.url}/` },
-          { name: "ガイド", url: `${siteConfig.url}/guides` },
-          { name: guide.shortTitle, url },
-        ])}
       />
       <JsonLd data={faqJsonLd(faqs)} />
 

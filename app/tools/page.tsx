@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
+import { JsonLd } from "@/components/common/JsonLd";
 import { ToolCard } from "@/components/common/ToolCard";
 import { tools } from "@/lib/tools-registry";
+import { itemListJsonLd } from "@/lib/seo/jsonld";
 import { pageMetadata } from "@/lib/seo/metadata";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = pageMetadata({
   title: "ツール一覧",
@@ -16,6 +19,14 @@ export const metadata: Metadata = pageMetadata({
 export default function ToolsPage() {
   return (
     <Container className="py-10">
+      <JsonLd
+        data={itemListJsonLd(
+          tools.map((tool) => ({
+            name: tool.title,
+            url: `${siteConfig.url}${tool.href}`,
+          })),
+        )}
+      />
       <Breadcrumb
         items={[
           { name: "ホーム", href: "/" },
