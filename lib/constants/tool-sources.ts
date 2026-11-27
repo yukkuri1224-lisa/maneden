@@ -33,6 +33,10 @@ export const TOOL_SOURCES: Record<string, ToolSource[]> = {
   ],
   "bonus-take-home": [
     {
+      label: "厚生労働省 子ども・子育て支援金に関するQ&A",
+      href: "https://www.mhlw.go.jp/hourei/doc/tsuchi/T260216S0101.pdf",
+    },
+    {
       label: "国税庁 No.2523 賞与に対する源泉徴収",
       href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2523.htm",
     },

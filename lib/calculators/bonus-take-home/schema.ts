@@ -1,3 +1,8 @@
+import {
+  DEFAULT_PREFECTURE_SLUG,
+  getPrefectureRate,
+} from "@/lib/constants/insurance-rates";
+
 import type { BonusTakeHomeInput } from "./types";
 
 export const BONUS_MIN = 0;
@@ -13,6 +18,7 @@ export const MAX_DEPENDENTS = 5;
 export const DEFAULT_INPUT: BonusTakeHomeInput = {
   bonus: 500_000,
   monthlySalary: 300_000,
+  prefecture: DEFAULT_PREFECTURE_SLUG,
   isOver40: false,
   dependents: 0,
 };
@@ -27,6 +33,7 @@ export function encodeInputToParams(
   const params = new URLSearchParams();
   params.set("b", String(input.bonus));
   params.set("ms", String(input.monthlySalary));
+  params.set("pref", input.prefecture ?? DEFAULT_PREFECTURE_SLUG);
   params.set("o40", input.isOver40 ? "1" : "0");
   params.set("dep", String(input.dependents));
   return params;
@@ -43,9 +50,16 @@ export function decodeInputFromParams(
     return Number.isFinite(n) ? n : fallback;
   };
 
+  const prefRaw = params.get("pref");
+  const prefecture =
+    prefRaw && getPrefectureRate(prefRaw).slug === prefRaw
+      ? prefRaw
+      : DEFAULT_PREFECTURE_SLUG;
+
   return {
     bonus: clamp(num("b", d.bonus), BONUS_MIN, BONUS_MAX),
     monthlySalary: clamp(num("ms", d.monthlySalary), MONTHLY_MIN, MONTHLY_MAX),
+    prefecture,
     isOver40: params.get("o40") === "1",
     dependents: clamp(Math.round(num("dep", d.dependents)), 0, MAX_DEPENDENTS),
   };

@@ -3,6 +3,8 @@ export interface BonusTakeHomeInput {
   bonus: number;
   /** 前月の給与（額面・円）— 所得税の概算に使用 */
   monthlySalary: number;
+  /** 都道府県スラッグ（協会けんぽの健康保険料率。既定＝東京） */
+  prefecture?: string;
   /** 40〜64歳（介護保険料の対象）か */
   isOver40: boolean;
   /** 扶養親族の数（16歳以上の一般扶養） */
