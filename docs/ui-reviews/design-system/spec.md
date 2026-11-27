@@ -126,6 +126,8 @@ PR 1 は 2 つに分ける（制約 6）。ページのレイアウト（app/pag
 }
 ```
 
+実装では `overflow-wrap` を `break-word` ではなく `anywhere` にしている（cycle-1 D-2）。`break-word` では長い社名（英字の連続など）が min-content 幅の計算で縮まず、375 幅で横スクロールが出たため。`anywhere` は折り返し候補を min-content にも反映するので、フレックスやグリッドの子でもはみ出さない。
+
 - `auto-phrase` は Chrome / Edge 119 以降で効き、他のブラウザでは通常の改行に戻るだけ（崩れない）
 - `overflow-wrap: break-word` は、文節が枠より長い場合（狭い表のセルなど）にはみ出させないための保険。最小幅の計算には影響しない
 - B-3 の「ヒーローの一文を `text-xs sm:text-sm`」はページの変更なので PR 2 で行う

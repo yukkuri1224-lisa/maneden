@@ -7,9 +7,7 @@
   "pc:home": {},
   "pc:industry-services": {},
   "pc:take-home-500": {},
-  "pc:tool-furusato-tax": {
-    "color-contrast": 1
-  },
+  "pc:tool-furusato-tax": {},
   "pc:tool-nisa": {},
   "pc:tool-salary-take-home": {},
   "pc:tools": {},
@@ -22,7 +20,6 @@
   "sp:industry-services": {},
   "sp:take-home-500": {},
   "sp:tool-furusato-tax": {
-    "color-contrast": 1,
     "scrollable-region-focusable": 1
   },
   "sp:tool-nisa": {},

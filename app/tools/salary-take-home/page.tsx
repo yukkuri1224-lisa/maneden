@@ -132,11 +132,17 @@ export default function SalaryTakeHomePage() {
           選択した都道府県（既定は東京都）の協会けんぽ料率（令和8年度）と標準報酬月額の等級表で計算した概算です。勤務先の健康保険組合など制度により実額は異なります。
         </p>
         <p className="mt-2 text-xs text-muted-foreground">
-          <Link href="/companies" className="text-primary underline">
+          <Link
+            href="/companies"
+            className="whitespace-nowrap text-primary underline"
+          >
             上場企業の平均年収ランキング
           </Link>
           から、気になる企業の年収で手取りをすぐ試せます。
-          <Link href="/take-home" className="ml-1 text-primary underline">
+          <Link
+            href="/take-home"
+            className="ml-1 whitespace-nowrap text-primary underline"
+          >
             年収別の手取り一覧
           </Link>
           もご覧いただけます。
