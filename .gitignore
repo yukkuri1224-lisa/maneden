@@ -42,3 +42,7 @@ next-env.d.ts
 
 # 等級表など公式データの受け渡し用（コミットしない）
 tmp-data/
+
+# Playwright の実行結果（期待画像 e2e/__screenshots__ はコミットする）
+/test-results/
+/playwright-report/
