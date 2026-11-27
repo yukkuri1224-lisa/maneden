@@ -52,6 +52,12 @@ export default function AboutPage() {
         <li>
           計算の根拠や用語をできるだけ明示し、結果に納得して使えることを重視します。
         </li>
+        <li>
+          記事・ツールの根拠には国税庁などの一次情報のみを使い、税制改正に合わせて更新します。詳しくは
+          <a href="/editorial-policy">編集方針・制作体制</a>と
+          <a href="/methodology">計算方法と検証</a>
+          をご覧ください。
+        </li>
       </ul>
 
       <h2>データの出典</h2>

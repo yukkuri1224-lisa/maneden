@@ -1,12 +1,15 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { CalendarDays, Clock, PenLine } from "lucide-react";
 
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { ShareBar } from "@/components/common/ShareBar";
+import { author, EDITORIAL_POLICY_PATH } from "@/lib/editorial";
 import type { Guide } from "@/lib/guides";
 
 import { GuideToc, type TocItem } from "./GuideToc";
+import { GuideTrust } from "./GuideTrust";
 import { RelatedGuides } from "./RelatedGuides";
 
 /**
@@ -54,7 +57,15 @@ export function GuideArticle({
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <PenLine className="size-4" aria-hidden />
-                まねでん編集部
+                執筆:{" "}
+                <Link href="/about" className="underline">
+                  {author.name}
+                </Link>
+                （
+                <Link href={EDITORIAL_POLICY_PATH} className="underline">
+                  編集方針
+                </Link>
+                ）
               </span>
             </div>
           </div>
@@ -66,6 +77,8 @@ export function GuideArticle({
           <article className="min-w-0">
             <GuideToc items={toc} variant="inline" />
             <div className="max-w-2xl space-y-12">{children}</div>
+
+            <GuideTrust guide={guide} />
 
             <div className="mt-14 max-w-2xl rounded-md border bg-muted/30 p-5">
               <p className="text-sm font-semibold text-foreground">

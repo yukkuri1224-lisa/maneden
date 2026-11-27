@@ -21,6 +21,7 @@ import { tools } from "@/lib/tools-registry";
  */
 const SITE_UPDATED = new Date("2026-08-13"); // トップ・ツール・法務・サイトマップ構成など
 const DATA_UPDATED = new Date("2026-08-06"); // 企業年収データ（一覧・業種ハブ）
+const TRUST_UPDATED = new Date("2026-11-27"); // 編集方針・計算方法と検証
 const LONGTAIL_UPDATED = new Date("2026-08-13"); // 年収別ロングテール（手取り・ふるさと納税）
 
 type Entry = { path: string; priority: number; lastModified: Date };
@@ -31,6 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/tools", priority: 0.9, lastModified: SITE_UPDATED },
     { path: "/companies", priority: 0.8, lastModified: DATA_UPDATED },
     { path: "/about", priority: 0.3, lastModified: SITE_UPDATED },
+    { path: "/editorial-policy", priority: 0.3, lastModified: TRUST_UPDATED },
+    { path: "/methodology", priority: 0.3, lastModified: TRUST_UPDATED },
     { path: "/disclaimer", priority: 0.2, lastModified: SITE_UPDATED },
     { path: "/privacy-policy", priority: 0.2, lastModified: SITE_UPDATED },
     { path: "/terms", priority: 0.2, lastModified: SITE_UPDATED },

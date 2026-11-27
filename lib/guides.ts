@@ -1,3 +1,16 @@
+export interface GuideSource {
+  label: string;
+  /** 一次情報（公的機関・法令・公式サイト）の URL */
+  href: string;
+}
+
+export interface GuideRevision {
+  /** 表示用の日付（例: 2026年11月27日） */
+  date: string;
+  /** 何を変えたか（誤りの訂正は「訂正：」で始める） */
+  note: string;
+}
+
 /**
  * ガイド記事（pillar コンテンツ）の一元管理レジストリ。
  * 一覧ページ / sitemap / 関連導線はこの配列を唯一の情報源として参照する。
@@ -18,6 +31,10 @@ export interface Guide {
   publishedISO: string;
   /** 更新日（ISO・JSON-LD / sitemap 用） */
   updatedISO: string;
+  /** 参考文献（記事の根拠にした一次情報）。YMYL のため必須 */
+  sources: GuideSource[];
+  /** 更新・訂正の履歴（新しい順） */
+  revisions: GuideRevision[];
 }
 
 export const guides: Guide[] = [
@@ -32,6 +49,25 @@ export const guides: Guide[] = [
     updated: "2026年8月10日",
     publishedISO: "2026-08-10",
     updatedISO: "2026-08-10",
+    sources: [
+      {
+        label: "金融庁 NISA特設ウェブサイト",
+        href: "https://www.fsa.go.jp/policy/nisa2/",
+      },
+      {
+        label: "iDeCo公式サイト（国民年金基金連合会）",
+        href: "https://www.ideco-koushiki.jp/",
+      },
+      {
+        label: "国税庁 No.1135 小規模企業共済等掛金控除",
+        href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm",
+      },
+      {
+        label: "国税庁 No.2260 所得税の税率",
+        href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
+      },
+    ],
+    revisions: [{ date: "2026年8月10日", note: "公開" }],
   },
   {
     slug: "furusato-nouzei",
@@ -44,6 +80,21 @@ export const guides: Guide[] = [
     updated: "2026年8月10日",
     publishedISO: "2026-08-10",
     updatedISO: "2026-08-10",
+    sources: [
+      {
+        label: "総務省 ふるさと納税ポータル（控除の仕組み）",
+        href: "https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html",
+      },
+      {
+        label: "国税庁 No.2260 所得税の税率",
+        href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
+      },
+      {
+        label: "国税庁 No.1410 給与所得控除",
+        href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm",
+      },
+    ],
+    revisions: [{ date: "2026年8月10日", note: "公開" }],
   },
   {
     slug: "kaishain-tedori",
@@ -56,6 +107,29 @@ export const guides: Guide[] = [
     updated: "2026年8月10日",
     publishedISO: "2026-08-10",
     updatedISO: "2026-08-10",
+    sources: [
+      {
+        label: "国税庁 No.1410 給与所得控除",
+        href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm",
+      },
+      {
+        label: "国税庁 No.2260 所得税の税率",
+        href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
+      },
+      {
+        label: "協会けんぽ 令和8年度 都道府県別 健康保険・介護保険料率",
+        href: "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+      },
+      {
+        label: "日本年金機構 厚生年金保険料額表",
+        href: "https://www.nenkin.go.jp/service/kounen/hokenryo/ryogaku/ryogakuhyo/index.html",
+      },
+      {
+        label: "厚生労働省 令和8年度 雇用保険料率",
+        href: "https://jsite.mhlw.go.jp/tokyo-hellowork/list/tachikawa/kyushokusha/koyouhokenryouritu08.html",
+      },
+    ],
+    revisions: [{ date: "2026年8月10日", note: "公開" }],
   },
 ];
 

@@ -7,6 +7,8 @@ import { siteConfig } from "@/lib/site-config";
 
 const siteLinks = [
   { href: "/about", label: "運営者情報" },
+  { href: "/editorial-policy", label: "編集方針・制作体制" },
+  { href: "/methodology", label: "計算方法と検証" },
   { href: "/disclaimer", label: "免責事項" },
   { href: "/privacy-policy", label: "プライバシーポリシー" },
   { href: "/terms", label: "利用規約" },

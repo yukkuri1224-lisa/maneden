@@ -3,6 +3,7 @@
  * REQUIREMENTS 3.3 / 5.1 に準拠（BreadcrumbList / WebApplication / FAQPage）。
  */
 
+import { EDITORIAL_POLICY_PATH } from "@/lib/editorial";
 import { siteConfig } from "@/lib/site-config";
 
 /** 他の JSON-LD から参照するための Organization / WebSite の @id */
@@ -134,6 +135,7 @@ export function organizationJsonLd() {
     url: siteConfig.url,
     logo: ORGANIZATION_LOGO,
     email: siteConfig.email,
+    publishingPrinciples: `${siteConfig.url}${EDITORIAL_POLICY_PATH}`,
   };
 }
 
@@ -169,6 +171,8 @@ export interface ArticleJsonLdParams {
   description: string;
   /** 絶対 URL */
   url: string;
+  /** 参考文献（記事の根拠にした一次情報） */
+  citations?: { label: string; href: string }[];
   /** 公開日（ISO） */
   datePublished: string;
   /** 更新日（ISO） */
@@ -180,6 +184,17 @@ export function articleJsonLd(params: ArticleJsonLdParams) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
+    // E-E-A-T: 編集方針と根拠資料を機械可読にする
+    publishingPrinciples: `${siteConfig.url}${EDITORIAL_POLICY_PATH}`,
+    ...(params.citations?.length
+      ? {
+          citation: params.citations.map((c) => ({
+            "@type": "CreativeWork",
+            name: c.label,
+            url: c.href,
+          })),
+        }
+      : {}),
     headline: params.headline,
     description: params.description,
     url: params.url,
@@ -189,5 +204,31 @@ export function articleJsonLd(params: ArticleJsonLdParams) {
     inLanguage: "ja",
     author: organizationRef(),
     publisher: organizationRef(),
+  };
+}
+
+export interface WebPageJsonLdParams {
+  name: string;
+  description: string;
+  /** 絶対 URL */
+  url: string;
+  /** 更新日（ISO） */
+  dateModified: string;
+}
+
+/** 編集方針などの情報ページを表す WebPage 構造化データ */
+export function webPageJsonLd(params: WebPageJsonLdParams) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    dateModified: params.dateModified,
+    inLanguage: "ja",
+    publisher: {
+      ...organizationRef(),
+      publishingPrinciples: `${siteConfig.url}${EDITORIAL_POLICY_PATH}`,
+    },
   };
 }
