@@ -68,4 +68,11 @@ export const CAPTURE_TARGETS: CaptureTarget[] = [
       { name: "dark", dark: true, segments: 2 },
     ],
   },
+  {
+    // タブ（非アクティブの色）と表の見え方を確かめる代表画面
+    name: "tool-furusato-tax",
+    path: "/tools/furusato-tax",
+    maxSegments: 4,
+    states: [{ name: "default" }, { name: "dark", dark: true, segments: 2 }],
+  },
 ];
