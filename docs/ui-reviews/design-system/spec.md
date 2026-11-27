@@ -83,18 +83,20 @@ PR 1 は 2 つに分ける（制約 6）。ページのレイアウト（app/pag
 
 ### 2-2. 非テキスト（基準 3:1）
 
-| 要素                         | 色 / 隣接色                          | ライト | ダーク | 判定                                       |
-| ---------------------------- | ------------------------------------ | ------ | ------ | ------------------------------------------ |
-| 入力欄・セレクト・ラジオの枠 | `input` / `card`                     | 3.64   | 3.65   | 可（現状 1.58 / 1.75）                     |
-| 同（ページ地の上）           | `input` / `background`               | 3.49   | 3.94   | 可                                         |
-| 同（muted の上）             | `input` / `muted`                    | 3.19   | 3.30   | 可                                         |
-| スイッチ（オフ）のつまみ     | `background`/`foreground` on `input` | 3.49   | 4.19   | 可                                         |
-| スイッチ（オン）のつまみ     | `background` / `primary`             | 7.95   | 8.25   | 可                                         |
-| フォーカスの線               | `ring` / `background`                | 7.95   | 8.25   | 可                                         |
-| 同（カードの上）             | `ring` / `card`                      | 8.30   | 7.64   | 可                                         |
-| 同（タブ列の上）             | `ring` / `muted`                     | 7.28   | 6.90   | 可                                         |
-| アクティブタブの枠           | `input` / `muted`                    | 3.19   | 3.30   | 可                                         |
-| 罫線（装飾。3:1 の対象外）   | `border` / `card`                    | 1.44   | 1.42   | 対象外（意味を持たない区切り線にだけ使う） |
+| 要素                           | 色 / 隣接色                           | ライト | ダーク | 判定                                                                                                                   |
+| ------------------------------ | ------------------------------------- | ------ | ------ | ---------------------------------------------------------------------------------------------------------------------- |
+| 入力欄・セレクト・ラジオの枠   | `input` / `card`                      | 3.64   | 3.65   | 可（現状 1.58 / 1.75）                                                                                                 |
+| 同（ページ地の上）             | `input` / `background`                | 3.49   | 3.94   | 可                                                                                                                     |
+| 同（muted の上）               | `input` / `muted`                     | 3.19   | 3.30   | 可                                                                                                                     |
+| スイッチ（オフ）のつまみ       | `background`/`foreground` on `input`  | 3.49   | 4.19   | 可                                                                                                                     |
+| スイッチ（オン）のつまみ       | `background` / `primary`              | 7.95   | 8.25   | 可                                                                                                                     |
+| フォーカスの線                 | `ring` / `background`                 | 7.95   | 8.25   | 可                                                                                                                     |
+| 同（カードの上）               | `ring` / `card`                       | 8.30   | 7.64   | 可                                                                                                                     |
+| 同（タブ列の上）               | `ring` / `muted`                      | 7.28   | 6.90   | 可                                                                                                                     |
+| アクティブタブの枠             | `input` / `muted`                     | 3.19   | 3.30   | 可                                                                                                                     |
+| スライダーの塗り部分とトラック | `ring` / `input/60`（cycle-2 で追加） | 4.11   | 3.60   | 可                                                                                                                     |
+| スライダーのトラックとカード   | `input/60` / `card`（cycle-2 で追加） | 2.02   | 2.12   | 可とする。値はつまみ（8.30 / 7.64）と数値欄で伝わる。100% にすると塗り部分との差が 2.28 / 2.09 に落ちるため 60% を採用 |
+| 罫線（装飾。3:1 の対象外）     | `border` / `card`                     | 1.44   | 1.42   | 対象外（意味を持たない区切り線にだけ使う）                                                                             |
 
 ---
 
@@ -137,7 +139,9 @@ PR 1 は 2 つに分ける（制約 6）。ページのレイアウト（app/pag
 ```css
 /* 押せる部品（ボタン・タブ・スイッチ・ラジオ・アコーディオン・スライダーのつまみ） */
 @utility focus-ring {
-  &:focus-visible {
+  /* :has は cycle-2 で追加。スライダーのつまみのように、中の隠れた input がフォーカスを受ける部品のため */
+  &:focus-visible,
+  &:has(:focus-visible) {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
@@ -152,7 +156,7 @@ PR 1 は 2 つに分ける（制約 6）。ページのレイアウト（app/pag
 ```
 
 - `box-shadow` のリング＋`ring-offset` ではなく `outline` を使う。`outline-offset` の隙間は透明なので、カードの上でもページ地の上でも同じ見え方になる（`ring-offset-background` はカード上で色がずれる）
-- `.focus-ring:focus-visible` の詳細度は (0,2,0) なので、部品に残る `outline-none`（0,1,0）より優先される。DevTools の `:focus-visible` 強制で、主ボタン・タブ・入力欄に藍の 2px が出ることを確認する
+- `.focus-ring:focus-visible` の詳細度は (0,2,0) なので、部品に残る `outline-none`（0,1,0）より優先される。実際に Tab で移動して、主ボタン・タブ・入力欄・スライダーのつまみに藍の 2px が出ることを確認する（DevTools の強制では、隠れた input にフォーカスが行く部品の不具合を見落とす）
 - 塗りの主ボタンは 2px の隙間を挟んで藍の線が出るため、ボタン本体と線が一体化しない（cycle-0 D-3 の解消）
 
 ### 3-3. 文字サイズごとの行間（`@theme inline` に追記）
@@ -237,17 +241,20 @@ PR 1 は 2 つに分ける（制約 6）。ページのレイアウト（app/pag
 
 ### 4-5. switch.tsx・radio-group.tsx・slider.tsx・accordion.tsx
 
-| 対象                              | 現状                                                                                                        | 変更後                                                | 理由                                                   |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------ |
-| `Switch` フォーカス               | `focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50`                                 | `focus-ring`                                          | 統一                                                   |
-| `Switch` トランジション           | `transition-all`                                                                                            | `transition-colors`                                   | D-7                                                    |
-| `Switch` オフ（ダーク）           | `dark:data-unchecked:bg-input/80`                                                                           | 削除（`data-unchecked:bg-input` を使う）              | 不透明の `--input` でつまみ 4.19:1                     |
-| `RadioGroupItem` フォーカス       | `focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50`                                 | `focus-ring`                                          | 統一                                                   |
-| `RadioGroupItem` ダークの地       | `dark:bg-input/30`                                                                                          | 削除                                                  | 入力欄と同じ扱い。枠は `border-input` で 3.65:1        |
-| `Slider` つまみの地               | `bg-white`                                                                                                  | `bg-background`                                       | 生の色をトークンに。ダークでつまみだけ真っ白に光らない |
-| `Slider` つまみのフォーカス       | `focus-visible:ring-3 focus-visible:outline-hidden`                                                         | `focus-ring`（`hover:ring-3` `active:ring-3` は残す） | 統一                                                   |
-| `AccordionTrigger` トランジション | `transition-all`                                                                                            | `transition-colors`                                   | D-7                                                    |
-| `AccordionTrigger` フォーカス     | `focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:after:border-ring` | `focus-ring`                                          | 統一                                                   |
+| 対象                              | 現状                                                                                                        | 変更後                                                | 理由                                                                                                                         |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `Switch` フォーカス               | `focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50`                                 | `focus-ring`                                          | 統一                                                                                                                         |
+| `Switch` トランジション           | `transition-all`                                                                                            | `transition-colors`                                   | D-7                                                                                                                          |
+| `Switch` オフ（ダーク）           | `dark:data-unchecked:bg-input/80`                                                                           | 削除（`data-unchecked:bg-input` を使う）              | 不透明の `--input` でつまみ 4.19:1                                                                                           |
+| `RadioGroupItem` フォーカス       | `focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50`                                 | `focus-ring`                                          | 統一                                                                                                                         |
+| `RadioGroupItem` ダークの地       | `dark:bg-input/30`                                                                                          | 削除                                                  | 入力欄と同じ扱い。枠は `border-input` で 3.65:1                                                                              |
+| `Slider` つまみの地               | `bg-white`                                                                                                  | `bg-background`                                       | 生の色をトークンに。ダークでつまみだけ真っ白に光らない                                                                       |
+| `Slider` つまみのフォーカス       | `focus-visible:ring-3 focus-visible:outline-hidden`                                                         | `focus-ring`（`hover:ring-3` `active:ring-3` は残す） | 統一。フォーカスを受けるのは中の隠れた input なので、`focus-ring` に `&:has(:focus-visible)` を足して効かせる（cycle-1 D-1） |
+| `Slider` トラック（cycle-2）      | `bg-muted`、`data-horizontal:h-1`                                                                           | `bg-input/60`、`data-horizontal:h-1.5`                | カードの上で見えなかった（cycle-1 手取り B-4）                                                                               |
+| `Slider` つまみ（cycle-2）        | `size-3 border`                                                                                             | `size-4 border-2`                                     | 見つけやすく、つかみやすく（同 B-4）                                                                                         |
+| `Slider` Control（cycle-2）       | なし                                                                                                        | `data-horizontal:py-2`                                | つまみの当たり判定（32px）が下の入力欄に重ならないよう、レイアウト内に確保（cycle-2 B-11）                                   |
+| `AccordionTrigger` トランジション | `transition-all`                                                                                            | `transition-colors`                                   | D-7                                                                                                                          |
+| `AccordionTrigger` フォーカス     | `focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:after:border-ring` | `focus-ring`                                          | 統一                                                                                                                         |
 
 ### 4-6. card.tsx・sheet.tsx
 

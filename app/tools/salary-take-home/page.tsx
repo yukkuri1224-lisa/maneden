@@ -141,7 +141,7 @@ export default function SalaryTakeHomePage() {
           から、気になる企業の年収で手取りをすぐ試せます。
           <Link
             href="/take-home"
-            className="ml-1 whitespace-nowrap text-primary underline"
+            className="whitespace-nowrap text-primary underline"
           >
             年収別の手取り一覧
           </Link>
