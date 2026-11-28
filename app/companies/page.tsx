@@ -4,26 +4,39 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
+import { CompanyIndex } from "@/components/companies/CompanyIndex";
 import { CompanyList } from "@/components/companies/CompanyList";
-import { companies } from "@/lib/companies/data";
-import { hasIndustryHub, industrySlug } from "@/lib/companies/industries";
+import {
+  companies,
+  companiesWithoutHub,
+  toListItems,
+} from "@/lib/companies/data";
+import {
+  NO_HUB_INDUSTRIES,
+  hasIndustryHub,
+  industrySlug,
+} from "@/lib/companies/industries";
 import { listIndustryStats } from "@/lib/companies/stats";
 import { formatManYen } from "@/lib/format";
 import { datasetJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "企業の平均年収ランキング",
   description:
     "上場企業約1,500社の平均年収・平均年齢・従業員数を有価証券報告書ベースで掲載。業種別ランキングや会社名検索から、気になる企業の年収と手取り額を確認できます。",
-  alternates: { canonical: "/companies" },
-};
+  path: "/companies",
+});
 
 export default function CompaniesPage() {
   // ハブのある業種を平均年収の高い順に（チップの内部リンク用）
   const industries = listIndustryStats().filter((s) =>
     hasIndustryHub(s.industry),
   );
+
+  const noHub = toListItems(companiesWithoutHub());
+  const noHubLabel = Array.from(NO_HUB_INDUSTRIES).join("・");
 
   return (
     <Container className="py-10">
@@ -84,8 +97,15 @@ export default function CompaniesPage() {
       </div>
 
       <div className="mt-8">
-        <CompanyList companies={companies} filterable />
+        <CompanyList companies={toListItems(companies)} filterable />
       </div>
+
+      {noHub.length > 0 && (
+        <CompanyIndex
+          companies={noHub}
+          heading={`${noHubLabel}の業種の企業一覧（${noHub.length}社）`}
+        />
+      )}
     </Container>
   );
 }

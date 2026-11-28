@@ -34,3 +34,9 @@ export interface SalaryHistoryPoint {
   /** その期の平均年間給与（円） */
   averageSalary: number;
 }
+
+/** 一覧表示に必要な項目だけに絞った軽量型（クライアントへ渡すペイロード削減用） */
+export type CompanyListItem = Pick<
+  Company,
+  "slug" | "name" | "industry" | "averageSalary"
+>;

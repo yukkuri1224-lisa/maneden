@@ -52,7 +52,7 @@ export default function NotFound() {
             <li key={tool.id}>
               <Link
                 href={tool.href}
-                className="block rounded-xl border p-4 transition-colors hover:bg-muted"
+                className="block rounded-md border p-4 transition-colors hover:bg-muted"
               >
                 <span className="text-sm font-semibold">{tool.shortTitle}</span>
               </Link>

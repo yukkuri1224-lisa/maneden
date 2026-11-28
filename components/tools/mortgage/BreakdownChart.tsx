@@ -6,8 +6,8 @@ import type { MortgageResult } from "@/lib/calculators/mortgage";
 import { formatManYen } from "@/lib/format";
 
 const COLORS = {
-  principal: "#4f46e5",
-  interest: "#38bdf8",
+  principal: "var(--chart-1)",
+  interest: "var(--chart-2)",
 };
 
 export default function BreakdownChart({ result }: { result: MortgageResult }) {

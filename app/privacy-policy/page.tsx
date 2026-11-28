@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 
 import { ArticlePage } from "@/components/common/ArticlePage";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "プライバシーポリシー",
-  description: `${siteConfig.name} における個人情報・Cookie の取り扱いについて。`,
-  alternates: { canonical: "/privacy-policy" },
-};
+  description:
+    "まねでんのプライバシーポリシー。入力した金額はブラウザ内で計算し送信・保存しないこと、アクセス解析（Google Analytics）と広告（Google AdSense）での Cookie の扱いを説明します。",
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   return (

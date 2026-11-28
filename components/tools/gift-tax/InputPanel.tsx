@@ -43,6 +43,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
       <div className="space-y-2">
         <Label htmlFor="giftType">贈与の種類</Label>
         <Select
+          items={GIFT_TYPE_OPTIONS}
           value={value.giftType}
           onValueChange={(v) => onChange({ giftType: String(v) as GiftType })}
         >

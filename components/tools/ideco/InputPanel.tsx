@@ -40,6 +40,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
       <div className="space-y-2">
         <Label htmlFor="category">加入区分</Label>
         <Select
+          items={CATEGORY_OPTIONS}
           value={value.category}
           onValueChange={(v) =>
             onChange({ category: String(v) as IdecoCategory })

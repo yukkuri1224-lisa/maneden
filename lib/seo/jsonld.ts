@@ -3,7 +3,30 @@
  * REQUIREMENTS 3.3 / 5.1 に準拠（BreadcrumbList / WebApplication / FAQPage）。
  */
 
+import { EDITORIAL_POLICY_PATH } from "@/lib/editorial";
 import { siteConfig } from "@/lib/site-config";
+
+/** 他の JSON-LD から参照するための Organization / WebSite の @id */
+export const ORGANIZATION_ID = `${siteConfig.url}/#organization`;
+export const WEBSITE_ID = `${siteConfig.url}/#website`;
+
+const ORGANIZATION_LOGO = {
+  "@type": "ImageObject",
+  url: `${siteConfig.url}/logo.png`,
+  width: 512,
+  height: 512,
+} as const;
+
+/** 各ページ内で完結して解決できる Organization 参照（@id + 基本情報 + ロゴ） */
+export function organizationRef() {
+  return {
+    "@type": "Organization",
+    "@id": ORGANIZATION_ID,
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: ORGANIZATION_LOGO,
+  };
+}
 
 export interface BreadcrumbJsonLdItem {
   name: string;
@@ -93,10 +116,12 @@ export function webSiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": WEBSITE_ID,
     name: siteConfig.name,
     url: siteConfig.url,
     description: siteConfig.description,
     inLanguage: "ja",
+    publisher: organizationRef(),
   };
 }
 
@@ -105,10 +130,12 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORGANIZATION_ID,
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/icon.svg`,
+    logo: ORGANIZATION_LOGO,
     email: siteConfig.email,
+    publishingPrinciples: `${siteConfig.url}${EDITORIAL_POLICY_PATH}`,
   };
 }
 
@@ -122,11 +149,7 @@ export interface DatasetJsonLdParams {
 
 /** データセット（企業年収データ群など）を表す Dataset 構造化データ */
 export function datasetJsonLd(params: DatasetJsonLdParams) {
-  const publisher = {
-    "@type": "Organization",
-    name: siteConfig.name,
-    url: siteConfig.url,
-  };
+  const publisher = organizationRef();
   return {
     "@context": "https://schema.org",
     "@type": "Dataset",
@@ -148,6 +171,8 @@ export interface ArticleJsonLdParams {
   description: string;
   /** 絶対 URL */
   url: string;
+  /** 参考文献（記事の根拠にした一次情報） */
+  citations?: { label: string; href: string }[];
   /** 公開日（ISO） */
   datePublished: string;
   /** 更新日（ISO） */
@@ -159,6 +184,17 @@ export function articleJsonLd(params: ArticleJsonLdParams) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
+    // E-E-A-T: 編集方針と根拠資料を機械可読にする
+    publishingPrinciples: `${siteConfig.url}${EDITORIAL_POLICY_PATH}`,
+    ...(params.citations?.length
+      ? {
+          citation: params.citations.map((c) => ({
+            "@type": "CreativeWork",
+            name: c.label,
+            url: c.href,
+          })),
+        }
+      : {}),
     headline: params.headline,
     description: params.description,
     url: params.url,
@@ -166,19 +202,33 @@ export function articleJsonLd(params: ArticleJsonLdParams) {
     datePublished: params.datePublished,
     dateModified: params.dateModified,
     inLanguage: "ja",
-    author: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
+    author: organizationRef(),
+    publisher: organizationRef(),
+  };
+}
+
+export interface WebPageJsonLdParams {
+  name: string;
+  description: string;
+  /** 絶対 URL */
+  url: string;
+  /** 更新日（ISO） */
+  dateModified: string;
+}
+
+/** 編集方針などの情報ページを表す WebPage 構造化データ */
+export function webPageJsonLd(params: WebPageJsonLdParams) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    dateModified: params.dateModified,
+    inLanguage: "ja",
     publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteConfig.url}/icon.svg`,
-      },
+      ...organizationRef(),
+      publishingPrinciples: `${siteConfig.url}${EDITORIAL_POLICY_PATH}`,
     },
   };
 }

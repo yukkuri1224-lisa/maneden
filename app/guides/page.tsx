@@ -8,27 +8,24 @@ import { JsonLd } from "@/components/common/JsonLd";
 import { guides } from "@/lib/guides";
 import { itemListJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const description =
   "税金・節税・資産形成のポイントを、まねでんの計算ツールで数字を確かめながら学べる解説記事。iDeCoと新NISAの使い分け、ふるさと納税の仕組み、会社員の手取りなど。";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "お金のガイド",
+  ogTitle: `お金のガイド | ${siteConfig.name}`,
   description,
-  alternates: { canonical: "/guides" },
-  openGraph: {
-    title: `お金のガイド | ${siteConfig.name}`,
-    description,
-    url: `${siteConfig.url}/guides`,
-  },
-};
+  path: "/guides",
+});
 
 export default function GuidesPage() {
   const [featured, ...rest] = guides;
 
   return (
     <>
-      <div className="border-b bg-gradient-to-b from-primary/[0.08] via-primary/[0.03] to-background">
+      <div className="border-b bg-muted">
         <Container className="py-8 sm:py-10">
           <Breadcrumb
             items={[
@@ -65,10 +62,10 @@ export default function GuidesPage() {
         {featured && (
           <Link
             href={featured.href}
-            className="group block overflow-hidden rounded-3xl border transition-all hover:border-primary/50 hover:shadow-lg"
+            className="group block overflow-hidden rounded-md border transition-colors hover:border-primary/50"
           >
             <div className="grid gap-0 sm:grid-cols-[1.1fr_1fr]">
-              <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-indigo-500/15 via-sky-400/10 to-transparent p-8 sm:aspect-auto">
+              <div className="flex aspect-[16/10] items-center justify-center bg-muted p-8 sm:aspect-auto">
                 <BookOpen
                   className="size-16 text-primary/70 transition-transform group-hover:scale-105"
                   aria-hidden
@@ -99,7 +96,7 @@ export default function GuidesPage() {
               <Link
                 key={g.slug}
                 href={g.href}
-                className="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+                className="group flex flex-col rounded-md border p-6 transition-colors hover:border-primary/50"
               >
                 <p className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
                   <Clock className="size-3.5" aria-hidden />約{g.readingMinutes}

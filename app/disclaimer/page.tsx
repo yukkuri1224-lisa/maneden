@@ -3,12 +3,14 @@ import type { Metadata } from "next";
 import { ArticlePage } from "@/components/common/ArticlePage";
 import { TAX_YEAR } from "@/lib/constants/tax-tables";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "免責事項",
-  description: `${siteConfig.name} の計算結果の取り扱い・出典・適用年度に関する免責事項。`,
-  alternates: { canonical: "/disclaimer" },
-};
+  description:
+    "まねでんの免責事項。計算結果は概算であり税務・法務の助言ではないこと、税制改正への対応方針、外部リンクや広告についての考え方を説明します。",
+  path: "/disclaimer",
+});
 
 export default function DisclaimerPage() {
   const reiwaYear = TAX_YEAR - 2018;

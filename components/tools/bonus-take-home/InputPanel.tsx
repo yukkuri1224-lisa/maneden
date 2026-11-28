@@ -92,6 +92,10 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
       <div className="space-y-2">
         <Label>扶養家族の数</Label>
         <Select
+          items={Array.from({ length: MAX_DEPENDENTS + 1 }, (_, i) => ({
+            value: String(i),
+            label: `${i}人`,
+          }))}
           value={String(value.dependents)}
           onValueChange={(v) => onChange({ dependents: Number(String(v)) })}
         >

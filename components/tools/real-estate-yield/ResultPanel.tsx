@@ -24,11 +24,11 @@ export function ResultPanel({ result }: { result: RealEstateResult }) {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-gradient-to-b from-primary/5 to-background p-6 text-center sm:p-8">
+      <div className="rounded-md border bg-card p-6 text-center sm:p-8">
         <p className="text-sm font-medium text-muted-foreground">
           実質利回り（概算）
         </p>
-        <p className="mt-1 bg-gradient-to-r from-indigo-600 to-sky-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent tabular-nums sm:text-6xl">
+        <p className="mt-1 text-4xl font-bold text-primary tabular-nums sm:text-6xl">
           {formatPercent(netYield)}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -41,9 +41,8 @@ export function ResultPanel({ result }: { result: RealEstateResult }) {
 
       <div
         className={cn(
-          "rounded-xl border p-4",
-          result.deadCrossYear !== null &&
-            "border-amber-300 bg-amber-50 dark:border-amber-900/60 dark:bg-amber-950/30",
+          "rounded-md border p-4",
+          result.deadCrossYear !== null && "border-chart-3/40 bg-chart-3/10",
         )}
       >
         <p className="text-sm text-muted-foreground">
@@ -67,7 +66,7 @@ export function ResultPanel({ result }: { result: RealEstateResult }) {
               <p
                 className={cn(
                   "mt-1 text-lg font-semibold tabular-nums",
-                  metric.negative && "text-red-600 dark:text-red-400",
+                  metric.negative && "text-destructive",
                 )}
               >
                 {metric.value}

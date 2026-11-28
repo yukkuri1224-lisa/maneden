@@ -6,7 +6,7 @@
 export const siteConfig = {
   name: "まねでん",
   description:
-    "登録不要・完全無料。フリーランスや個人事業主のための税金・経営・不動産の計算＆シミュレーションツール集。",
+    "年収の手取り・ふるさと納税の上限・退職金や贈与税まで、税金とお金の計算が登録不要・完全無料で完結。会社員もフリーランスも使えるシミュレーターと上場企業の平均年収データを収録。",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://maneden.com").replace(
     /\/$/,
     "",

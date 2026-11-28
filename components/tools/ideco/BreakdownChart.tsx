@@ -6,8 +6,8 @@ import type { IdecoResult } from "@/lib/calculators/ideco";
 import { formatYen } from "@/lib/format";
 
 const COLORS = {
-  saved: "#4f46e5",
-  cost: "#94a3b8",
+  saved: "var(--chart-1)",
+  cost: "var(--chart-5)",
 };
 
 export default function BreakdownChart({ result }: { result: IdecoResult }) {

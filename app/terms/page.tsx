@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 
 import { ArticlePage } from "@/components/common/ArticlePage";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "利用規約",
-  description: `${siteConfig.name} の利用規約。`,
-  alternates: { canonical: "/terms" },
-};
+  description:
+    "まねでんの利用規約。登録不要・無料で使える計算ツールと企業年収データの利用条件、禁止事項、免責、規約の変更について定めています。",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

@@ -8,7 +8,7 @@ export function ToolHighlights({ items }: { items: string[] }) {
   return (
     <section
       aria-label="このツールでわかること"
-      className="mt-8 rounded-xl border bg-muted/30 p-5"
+      className="mt-8 rounded-md border bg-muted/30 p-5"
     >
       <p className="text-sm font-semibold">このツールでわかること</p>
       <ul className="mt-3 space-y-2">

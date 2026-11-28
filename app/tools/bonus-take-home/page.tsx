@@ -17,6 +17,7 @@ import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const tool = getToolById("bonus-take-home")!;
 
@@ -54,17 +55,13 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title:
     "ボーナス手取り計算シミュレーター＆額面別早見表｜50万・70万・100万の手取り",
+  ogTitle: tool.title,
   description,
-  alternates: { canonical: tool.href },
-  openGraph: {
-    title: tool.title,
-    description,
-    url: `${siteConfig.url}${tool.href}`,
-  },
-};
+  path: tool.href,
+});
 
 export default function BonusTakeHomePage() {
   return (
@@ -98,7 +95,7 @@ export default function BonusTakeHomePage() {
       <div className="mt-8">
         <Suspense
           fallback={
-            <div className="h-96 w-full animate-pulse rounded-xl bg-muted" />
+            <div className="h-96 w-full animate-pulse rounded-md bg-muted" />
           }
         >
           <BonusTakeHomeTool />
@@ -124,7 +121,7 @@ export default function BonusTakeHomePage() {
           {formatManYen(BONUS_TABLE_MONTHLY_SALARY, 0)}
           （年収約360万円層）・40歳未満・扶養なしを前提にしています。
         </p>
-        <div className="mt-5 overflow-x-auto rounded-xl border">
+        <div className="mt-5 overflow-x-auto rounded-md border">
           <table className="w-full border-collapse text-sm">
             <thead>
               <tr className="bg-muted/60">

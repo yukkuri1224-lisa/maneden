@@ -3,22 +3,24 @@ import Link from "next/link";
 
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
+import { JsonLd } from "@/components/common/JsonLd";
 import { calculateFurusato } from "@/lib/calculators/furusato-tax";
 import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
 import { formatManYen } from "@/lib/format";
 import { INCOME_LEVELS } from "@/lib/longtail/levels";
+import { itemListJsonLd } from "@/lib/seo/jsonld";
+import { pageMetadata } from "@/lib/seo/metadata";
 import { siteConfig } from "@/lib/site-config";
 
 const title = "年収別ふるさと納税 上限額一覧｜300万〜1500万円の目安";
 const description =
   "年収300万〜1,500万円のふるさと納税 控除上限額（独身・扶養なしの目安）を一覧で確認。各年収のページで自己負担2,000円で寄付できる額の計算方法と注意点を解説しています。";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title,
   description,
-  alternates: { canonical: "/furusato" },
-  openGraph: { title, description, url: `${siteConfig.url}/furusato` },
-};
+  path: "/furusato",
+});
 
 const rows = INCOME_LEVELS.map((l) => {
   const s = calculateSalaryTakeHome({
@@ -40,6 +42,14 @@ const rows = INCOME_LEVELS.map((l) => {
 export default function FurusatoHubPage() {
   return (
     <Container className="py-10">
+      <JsonLd
+        data={itemListJsonLd(
+          INCOME_LEVELS.map((l) => ({
+            name: `年収${l.man}万円のふるさと納税上限額`,
+            url: `${siteConfig.url}/furusato/${l.slug}`,
+          })),
+        )}
+      />
       <Breadcrumb
         items={[
           { name: "ホーム", href: "/" },
@@ -53,7 +63,7 @@ export default function FurusatoHubPage() {
         年収（額面）ごとの、自己負担2,000円で寄付できるふるさと納税の控除上限額の目安です（独身・扶養なしの概算）。年収をクリックすると、計算方法や家族構成・控除による違いを確認できます。
       </p>
 
-      <div className="mt-8 overflow-x-auto rounded-xl border">
+      <div className="mt-8 overflow-x-auto rounded-md border">
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr className="bg-muted/60">

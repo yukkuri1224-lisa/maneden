@@ -4,12 +4,14 @@ import { ArticlePage } from "@/components/common/ArticlePage";
 import { JsonLd } from "@/components/common/JsonLd";
 import { organizationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "運営者情報・免責事項",
-  description: `${siteConfig.name} の運営者情報・データの出典・免責事項について。`,
-  alternates: { canonical: "/about" },
-};
+  description:
+    "まねでんの運営者情報。運営方針、計算ロジックと税率データの出典（国税庁・EDINET など）、更新方針、免責事項、お問い合わせ先をまとめています。",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -49,6 +51,12 @@ export default function AboutPage() {
         </li>
         <li>
           計算の根拠や用語をできるだけ明示し、結果に納得して使えることを重視します。
+        </li>
+        <li>
+          記事・ツールの根拠には国税庁などの一次情報のみを使い、税制改正に合わせて更新します。詳しくは
+          <a href="/editorial-policy">編集方針・制作体制</a>と
+          <a href="/methodology">計算方法と検証</a>
+          をご覧ください。
         </li>
       </ul>
 

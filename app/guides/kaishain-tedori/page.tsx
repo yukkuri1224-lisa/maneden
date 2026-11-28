@@ -6,8 +6,9 @@ import { GuideArticle } from "@/components/guides/GuideArticle";
 import { GuideSection } from "@/components/guides/GuideSection";
 import { JsonLd } from "@/components/common/JsonLd";
 import { getGuideBySlug } from "@/lib/guides";
-import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
+import { articleJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const guide = getGuideBySlug("kaishain-tedori")!;
 
@@ -50,17 +51,15 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "会社員の手取りはどう決まる？額面との違いと計算方法を解説｜まねでん",
+export const metadata: Metadata = pageMetadata({
+  title: "会社員の手取りはどう決まる？額面との違いと計算方法を解説",
+  ogTitle: guide.title,
   description,
-  alternates: { canonical: guide.href },
-  openGraph: {
-    type: "article",
-    title: guide.title,
-    description,
-    url: `${siteConfig.url}${guide.href}`,
-  },
-};
+  path: guide.href,
+  type: "article",
+  publishedTime: guide.publishedISO,
+  modifiedTime: guide.updatedISO,
+});
 
 const deductions = [
   {
@@ -110,19 +109,13 @@ export default function KaishainTedoriGuide() {
           url,
           datePublished: guide.publishedISO,
           dateModified: guide.updatedISO,
+          citations: guide.sources,
         })}
-      />
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "ホーム", url: `${siteConfig.url}/` },
-          { name: "ガイド", url: `${siteConfig.url}/guides` },
-          { name: guide.shortTitle, url },
-        ])}
       />
       <JsonLd data={faqJsonLd(faqs)} />
 
       <GuideArticle guide={guide} toc={toc}>
-        <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:p-6">
+        <div className="rounded-md border border-primary/30 bg-primary/5 p-5 sm:p-6">
           <p className="text-sm font-bold text-primary">ひとことで言うと</p>
           <p className="mt-2 text-[15px] leading-7 text-muted-foreground">
             手取りとは、
@@ -147,7 +140,7 @@ export default function KaishainTedoriGuide() {
         <GuideSection id="hikareru" title="給料から引かれるもの">
           <div className="space-y-3">
             {deductions.map((d) => (
-              <div key={d.title} className="rounded-xl border p-4">
+              <div key={d.title} className="rounded-md border p-4">
                 <p className="font-semibold text-foreground">{d.title}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{d.body}</p>
               </div>
@@ -203,7 +196,7 @@ export default function KaishainTedoriGuide() {
               <Link
                 key={c.href}
                 href={c.href}
-                className="group rounded-xl border p-4 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+                className="group rounded-md border p-4 transition-colors hover:border-primary/50"
               >
                 <c.icon className="size-5 text-primary" aria-hidden />
                 <p className="mt-2 font-semibold text-foreground group-hover:text-primary">
@@ -218,7 +211,7 @@ export default function KaishainTedoriGuide() {
         <GuideSection id="faq" title="よくあるご質問">
           <dl className="space-y-4">
             {faqs.map((faq) => (
-              <div key={faq.question} className="rounded-xl border bg-card p-4">
+              <div key={faq.question} className="rounded-md border bg-card p-4">
                 <dt className="font-semibold text-foreground">
                   {faq.question}
                 </dt>
@@ -228,7 +221,7 @@ export default function KaishainTedoriGuide() {
           </dl>
         </GuideSection>
 
-        <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-4 text-sm leading-7 text-muted-foreground">
+        <p className="rounded-md border border-chart-3/40 bg-chart-3/10 p-4 text-sm leading-7 text-muted-foreground">
           ⚠️
           本記事は一般的な情報提供を目的とした解説です。手取りの割合はあくまで目安で、実際の金額は各人の年収・年齢・家族構成・お住まいの自治体により異なります。
         </p>

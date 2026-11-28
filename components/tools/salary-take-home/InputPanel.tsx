@@ -47,6 +47,10 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
       <div className="space-y-2">
         <Label>都道府県（健康保険料率）</Label>
         <Select
+          items={PREFECTURES.map((p) => ({
+            value: p.slug,
+            label: `${p.name}（健保${(p.rate * 100).toFixed(2)}%）`,
+          }))}
           value={value.prefecture ?? DEFAULT_PREFECTURE_SLUG}
           onValueChange={(v) => onChange({ prefecture: String(v) })}
         >
@@ -87,6 +91,10 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
       <div className="space-y-2">
         <Label>扶養家族の数</Label>
         <Select
+          items={Array.from({ length: MAX_DEPENDENTS + 1 }, (_, i) => ({
+            value: String(i),
+            label: `${i}人`,
+          }))}
           value={String(value.dependents)}
           onValueChange={(v) => onChange({ dependents: Number(String(v)) })}
         >

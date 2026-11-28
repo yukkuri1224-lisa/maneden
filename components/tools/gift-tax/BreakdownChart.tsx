@@ -6,8 +6,8 @@ import type { GiftTaxResult } from "@/lib/calculators/gift-tax";
 import { formatYen } from "@/lib/format";
 
 const COLORS = {
-  net: "#4f46e5",
-  tax: "#94a3b8",
+  net: "var(--chart-1)",
+  tax: "var(--chart-5)",
 };
 
 export default function BreakdownChart({ result }: { result: GiftTaxResult }) {

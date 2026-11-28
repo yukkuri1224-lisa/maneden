@@ -21,6 +21,7 @@ import {
 import { articleJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export const dynamicParams = false;
 
@@ -65,16 +66,7 @@ export async function generateMetadata({
     0,
   )}が目安。自己負担2,000円で寄付できる金額の計算方法と、家族構成・控除による違いを解説します。`;
 
-  return {
-    title,
-    description,
-    alternates: { canonical: `/furusato/${income}` },
-    openGraph: {
-      title,
-      description,
-      url: `${siteConfig.url}/furusato/${income}`,
-    },
-  };
+  return pageMetadata({ title, description, path: `/furusato/${income}` });
 }
 
 export default async function FurusatoLevelPage({
@@ -165,11 +157,11 @@ export default async function FurusatoLevelPage({
       </p>
 
       {/* 結論 */}
-      <div className="mt-6 rounded-2xl border bg-gradient-to-b from-primary/5 to-background p-6 text-center sm:p-8">
+      <div className="mt-6 rounded-md border bg-card p-6 text-center sm:p-8">
         <p className="text-sm text-muted-foreground">
           控除上限額の目安（自己負担2,000円）
         </p>
-        <p className="text-gradient mt-1 text-4xl font-black tracking-tight tabular-nums sm:text-5xl">
+        <p className="mt-1 text-4xl font-bold text-primary tabular-nums sm:text-5xl">
           約{formatManYen(limit, 0)}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -192,7 +184,7 @@ export default async function FurusatoLevelPage({
 
       {/* 年収帯特有の注意点 */}
       {note && (
-        <div className="mt-6 rounded-xl border-l-4 border-primary bg-muted/30 p-4">
+        <div className="mt-6 rounded-md border-l-4 border-primary bg-muted/30 p-4">
           <p className="text-sm font-semibold">
             年収{level.man}万円のふるさと納税で押さえておきたいポイント
           </p>
@@ -332,7 +324,7 @@ export default async function FurusatoLevelPage({
 
         <section
           aria-label="計算の前提と出典"
-          className="rounded-xl border bg-muted/30 p-4 text-xs leading-relaxed text-muted-foreground"
+          className="rounded-md border bg-muted/30 p-4 text-xs leading-relaxed text-muted-foreground"
         >
           <p>
             本ページは{TAX_YEAR}

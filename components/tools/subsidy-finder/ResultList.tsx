@@ -13,7 +13,7 @@ import { DIFFICULTY_LABEL, DIFFICULTY_STYLE } from "./options";
 export function ResultList({ matches }: { matches: SubsidyMatch[] }) {
   if (matches.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed p-8 text-center text-sm text-muted-foreground">
+      <div className="rounded-md border border-dashed p-8 text-center text-sm text-muted-foreground">
         条件に合う候補が見つかりませんでした。事業目的を追加してお試しください。
       </div>
     );

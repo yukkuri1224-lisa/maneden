@@ -21,6 +21,7 @@ import {
 import { articleJsonLd, faqJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export const dynamicParams = false;
 
@@ -55,16 +56,7 @@ export async function generateMetadata({
     0,
   )}%）。社会保険料・所得税・住民税の内訳と、月あたりの手取り、家族構成による違いまで解説します。`;
 
-  return {
-    title,
-    description,
-    alternates: { canonical: `/take-home/${income}` },
-    openGraph: {
-      title,
-      description,
-      url: `${siteConfig.url}/take-home/${income}`,
-    },
-  };
+  return pageMetadata({ title, description, path: `/take-home/${income}` });
 }
 
 export default async function TakeHomeLevelPage({
@@ -198,9 +190,9 @@ export default async function TakeHomeLevelPage({
       </p>
 
       {/* 結論 */}
-      <div className="mt-6 rounded-2xl border bg-gradient-to-b from-primary/5 to-background p-6 text-center sm:p-8">
+      <div className="mt-6 rounded-md border bg-card p-6 text-center sm:p-8">
         <p className="text-sm text-muted-foreground">年間の手取り（目安）</p>
-        <p className="text-gradient mt-1 text-4xl font-black tracking-tight tabular-nums sm:text-5xl">
+        <p className="mt-1 text-4xl font-bold text-primary tabular-nums sm:text-5xl">
           約{formatManYen(r.netIncome, 0)}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -213,7 +205,7 @@ export default async function TakeHomeLevelPage({
       <h2 className="mt-10 text-lg font-bold">
         年収{level.man}万円の手取りの内訳
       </h2>
-      <div className="mt-3 overflow-x-auto rounded-xl border">
+      <div className="mt-3 overflow-x-auto rounded-md border">
         <table className="w-full border-collapse text-sm">
           <tbody>
             <tr className="border-b">
@@ -273,25 +265,25 @@ export default async function TakeHomeLevelPage({
       </div>
 
       {/* 額面に占める内訳を色分けバーで可視化 */}
-      <div className="mt-4 rounded-xl border p-4">
+      <div className="mt-4 rounded-md border p-4">
         <BreakdownBar
           formatValue={(v) => formatManYen(v, 0)}
           segments={[
             {
               label: "手取り",
               value: r.netIncome,
-              colorClass: "bg-emerald-500",
+              colorClass: "bg-chart-1",
             },
             {
               label: "社会保険料",
               value: r.socialInsurance,
-              colorClass: "bg-sky-500",
+              colorClass: "bg-chart-2",
             },
-            { label: "所得税", value: r.incomeTax, colorClass: "bg-amber-500" },
+            { label: "所得税", value: r.incomeTax, colorClass: "bg-chart-4" },
             {
               label: "住民税",
               value: r.residentTax,
-              colorClass: "bg-violet-500",
+              colorClass: "bg-chart-3",
             },
           ]}
         />
@@ -302,7 +294,7 @@ export default async function TakeHomeLevelPage({
         数字で見る年収{level.man}万円
       </h3>
       <div className="mt-3 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl border p-4">
+        <div className="rounded-md border p-4">
           <p className="text-xs text-muted-foreground">手取り率</p>
           <p className="mt-1 text-lg font-semibold tabular-nums">
             {r.netIncomeRate.toFixed(1)}%
@@ -318,7 +310,7 @@ export default async function TakeHomeLevelPage({
             </p>
           )}
         </div>
-        <div className="rounded-xl border p-4">
+        <div className="rounded-md border p-4">
           <p className="text-xs text-muted-foreground">所得税の限界税率</p>
           <p className="mt-1 text-lg font-semibold tabular-nums">
             {Math.round(marginalRate * 100)}%
@@ -327,7 +319,7 @@ export default async function TakeHomeLevelPage({
             課税所得が属する税率帯
           </p>
         </div>
-        <div className="rounded-xl border p-4">
+        <div className="rounded-md border p-4">
           <p className="text-xs text-muted-foreground">月あたりの手取り</p>
           <p className="mt-1 text-lg font-semibold tabular-nums">
             約{formatManYen(monthly, 1)}
@@ -340,7 +332,7 @@ export default async function TakeHomeLevelPage({
 
       {/* 年収帯特有の注意点 */}
       {note && (
-        <div className="mt-4 rounded-xl border-l-4 border-primary bg-muted/30 p-4">
+        <div className="mt-4 rounded-md border-l-4 border-primary bg-muted/30 p-4">
           <p className="text-sm font-semibold">
             年収{level.man}万円の帯で押さえておきたいポイント
           </p>
@@ -485,7 +477,7 @@ export default async function TakeHomeLevelPage({
 
         <section
           aria-label="計算の前提と出典"
-          className="rounded-xl border bg-muted/30 p-4 text-xs leading-relaxed text-muted-foreground"
+          className="rounded-md border bg-muted/30 p-4 text-xs leading-relaxed text-muted-foreground"
         >
           <p>
             本ページは{TAX_YEAR}

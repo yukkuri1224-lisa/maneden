@@ -3,21 +3,23 @@ import Link from "next/link";
 
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
+import { JsonLd } from "@/components/common/JsonLd";
 import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
 import { formatManYen } from "@/lib/format";
 import { INCOME_LEVELS } from "@/lib/longtail/levels";
+import { itemListJsonLd } from "@/lib/seo/jsonld";
+import { pageMetadata } from "@/lib/seo/metadata";
 import { siteConfig } from "@/lib/site-config";
 
 const title = "年収別の手取り一覧｜300万〜1500万円の手取り額を早見";
 const description =
   "年収300万〜1,500万円の手取り額（独身・扶養なしの概算）を一覧で確認。各年収のページで社会保険料・所得税・住民税の内訳と月あたりの手取りを解説しています。";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title,
   description,
-  alternates: { canonical: "/take-home" },
-  openGraph: { title, description, url: `${siteConfig.url}/take-home` },
-};
+  path: "/take-home",
+});
 
 const rows = INCOME_LEVELS.map((l) => {
   const r = calculateSalaryTakeHome({
@@ -32,6 +34,14 @@ const rows = INCOME_LEVELS.map((l) => {
 export default function TakeHomeHubPage() {
   return (
     <Container className="py-10">
+      <JsonLd
+        data={itemListJsonLd(
+          INCOME_LEVELS.map((l) => ({
+            name: `年収${l.man}万円の手取り`,
+            url: `${siteConfig.url}/take-home/${l.slug}`,
+          })),
+        )}
+      />
       <Breadcrumb
         items={[
           { name: "ホーム", href: "/" },
@@ -45,7 +55,7 @@ export default function TakeHomeHubPage() {
         年収（額面）ごとの手取り額の目安です（独身・扶養なし・東京都の協会けんぽ令和8年度料率での概算）。金額をクリックすると、社会保険料・所得税・住民税の内訳や月あたりの手取りを確認できます。
       </p>
 
-      <div className="mt-8 overflow-x-auto rounded-xl border">
+      <div className="mt-8 overflow-x-auto rounded-md border">
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr className="bg-muted/60">

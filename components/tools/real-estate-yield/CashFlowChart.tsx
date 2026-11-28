@@ -65,27 +65,27 @@ export default function CashFlowChart({
           {deadCrossYear !== null && (
             <ReferenceLine
               x={deadCrossYear}
-              stroke="#f59e0b"
+              stroke="var(--chart-3)"
               strokeDasharray="4 4"
               label={{
                 value: "デッドクロス",
                 position: "top",
                 fontSize: 10,
-                fill: "#b45309",
+                fill: "var(--chart-2)",
               }}
             />
           )}
           <Line
             type="monotone"
             dataKey="元金返済"
-            stroke="#4f46e5"
+            stroke="var(--chart-1)"
             strokeWidth={2}
             dot={false}
           />
           <Line
             type="monotone"
             dataKey="減価償却"
-            stroke="#06b6d4"
+            stroke="var(--chart-4)"
             strokeWidth={2}
             dot={false}
           />

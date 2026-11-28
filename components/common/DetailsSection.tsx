@@ -17,7 +17,7 @@ export function DetailsSection({
   return (
     <details
       open={defaultOpen}
-      className="group rounded-xl border border-dashed"
+      className="group rounded-md border border-dashed"
     >
       <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-4 py-3 text-sm font-medium select-none [&::-webkit-details-marker]:hidden">
         {title}

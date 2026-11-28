@@ -15,6 +15,7 @@ import { formatManYen } from "@/lib/format";
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const tool = getToolById("hourly-wage")!;
 
@@ -79,16 +80,12 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "時給・年収の変換シミュレーター｜時給から年収・年収から時給を無料計算",
+  ogTitle: tool.title,
   description,
-  alternates: { canonical: tool.href },
-  openGraph: {
-    title: tool.title,
-    description,
-    url: `${siteConfig.url}${tool.href}`,
-  },
-};
+  path: tool.href,
+});
 
 export default function HourlyWagePage() {
   return (
@@ -122,7 +119,7 @@ export default function HourlyWagePage() {
       <div className="mt-8">
         <Suspense
           fallback={
-            <div className="h-96 w-full animate-pulse rounded-xl bg-muted" />
+            <div className="h-96 w-full animate-pulse rounded-md bg-muted" />
           }
         >
           <HourlyWageTool />

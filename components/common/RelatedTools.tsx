@@ -1,5 +1,5 @@
 import { JsonLd } from "@/components/common/JsonLd";
-import { ToolCard } from "@/components/common/ToolCard";
+import { ToolCard, ToolIndex } from "@/components/common/ToolCard";
 import { itemListJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById, tools } from "@/lib/tools-registry";
@@ -36,10 +36,12 @@ export function RelatedTools({ excludeId }: { excludeId?: string }) {
         )}
       />
       <h2 className="text-lg font-semibold">あわせて使えるツール</h2>
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {related.map((tool) => (
-          <ToolCard key={tool.id} tool={tool} />
-        ))}
+      <div className="mt-4">
+        <ToolIndex>
+          {related.map((tool) => (
+            <ToolCard key={tool.id} tool={tool} />
+          ))}
+        </ToolIndex>
       </div>
     </section>
   );

@@ -12,6 +12,7 @@ import { SubsidyFinderTool } from "@/components/tools/subsidy-finder/SubsidyFind
 import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { getToolById } from "@/lib/tools-registry";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const tool = getToolById("subsidy-finder")!;
 
@@ -46,16 +47,12 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "補助金・助成金 診断｜受給できそうな制度と概算額を無料でチェック",
+  ogTitle: tool.title,
   description,
-  alternates: { canonical: tool.href },
-  openGraph: {
-    title: tool.title,
-    description,
-    url: `${siteConfig.url}${tool.href}`,
-  },
-};
+  path: tool.href,
+});
 
 export default function SubsidyFinderPage() {
   return (
@@ -82,7 +79,7 @@ export default function SubsidyFinderPage() {
         <p className="mt-3 max-w-2xl text-muted-foreground">{description}</p>
       </div>
 
-      <div className="mt-6 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300">
+      <div className="mt-6 rounded-md border border-chart-3/40 bg-chart-3/10 p-4 text-sm text-foreground">
         ⚠️
         補助金・助成金の制度内容・補助率・上限額・要件は毎年（公募回ごとに）変わります。本診断は
         <strong>概算・目安</strong>
@@ -92,7 +89,7 @@ export default function SubsidyFinderPage() {
       <div className="mt-8">
         <Suspense
           fallback={
-            <div className="h-96 w-full animate-pulse rounded-xl bg-muted" />
+            <div className="h-96 w-full animate-pulse rounded-md bg-muted" />
           }
         >
           <SubsidyFinderTool />

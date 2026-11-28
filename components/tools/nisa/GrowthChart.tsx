@@ -35,12 +35,20 @@ export default function GrowthChart({ result }: { result: NisaResult }) {
         >
           <defs>
             <linearGradient id="nisaPrincipal" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#4f46e5" stopOpacity={0.85} />
-              <stop offset="100%" stopColor="#4f46e5" stopOpacity={0.5} />
+              <stop offset="0%" stopColor="var(--chart-1)" stopOpacity={0.85} />
+              <stop
+                offset="100%"
+                stopColor="var(--chart-1)"
+                stopOpacity={0.5}
+              />
             </linearGradient>
             <linearGradient id="nisaGain" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity={0.85} />
-              <stop offset="100%" stopColor="#38bdf8" stopOpacity={0.45} />
+              <stop offset="0%" stopColor="var(--chart-2)" stopOpacity={0.85} />
+              <stop
+                offset="100%"
+                stopColor="var(--chart-2)"
+                stopOpacity={0.45}
+              />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
@@ -69,7 +77,7 @@ export default function GrowthChart({ result }: { result: NisaResult }) {
             type="monotone"
             dataKey="元本"
             stackId="1"
-            stroke="#4f46e5"
+            stroke="var(--chart-1)"
             strokeWidth={2}
             fill="url(#nisaPrincipal)"
           />
@@ -77,7 +85,7 @@ export default function GrowthChart({ result }: { result: NisaResult }) {
             type="monotone"
             dataKey="運用益"
             stackId="1"
-            stroke="#38bdf8"
+            stroke="var(--chart-2)"
             strokeWidth={2}
             fill="url(#nisaGain)"
           />

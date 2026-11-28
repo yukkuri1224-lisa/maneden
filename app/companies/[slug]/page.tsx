@@ -19,6 +19,7 @@ import { formatManYen } from "@/lib/format";
 import { datasetJsonLd, faqJsonLd, itemListJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export function generateStaticParams() {
   return companies.map((company) => ({ slug: company.slug }));
@@ -39,16 +40,7 @@ export async function generateMetadata({
   )}｜手取りも計算`;
   const description = `${company.name}（${company.industry}）の平均年収を全国平均・業種平均と比較。平均年齢・勤続年数・従業員数を有価証券報告書ベースで掲載し、この年収での手取り額も計算できます。`;
 
-  return {
-    title,
-    description,
-    alternates: { canonical: `/companies/${slug}` },
-    openGraph: {
-      title,
-      description,
-      url: `${siteConfig.url}/companies/${slug}`,
-    },
-  };
+  return pageMetadata({ title, description, path: `/companies/${slug}` });
 }
 
 /** 差額を「190万円上回り」のように整形（絶対値＋上回る/下回る） */
@@ -282,11 +274,11 @@ export default async function CompanyPage({
         ）が目安です（有価証券報告書ベース・東京都・独身の概算）。
       </p>
 
-      <div className="mt-6 rounded-2xl border bg-gradient-to-b from-primary/5 to-background p-6 text-center sm:p-8">
+      <div className="mt-6 rounded-md border bg-card p-6 text-center sm:p-8">
         <p className="text-sm text-muted-foreground">
           平均年間給与（有価証券報告書ベース）
         </p>
-        <p className="text-gradient mt-1 text-4xl font-black tracking-tight tabular-nums sm:text-6xl">
+        <p className="mt-1 text-4xl font-bold text-primary tabular-nums sm:text-6xl">
           {formatManYen(company.averageSalary, 0)}
         </p>
         <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
@@ -299,7 +291,7 @@ export default async function CompanyPage({
 
       {/* 順位 */}
       <div className="mt-4 grid grid-cols-2 gap-3">
-        <div className="rounded-xl border p-4">
+        <div className="rounded-md border p-4">
           <p className="text-xs text-muted-foreground">
             {company.industry}内の順位
           </p>
@@ -310,7 +302,7 @@ export default async function CompanyPage({
             </span>
           </p>
         </div>
-        <div className="rounded-xl border p-4">
+        <div className="rounded-md border p-4">
           <p className="text-xs text-muted-foreground">全上場企業中の順位</p>
           <p className="mt-1 text-lg font-semibold tabular-nums">
             {ranking.overallRank.toLocaleString("ja-JP")}位
@@ -324,7 +316,7 @@ export default async function CompanyPage({
       {stats.length > 0 && (
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {stats.map((stat) => (
-            <div key={stat.label} className="rounded-xl border p-4">
+            <div key={stat.label} className="rounded-md border p-4">
               <p className="text-xs text-muted-foreground">{stat.label}</p>
               <p className="mt-1 text-lg font-semibold tabular-nums">
                 {stat.value}
@@ -342,7 +334,7 @@ export default async function CompanyPage({
       </div>
 
       {/* 手取り内訳（サーバー側で静的生成 → クローラー可読・ロングテール獲得） */}
-      <section className="mt-10 rounded-2xl border bg-accent/40 p-6">
+      <section className="mt-10 rounded-md border bg-accent/40 p-6">
         <h2 className="text-xl font-bold sm:text-2xl">
           {company.name}の平均年収{formatManYen(company.averageSalary, 0)}
           、手取りはいくら？
@@ -356,7 +348,7 @@ export default async function CompanyPage({
         </p>
 
         <h3 className="mt-5 text-base font-bold">手取りの内訳</h3>
-        <div className="mt-3 overflow-x-auto rounded-xl border bg-background">
+        <div className="mt-3 overflow-x-auto rounded-md border bg-background">
           <table className="w-full border-collapse text-sm">
             <tbody>
               <tr className="border-b">
@@ -424,22 +416,22 @@ export default async function CompanyPage({
               {
                 label: "手取り",
                 value: takeHome.netIncome,
-                colorClass: "bg-emerald-500",
+                colorClass: "bg-chart-1",
               },
               {
                 label: "社会保険料",
                 value: takeHome.socialInsurance,
-                colorClass: "bg-sky-500",
+                colorClass: "bg-chart-2",
               },
               {
                 label: "所得税",
                 value: takeHome.incomeTax,
-                colorClass: "bg-amber-500",
+                colorClass: "bg-chart-4",
               },
               {
                 label: "住民税",
                 value: takeHome.residentTax,
-                colorClass: "bg-violet-500",
+                colorClass: "bg-chart-3",
               },
             ]}
           />
@@ -533,7 +525,7 @@ export default async function CompanyPage({
 
       <section
         aria-label="出典と更新情報"
-        className="mt-6 rounded-xl border bg-muted/30 p-4 text-xs leading-relaxed text-muted-foreground"
+        className="mt-6 rounded-md border bg-muted/30 p-4 text-xs leading-relaxed text-muted-foreground"
       >
         <p>
           <span className="font-medium text-foreground">出典：</span>
@@ -582,10 +574,10 @@ export default async function CompanyPage({
               <Link
                 key={c.slug}
                 href={`/companies/${c.slug}`}
-                className="rounded-xl border p-4 transition-colors hover:border-primary/30"
+                className="rounded-md border p-4 transition-colors hover:border-primary/30"
               >
                 <p className="font-medium">{c.name}</p>
-                <p className="text-gradient mt-1 font-bold tabular-nums">
+                <p className="mt-1 font-bold text-primary tabular-nums">
                   {formatManYen(c.averageSalary, 0)}
                 </p>
               </Link>

@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
 import { JsonLd } from "@/components/common/JsonLd";
+import { CompanyIndex } from "@/components/companies/CompanyIndex";
 import { CompanyList } from "@/components/companies/CompanyList";
+import { toListItems } from "@/lib/companies/data";
 import {
   INDUSTRY_SLUGS,
   NO_HUB_INDUSTRIES,
@@ -16,6 +18,7 @@ import { NATIONAL_AVERAGE_SALARY } from "@/lib/constants/national-salary";
 import { formatManYen } from "@/lib/format";
 import { itemListJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export function generateStaticParams() {
   return Object.entries(INDUSTRY_SLUGS)
@@ -39,16 +42,11 @@ export async function generateMetadata({
     0,
   )}。有価証券報告書ベースで平均年収の高い順にランキング。気になる企業の手取りもその場で計算できます。`;
 
-  return {
+  return pageMetadata({
     title,
     description,
-    alternates: { canonical: `/companies/industry/${slug}` },
-    openGraph: {
-      title,
-      description,
-      url: `${siteConfig.url}/companies/industry/${slug}`,
-    },
-  };
+    path: `/companies/industry/${slug}`,
+  });
 }
 
 export default async function IndustryHubPage({
@@ -63,6 +61,7 @@ export default async function IndustryHubPage({
   const { companies, average, count } = getIndustryStats(industry);
   if (count === 0) notFound();
 
+  const listItems = toListItems(companies);
   const national = NATIONAL_AVERAGE_SALARY;
   const diff = average - national.value;
   const diffText =
@@ -99,8 +98,13 @@ export default async function IndustryHubPage({
       </p>
 
       <div className="mt-8">
-        <CompanyList companies={companies} />
+        <CompanyList companies={listItems} />
       </div>
+
+      <CompanyIndex
+        companies={listItems}
+        heading={`${industry}の全${count}社一覧`}
+      />
 
       <div className="mt-10">
         <Link

@@ -26,11 +26,11 @@ export function ResultPanel({ result }: { result: MortgageResult }) {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-gradient-to-b from-primary/5 to-background p-6 text-center sm:p-8">
+      <div className="rounded-md border bg-card p-6 text-center sm:p-8">
         <p className="text-sm font-medium text-muted-foreground">
           毎月の返済額（概算）
         </p>
-        <p className="text-gradient mt-1 text-4xl font-black tracking-tight tabular-nums sm:text-6xl">
+        <p className="mt-1 text-4xl font-bold text-primary tabular-nums sm:text-6xl">
           {formatYen(monthly)}
         </p>
       </div>
@@ -49,18 +49,18 @@ export function ResultPanel({ result }: { result: MortgageResult }) {
       </div>
 
       {eff.applied && (
-        <div className="rounded-2xl border bg-accent/40 p-6">
+        <div className="rounded-md border bg-accent/40 p-6">
           <p className="font-semibold">繰上返済の効果（期間短縮型）</p>
           <div className="mt-3 grid grid-cols-2 gap-4">
             <div>
               <p className="text-xs text-muted-foreground">軽減される利息</p>
-              <p className="text-gradient mt-1 text-2xl font-black tabular-nums">
+              <p className="mt-1 text-2xl font-black text-primary tabular-nums">
                 {formatManYen(eff.interestSaved, 0)}
               </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground">短縮される期間</p>
-              <p className="text-gradient mt-1 text-2xl font-black tabular-nums">
+              <p className="mt-1 text-2xl font-black text-primary tabular-nums">
                 {monthsToYearMonth(eff.monthsSaved)}
               </p>
             </div>

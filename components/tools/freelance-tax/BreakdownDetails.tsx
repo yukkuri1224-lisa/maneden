@@ -29,7 +29,7 @@ export function BreakdownDetails({
   input: FreelanceTaxInput;
 }) {
   return (
-    <Accordion className="rounded-xl border px-4">
+    <Accordion className="rounded-md border px-4">
       <AccordionItem value="business">
         <AccordionTrigger>事業所得の計算</AccordionTrigger>
         <AccordionContent>

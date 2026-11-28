@@ -10,7 +10,8 @@
   --font-sans:
     var(--font-geist), var(--font-jp), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-serif-jp), ui-serif, "Hiragino Mincho ProN", serif;
+  --color-highlight: var(--highlight);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -50,75 +51,78 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  /* デザインシステム: design-system/maneden/MASTER.md（明細書のように、数字が主役） */
+  --background: oklch(0.985 0.005 85);
+  --foreground: oklch(0.24 0.03 262);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.24 0.03 262);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  /* アクセント: インディゴ系（モダン&信頼感） */
-  --primary: oklch(0.511 0.262 276.9);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  /* muted 背景(#f5f5f5)上でもコントラスト比 4.5:1 以上を満たすよう、やや濃く（A11y・可読性） */
-  --muted-foreground: oklch(0.51 0 0);
-  --accent: oklch(0.962 0.03 277);
-  --accent-foreground: oklch(0.398 0.14 277);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.585 0.233 277.1);
-  /* グラフ配色: インディゴ→ブルー→シアン→スカイ→スレート */
-  --chart-1: oklch(0.511 0.262 276.9);
-  --chart-2: oklch(0.623 0.214 259.8);
-  --chart-3: oklch(0.715 0.143 215.2);
-  --chart-4: oklch(0.746 0.14 232.7);
-  --chart-5: oklch(0.711 0.035 256.8);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.511 0.262 276.9);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.585 0.233 277.1);
+  --popover-foreground: oklch(0.24 0.03 262);
+  /* 藍 */
+  --primary: oklch(0.43 0.14 262);
+  --primary-foreground: oklch(0.985 0.005 85);
+  --secondary: oklch(0.955 0.007 85);
+  --secondary-foreground: oklch(0.24 0.03 262);
+  --muted: oklch(0.955 0.007 85);
+  --muted-foreground: oklch(0.46 0.02 262);
+  --accent: oklch(0.95 0.02 262);
+  --accent-foreground: oklch(0.36 0.12 262);
+  /* 朱: 「答え」の強調線・印にのみ使う */
+  --highlight: oklch(0.55 0.17 38);
+  --destructive: oklch(0.55 0.2 27);
+  --border: oklch(0.88 0.01 85);
+  --input: oklch(0.85 0.012 85);
+  --ring: oklch(0.43 0.14 262);
+  /* グラフ: 藍・朱・黄土・青緑・鼠 */
+  --chart-1: oklch(0.43 0.14 262);
+  --chart-2: oklch(0.6 0.16 38);
+  --chart-3: oklch(0.7 0.12 80);
+  --chart-4: oklch(0.6 0.08 190);
+  --chart-5: oklch(0.7 0.02 262);
+  --radius: 0.375rem;
+  --sidebar: oklch(0.975 0.006 85);
+  --sidebar-foreground: oklch(0.24 0.03 262);
+  --sidebar-primary: oklch(0.43 0.14 262);
+  --sidebar-primary-foreground: oklch(0.985 0.005 85);
+  --sidebar-accent: oklch(0.955 0.007 85);
+  --sidebar-accent-foreground: oklch(0.24 0.03 262);
+  --sidebar-border: oklch(0.88 0.01 85);
+  --sidebar-ring: oklch(0.43 0.14 262);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.585 0.233 277.1);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.31 0.06 277);
-  --accent-foreground: oklch(0.93 0.03 277);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.585 0.233 277.1);
-  --chart-1: oklch(0.585 0.233 277.1);
-  --chart-2: oklch(0.623 0.214 259.8);
-  --chart-3: oklch(0.715 0.143 215.2);
-  --chart-4: oklch(0.746 0.14 232.7);
-  --chart-5: oklch(0.711 0.035 256.8);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.585 0.233 277.1);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.585 0.233 277.1);
+  --background: oklch(0.17 0.015 260);
+  --foreground: oklch(0.95 0.006 85);
+  --card: oklch(0.21 0.015 260);
+  --card-foreground: oklch(0.95 0.006 85);
+  --popover: oklch(0.21 0.015 260);
+  --popover-foreground: oklch(0.95 0.006 85);
+  --primary: oklch(0.74 0.11 262);
+  --primary-foreground: oklch(0.17 0.015 260);
+  --secondary: oklch(0.25 0.015 260);
+  --secondary-foreground: oklch(0.95 0.006 85);
+  --muted: oklch(0.25 0.015 260);
+  --muted-foreground: oklch(0.74 0.012 85);
+  --accent: oklch(0.28 0.04 262);
+  --accent-foreground: oklch(0.9 0.04 262);
+  --highlight: oklch(0.72 0.15 42);
+  --destructive: oklch(0.7 0.19 22);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.74 0.11 262);
+  --chart-1: oklch(0.74 0.11 262);
+  --chart-2: oklch(0.72 0.15 42);
+  --chart-3: oklch(0.78 0.12 80);
+  --chart-4: oklch(0.72 0.08 190);
+  --chart-5: oklch(0.62 0.02 262);
+  --sidebar: oklch(0.21 0.015 260);
+  --sidebar-foreground: oklch(0.95 0.006 85);
+  --sidebar-primary: oklch(0.74 0.11 262);
+  --sidebar-primary-foreground: oklch(0.17 0.015 260);
+  --sidebar-accent: oklch(0.25 0.015 260);
+  --sidebar-accent-foreground: oklch(0.95 0.006 85);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.74 0.11 262);
 }
 
 @layer base {
@@ -133,54 +137,45 @@
   }
 }
 
+@layer base {
+  h1,
+  h2 {
+    font-family: var(--font-heading);
+    line-height: 1.35;
+  }
+  body {
+    line-height: 1.8;
+  }
+}
+
 @layer utilities {
-  /* ヒーローの装飾グリッド（中央から放射状にフェードアウト） */
-  .hero-grid {
-    background-image:
-      linear-gradient(
-        to right,
-        color-mix(in oklch, var(--foreground) 6%, transparent) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
-        color-mix(in oklch, var(--foreground) 6%, transparent) 1px,
-        transparent 1px
-      );
-    background-size: 36px 36px;
-    -webkit-mask-image: radial-gradient(
-      ellipse at top,
-      #000 30%,
-      transparent 72%
-    );
-    mask-image: radial-gradient(ellipse at top, #000 30%, transparent 72%);
+  /* 明細の行: 項目名と金額を点線リーダーでつなぐ */
+  .ledger-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
   }
-
-  /* ブランドのグラデーション文字 */
-  .text-gradient {
-    background-image: linear-gradient(100deg, #4f46e5, #7c3aed 45%, #0ea5e9);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .ledger-leader {
+    flex: 1;
+    min-width: 1rem;
+    border-bottom: 1px dotted var(--border);
+    transform: translateY(-0.3em);
   }
+  /* 「答え」の朱の二重下線 */
+  .answer-underline {
+    text-decoration-line: underline;
+    text-decoration-style: double;
+    text-decoration-color: var(--highlight);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+  }
+}
 
-  /* ヒーロー背景のカラーメッシュ（放射状グロー） */
-  .brand-mesh {
-    background-image:
-      radial-gradient(
-        40rem 30rem at 12% -10%,
-        color-mix(in oklch, #6366f1 22%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        34rem 28rem at 92% -5%,
-        color-mix(in oklch, #22d3ee 18%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        30rem 26rem at 55% 118%,
-        color-mix(in oklch, #a855f7 16%, transparent),
-        transparent 70%
-      );
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
