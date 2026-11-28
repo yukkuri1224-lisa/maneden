@@ -2,6 +2,11 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { TAX_YEAR } from "@/lib/constants/tax-tables";
+import {
+  CURRENT_INCOME_TAX_YEAR,
+  CURRENT_RESIDENT_TAX_FISCAL_YEAR,
+  toReiwa,
+} from "@/lib/constants/tax-years";
 import { TOOL_SOURCES } from "@/lib/constants/tool-sources";
 
 /**
@@ -13,6 +18,7 @@ export function ToolMeta({
   taxBasis,
   basis,
   toolId,
+  taxYearNote,
 }: {
   /** 最終更新日（例: "2026年8月6日"） */
   updated: string;
@@ -22,6 +28,11 @@ export function ToolMeta({
   basis?: ReactNode;
   /** 出典リンクを引くためのツールID（lib/constants/tool-sources） */
   toolId?: string;
+  /**
+   * 所得税の対象年分と令和8年度改正（2026年12月1日施行）の説明を出すか。
+   * salary＝会社員（年末調整で精算）、business＝個人事業主（確定申告で反映）。
+   */
+  taxYearNote?: "salary" | "business";
 }) {
   const reiwaYear = TAX_YEAR - 2018;
   const sources = toolId ? TOOL_SOURCES[toolId] : undefined;
@@ -46,7 +57,14 @@ export function ToolMeta({
           や各自治体の情報、税理士等の専門家にご確認ください。
         </p>
       )}
-      {basis && <p className={taxBasis ? "mt-1" : undefined}>{basis}</p>}
+      {taxYearNote && (
+        <p className={taxBasis ? "mt-1" : undefined}>
+          <TaxYearNote kind={taxYearNote} />
+        </p>
+      )}
+      {basis && (
+        <p className={taxBasis || taxYearNote ? "mt-1" : undefined}>{basis}</p>
+      )}
 
       {sources && sources.length > 0 && (
         <p className="mt-2">
@@ -76,5 +94,25 @@ export function ToolMeta({
       </p>
       <p className="mt-1">最終更新日: {updated}</p>
     </section>
+  );
+}
+
+/** 所得税の対象年分と、令和8年度改正の施行時期・反映タイミングの説明文 */
+export function TaxYearNote({ kind }: { kind: "salary" | "business" }) {
+  const itYear = CURRENT_INCOME_TAX_YEAR;
+  const rtYear = CURRENT_RESIDENT_TAX_FISCAL_YEAR;
+  const timing =
+    kind === "salary"
+      ? `会社員の方は、${itYear}年11月までの毎月の源泉徴収は改正前のままで、12月の年末調整で新しい控除により精算されます。毎月の源泉徴収額が新しい税額表に変わるのは${itYear + 1}年1月からです。`
+      : `個人事業主・フリーランスの方は、${itYear + 1}年に行う令和${toReiwa(itYear)}年分の確定申告で新しい控除が反映されます。`;
+  return (
+    <>
+      所得税は令和{toReiwa(itYear)}年分（{itYear}
+      年1〜12月の収入）で計算しています。令和{toReiwa(itYear)}
+      年12月1日に施行された基礎控除・給与所得控除の引き上げを反映しています。
+      {timing}
+      住民税は、この収入にかかる令和{toReiwa(rtYear)}年度分（{rtYear}
+      年6月から納付）の概算です。
+    </>
   );
 }

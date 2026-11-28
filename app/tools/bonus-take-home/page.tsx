@@ -246,9 +246,10 @@ export default function BonusTakeHomePage() {
 
         <ToolMeta
           toolId="bonus-take-home"
-          updated="2026年8月8日"
+          updated="2026年11月27日"
           taxBasis
-          basis="社会保険料は協会けんぽ・全国平均的な料率での概算です。所得税は賞与による年間所得税の増加分をもとにした概算で、給与天引きの源泉徴収額とは多少異なります。"
+          taxYearNote="salary"
+          basis="社会保険料は協会けんぽ・全国平均的な料率での概算です。所得税は賞与による年間所得税の増加分をもとにした概算で、給与天引きの源泉徴収額とは多少異なります。2026年中に支給される賞与の源泉徴収は改正前の算出率表によるため、給与明細の金額とは異なり、差は年末調整で精算されます。"
         />
       </div>
     </Container>

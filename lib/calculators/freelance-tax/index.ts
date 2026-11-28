@@ -1,3 +1,4 @@
+import { residentBasicDeduction } from "@/lib/calculators/common/salary-income";
 import { TAX_TABLES } from "@/lib/constants/tax-tables";
 
 import { consumptionTax } from "./consumptionTax";
@@ -69,7 +70,7 @@ export function calculateFreelanceTax(
   // 5. 住民税（控除額が所得税と異なる）
   const taxableResident = clampMin0(
     businessIncome -
-      rtTable.basicDeduction -
+      residentBasicDeduction() -
       dependentDeduction(dependents, rtTable.dependentDeduction) -
       spouseDeductionAmount(hasSpouse, spouseIncome, rtTable.spouseDeduction) -
       socialInsuranceDeduction,

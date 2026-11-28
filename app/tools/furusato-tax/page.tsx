@@ -244,7 +244,13 @@ export default function FurusatoTaxPage() {
 
         <RelatedTools excludeId="furusato-tax" />
 
-        <ToolMeta updated="2026年8月6日" taxBasis toolId="furusato-tax" />
+        <ToolMeta
+          updated="2026年11月27日"
+          taxBasis
+          taxYearNote="salary"
+          toolId="furusato-tax"
+          basis="控除上限額は、住民税（令和9年度分）の所得割をもとに計算しています。所得税の改正は、所得税率（限界税率）を通じて上限額に影響します。"
+        />
       </div>
     </Container>
   );

@@ -3,7 +3,8 @@
  *
  * 注意:
  * - 税制は毎年改定される。ここの値はすべて「概算」であり、最新の公式値を要確認。
- * - 所得税の基礎控除は2025年度税制改正の58万円を反映。低所得層の時限的加算・高所得の逓減詳細、住民税の調整控除は簡略化/未反映。
+ * - 基礎控除・給与所得控除は年分ごとに変わるため lib/constants/tax-years.ts で管理する（令和8年分＝令和8年度改正を反映）。
+ * - 住民税の調整控除は未反映。
  * - 国民健康保険・住民税均等割は自治体差が大きく、ここでは全国平均的な単身世帯モデルを採用。
  *
  * 税額計算のロジックはこのテーブルを唯一の情報源とし、UI/計算コードに数値を直書きしない。
@@ -22,8 +23,6 @@ export const TAX_TABLES = {
       { upTo: 39_999_000, rate: 0.4, deduction: 2_796_000 },
       { upTo: Number.POSITIVE_INFINITY, rate: 0.45, deduction: 4_796_000 },
     ],
-    /** 基礎控除（2025年度改正で58万円。合計所得2400万円超は逓減。低所得層の時限的加算は簡略化） */
-    basicDeduction: { base: 580_000, tier1: 320_000, tier2: 160_000 },
     /** 一般扶養控除（概算・16歳以上） */
     dependentDeduction: 380_000,
     /** 配偶者控除（納税者の所得900万円以下・概算） */
@@ -38,7 +37,7 @@ export const TAX_TABLES = {
     perCapita: 4_000,
     /** 森林環境税（均等割と併せて徴収・年1,000円） */
     forestTax: 1_000,
-    basicDeduction: 430_000,
+    /** 基礎控除は年度ごとに lib/constants/tax-years.ts（RESIDENT_TAX_YEARS）で管理 */
     dependentDeduction: 330_000,
     spouseDeduction: 330_000,
   },

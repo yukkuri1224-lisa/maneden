@@ -87,7 +87,7 @@ const faqs = [
   {
     question: "手取りをだいたいで計算したいのですが、目安はありますか？",
     answer:
-      "ざっくりの目安なら、年収300万円で手取り約237万円、年収400万円で約314万円、年収500万円で約390万円、年収600万円で約461万円、年収700万円で約529万円、年収800万円で約593万円ほどです（東京都・独身・扶養なしの概算）。より正確な手取りは、上の計算ツールに年齢や家族構成・都道府県を入れて計算してください。",
+      "ざっくりの目安なら、年収300万円で手取り約240万円、年収400万円で約317万円、年収500万円で約394万円、年収600万円で約466万円、年収700万円で約531万円、年収800万円で約595万円ほどです（東京都・独身・扶養なしの概算）。より正確な手取りは、上の計算ツールに年齢や家族構成・都道府県を入れて計算してください。",
   },
   {
     question: "住民税は入社1年目から引かれますか？",
@@ -236,7 +236,12 @@ export default function SalaryTakeHomePage() {
 
         <RelatedTools excludeId="salary-take-home" />
 
-        <ToolMeta updated="2026年8月6日" taxBasis toolId="salary-take-home" />
+        <ToolMeta
+          updated="2026年11月27日"
+          taxBasis
+          taxYearNote="salary"
+          toolId="salary-take-home"
+        />
       </div>
     </Container>
   );
