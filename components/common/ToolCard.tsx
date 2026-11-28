@@ -41,7 +41,7 @@ export function ToolCard({ tool }: { tool: Tool }) {
             </span>
           )}
         </span>
-        <span className="mt-1 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+        <span className="mt-1 line-clamp-2 text-sm leading-relaxed [word-break:auto-phrase] text-muted-foreground">
           {tool.description}
         </span>
       </span>
