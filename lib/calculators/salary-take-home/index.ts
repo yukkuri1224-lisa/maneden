@@ -1,3 +1,9 @@
+import {
+  basicDeductionIncomeTax,
+  residentBasicDeduction,
+  residentSalaryIncome,
+  salaryIncomeAfterDeduction,
+} from "@/lib/calculators/common/salary-income";
 import { calculateSocialInsurance } from "@/lib/calculators/social-insurance";
 import { DEFAULT_PREFECTURE_SLUG } from "@/lib/constants/insurance-rates";
 import { TAX_TABLES } from "@/lib/constants/tax-tables";
@@ -13,16 +19,6 @@ function floorTo(value: number, unit: number): number {
   return Math.floor(value / unit) * unit;
 }
 
-/** 給与所得控除（2020年分以降の標準式） */
-function salaryIncomeDeduction(salary: number): number {
-  if (salary <= 1_625_000) return 550_000;
-  if (salary <= 1_800_000) return salary * 0.4 - 100_000;
-  if (salary <= 3_600_000) return salary * 0.3 + 80_000;
-  if (salary <= 6_600_000) return salary * 0.2 + 440_000;
-  if (salary <= 8_500_000) return salary * 0.1 + 1_100_000;
-  return 1_950_000;
-}
-
 function incomeTaxAmount(taxableIncome: number): number {
   const income = floorTo(taxableIncome, 1000);
   const bracket = TAX_TABLES.incomeTax.brackets.find((b) => income <= b.upTo);
@@ -33,6 +29,7 @@ function incomeTaxAmount(taxableIncome: number): number {
 /**
  * 会社員（給与所得者）の年間手取りを概算する。
  * 社会保険料（健康保険・厚生年金・雇用保険の本人負担）＋所得税・住民税を差し引く。
+ * 所得税は令和8年分、住民税はその収入に対する令和9年度分で計算する（lib/constants/tax-years）。
  */
 export function calculateSalaryTakeHome(
   input: SalaryTakeHomeInput,
@@ -54,19 +51,20 @@ export function calculateSalaryTakeHome(
   const employmentInsurance = social.employmentInsurance;
   const socialInsurance = social.total;
 
-  // 給与所得
-  const salaryIncome = clampMin0(income - salaryIncomeDeduction(income));
+  // 給与所得（所得税＝令和8年分の別表第五、住民税＝令和9年度分。現行はどちらも最低74万円の控除）
+  const salaryIncome = salaryIncomeAfterDeduction(income);
+  const salaryIncomeResident = residentSalaryIncome(income);
 
   const spouseIT = input.hasSpouse ? it.spouseDeduction : 0;
   const spouseRT = input.hasSpouse ? rt.spouseDeduction : 0;
 
   const deductionsIncomeTax =
-    it.basicDeduction.base +
+    basicDeductionIncomeTax(salaryIncome) +
     dependents * it.dependentDeduction +
     spouseIT +
     socialInsurance;
   const deductionsResident =
-    rt.basicDeduction +
+    residentBasicDeduction() +
     dependents * rt.dependentDeduction +
     spouseRT +
     socialInsurance;
@@ -76,7 +74,7 @@ export function calculateSalaryTakeHome(
     1000,
   );
   const taxableIncomeResident = floorTo(
-    clampMin0(salaryIncome - deductionsResident),
+    clampMin0(salaryIncomeResident - deductionsResident),
     1000,
   );
 

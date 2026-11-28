@@ -10,7 +10,7 @@
       "incomeMan": 100,
       "income": 1000000,
       "dependents": 0,
-      "salaryIncome": 450000,
+      "salaryIncome": 260000,
       "socialInsurance": 154846,
       "healthInsurance": 53222,
       "pensionInsurance": 96624,
@@ -26,7 +26,7 @@
       "incomeMan": 100,
       "income": 1000000,
       "dependents": 1,
-      "salaryIncome": 450000,
+      "salaryIncome": 260000,
       "socialInsurance": 154846,
       "healthInsurance": 53222,
       "pensionInsurance": 96624,
@@ -42,7 +42,7 @@
       "incomeMan": 100,
       "income": 1000000,
       "dependents": 2,
-      "salaryIncome": 450000,
+      "salaryIncome": 260000,
       "socialInsurance": 154846,
       "healthInsurance": 53222,
       "pensionInsurance": 96624,
@@ -58,7 +58,7 @@
       "incomeMan": 100,
       "income": 1000000,
       "dependents": 3,
-      "salaryIncome": 450000,
+      "salaryIncome": 260000,
       "socialInsurance": 154846,
       "healthInsurance": 53222,
       "pensionInsurance": 96624,
@@ -74,23 +74,23 @@
       "incomeMan": 150,
       "income": 1500000,
       "dependents": 0,
-      "salaryIncome": 950000,
+      "salaryIncome": 760000,
       "socialInsurance": 222053,
       "healthInsurance": 76205,
       "pensionInsurance": 138348,
       "employmentInsurance": 7500,
-      "taxableIncomeIncomeTax": 147000,
-      "taxableIncomeResident": 297000,
-      "incomeTax": 7500,
-      "residentTax": 34700,
-      "netIncome": 1235747,
-      "netIncomeRate": 82.3831
+      "taxableIncomeIncomeTax": 0,
+      "taxableIncomeResident": 107000,
+      "incomeTax": 0,
+      "residentTax": 15700,
+      "netIncome": 1262247,
+      "netIncomeRate": 84.1498
     },
     {
       "incomeMan": 150,
       "income": 1500000,
       "dependents": 1,
-      "salaryIncome": 950000,
+      "salaryIncome": 760000,
       "socialInsurance": 222053,
       "healthInsurance": 76205,
       "pensionInsurance": 138348,
@@ -106,7 +106,7 @@
       "incomeMan": 150,
       "income": 1500000,
       "dependents": 2,
-      "salaryIncome": 950000,
+      "salaryIncome": 760000,
       "socialInsurance": 222053,
       "healthInsurance": 76205,
       "pensionInsurance": 138348,
@@ -122,7 +122,7 @@
       "incomeMan": 150,
       "income": 1500000,
       "dependents": 3,
-      "salaryIncome": 950000,
+      "salaryIncome": 760000,
       "socialInsurance": 222053,
       "healthInsurance": 76205,
       "pensionInsurance": 138348,
@@ -138,39 +138,39 @@
       "incomeMan": 200,
       "income": 2000000,
       "dependents": 0,
-      "salaryIncome": 1320000,
+      "salaryIncome": 1260000,
       "socialInsurance": 299476,
       "healthInsurance": 102816,
       "pensionInsurance": 186660,
       "employmentInsurance": 10000,
-      "taxableIncomeIncomeTax": 440000,
-      "taxableIncomeResident": 590000,
-      "incomeTax": 22400,
-      "residentTax": 64000,
-      "netIncome": 1614124,
-      "netIncomeRate": 80.7062
+      "taxableIncomeIncomeTax": 0,
+      "taxableIncomeResident": 530000,
+      "incomeTax": 0,
+      "residentTax": 58000,
+      "netIncome": 1642524,
+      "netIncomeRate": 82.1262
     },
     {
       "incomeMan": 200,
       "income": 2000000,
       "dependents": 1,
-      "salaryIncome": 1320000,
+      "salaryIncome": 1260000,
       "socialInsurance": 299476,
       "healthInsurance": 102816,
       "pensionInsurance": 186660,
       "employmentInsurance": 10000,
-      "taxableIncomeIncomeTax": 60000,
-      "taxableIncomeResident": 260000,
-      "incomeTax": 3000,
-      "residentTax": 31000,
-      "netIncome": 1666524,
-      "netIncomeRate": 83.3262
+      "taxableIncomeIncomeTax": 0,
+      "taxableIncomeResident": 200000,
+      "incomeTax": 0,
+      "residentTax": 25000,
+      "netIncome": 1675524,
+      "netIncomeRate": 83.7762
     },
     {
       "incomeMan": 200,
       "income": 2000000,
       "dependents": 2,
-      "salaryIncome": 1320000,
+      "salaryIncome": 1260000,
       "socialInsurance": 299476,
       "healthInsurance": 102816,
       "pensionInsurance": 186660,
@@ -186,7 +186,7 @@
       "incomeMan": 200,
       "income": 2000000,
       "dependents": 3,
-      "salaryIncome": 1320000,
+      "salaryIncome": 1260000,
       "socialInsurance": 299476,
       "healthInsurance": 102816,
       "pensionInsurance": 186660,
@@ -207,12 +207,12 @@
       "healthInsurance": 120960,
       "pensionInsurance": 219600,
       "employmentInsurance": 12500,
-      "taxableIncomeIncomeTax": 736000,
+      "taxableIncomeIncomeTax": 276000,
       "taxableIncomeResident": 886000,
-      "incomeTax": 37500,
+      "incomeTax": 14000,
       "residentTax": 93600,
-      "netIncome": 2015840,
-      "netIncomeRate": 80.6336
+      "netIncome": 2039340,
+      "netIncomeRate": 81.5736
     },
     {
       "incomeMan": 250,
@@ -223,12 +223,12 @@
       "healthInsurance": 120960,
       "pensionInsurance": 219600,
       "employmentInsurance": 12500,
-      "taxableIncomeIncomeTax": 356000,
+      "taxableIncomeIncomeTax": 0,
       "taxableIncomeResident": 556000,
-      "incomeTax": 18100,
+      "incomeTax": 0,
       "residentTax": 60600,
-      "netIncome": 2068240,
-      "netIncomeRate": 82.7296
+      "netIncome": 2086340,
+      "netIncomeRate": 83.4536
     },
     {
       "incomeMan": 250,
@@ -271,12 +271,12 @@
       "healthInsurance": 157248,
       "pensionInsurance": 285480,
       "employmentInsurance": 15000,
-      "taxableIncomeIncomeTax": 982000,
+      "taxableIncomeIncomeTax": 522000,
       "taxableIncomeResident": 1132000,
-      "incomeTax": 50100,
+      "incomeTax": 26600,
       "residentTax": 118200,
-      "netIncome": 2373972,
-      "netIncomeRate": 79.1324
+      "netIncome": 2397472,
+      "netIncomeRate": 79.9157
     },
     {
       "incomeMan": 300,
@@ -287,12 +287,12 @@
       "healthInsurance": 157248,
       "pensionInsurance": 285480,
       "employmentInsurance": 15000,
-      "taxableIncomeIncomeTax": 602000,
+      "taxableIncomeIncomeTax": 142000,
       "taxableIncomeResident": 802000,
-      "incomeTax": 30700,
+      "incomeTax": 7200,
       "residentTax": 85200,
-      "netIncome": 2426372,
-      "netIncomeRate": 80.8791
+      "netIncome": 2449872,
+      "netIncomeRate": 81.6624
     },
     {
       "incomeMan": 300,
@@ -303,12 +303,12 @@
       "healthInsurance": 157248,
       "pensionInsurance": 285480,
       "employmentInsurance": 15000,
-      "taxableIncomeIncomeTax": 222000,
+      "taxableIncomeIncomeTax": 0,
       "taxableIncomeResident": 472000,
-      "incomeTax": 11300,
+      "incomeTax": 0,
       "residentTax": 52200,
-      "netIncome": 2478772,
-      "netIncomeRate": 82.6257
+      "netIncome": 2490072,
+      "netIncomeRate": 83.0024
     },
     {
       "incomeMan": 300,
@@ -335,12 +335,12 @@
       "healthInsurance": 181440,
       "pensionInsurance": 329400,
       "employmentInsurance": 17500,
-      "taxableIncomeIncomeTax": 1261000,
+      "taxableIncomeIncomeTax": 801000,
       "taxableIncomeResident": 1411000,
-      "incomeTax": 64300,
+      "incomeTax": 40800,
       "residentTax": 146100,
-      "netIncome": 2761260,
-      "netIncomeRate": 78.8931
+      "netIncome": 2784760,
+      "netIncomeRate": 79.5646
     },
     {
       "incomeMan": 350,
@@ -351,12 +351,12 @@
       "healthInsurance": 181440,
       "pensionInsurance": 329400,
       "employmentInsurance": 17500,
-      "taxableIncomeIncomeTax": 881000,
+      "taxableIncomeIncomeTax": 421000,
       "taxableIncomeResident": 1081000,
-      "incomeTax": 44900,
+      "incomeTax": 21400,
       "residentTax": 113100,
-      "netIncome": 2813660,
-      "netIncomeRate": 80.3903
+      "netIncome": 2837160,
+      "netIncomeRate": 81.0617
     },
     {
       "incomeMan": 350,
@@ -367,12 +367,12 @@
       "healthInsurance": 181440,
       "pensionInsurance": 329400,
       "employmentInsurance": 17500,
-      "taxableIncomeIncomeTax": 501000,
+      "taxableIncomeIncomeTax": 41000,
       "taxableIncomeResident": 751000,
-      "incomeTax": 25500,
+      "incomeTax": 2000,
       "residentTax": 80100,
-      "netIncome": 2866060,
-      "netIncomeRate": 81.8874
+      "netIncome": 2889560,
+      "netIncomeRate": 82.5589
     },
     {
       "incomeMan": 350,
@@ -383,12 +383,12 @@
       "healthInsurance": 181440,
       "pensionInsurance": 329400,
       "employmentInsurance": 17500,
-      "taxableIncomeIncomeTax": 121000,
+      "taxableIncomeIncomeTax": 0,
       "taxableIncomeResident": 421000,
-      "incomeTax": 6100,
+      "incomeTax": 0,
       "residentTax": 47100,
-      "netIncome": 2918460,
-      "netIncomeRate": 83.3846
+      "netIncome": 2924560,
+      "netIncomeRate": 83.5589
     },
     {
       "incomeMan": 400,
@@ -399,12 +399,12 @@
       "healthInsurance": 205632,
       "pensionInsurance": 373320,
       "employmentInsurance": 20000,
-      "taxableIncomeIncomeTax": 1581000,
+      "taxableIncomeIncomeTax": 1121000,
       "taxableIncomeResident": 1731000,
-      "incomeTax": 80700,
+      "incomeTax": 57200,
       "residentTax": 178100,
-      "netIncome": 3142248,
-      "netIncomeRate": 78.5562
+      "netIncome": 3165748,
+      "netIncomeRate": 79.1437
     },
     {
       "incomeMan": 400,
@@ -415,12 +415,12 @@
       "healthInsurance": 205632,
       "pensionInsurance": 373320,
       "employmentInsurance": 20000,
-      "taxableIncomeIncomeTax": 1201000,
+      "taxableIncomeIncomeTax": 741000,
       "taxableIncomeResident": 1401000,
-      "incomeTax": 61300,
+      "incomeTax": 37800,
       "residentTax": 145100,
-      "netIncome": 3194648,
-      "netIncomeRate": 79.8662
+      "netIncome": 3218148,
+      "netIncomeRate": 80.4537
     },
     {
       "incomeMan": 400,
@@ -431,12 +431,12 @@
       "healthInsurance": 205632,
       "pensionInsurance": 373320,
       "employmentInsurance": 20000,
-      "taxableIncomeIncomeTax": 821000,
+      "taxableIncomeIncomeTax": 361000,
       "taxableIncomeResident": 1071000,
-      "incomeTax": 41900,
+      "incomeTax": 18400,
       "residentTax": 112100,
-      "netIncome": 3247048,
-      "netIncomeRate": 81.1762
+      "netIncome": 3270548,
+      "netIncomeRate": 81.7637
     },
     {
       "incomeMan": 400,
@@ -447,12 +447,12 @@
       "healthInsurance": 205632,
       "pensionInsurance": 373320,
       "employmentInsurance": 20000,
-      "taxableIncomeIncomeTax": 441000,
+      "taxableIncomeIncomeTax": 0,
       "taxableIncomeResident": 741000,
-      "incomeTax": 22500,
+      "incomeTax": 0,
       "residentTax": 79100,
-      "netIncome": 3299448,
-      "netIncomeRate": 82.4862
+      "netIncome": 3321948,
+      "netIncomeRate": 83.0487
     },
     {
       "incomeMan": 450,
@@ -463,12 +463,12 @@
       "healthInsurance": 229824,
       "pensionInsurance": 417240,
       "employmentInsurance": 22500,
-      "taxableIncomeIncomeTax": 1910000,
+      "taxableIncomeIncomeTax": 1450000,
       "taxableIncomeResident": 2060000,
-      "incomeTax": 97500,
+      "incomeTax": 74000,
       "residentTax": 211000,
-      "netIncome": 3521936,
-      "netIncomeRate": 78.2652
+      "netIncome": 3545436,
+      "netIncomeRate": 78.7875
     },
     {
       "incomeMan": 450,
@@ -479,12 +479,12 @@
       "healthInsurance": 229824,
       "pensionInsurance": 417240,
       "employmentInsurance": 22500,
-      "taxableIncomeIncomeTax": 1530000,
+      "taxableIncomeIncomeTax": 1070000,
       "taxableIncomeResident": 1730000,
-      "incomeTax": 78100,
+      "incomeTax": 54600,
       "residentTax": 178000,
-      "netIncome": 3574336,
-      "netIncomeRate": 79.4297
+      "netIncome": 3597836,
+      "netIncomeRate": 79.9519
     },
     {
       "incomeMan": 450,
@@ -495,12 +495,12 @@
       "healthInsurance": 229824,
       "pensionInsurance": 417240,
       "employmentInsurance": 22500,
-      "taxableIncomeIncomeTax": 1150000,
+      "taxableIncomeIncomeTax": 690000,
       "taxableIncomeResident": 1400000,
-      "incomeTax": 58700,
+      "incomeTax": 35200,
       "residentTax": 145000,
-      "netIncome": 3626736,
-      "netIncomeRate": 80.5941
+      "netIncome": 3650236,
+      "netIncomeRate": 81.1164
     },
     {
       "incomeMan": 450,
@@ -511,12 +511,12 @@
       "healthInsurance": 229824,
       "pensionInsurance": 417240,
       "employmentInsurance": 22500,
-      "taxableIncomeIncomeTax": 770000,
+      "taxableIncomeIncomeTax": 310000,
       "taxableIncomeResident": 1070000,
-      "incomeTax": 39300,
+      "incomeTax": 15800,
       "residentTax": 112000,
-      "netIncome": 3679136,
-      "netIncomeRate": 81.7586
+      "netIncome": 3702636,
+      "netIncomeRate": 82.2808
     },
     {
       "incomeMan": 500,
@@ -527,12 +527,12 @@
       "healthInsurance": 247968,
       "pensionInsurance": 450180,
       "employmentInsurance": 25000,
-      "taxableIncomeIncomeTax": 2256000,
+      "taxableIncomeIncomeTax": 1796000,
       "taxableIncomeResident": 2406000,
-      "incomeTax": 130700,
+      "incomeTax": 91600,
       "residentTax": 245600,
-      "netIncome": 3900552,
-      "netIncomeRate": 78.011
+      "netIncome": 3939652,
+      "netIncomeRate": 78.793
     },
     {
       "incomeMan": 500,
@@ -543,12 +543,12 @@
       "healthInsurance": 247968,
       "pensionInsurance": 450180,
       "employmentInsurance": 25000,
-      "taxableIncomeIncomeTax": 1876000,
+      "taxableIncomeIncomeTax": 1416000,
       "taxableIncomeResident": 2076000,
-      "incomeTax": 95700,
+      "incomeTax": 72200,
       "residentTax": 212600,
-      "netIncome": 3968552,
-      "netIncomeRate": 79.371
+      "netIncome": 3992052,
+      "netIncomeRate": 79.841
     },
     {
       "incomeMan": 500,
@@ -559,12 +559,12 @@
       "healthInsurance": 247968,
       "pensionInsurance": 450180,
       "employmentInsurance": 25000,
-      "taxableIncomeIncomeTax": 1496000,
+      "taxableIncomeIncomeTax": 1036000,
       "taxableIncomeResident": 1746000,
-      "incomeTax": 76300,
+      "incomeTax": 52800,
       "residentTax": 179600,
-      "netIncome": 4020952,
-      "netIncomeRate": 80.419
+      "netIncome": 4044452,
+      "netIncomeRate": 80.889
     },
     {
       "incomeMan": 500,
@@ -575,12 +575,12 @@
       "healthInsurance": 247968,
       "pensionInsurance": 450180,
       "employmentInsurance": 25000,
-      "taxableIncomeIncomeTax": 1116000,
+      "taxableIncomeIncomeTax": 656000,
       "taxableIncomeResident": 1416000,
-      "incomeTax": 56900,
+      "incomeTax": 33400,
       "residentTax": 146600,
-      "netIncome": 4073352,
-      "netIncomeRate": 81.467
+      "netIncome": 4096852,
+      "netIncomeRate": 81.937
     },
     {
       "incomeMan": 550,
@@ -591,12 +591,12 @@
       "healthInsurance": 284256,
       "pensionInsurance": 516060,
       "employmentInsurance": 27500,
-      "taxableIncomeIncomeTax": 2552000,
+      "taxableIncomeIncomeTax": 2092000,
       "taxableIncomeResident": 2702000,
-      "incomeTax": 161000,
+      "incomeTax": 114000,
       "residentTax": 275200,
-      "netIncome": 4235984,
-      "netIncomeRate": 77.0179
+      "netIncome": 4282984,
+      "netIncomeRate": 77.8724
     },
     {
       "incomeMan": 550,
@@ -607,12 +607,12 @@
       "healthInsurance": 284256,
       "pensionInsurance": 516060,
       "employmentInsurance": 27500,
-      "taxableIncomeIncomeTax": 2172000,
+      "taxableIncomeIncomeTax": 1712000,
       "taxableIncomeResident": 2372000,
-      "incomeTax": 122200,
+      "incomeTax": 87300,
       "residentTax": 242200,
-      "netIncome": 4307784,
-      "netIncomeRate": 78.3233
+      "netIncome": 4342684,
+      "netIncomeRate": 78.9579
     },
     {
       "incomeMan": 550,
@@ -623,12 +623,12 @@
       "healthInsurance": 284256,
       "pensionInsurance": 516060,
       "employmentInsurance": 27500,
-      "taxableIncomeIncomeTax": 1792000,
+      "taxableIncomeIncomeTax": 1332000,
       "taxableIncomeResident": 2042000,
-      "incomeTax": 91400,
+      "incomeTax": 67900,
       "residentTax": 209200,
-      "netIncome": 4371584,
-      "netIncomeRate": 79.4833
+      "netIncome": 4395084,
+      "netIncomeRate": 79.9106
     },
     {
       "incomeMan": 550,
@@ -639,12 +639,12 @@
       "healthInsurance": 284256,
       "pensionInsurance": 516060,
       "employmentInsurance": 27500,
-      "taxableIncomeIncomeTax": 1412000,
+      "taxableIncomeIncomeTax": 952000,
       "taxableIncomeResident": 1712000,
-      "incomeTax": 72000,
+      "incomeTax": 48500,
       "residentTax": 176200,
-      "netIncome": 4423984,
-      "netIncomeRate": 80.4361
+      "netIncome": 4447484,
+      "netIncomeRate": 80.8633
     },
     {
       "incomeMan": 600,
@@ -655,12 +655,12 @@
       "healthInsurance": 302400,
       "pensionInsurance": 549000,
       "employmentInsurance": 30000,
-      "taxableIncomeIncomeTax": 2898000,
+      "taxableIncomeIncomeTax": 2438000,
       "taxableIncomeResident": 3048000,
-      "incomeTax": 196300,
+      "incomeTax": 149300,
       "residentTax": 309800,
-      "netIncome": 4612500,
-      "netIncomeRate": 76.875
+      "netIncome": 4659500,
+      "netIncomeRate": 77.6583
     },
     {
       "incomeMan": 600,
@@ -671,12 +671,12 @@
       "healthInsurance": 302400,
       "pensionInsurance": 549000,
       "employmentInsurance": 30000,
-      "taxableIncomeIncomeTax": 2518000,
+      "taxableIncomeIncomeTax": 2058000,
       "taxableIncomeResident": 2718000,
-      "incomeTax": 157500,
+      "incomeTax": 110500,
       "residentTax": 276800,
-      "netIncome": 4684300,
-      "netIncomeRate": 78.0717
+      "netIncome": 4731300,
+      "netIncomeRate": 78.855
     },
     {
       "incomeMan": 600,
@@ -687,12 +687,12 @@
       "healthInsurance": 302400,
       "pensionInsurance": 549000,
       "employmentInsurance": 30000,
-      "taxableIncomeIncomeTax": 2138000,
+      "taxableIncomeIncomeTax": 1678000,
       "taxableIncomeResident": 2388000,
-      "incomeTax": 118700,
+      "incomeTax": 85600,
       "residentTax": 243800,
-      "netIncome": 4756100,
-      "netIncomeRate": 79.2683
+      "netIncome": 4789200,
+      "netIncomeRate": 79.82
     },
     {
       "incomeMan": 600,
@@ -703,12 +703,12 @@
       "healthInsurance": 302400,
       "pensionInsurance": 549000,
       "employmentInsurance": 30000,
-      "taxableIncomeIncomeTax": 1758000,
+      "taxableIncomeIncomeTax": 1298000,
       "taxableIncomeResident": 2058000,
-      "incomeTax": 89700,
+      "incomeTax": 66200,
       "residentTax": 210800,
-      "netIncome": 4818100,
-      "netIncomeRate": 80.3017
+      "netIncome": 4841600,
+      "netIncomeRate": 80.6933
     },
     {
       "incomeMan": 650,
@@ -719,12 +719,12 @@
       "healthInsurance": 320544,
       "pensionInsurance": 581940,
       "employmentInsurance": 32500,
-      "taxableIncomeIncomeTax": 3245000,
+      "taxableIncomeIncomeTax": 2785000,
       "taxableIncomeResident": 3395000,
-      "incomeTax": 231700,
+      "incomeTax": 184800,
       "residentTax": 344500,
-      "netIncome": 4988816,
-      "netIncomeRate": 76.751
+      "netIncome": 5035716,
+      "netIncomeRate": 77.4726
     },
     {
       "incomeMan": 650,
@@ -735,12 +735,12 @@
       "healthInsurance": 320544,
       "pensionInsurance": 581940,
       "employmentInsurance": 32500,
-      "taxableIncomeIncomeTax": 2865000,
+      "taxableIncomeIncomeTax": 2405000,
       "taxableIncomeResident": 3065000,
-      "incomeTax": 192900,
+      "incomeTax": 146000,
       "residentTax": 311500,
-      "netIncome": 5060616,
-      "netIncomeRate": 77.8556
+      "netIncome": 5107516,
+      "netIncomeRate": 78.5772
     },
     {
       "incomeMan": 650,
@@ -751,12 +751,12 @@
       "healthInsurance": 320544,
       "pensionInsurance": 581940,
       "employmentInsurance": 32500,
-      "taxableIncomeIncomeTax": 2485000,
+      "taxableIncomeIncomeTax": 2025000,
       "taxableIncomeResident": 2735000,
-      "incomeTax": 154100,
+      "incomeTax": 107200,
       "residentTax": 278500,
-      "netIncome": 5132416,
-      "netIncomeRate": 78.9602
+      "netIncome": 5179316,
+      "netIncomeRate": 79.6818
     },
     {
       "incomeMan": 650,
@@ -767,12 +767,12 @@
       "healthInsurance": 320544,
       "pensionInsurance": 581940,
       "employmentInsurance": 32500,
-      "taxableIncomeIncomeTax": 2105000,
+      "taxableIncomeIncomeTax": 1645000,
       "taxableIncomeResident": 2405000,
-      "incomeTax": 115300,
+      "incomeTax": 83900,
       "residentTax": 245500,
-      "netIncome": 5204216,
-      "netIncomeRate": 80.0649
+      "netIncome": 5235616,
+      "netIncomeRate": 80.5479
     },
     {
       "incomeMan": 700,
@@ -783,12 +783,12 @@
       "healthInsurance": 356832,
       "pensionInsurance": 647820,
       "employmentInsurance": 35000,
-      "taxableIncomeIncomeTax": 3580000,
+      "taxableIncomeIncomeTax": 3490000,
       "taxableIncomeResident": 3730000,
-      "incomeTax": 294500,
+      "incomeTax": 276100,
       "residentTax": 378000,
-      "netIncome": 5287848,
-      "netIncomeRate": 75.5407
+      "netIncome": 5306248,
+      "netIncomeRate": 75.8035
     },
     {
       "incomeMan": 700,
@@ -799,12 +799,12 @@
       "healthInsurance": 356832,
       "pensionInsurance": 647820,
       "employmentInsurance": 35000,
-      "taxableIncomeIncomeTax": 3200000,
+      "taxableIncomeIncomeTax": 3110000,
       "taxableIncomeResident": 3400000,
-      "incomeTax": 227100,
+      "incomeTax": 217900,
       "residentTax": 345000,
-      "netIncome": 5388248,
-      "netIncomeRate": 76.975
+      "netIncome": 5397448,
+      "netIncomeRate": 77.1064
     },
     {
       "incomeMan": 700,
@@ -815,12 +815,12 @@
       "healthInsurance": 356832,
       "pensionInsurance": 647820,
       "employmentInsurance": 35000,
-      "taxableIncomeIncomeTax": 2820000,
+      "taxableIncomeIncomeTax": 2730000,
       "taxableIncomeResident": 3070000,
-      "incomeTax": 188300,
+      "incomeTax": 179100,
       "residentTax": 312000,
-      "netIncome": 5460048,
-      "netIncomeRate": 78.0007
+      "netIncome": 5469248,
+      "netIncomeRate": 78.1321
     },
     {
       "incomeMan": 700,
@@ -831,12 +831,12 @@
       "healthInsurance": 356832,
       "pensionInsurance": 647820,
       "employmentInsurance": 35000,
-      "taxableIncomeIncomeTax": 2440000,
+      "taxableIncomeIncomeTax": 2350000,
       "taxableIncomeResident": 2740000,
-      "incomeTax": 149500,
+      "incomeTax": 140300,
       "residentTax": 279000,
-      "netIncome": 5531848,
-      "netIncomeRate": 79.0264
+      "netIncome": 5541048,
+      "netIncomeRate": 79.1578
     },
     {
       "incomeMan": 750,
@@ -847,12 +847,12 @@
       "healthInsurance": 374976,
       "pensionInsurance": 680760,
       "employmentInsurance": 37500,
-      "taxableIncomeIncomeTax": 3976000,
+      "taxableIncomeIncomeTax": 3886000,
       "taxableIncomeResident": 4126000,
-      "incomeTax": 375400,
+      "incomeTax": 357000,
       "residentTax": 417600,
-      "netIncome": 5613764,
-      "netIncomeRate": 74.8502
+      "netIncome": 5632164,
+      "netIncomeRate": 75.0955
     },
     {
       "incomeMan": 750,
@@ -863,12 +863,12 @@
       "healthInsurance": 374976,
       "pensionInsurance": 680760,
       "employmentInsurance": 37500,
-      "taxableIncomeIncomeTax": 3596000,
+      "taxableIncomeIncomeTax": 3506000,
       "taxableIncomeResident": 3796000,
-      "incomeTax": 297800,
+      "incomeTax": 279400,
       "residentTax": 384600,
-      "netIncome": 5724364,
-      "netIncomeRate": 76.3249
+      "netIncome": 5742764,
+      "netIncomeRate": 76.5702
     },
     {
       "incomeMan": 750,
@@ -879,12 +879,12 @@
       "healthInsurance": 374976,
       "pensionInsurance": 680760,
       "employmentInsurance": 37500,
-      "taxableIncomeIncomeTax": 3216000,
+      "taxableIncomeIncomeTax": 3126000,
       "taxableIncomeResident": 3466000,
-      "incomeTax": 228800,
+      "incomeTax": 219600,
       "residentTax": 351600,
-      "netIncome": 5826364,
-      "netIncomeRate": 77.6849
+      "netIncome": 5835564,
+      "netIncomeRate": 77.8075
     },
     {
       "incomeMan": 750,
@@ -895,12 +895,12 @@
       "healthInsurance": 374976,
       "pensionInsurance": 680760,
       "employmentInsurance": 37500,
-      "taxableIncomeIncomeTax": 2836000,
+      "taxableIncomeIncomeTax": 2746000,
       "taxableIncomeResident": 3136000,
-      "incomeTax": 190000,
+      "incomeTax": 180800,
       "residentTax": 318600,
-      "netIncome": 5898164,
-      "netIncomeRate": 78.6422
+      "netIncome": 5907364,
+      "netIncomeRate": 78.7649
     },
     {
       "incomeMan": 800,
@@ -911,12 +911,12 @@
       "healthInsurance": 411264,
       "pensionInsurance": 713700,
       "employmentInsurance": 40000,
-      "taxableIncomeIncomeTax": 4355000,
+      "taxableIncomeIncomeTax": 4265000,
       "taxableIncomeResident": 4505000,
-      "incomeTax": 452800,
+      "incomeTax": 434400,
       "residentTax": 455500,
-      "netIncome": 5926736,
-      "netIncomeRate": 74.0842
+      "netIncome": 5945136,
+      "netIncomeRate": 74.3142
     },
     {
       "incomeMan": 800,
@@ -927,12 +927,12 @@
       "healthInsurance": 411264,
       "pensionInsurance": 713700,
       "employmentInsurance": 40000,
-      "taxableIncomeIncomeTax": 3975000,
+      "taxableIncomeIncomeTax": 3885000,
       "taxableIncomeResident": 4175000,
-      "incomeTax": 375200,
+      "incomeTax": 356800,
       "residentTax": 422500,
-      "netIncome": 6037336,
-      "netIncomeRate": 75.4667
+      "netIncome": 6055736,
+      "netIncomeRate": 75.6967
     },
     {
       "incomeMan": 800,
@@ -943,12 +943,12 @@
       "healthInsurance": 411264,
       "pensionInsurance": 713700,
       "employmentInsurance": 40000,
-      "taxableIncomeIncomeTax": 3595000,
+      "taxableIncomeIncomeTax": 3505000,
       "taxableIncomeResident": 3845000,
-      "incomeTax": 297600,
+      "incomeTax": 279200,
       "residentTax": 389500,
-      "netIncome": 6147936,
-      "netIncomeRate": 76.8492
+      "netIncome": 6166336,
+      "netIncomeRate": 77.0792
     },
     {
       "incomeMan": 800,
@@ -959,12 +959,12 @@
       "healthInsurance": 411264,
       "pensionInsurance": 713700,
       "employmentInsurance": 40000,
-      "taxableIncomeIncomeTax": 3215000,
+      "taxableIncomeIncomeTax": 3125000,
       "taxableIncomeResident": 3515000,
-      "incomeTax": 228700,
+      "incomeTax": 219500,
       "residentTax": 356500,
-      "netIncome": 6249836,
-      "netIncomeRate": 78.123
+      "netIncome": 6259036,
+      "netIncomeRate": 78.2379
     },
     {
       "incomeMan": 850,
@@ -975,12 +975,12 @@
       "healthInsurance": 429408,
       "pensionInsurance": 713700,
       "employmentInsurance": 42500,
-      "taxableIncomeIncomeTax": 4784000,
+      "taxableIncomeIncomeTax": 4694000,
       "taxableIncomeResident": 4934000,
-      "incomeTax": 540400,
+      "incomeTax": 522000,
       "residentTax": 498400,
-      "netIncome": 6275592,
-      "netIncomeRate": 73.8305
+      "netIncome": 6293992,
+      "netIncomeRate": 74.047
     },
     {
       "incomeMan": 850,
@@ -991,12 +991,12 @@
       "healthInsurance": 429408,
       "pensionInsurance": 713700,
       "employmentInsurance": 42500,
-      "taxableIncomeIncomeTax": 4404000,
+      "taxableIncomeIncomeTax": 4314000,
       "taxableIncomeResident": 4604000,
-      "incomeTax": 462800,
+      "incomeTax": 444400,
       "residentTax": 465400,
-      "netIncome": 6386192,
-      "netIncomeRate": 75.1317
+      "netIncome": 6404592,
+      "netIncomeRate": 75.3481
     },
     {
       "incomeMan": 850,
@@ -1007,12 +1007,12 @@
       "healthInsurance": 429408,
       "pensionInsurance": 713700,
       "employmentInsurance": 42500,
-      "taxableIncomeIncomeTax": 4024000,
+      "taxableIncomeIncomeTax": 3934000,
       "taxableIncomeResident": 4274000,
-      "incomeTax": 385200,
+      "incomeTax": 366800,
       "residentTax": 432400,
-      "netIncome": 6496792,
-      "netIncomeRate": 76.4328
+      "netIncome": 6515192,
+      "netIncomeRate": 76.6493
     },
     {
       "incomeMan": 850,
@@ -1023,12 +1023,12 @@
       "healthInsurance": 429408,
       "pensionInsurance": 713700,
       "employmentInsurance": 42500,
-      "taxableIncomeIncomeTax": 3644000,
+      "taxableIncomeIncomeTax": 3554000,
       "taxableIncomeResident": 3944000,
-      "incomeTax": 307600,
+      "incomeTax": 289200,
       "residentTax": 399400,
-      "netIncome": 6607392,
-      "netIncomeRate": 77.734
+      "netIncome": 6625792,
+      "netIncomeRate": 77.9505
     },
     {
       "incomeMan": 900,
@@ -1039,12 +1039,12 @@
       "healthInsurance": 453600,
       "pensionInsurance": 713700,
       "employmentInsurance": 45000,
-      "taxableIncomeIncomeTax": 5257000,
+      "taxableIncomeIncomeTax": 5217000,
       "taxableIncomeResident": 5407000,
-      "incomeTax": 637000,
+      "incomeTax": 628800,
       "residentTax": 545700,
-      "netIncome": 6605000,
-      "netIncomeRate": 73.3889
+      "netIncome": 6613200,
+      "netIncomeRate": 73.48
     },
     {
       "incomeMan": 900,
@@ -1055,12 +1055,12 @@
       "healthInsurance": 453600,
       "pensionInsurance": 713700,
       "employmentInsurance": 45000,
-      "taxableIncomeIncomeTax": 4877000,
+      "taxableIncomeIncomeTax": 4837000,
       "taxableIncomeResident": 5077000,
-      "incomeTax": 559400,
+      "incomeTax": 551200,
       "residentTax": 512700,
-      "netIncome": 6715600,
-      "netIncomeRate": 74.6178
+      "netIncome": 6723800,
+      "netIncomeRate": 74.7089
     },
     {
       "incomeMan": 900,
@@ -1071,12 +1071,12 @@
       "healthInsurance": 453600,
       "pensionInsurance": 713700,
       "employmentInsurance": 45000,
-      "taxableIncomeIncomeTax": 4497000,
+      "taxableIncomeIncomeTax": 4457000,
       "taxableIncomeResident": 4747000,
-      "incomeTax": 481800,
+      "incomeTax": 473600,
       "residentTax": 479700,
-      "netIncome": 6826200,
-      "netIncomeRate": 75.8467
+      "netIncome": 6834400,
+      "netIncomeRate": 75.9378
     },
     {
       "incomeMan": 900,
@@ -1087,12 +1087,12 @@
       "healthInsurance": 453600,
       "pensionInsurance": 713700,
       "employmentInsurance": 45000,
-      "taxableIncomeIncomeTax": 4117000,
+      "taxableIncomeIncomeTax": 4077000,
       "taxableIncomeResident": 4417000,
-      "incomeTax": 404200,
+      "incomeTax": 396000,
       "residentTax": 446700,
-      "netIncome": 6936800,
-      "netIncomeRate": 77.0756
+      "netIncome": 6945000,
+      "netIncomeRate": 77.1667
     },
     {
       "incomeMan": 950,
@@ -1103,12 +1103,12 @@
       "healthInsurance": 477792,
       "pensionInsurance": 713700,
       "employmentInsurance": 47500,
-      "taxableIncomeIncomeTax": 5731000,
+      "taxableIncomeIncomeTax": 5691000,
       "taxableIncomeResident": 5881000,
-      "incomeTax": 733700,
+      "incomeTax": 725600,
       "residentTax": 593100,
-      "netIncome": 6934208,
-      "netIncomeRate": 72.9917
+      "netIncome": 6942308,
+      "netIncomeRate": 73.0769
     },
     {
       "incomeMan": 950,
@@ -1119,12 +1119,12 @@
       "healthInsurance": 477792,
       "pensionInsurance": 713700,
       "employmentInsurance": 47500,
-      "taxableIncomeIncomeTax": 5351000,
+      "taxableIncomeIncomeTax": 5311000,
       "taxableIncomeResident": 5551000,
-      "incomeTax": 656100,
+      "incomeTax": 648000,
       "residentTax": 560100,
-      "netIncome": 7044808,
-      "netIncomeRate": 74.1559
+      "netIncome": 7052908,
+      "netIncomeRate": 74.2411
     },
     {
       "incomeMan": 950,
@@ -1135,12 +1135,12 @@
       "healthInsurance": 477792,
       "pensionInsurance": 713700,
       "employmentInsurance": 47500,
-      "taxableIncomeIncomeTax": 4971000,
+      "taxableIncomeIncomeTax": 4931000,
       "taxableIncomeResident": 5221000,
-      "incomeTax": 578600,
+      "incomeTax": 570400,
       "residentTax": 527100,
-      "netIncome": 7155308,
-      "netIncomeRate": 75.319
+      "netIncome": 7163508,
+      "netIncomeRate": 75.4053
     },
     {
       "incomeMan": 950,
@@ -1151,12 +1151,12 @@
       "healthInsurance": 477792,
       "pensionInsurance": 713700,
       "employmentInsurance": 47500,
-      "taxableIncomeIncomeTax": 4591000,
+      "taxableIncomeIncomeTax": 4551000,
       "taxableIncomeResident": 4891000,
-      "incomeTax": 501000,
+      "incomeTax": 492800,
       "residentTax": 494100,
-      "netIncome": 7265908,
-      "netIncomeRate": 76.4832
+      "netIncome": 7274108,
+      "netIncomeRate": 76.5696
     },
     {
       "incomeMan": 1000,
@@ -1167,12 +1167,12 @@
       "healthInsurance": 501984,
       "pensionInsurance": 713700,
       "employmentInsurance": 50000,
-      "taxableIncomeIncomeTax": 6204000,
+      "taxableIncomeIncomeTax": 6164000,
       "taxableIncomeResident": 6354000,
-      "incomeTax": 830300,
+      "incomeTax": 822200,
       "residentTax": 640400,
-      "netIncome": 7263616,
-      "netIncomeRate": 72.6362
+      "netIncome": 7271716,
+      "netIncomeRate": 72.7172
     },
     {
       "incomeMan": 1000,
@@ -1183,12 +1183,12 @@
       "healthInsurance": 501984,
       "pensionInsurance": 713700,
       "employmentInsurance": 50000,
-      "taxableIncomeIncomeTax": 5824000,
+      "taxableIncomeIncomeTax": 5784000,
       "taxableIncomeResident": 6024000,
-      "incomeTax": 752700,
+      "incomeTax": 744600,
       "residentTax": 607400,
-      "netIncome": 7374216,
-      "netIncomeRate": 73.7422
+      "netIncome": 7382316,
+      "netIncomeRate": 73.8232
     },
     {
       "incomeMan": 1000,
@@ -1199,12 +1199,12 @@
       "healthInsurance": 501984,
       "pensionInsurance": 713700,
       "employmentInsurance": 50000,
-      "taxableIncomeIncomeTax": 5444000,
+      "taxableIncomeIncomeTax": 5404000,
       "taxableIncomeResident": 5694000,
-      "incomeTax": 675100,
+      "incomeTax": 667000,
       "residentTax": 574400,
-      "netIncome": 7484816,
-      "netIncomeRate": 74.8482
+      "netIncome": 7492916,
+      "netIncomeRate": 74.9292
     },
     {
       "incomeMan": 1000,
@@ -1215,12 +1215,12 @@
       "healthInsurance": 501984,
       "pensionInsurance": 713700,
       "employmentInsurance": 50000,
-      "taxableIncomeIncomeTax": 5064000,
+      "taxableIncomeIncomeTax": 5024000,
       "taxableIncomeResident": 5364000,
-      "incomeTax": 597500,
+      "incomeTax": 589400,
       "residentTax": 541400,
-      "netIncome": 7595416,
-      "netIncomeRate": 75.9542
+      "netIncome": 7603516,
+      "netIncomeRate": 76.0352
     },
     {
       "incomeMan": 1050,
@@ -1231,12 +1231,12 @@
       "healthInsurance": 532224,
       "pensionInsurance": 713700,
       "employmentInsurance": 52500,
-      "taxableIncomeIncomeTax": 6671000,
+      "taxableIncomeIncomeTax": 6631000,
       "taxableIncomeResident": 6821000,
-      "incomeTax": 925700,
+      "incomeTax": 917500,
       "residentTax": 687100,
-      "netIncome": 7588776,
-      "netIncomeRate": 72.2741
+      "netIncome": 7596976,
+      "netIncomeRate": 72.3522
     },
     {
       "incomeMan": 1050,
@@ -1247,12 +1247,12 @@
       "healthInsurance": 532224,
       "pensionInsurance": 713700,
       "employmentInsurance": 52500,
-      "taxableIncomeIncomeTax": 6291000,
+      "taxableIncomeIncomeTax": 6251000,
       "taxableIncomeResident": 6491000,
-      "incomeTax": 848100,
+      "incomeTax": 839900,
       "residentTax": 654100,
-      "netIncome": 7699376,
-      "netIncomeRate": 73.3274
+      "netIncome": 7707576,
+      "netIncomeRate": 73.4055
     },
     {
       "incomeMan": 1050,
@@ -1263,12 +1263,12 @@
       "healthInsurance": 532224,
       "pensionInsurance": 713700,
       "employmentInsurance": 52500,
-      "taxableIncomeIncomeTax": 5911000,
+      "taxableIncomeIncomeTax": 5871000,
       "taxableIncomeResident": 6161000,
-      "incomeTax": 770500,
+      "incomeTax": 762300,
       "residentTax": 621100,
-      "netIncome": 7809976,
-      "netIncomeRate": 74.3807
+      "netIncome": 7818176,
+      "netIncomeRate": 74.4588
     },
     {
       "incomeMan": 1050,
@@ -1279,12 +1279,12 @@
       "healthInsurance": 532224,
       "pensionInsurance": 713700,
       "employmentInsurance": 52500,
-      "taxableIncomeIncomeTax": 5531000,
+      "taxableIncomeIncomeTax": 5491000,
       "taxableIncomeResident": 5831000,
-      "incomeTax": 692900,
+      "incomeTax": 684700,
       "residentTax": 588100,
-      "netIncome": 7920576,
-      "netIncomeRate": 75.4341
+      "netIncome": 7928776,
+      "netIncomeRate": 75.5122
     },
     {
       "incomeMan": 1100,
@@ -1295,12 +1295,12 @@
       "healthInsurance": 562464,
       "pensionInsurance": 713700,
       "employmentInsurance": 55000,
-      "taxableIncomeIncomeTax": 7138000,
+      "taxableIncomeIncomeTax": 7098000,
       "taxableIncomeResident": 7288000,
-      "incomeTax": 1026800,
+      "incomeTax": 1017400,
       "residentTax": 733800,
-      "netIncome": 7908236,
-      "netIncomeRate": 71.8931
+      "netIncome": 7917636,
+      "netIncomeRate": 71.9785
     },
     {
       "incomeMan": 1100,
@@ -1311,12 +1311,12 @@
       "healthInsurance": 562464,
       "pensionInsurance": 713700,
       "employmentInsurance": 55000,
-      "taxableIncomeIncomeTax": 6758000,
+      "taxableIncomeIncomeTax": 6718000,
       "taxableIncomeResident": 6958000,
-      "incomeTax": 943500,
+      "incomeTax": 935300,
       "residentTax": 700800,
-      "netIncome": 8024536,
-      "netIncomeRate": 72.9503
+      "netIncome": 8032736,
+      "netIncomeRate": 73.0249
     },
     {
       "incomeMan": 1100,
@@ -1327,12 +1327,12 @@
       "healthInsurance": 562464,
       "pensionInsurance": 713700,
       "employmentInsurance": 55000,
-      "taxableIncomeIncomeTax": 6378000,
+      "taxableIncomeIncomeTax": 6338000,
       "taxableIncomeResident": 6628000,
-      "incomeTax": 865900,
+      "incomeTax": 857700,
       "residentTax": 667800,
-      "netIncome": 8135136,
-      "netIncomeRate": 73.9558
+      "netIncome": 8143336,
+      "netIncomeRate": 74.0303
     },
     {
       "incomeMan": 1100,
@@ -1343,12 +1343,12 @@
       "healthInsurance": 562464,
       "pensionInsurance": 713700,
       "employmentInsurance": 55000,
-      "taxableIncomeIncomeTax": 5998000,
+      "taxableIncomeIncomeTax": 5958000,
       "taxableIncomeResident": 6298000,
-      "incomeTax": 788300,
+      "incomeTax": 780100,
       "residentTax": 634800,
-      "netIncome": 8245736,
-      "netIncomeRate": 74.9612
+      "netIncome": 8253936,
+      "netIncomeRate": 75.0358
     },
     {
       "incomeMan": 1150,
@@ -1359,12 +1359,12 @@
       "healthInsurance": 592704,
       "pensionInsurance": 713700,
       "employmentInsurance": 57500,
-      "taxableIncomeIncomeTax": 7606000,
+      "taxableIncomeIncomeTax": 7566000,
       "taxableIncomeResident": 7756000,
-      "incomeTax": 1136700,
+      "incomeTax": 1127300,
       "residentTax": 780600,
-      "netIncome": 8218796,
-      "netIncomeRate": 71.4678
+      "netIncome": 8228196,
+      "netIncomeRate": 71.5495
     },
     {
       "incomeMan": 1150,
@@ -1375,12 +1375,12 @@
       "healthInsurance": 592704,
       "pensionInsurance": 713700,
       "employmentInsurance": 57500,
-      "taxableIncomeIncomeTax": 7226000,
+      "taxableIncomeIncomeTax": 7186000,
       "taxableIncomeResident": 7426000,
-      "incomeTax": 1047500,
+      "incomeTax": 1038100,
       "residentTax": 747600,
-      "netIncome": 8340996,
-      "netIncomeRate": 72.5304
+      "netIncome": 8350396,
+      "netIncomeRate": 72.6121
     },
     {
       "incomeMan": 1150,
@@ -1391,12 +1391,12 @@
       "healthInsurance": 592704,
       "pensionInsurance": 713700,
       "employmentInsurance": 57500,
-      "taxableIncomeIncomeTax": 6846000,
+      "taxableIncomeIncomeTax": 6806000,
       "taxableIncomeResident": 7096000,
-      "incomeTax": 961400,
+      "incomeTax": 953300,
       "residentTax": 714600,
-      "netIncome": 8460096,
-      "netIncomeRate": 73.5661
+      "netIncome": 8468196,
+      "netIncomeRate": 73.6365
     },
     {
       "incomeMan": 1150,
@@ -1407,12 +1407,12 @@
       "healthInsurance": 592704,
       "pensionInsurance": 713700,
       "employmentInsurance": 57500,
-      "taxableIncomeIncomeTax": 6466000,
+      "taxableIncomeIncomeTax": 6426000,
       "taxableIncomeResident": 6766000,
-      "incomeTax": 883800,
+      "incomeTax": 875700,
       "residentTax": 681600,
-      "netIncome": 8570696,
-      "netIncomeRate": 74.5278
+      "netIncome": 8578796,
+      "netIncomeRate": 74.5982
     },
     {
       "incomeMan": 1200,
@@ -1423,12 +1423,12 @@
       "healthInsurance": 592704,
       "pensionInsurance": 713700,
       "employmentInsurance": 60000,
-      "taxableIncomeIncomeTax": 8103000,
+      "taxableIncomeIncomeTax": 8063000,
       "taxableIncomeResident": 8253000,
-      "incomeTax": 1253400,
+      "incomeTax": 1244000,
       "residentTax": 830300,
-      "netIncome": 8549896,
-      "netIncomeRate": 71.2491
+      "netIncome": 8559296,
+      "netIncomeRate": 71.3275
     },
     {
       "incomeMan": 1200,
@@ -1439,12 +1439,12 @@
       "healthInsurance": 592704,
       "pensionInsurance": 713700,
       "employmentInsurance": 60000,
-      "taxableIncomeIncomeTax": 7723000,
+      "taxableIncomeIncomeTax": 7683000,
       "taxableIncomeResident": 7923000,
-      "incomeTax": 1164200,
+      "incomeTax": 1154800,
       "residentTax": 797300,
-      "netIncome": 8672096,
-      "netIncomeRate": 72.2675
+      "netIncome": 8681496,
+      "netIncomeRate": 72.3458
     },
     {
       "incomeMan": 1200,
@@ -1455,12 +1455,12 @@
       "healthInsurance": 592704,
       "pensionInsurance": 713700,
       "employmentInsurance": 60000,
-      "taxableIncomeIncomeTax": 7343000,
+      "taxableIncomeIncomeTax": 7303000,
       "taxableIncomeResident": 7593000,
-      "incomeTax": 1075000,
+      "incomeTax": 1065600,
       "residentTax": 764300,
-      "netIncome": 8794296,
-      "netIncomeRate": 73.2858
+      "netIncome": 8803696,
+      "netIncomeRate": 73.3641
     },
     {
       "incomeMan": 1200,
@@ -1471,12 +1471,12 @@
       "healthInsurance": 592704,
       "pensionInsurance": 713700,
       "employmentInsurance": 60000,
-      "taxableIncomeIncomeTax": 6963000,
+      "taxableIncomeIncomeTax": 6923000,
       "taxableIncomeResident": 7263000,
-      "incomeTax": 985700,
+      "incomeTax": 977100,
       "residentTax": 731300,
-      "netIncome": 8916596,
-      "netIncomeRate": 74.305
+      "netIncome": 8925196,
+      "netIncomeRate": 74.3766
     },
     {
       "incomeMan": 1250,
@@ -1487,12 +1487,12 @@
       "healthInsurance": 622944,
       "pensionInsurance": 713700,
       "employmentInsurance": 62500,
-      "taxableIncomeIncomeTax": 8570000,
+      "taxableIncomeIncomeTax": 8530000,
       "taxableIncomeResident": 8720000,
-      "incomeTax": 1363100,
+      "incomeTax": 1353700,
       "residentTax": 877000,
-      "netIncome": 8860756,
-      "netIncomeRate": 70.886
+      "netIncome": 8870156,
+      "netIncomeRate": 70.9612
     },
     {
       "incomeMan": 1250,
@@ -1503,12 +1503,12 @@
       "healthInsurance": 622944,
       "pensionInsurance": 713700,
       "employmentInsurance": 62500,
-      "taxableIncomeIncomeTax": 8190000,
+      "taxableIncomeIncomeTax": 8150000,
       "taxableIncomeResident": 8390000,
-      "incomeTax": 1273900,
+      "incomeTax": 1264500,
       "residentTax": 844000,
-      "netIncome": 8982956,
-      "netIncomeRate": 71.8636
+      "netIncome": 8992356,
+      "netIncomeRate": 71.9388
     },
     {
       "incomeMan": 1250,
@@ -1519,12 +1519,12 @@
       "healthInsurance": 622944,
       "pensionInsurance": 713700,
       "employmentInsurance": 62500,
-      "taxableIncomeIncomeTax": 7810000,
+      "taxableIncomeIncomeTax": 7770000,
       "taxableIncomeResident": 8060000,
-      "incomeTax": 1184600,
+      "incomeTax": 1175200,
       "residentTax": 811000,
-      "netIncome": 9105256,
-      "netIncomeRate": 72.842
+      "netIncome": 9114656,
+      "netIncomeRate": 72.9172
     },
     {
       "incomeMan": 1250,
@@ -1535,12 +1535,12 @@
       "healthInsurance": 622944,
       "pensionInsurance": 713700,
       "employmentInsurance": 62500,
-      "taxableIncomeIncomeTax": 7430000,
+      "taxableIncomeIncomeTax": 7390000,
       "taxableIncomeResident": 7730000,
-      "incomeTax": 1095400,
+      "incomeTax": 1086000,
       "residentTax": 778000,
-      "netIncome": 9227456,
-      "netIncomeRate": 73.8196
+      "netIncome": 9236856,
+      "netIncomeRate": 73.8948
     },
     {
       "incomeMan": 1300,
@@ -1551,12 +1551,12 @@
       "healthInsurance": 659232,
       "pensionInsurance": 713700,
       "employmentInsurance": 65000,
-      "taxableIncomeIncomeTax": 9032000,
+      "taxableIncomeIncomeTax": 8992000,
       "taxableIncomeResident": 9182000,
-      "incomeTax": 1474800,
+      "incomeTax": 1462200,
       "residentTax": 923200,
-      "netIncome": 9164068,
-      "netIncomeRate": 70.4928
+      "netIncome": 9176668,
+      "netIncomeRate": 70.5898
     },
     {
       "incomeMan": 1300,
@@ -1567,12 +1567,12 @@
       "healthInsurance": 659232,
       "pensionInsurance": 713700,
       "employmentInsurance": 65000,
-      "taxableIncomeIncomeTax": 8652000,
+      "taxableIncomeIncomeTax": 8612000,
       "taxableIncomeResident": 8852000,
-      "incomeTax": 1382300,
+      "incomeTax": 1372900,
       "residentTax": 890200,
-      "netIncome": 9289568,
-      "netIncomeRate": 71.4582
+      "netIncome": 9298968,
+      "netIncomeRate": 71.5305
     },
     {
       "incomeMan": 1300,
@@ -1583,12 +1583,12 @@
       "healthInsurance": 659232,
       "pensionInsurance": 713700,
       "employmentInsurance": 65000,
-      "taxableIncomeIncomeTax": 8272000,
+      "taxableIncomeIncomeTax": 8232000,
       "taxableIncomeResident": 8522000,
-      "incomeTax": 1293100,
+      "incomeTax": 1283700,
       "residentTax": 857200,
-      "netIncome": 9411768,
-      "netIncomeRate": 72.3982
+      "netIncome": 9421168,
+      "netIncomeRate": 72.4705
     },
     {
       "incomeMan": 1300,
@@ -1599,12 +1599,12 @@
       "healthInsurance": 659232,
       "pensionInsurance": 713700,
       "employmentInsurance": 65000,
-      "taxableIncomeIncomeTax": 7892000,
+      "taxableIncomeIncomeTax": 7852000,
       "taxableIncomeResident": 8192000,
-      "incomeTax": 1203900,
+      "incomeTax": 1194500,
       "residentTax": 824200,
-      "netIncome": 9533968,
-      "netIncomeRate": 73.3382
+      "netIncome": 9543368,
+      "netIncomeRate": 73.4105
     },
     {
       "incomeMan": 1350,
@@ -1615,12 +1615,12 @@
       "healthInsurance": 695520,
       "pensionInsurance": 713700,
       "employmentInsurance": 67500,
-      "taxableIncomeIncomeTax": 9493000,
+      "taxableIncomeIncomeTax": 9453000,
       "taxableIncomeResident": 9643000,
-      "incomeTax": 1630200,
+      "incomeTax": 1616700,
       "residentTax": 969300,
-      "netIncome": 9423780,
-      "netIncomeRate": 69.8058
+      "netIncome": 9437280,
+      "netIncomeRate": 69.9058
     },
     {
       "incomeMan": 1350,
@@ -1631,12 +1631,12 @@
       "healthInsurance": 695520,
       "pensionInsurance": 713700,
       "employmentInsurance": 67500,
-      "taxableIncomeIncomeTax": 9113000,
+      "taxableIncomeIncomeTax": 9073000,
       "taxableIncomeResident": 9313000,
-      "incomeTax": 1502100,
+      "incomeTax": 1488700,
       "residentTax": 936300,
-      "netIncome": 9584880,
-      "netIncomeRate": 70.9991
+      "netIncome": 9598280,
+      "netIncomeRate": 71.0984
     },
     {
       "incomeMan": 1350,
@@ -1647,12 +1647,12 @@
       "healthInsurance": 695520,
       "pensionInsurance": 713700,
       "employmentInsurance": 67500,
-      "taxableIncomeIncomeTax": 8733000,
+      "taxableIncomeIncomeTax": 8693000,
       "taxableIncomeResident": 8983000,
-      "incomeTax": 1401400,
+      "incomeTax": 1392000,
       "residentTax": 903300,
-      "netIncome": 9718580,
-      "netIncomeRate": 71.9895
+      "netIncome": 9727980,
+      "netIncomeRate": 72.0591
     },
     {
       "incomeMan": 1350,
@@ -1663,12 +1663,12 @@
       "healthInsurance": 695520,
       "pensionInsurance": 713700,
       "employmentInsurance": 67500,
-      "taxableIncomeIncomeTax": 8353000,
+      "taxableIncomeIncomeTax": 8313000,
       "taxableIncomeResident": 8653000,
-      "incomeTax": 1312100,
+      "incomeTax": 1302700,
       "residentTax": 870300,
-      "netIncome": 9840880,
-      "netIncomeRate": 72.8954
+      "netIncome": 9850280,
+      "netIncomeRate": 72.965
     },
     {
       "incomeMan": 1400,
@@ -1679,12 +1679,12 @@
       "healthInsurance": 695520,
       "pensionInsurance": 713700,
       "employmentInsurance": 70000,
-      "taxableIncomeIncomeTax": 9990000,
+      "taxableIncomeIncomeTax": 9950000,
       "taxableIncomeResident": 10140000,
-      "incomeTax": 1797600,
+      "incomeTax": 1784100,
       "residentTax": 1019000,
-      "netIncome": 9704180,
-      "netIncomeRate": 69.3156
+      "netIncome": 9717680,
+      "netIncomeRate": 69.412
     },
     {
       "incomeMan": 1400,
@@ -1695,12 +1695,12 @@
       "healthInsurance": 695520,
       "pensionInsurance": 713700,
       "employmentInsurance": 70000,
-      "taxableIncomeIncomeTax": 9610000,
+      "taxableIncomeIncomeTax": 9570000,
       "taxableIncomeResident": 9810000,
-      "incomeTax": 1669600,
+      "incomeTax": 1656100,
       "residentTax": 986000,
-      "netIncome": 9865180,
-      "netIncomeRate": 70.4656
+      "netIncome": 9878680,
+      "netIncomeRate": 70.562
     },
     {
       "incomeMan": 1400,
@@ -1711,12 +1711,12 @@
       "healthInsurance": 695520,
       "pensionInsurance": 713700,
       "employmentInsurance": 70000,
-      "taxableIncomeIncomeTax": 9230000,
+      "taxableIncomeIncomeTax": 9190000,
       "taxableIncomeResident": 9480000,
-      "incomeTax": 1541600,
+      "incomeTax": 1528100,
       "residentTax": 953000,
-      "netIncome": 10026180,
-      "netIncomeRate": 71.6156
+      "netIncome": 10039680,
+      "netIncomeRate": 71.712
     },
     {
       "incomeMan": 1400,
@@ -1727,12 +1727,12 @@
       "healthInsurance": 695520,
       "pensionInsurance": 713700,
       "employmentInsurance": 70000,
-      "taxableIncomeIncomeTax": 8850000,
+      "taxableIncomeIncomeTax": 8810000,
       "taxableIncomeResident": 9150000,
-      "incomeTax": 1428800,
+      "incomeTax": 1419400,
       "residentTax": 920000,
-      "netIncome": 10171980,
-      "netIncomeRate": 72.657
+      "netIncome": 10181380,
+      "netIncomeRate": 72.7241
     },
     {
       "incomeMan": 1450,
@@ -1743,12 +1743,12 @@
       "healthInsurance": 731808,
       "pensionInsurance": 713700,
       "employmentInsurance": 72500,
-      "taxableIncomeIncomeTax": 10451000,
+      "taxableIncomeIncomeTax": 10411000,
       "taxableIncomeResident": 10601000,
-      "incomeTax": 1952900,
+      "incomeTax": 1939500,
       "residentTax": 1065100,
-      "netIncome": 9963992,
-      "netIncomeRate": 68.7172
+      "netIncome": 9977392,
+      "netIncomeRate": 68.8096
     },
     {
       "incomeMan": 1450,
@@ -1759,12 +1759,12 @@
       "healthInsurance": 731808,
       "pensionInsurance": 713700,
       "employmentInsurance": 72500,
-      "taxableIncomeIncomeTax": 10071000,
+      "taxableIncomeIncomeTax": 10031000,
       "taxableIncomeResident": 10271000,
-      "incomeTax": 1824900,
+      "incomeTax": 1811400,
       "residentTax": 1032100,
-      "netIncome": 10124992,
-      "netIncomeRate": 69.8275
+      "netIncome": 10138492,
+      "netIncomeRate": 69.9206
     },
     {
       "incomeMan": 1450,
@@ -1775,12 +1775,12 @@
       "healthInsurance": 731808,
       "pensionInsurance": 713700,
       "employmentInsurance": 72500,
-      "taxableIncomeIncomeTax": 9691000,
+      "taxableIncomeIncomeTax": 9651000,
       "taxableIncomeResident": 9941000,
-      "incomeTax": 1696900,
+      "incomeTax": 1683400,
       "residentTax": 999100,
-      "netIncome": 10285992,
-      "netIncomeRate": 70.9379
+      "netIncome": 10299492,
+      "netIncomeRate": 71.031
     },
     {
       "incomeMan": 1450,
@@ -1791,12 +1791,12 @@
       "healthInsurance": 731808,
       "pensionInsurance": 713700,
       "employmentInsurance": 72500,
-      "taxableIncomeIncomeTax": 9311000,
+      "taxableIncomeIncomeTax": 9271000,
       "taxableIncomeResident": 9611000,
-      "incomeTax": 1568800,
+      "incomeTax": 1555400,
       "residentTax": 966100,
-      "netIncome": 10447092,
-      "netIncomeRate": 72.0489
+      "netIncome": 10460492,
+      "netIncomeRate": 72.1413
     },
     {
       "incomeMan": 1500,
@@ -1807,12 +1807,12 @@
       "healthInsurance": 768096,
       "pensionInsurance": 713700,
       "employmentInsurance": 75000,
-      "taxableIncomeIncomeTax": 10913000,
+      "taxableIncomeIncomeTax": 10873000,
       "taxableIncomeResident": 11063000,
-      "incomeTax": 2108600,
+      "incomeTax": 2095100,
       "residentTax": 1111300,
-      "netIncome": 10223304,
-      "netIncomeRate": 68.1554
+      "netIncome": 10236804,
+      "netIncomeRate": 68.2454
     },
     {
       "incomeMan": 1500,
@@ -1823,12 +1823,12 @@
       "healthInsurance": 768096,
       "pensionInsurance": 713700,
       "employmentInsurance": 75000,
-      "taxableIncomeIncomeTax": 10533000,
+      "taxableIncomeIncomeTax": 10493000,
       "taxableIncomeResident": 10733000,
-      "incomeTax": 1980600,
+      "incomeTax": 1967100,
       "residentTax": 1078300,
-      "netIncome": 10384304,
-      "netIncomeRate": 69.2287
+      "netIncome": 10397804,
+      "netIncomeRate": 69.3187
     },
     {
       "incomeMan": 1500,
@@ -1839,12 +1839,12 @@
       "healthInsurance": 768096,
       "pensionInsurance": 713700,
       "employmentInsurance": 75000,
-      "taxableIncomeIncomeTax": 10153000,
+      "taxableIncomeIncomeTax": 10113000,
       "taxableIncomeResident": 10403000,
-      "incomeTax": 1852500,
+      "incomeTax": 1839100,
       "residentTax": 1045300,
-      "netIncome": 10545404,
-      "netIncomeRate": 70.3027
+      "netIncome": 10558804,
+      "netIncomeRate": 70.392
     },
     {
       "incomeMan": 1500,
@@ -1855,12 +1855,12 @@
       "healthInsurance": 768096,
       "pensionInsurance": 713700,
       "employmentInsurance": 75000,
-      "taxableIncomeIncomeTax": 9773000,
+      "taxableIncomeIncomeTax": 9733000,
       "taxableIncomeResident": 10073000,
-      "incomeTax": 1724500,
+      "incomeTax": 1711000,
       "residentTax": 1012300,
-      "netIncome": 10706404,
-      "netIncomeRate": 71.376
+      "netIncome": 10719904,
+      "netIncomeRate": 71.466
     },
     {
       "incomeMan": 1550,
@@ -1871,12 +1871,12 @@
       "healthInsurance": 768096,
       "pensionInsurance": 713700,
       "employmentInsurance": 77500,
-      "taxableIncomeIncomeTax": 11410000,
+      "taxableIncomeIncomeTax": 11370000,
       "taxableIncomeResident": 11560000,
-      "incomeTax": 2276100,
+      "incomeTax": 2262600,
       "residentTax": 1161000,
-      "netIncome": 10503604,
-      "netIncomeRate": 67.7652
+      "netIncome": 10517104,
+      "netIncomeRate": 67.8523
     },
     {
       "incomeMan": 1550,
@@ -1887,12 +1887,12 @@
       "healthInsurance": 768096,
       "pensionInsurance": 713700,
       "employmentInsurance": 77500,
-      "taxableIncomeIncomeTax": 11030000,
+      "taxableIncomeIncomeTax": 10990000,
       "taxableIncomeResident": 11230000,
-      "incomeTax": 2148000,
+      "incomeTax": 2134600,
       "residentTax": 1128000,
-      "netIncome": 10664704,
-      "netIncomeRate": 68.8045
+      "netIncome": 10678104,
+      "netIncomeRate": 68.891
     },
     {
       "incomeMan": 1550,
@@ -1903,12 +1903,12 @@
       "healthInsurance": 768096,
       "pensionInsurance": 713700,
       "employmentInsurance": 77500,
-      "taxableIncomeIncomeTax": 10650000,
+      "taxableIncomeIncomeTax": 10610000,
       "taxableIncomeResident": 10900000,
-      "incomeTax": 2020000,
+      "incomeTax": 2006500,
       "residentTax": 1095000,
-      "netIncome": 10825704,
-      "netIncomeRate": 69.8433
+      "netIncome": 10839204,
+      "netIncomeRate": 69.9303
     },
     {
       "incomeMan": 1550,
@@ -1919,12 +1919,12 @@
       "healthInsurance": 768096,
       "pensionInsurance": 713700,
       "employmentInsurance": 77500,
-      "taxableIncomeIncomeTax": 10270000,
+      "taxableIncomeIncomeTax": 10230000,
       "taxableIncomeResident": 10570000,
-      "incomeTax": 1892000,
+      "incomeTax": 1878500,
       "residentTax": 1062000,
-      "netIncome": 10986704,
-      "netIncomeRate": 70.882
+      "netIncome": 11000204,
+      "netIncomeRate": 70.9691
     },
     {
       "incomeMan": 1600,
@@ -1935,12 +1935,12 @@
       "healthInsurance": 804384,
       "pensionInsurance": 713700,
       "employmentInsurance": 80000,
-      "taxableIncomeIncomeTax": 11871000,
+      "taxableIncomeIncomeTax": 11831000,
       "taxableIncomeResident": 12021000,
-      "incomeTax": 2431400,
+      "incomeTax": 2417900,
       "residentTax": 1207100,
-      "netIncome": 10763416,
-      "netIncomeRate": 67.2713
+      "netIncome": 10776916,
+      "netIncomeRate": 67.3557
     },
     {
       "incomeMan": 1600,
@@ -1951,12 +1951,12 @@
       "healthInsurance": 804384,
       "pensionInsurance": 713700,
       "employmentInsurance": 80000,
-      "taxableIncomeIncomeTax": 11491000,
+      "taxableIncomeIncomeTax": 11451000,
       "taxableIncomeResident": 11691000,
-      "incomeTax": 2303400,
+      "incomeTax": 2289900,
       "residentTax": 1174100,
-      "netIncome": 10924416,
-      "netIncomeRate": 68.2776
+      "netIncome": 10937916,
+      "netIncomeRate": 68.362
     },
     {
       "incomeMan": 1600,
@@ -1967,12 +1967,12 @@
       "healthInsurance": 804384,
       "pensionInsurance": 713700,
       "employmentInsurance": 80000,
-      "taxableIncomeIncomeTax": 11111000,
+      "taxableIncomeIncomeTax": 11071000,
       "taxableIncomeResident": 11361000,
-      "incomeTax": 2175300,
+      "incomeTax": 2161800,
       "residentTax": 1141100,
-      "netIncome": 11085516,
-      "netIncomeRate": 69.2845
+      "netIncome": 11099016,
+      "netIncomeRate": 69.3689
     },
     {
       "incomeMan": 1600,
@@ -1983,12 +1983,12 @@
       "healthInsurance": 804384,
       "pensionInsurance": 713700,
       "employmentInsurance": 80000,
-      "taxableIncomeIncomeTax": 10731000,
+      "taxableIncomeIncomeTax": 10691000,
       "taxableIncomeResident": 11031000,
-      "incomeTax": 2047300,
+      "incomeTax": 2033800,
       "residentTax": 1108100,
-      "netIncome": 11246516,
-      "netIncomeRate": 70.2907
+      "netIncome": 11260016,
+      "netIncomeRate": 70.3751
     },
     {
       "incomeMan": 1650,
@@ -1999,12 +1999,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 82500,
-      "taxableIncomeIncomeTax": 12333000,
+      "taxableIncomeIncomeTax": 12293000,
       "taxableIncomeResident": 12483000,
-      "incomeTax": 2587100,
+      "incomeTax": 2573600,
       "residentTax": 1253300,
-      "netIncome": 11022728,
-      "netIncomeRate": 66.8044
+      "netIncome": 11036228,
+      "netIncomeRate": 66.8862
     },
     {
       "incomeMan": 1650,
@@ -2015,12 +2015,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 82500,
-      "taxableIncomeIncomeTax": 11953000,
+      "taxableIncomeIncomeTax": 11913000,
       "taxableIncomeResident": 12153000,
-      "incomeTax": 2459000,
+      "incomeTax": 2445500,
       "residentTax": 1220300,
-      "netIncome": 11183828,
-      "netIncomeRate": 67.7808
+      "netIncome": 11197328,
+      "netIncomeRate": 67.8626
     },
     {
       "incomeMan": 1650,
@@ -2031,12 +2031,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 82500,
-      "taxableIncomeIncomeTax": 11573000,
+      "taxableIncomeIncomeTax": 11533000,
       "taxableIncomeResident": 11823000,
-      "incomeTax": 2331000,
+      "incomeTax": 2317500,
       "residentTax": 1187300,
-      "netIncome": 11344828,
-      "netIncomeRate": 68.7565
+      "netIncome": 11358328,
+      "netIncomeRate": 68.8384
     },
     {
       "incomeMan": 1650,
@@ -2047,12 +2047,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 82500,
-      "taxableIncomeIncomeTax": 11193000,
+      "taxableIncomeIncomeTax": 11153000,
       "taxableIncomeResident": 11493000,
-      "incomeTax": 2203000,
+      "incomeTax": 2189500,
       "residentTax": 1154300,
-      "netIncome": 11505828,
-      "netIncomeRate": 69.7323
+      "netIncome": 11519328,
+      "netIncomeRate": 69.8141
     },
     {
       "incomeMan": 1700,
@@ -2063,12 +2063,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 85000,
-      "taxableIncomeIncomeTax": 12830000,
+      "taxableIncomeIncomeTax": 12790000,
       "taxableIncomeResident": 12980000,
-      "incomeTax": 2754500,
+      "incomeTax": 2741000,
       "residentTax": 1303000,
-      "netIncome": 11303128,
-      "netIncomeRate": 66.489
+      "netIncome": 11316628,
+      "netIncomeRate": 66.5684
     },
     {
       "incomeMan": 1700,
@@ -2079,12 +2079,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 85000,
-      "taxableIncomeIncomeTax": 12450000,
+      "taxableIncomeIncomeTax": 12410000,
       "taxableIncomeResident": 12650000,
-      "incomeTax": 2626500,
+      "incomeTax": 2613000,
       "residentTax": 1270000,
-      "netIncome": 11464128,
-      "netIncomeRate": 67.436
+      "netIncome": 11477628,
+      "netIncomeRate": 67.5155
     },
     {
       "incomeMan": 1700,
@@ -2095,12 +2095,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 85000,
-      "taxableIncomeIncomeTax": 12070000,
+      "taxableIncomeIncomeTax": 12030000,
       "taxableIncomeResident": 12320000,
-      "incomeTax": 2498400,
+      "incomeTax": 2485000,
       "residentTax": 1237000,
-      "netIncome": 11625228,
-      "netIncomeRate": 68.3837
+      "netIncome": 11638628,
+      "netIncomeRate": 68.4625
     },
     {
       "incomeMan": 1700,
@@ -2111,12 +2111,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 85000,
-      "taxableIncomeIncomeTax": 11690000,
+      "taxableIncomeIncomeTax": 11650000,
       "taxableIncomeResident": 11990000,
-      "incomeTax": 2370400,
+      "incomeTax": 2356900,
       "residentTax": 1204000,
-      "netIncome": 11786228,
-      "netIncomeRate": 69.3308
+      "netIncome": 11799728,
+      "netIncomeRate": 69.4102
     },
     {
       "incomeMan": 1750,
@@ -2127,12 +2127,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 87500,
-      "taxableIncomeIncomeTax": 13328000,
+      "taxableIncomeIncomeTax": 13288000,
       "taxableIncomeResident": 13478000,
-      "incomeTax": 2922300,
+      "incomeTax": 2908800,
       "residentTax": 1352800,
-      "netIncome": 11583028,
-      "netIncomeRate": 66.1887
+      "netIncome": 11596528,
+      "netIncomeRate": 66.2659
     },
     {
       "incomeMan": 1750,
@@ -2143,12 +2143,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 87500,
-      "taxableIncomeIncomeTax": 12948000,
+      "taxableIncomeIncomeTax": 12908000,
       "taxableIncomeResident": 13148000,
-      "incomeTax": 2794300,
+      "incomeTax": 2780800,
       "residentTax": 1319800,
-      "netIncome": 11744028,
-      "netIncomeRate": 67.1087
+      "netIncome": 11757528,
+      "netIncomeRate": 67.1859
     },
     {
       "incomeMan": 1750,
@@ -2159,12 +2159,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 87500,
-      "taxableIncomeIncomeTax": 12568000,
+      "taxableIncomeIncomeTax": 12528000,
       "taxableIncomeResident": 12818000,
-      "incomeTax": 2666200,
+      "incomeTax": 2652800,
       "residentTax": 1286800,
-      "netIncome": 11905128,
-      "netIncomeRate": 68.0293
+      "netIncome": 11918528,
+      "netIncomeRate": 68.1059
     },
     {
       "incomeMan": 1750,
@@ -2175,12 +2175,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 87500,
-      "taxableIncomeIncomeTax": 12188000,
+      "taxableIncomeIncomeTax": 12148000,
       "taxableIncomeResident": 12488000,
-      "incomeTax": 2538200,
+      "incomeTax": 2524700,
       "residentTax": 1253800,
-      "netIncome": 12066128,
-      "netIncomeRate": 68.9493
+      "netIncome": 12079628,
+      "netIncomeRate": 69.0264
     },
     {
       "incomeMan": 1800,
@@ -2191,12 +2191,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 90000,
-      "taxableIncomeIncomeTax": 13825000,
+      "taxableIncomeIncomeTax": 13785000,
       "taxableIncomeResident": 13975000,
-      "incomeTax": 3089800,
+      "incomeTax": 3076300,
       "residentTax": 1402500,
-      "netIncome": 11863328,
-      "netIncomeRate": 65.9074
+      "netIncome": 11876828,
+      "netIncomeRate": 65.9824
     },
     {
       "incomeMan": 1800,
@@ -2207,12 +2207,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 90000,
-      "taxableIncomeIncomeTax": 13445000,
+      "taxableIncomeIncomeTax": 13405000,
       "taxableIncomeResident": 13645000,
-      "incomeTax": 2961700,
+      "incomeTax": 2948200,
       "residentTax": 1369500,
-      "netIncome": 12024428,
-      "netIncomeRate": 66.8024
+      "netIncome": 12037928,
+      "netIncomeRate": 66.8774
     },
     {
       "incomeMan": 1800,
@@ -2223,12 +2223,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 90000,
-      "taxableIncomeIncomeTax": 13065000,
+      "taxableIncomeIncomeTax": 13025000,
       "taxableIncomeResident": 13315000,
-      "incomeTax": 2833700,
+      "incomeTax": 2820200,
       "residentTax": 1336500,
-      "netIncome": 12185428,
-      "netIncomeRate": 67.6968
+      "netIncome": 12198928,
+      "netIncomeRate": 67.7718
     },
     {
       "incomeMan": 1800,
@@ -2239,12 +2239,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 90000,
-      "taxableIncomeIncomeTax": 12685000,
+      "taxableIncomeIncomeTax": 12645000,
       "taxableIncomeResident": 12985000,
-      "incomeTax": 2705700,
+      "incomeTax": 2692200,
       "residentTax": 1303500,
-      "netIncome": 12346428,
-      "netIncomeRate": 68.5913
+      "netIncome": 12359928,
+      "netIncomeRate": 68.6663
     },
     {
       "incomeMan": 1850,
@@ -2255,12 +2255,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 92500,
-      "taxableIncomeIncomeTax": 14323000,
+      "taxableIncomeIncomeTax": 14283000,
       "taxableIncomeResident": 14473000,
-      "incomeTax": 3257500,
+      "incomeTax": 3244100,
       "residentTax": 1452300,
-      "netIncome": 12143328,
-      "netIncomeRate": 65.6396
+      "netIncome": 12156728,
+      "netIncomeRate": 65.712
     },
     {
       "incomeMan": 1850,
@@ -2271,12 +2271,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 92500,
-      "taxableIncomeIncomeTax": 13943000,
+      "taxableIncomeIncomeTax": 13903000,
       "taxableIncomeResident": 14143000,
-      "incomeTax": 3129500,
+      "incomeTax": 3116000,
       "residentTax": 1419300,
-      "netIncome": 12304328,
-      "netIncomeRate": 66.5099
+      "netIncome": 12317828,
+      "netIncomeRate": 66.5829
     },
     {
       "incomeMan": 1850,
@@ -2287,12 +2287,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 92500,
-      "taxableIncomeIncomeTax": 13563000,
+      "taxableIncomeIncomeTax": 13523000,
       "taxableIncomeResident": 13813000,
-      "incomeTax": 3001500,
+      "incomeTax": 2988000,
       "residentTax": 1386300,
-      "netIncome": 12465328,
-      "netIncomeRate": 67.3802
+      "netIncome": 12478828,
+      "netIncomeRate": 67.4531
     },
     {
       "incomeMan": 1850,
@@ -2303,12 +2303,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 92500,
-      "taxableIncomeIncomeTax": 13183000,
+      "taxableIncomeIncomeTax": 13143000,
       "taxableIncomeResident": 13483000,
-      "incomeTax": 2873400,
+      "incomeTax": 2860000,
       "residentTax": 1353300,
-      "netIncome": 12626428,
-      "netIncomeRate": 68.251
+      "netIncome": 12639828,
+      "netIncomeRate": 68.3234
     },
     {
       "incomeMan": 1900,
@@ -2319,12 +2319,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 95000,
-      "taxableIncomeIncomeTax": 14820000,
+      "taxableIncomeIncomeTax": 14780000,
       "taxableIncomeResident": 14970000,
-      "incomeTax": 3425000,
+      "incomeTax": 3411500,
       "residentTax": 1502000,
-      "netIncome": 12423628,
-      "netIncomeRate": 65.3875
+      "netIncome": 12437128,
+      "netIncomeRate": 65.4586
     },
     {
       "incomeMan": 1900,
@@ -2335,12 +2335,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 95000,
-      "taxableIncomeIncomeTax": 14440000,
+      "taxableIncomeIncomeTax": 14400000,
       "taxableIncomeResident": 14640000,
-      "incomeTax": 3297000,
+      "incomeTax": 3283500,
       "residentTax": 1469000,
-      "netIncome": 12584628,
-      "netIncomeRate": 66.2349
+      "netIncome": 12598128,
+      "netIncomeRate": 66.3059
     },
     {
       "incomeMan": 1900,
@@ -2351,12 +2351,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 95000,
-      "taxableIncomeIncomeTax": 14060000,
+      "taxableIncomeIncomeTax": 14020000,
       "taxableIncomeResident": 14310000,
-      "incomeTax": 3168900,
+      "incomeTax": 3155500,
       "residentTax": 1436000,
-      "netIncome": 12745728,
-      "netIncomeRate": 67.0828
+      "netIncome": 12759128,
+      "netIncomeRate": 67.1533
     },
     {
       "incomeMan": 1900,
@@ -2367,12 +2367,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 95000,
-      "taxableIncomeIncomeTax": 13680000,
+      "taxableIncomeIncomeTax": 13640000,
       "taxableIncomeResident": 13980000,
-      "incomeTax": 3040900,
+      "incomeTax": 3027400,
       "residentTax": 1403000,
-      "netIncome": 12906728,
-      "netIncomeRate": 67.9301
+      "netIncome": 12920228,
+      "netIncomeRate": 68.0012
     },
     {
       "incomeMan": 1950,
@@ -2383,12 +2383,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 97500,
-      "taxableIncomeIncomeTax": 15318000,
+      "taxableIncomeIncomeTax": 15278000,
       "taxableIncomeResident": 15468000,
-      "incomeTax": 3592800,
+      "incomeTax": 3579300,
       "residentTax": 1551800,
-      "netIncome": 12703528,
-      "netIncomeRate": 65.1463
+      "netIncome": 12717028,
+      "netIncomeRate": 65.2155
     },
     {
       "incomeMan": 1950,
@@ -2399,12 +2399,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 97500,
-      "taxableIncomeIncomeTax": 14938000,
+      "taxableIncomeIncomeTax": 14898000,
       "taxableIncomeResident": 15138000,
-      "incomeTax": 3464800,
+      "incomeTax": 3451300,
       "residentTax": 1518800,
-      "netIncome": 12864528,
-      "netIncomeRate": 65.9719
+      "netIncome": 12878028,
+      "netIncomeRate": 66.0412
     },
     {
       "incomeMan": 1950,
@@ -2415,12 +2415,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 97500,
-      "taxableIncomeIncomeTax": 14558000,
+      "taxableIncomeIncomeTax": 14518000,
       "taxableIncomeResident": 14808000,
-      "incomeTax": 3336700,
+      "incomeTax": 3323200,
       "residentTax": 1485800,
-      "netIncome": 13025628,
-      "netIncomeRate": 66.7981
+      "netIncome": 13039128,
+      "netIncomeRate": 66.8673
     },
     {
       "incomeMan": 1950,
@@ -2431,12 +2431,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 97500,
-      "taxableIncomeIncomeTax": 14178000,
+      "taxableIncomeIncomeTax": 14138000,
       "taxableIncomeResident": 14478000,
-      "incomeTax": 3208700,
+      "incomeTax": 3195200,
       "residentTax": 1452800,
-      "netIncome": 13186628,
-      "netIncomeRate": 67.6237
+      "netIncome": 13200128,
+      "netIncomeRate": 67.693
     },
     {
       "incomeMan": 2000,
@@ -2447,12 +2447,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 100000,
-      "taxableIncomeIncomeTax": 15815000,
+      "taxableIncomeIncomeTax": 15775000,
       "taxableIncomeResident": 15965000,
-      "incomeTax": 3760200,
+      "incomeTax": 3746800,
       "residentTax": 1601500,
-      "netIncome": 12983928,
-      "netIncomeRate": 64.9196
+      "netIncome": 12997328,
+      "netIncomeRate": 64.9866
     },
     {
       "incomeMan": 2000,
@@ -2463,12 +2463,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 100000,
-      "taxableIncomeIncomeTax": 15435000,
+      "taxableIncomeIncomeTax": 15395000,
       "taxableIncomeResident": 15635000,
-      "incomeTax": 3632200,
+      "incomeTax": 3618700,
       "residentTax": 1568500,
-      "netIncome": 13144928,
-      "netIncomeRate": 65.7246
+      "netIncome": 13158428,
+      "netIncomeRate": 65.7921
     },
     {
       "incomeMan": 2000,
@@ -2479,12 +2479,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 100000,
-      "taxableIncomeIncomeTax": 15055000,
+      "taxableIncomeIncomeTax": 15015000,
       "taxableIncomeResident": 15305000,
-      "incomeTax": 3504200,
+      "incomeTax": 3490700,
       "residentTax": 1535500,
-      "netIncome": 13305928,
-      "netIncomeRate": 66.5296
+      "netIncome": 13319428,
+      "netIncomeRate": 66.5971
     },
     {
       "incomeMan": 2000,
@@ -2495,12 +2495,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 100000,
-      "taxableIncomeIncomeTax": 14675000,
+      "taxableIncomeIncomeTax": 14635000,
       "taxableIncomeResident": 14975000,
-      "incomeTax": 3376100,
+      "incomeTax": 3362700,
       "residentTax": 1502500,
-      "netIncome": 13467028,
-      "netIncomeRate": 67.3351
+      "netIncome": 13480428,
+      "netIncomeRate": 67.4021
     },
     {
       "incomeMan": 2050,
@@ -2511,12 +2511,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 102500,
-      "taxableIncomeIncomeTax": 16313000,
+      "taxableIncomeIncomeTax": 16273000,
       "taxableIncomeResident": 16463000,
-      "incomeTax": 3928000,
+      "incomeTax": 3914600,
       "residentTax": 1651300,
-      "netIncome": 13263828,
-      "netIncomeRate": 64.7016
+      "netIncome": 13277228,
+      "netIncomeRate": 64.767
     },
     {
       "incomeMan": 2050,
@@ -2527,12 +2527,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 102500,
-      "taxableIncomeIncomeTax": 15933000,
+      "taxableIncomeIncomeTax": 15893000,
       "taxableIncomeResident": 16133000,
-      "incomeTax": 3800000,
+      "incomeTax": 3786500,
       "residentTax": 1618300,
-      "netIncome": 13424828,
-      "netIncomeRate": 65.487
+      "netIncome": 13438328,
+      "netIncomeRate": 65.5528
     },
     {
       "incomeMan": 2050,
@@ -2543,12 +2543,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 102500,
-      "taxableIncomeIncomeTax": 15553000,
+      "taxableIncomeIncomeTax": 15513000,
       "taxableIncomeResident": 15803000,
-      "incomeTax": 3672000,
+      "incomeTax": 3658500,
       "residentTax": 1585300,
-      "netIncome": 13585828,
-      "netIncomeRate": 66.2723
+      "netIncome": 13599328,
+      "netIncomeRate": 66.3382
     },
     {
       "incomeMan": 2050,
@@ -2559,12 +2559,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 102500,
-      "taxableIncomeIncomeTax": 15173000,
+      "taxableIncomeIncomeTax": 15133000,
       "taxableIncomeResident": 15473000,
-      "incomeTax": 3543900,
+      "incomeTax": 3530500,
       "residentTax": 1552300,
-      "netIncome": 13746928,
-      "netIncomeRate": 67.0582
+      "netIncome": 13760328,
+      "netIncomeRate": 67.1236
     },
     {
       "incomeMan": 2100,
@@ -2575,12 +2575,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 105000,
-      "taxableIncomeIncomeTax": 16810000,
+      "taxableIncomeIncomeTax": 16770000,
       "taxableIncomeResident": 16960000,
-      "incomeTax": 4095500,
+      "incomeTax": 4082000,
       "residentTax": 1701000,
-      "netIncome": 13544128,
-      "netIncomeRate": 64.4958
+      "netIncome": 13557628,
+      "netIncomeRate": 64.5601
     },
     {
       "incomeMan": 2100,
@@ -2591,12 +2591,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 105000,
-      "taxableIncomeIncomeTax": 16430000,
+      "taxableIncomeIncomeTax": 16390000,
       "taxableIncomeResident": 16630000,
-      "incomeTax": 3967500,
+      "incomeTax": 3954000,
       "residentTax": 1668000,
-      "netIncome": 13705128,
-      "netIncomeRate": 65.2625
+      "netIncome": 13718628,
+      "netIncomeRate": 65.3268
     },
     {
       "incomeMan": 2100,
@@ -2607,12 +2607,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 105000,
-      "taxableIncomeIncomeTax": 16050000,
+      "taxableIncomeIncomeTax": 16010000,
       "taxableIncomeResident": 16300000,
-      "incomeTax": 3839400,
+      "incomeTax": 3825900,
       "residentTax": 1635000,
-      "netIncome": 13866228,
-      "netIncomeRate": 66.0297
+      "netIncome": 13879728,
+      "netIncomeRate": 66.0939
     },
     {
       "incomeMan": 2100,
@@ -2623,12 +2623,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 105000,
-      "taxableIncomeIncomeTax": 15670000,
+      "taxableIncomeIncomeTax": 15630000,
       "taxableIncomeResident": 15970000,
-      "incomeTax": 3711400,
+      "incomeTax": 3697900,
       "residentTax": 1602000,
-      "netIncome": 14027228,
-      "netIncomeRate": 66.7963
+      "netIncome": 14040728,
+      "netIncomeRate": 66.8606
     },
     {
       "incomeMan": 2150,
@@ -2639,12 +2639,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 107500,
-      "taxableIncomeIncomeTax": 17308000,
+      "taxableIncomeIncomeTax": 17268000,
       "taxableIncomeResident": 17458000,
-      "incomeTax": 4263300,
+      "incomeTax": 4249800,
       "residentTax": 1750800,
-      "netIncome": 13824028,
-      "netIncomeRate": 64.2978
+      "netIncome": 13837528,
+      "netIncomeRate": 64.3606
     },
     {
       "incomeMan": 2150,
@@ -2655,12 +2655,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 107500,
-      "taxableIncomeIncomeTax": 16928000,
+      "taxableIncomeIncomeTax": 16888000,
       "taxableIncomeResident": 17128000,
-      "incomeTax": 4135200,
+      "incomeTax": 4121800,
       "residentTax": 1717800,
-      "netIncome": 13985128,
-      "netIncomeRate": 65.0471
+      "netIncome": 13998528,
+      "netIncomeRate": 65.1094
     },
     {
       "incomeMan": 2150,
@@ -2671,12 +2671,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 107500,
-      "taxableIncomeIncomeTax": 16548000,
+      "taxableIncomeIncomeTax": 16508000,
       "taxableIncomeResident": 16798000,
-      "incomeTax": 4007200,
+      "incomeTax": 3993700,
       "residentTax": 1684800,
-      "netIncome": 14146128,
-      "netIncomeRate": 65.7959
+      "netIncome": 14159628,
+      "netIncomeRate": 65.8587
     },
     {
       "incomeMan": 2150,
@@ -2687,12 +2687,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 107500,
-      "taxableIncomeIncomeTax": 16168000,
+      "taxableIncomeIncomeTax": 16128000,
       "taxableIncomeResident": 16468000,
-      "incomeTax": 3879200,
+      "incomeTax": 3865700,
       "residentTax": 1651800,
-      "netIncome": 14307128,
-      "netIncomeRate": 66.5448
+      "netIncome": 14320628,
+      "netIncomeRate": 66.6076
     },
     {
       "incomeMan": 2200,
@@ -2703,12 +2703,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 110000,
-      "taxableIncomeIncomeTax": 17805000,
+      "taxableIncomeIncomeTax": 17765000,
       "taxableIncomeResident": 17955000,
-      "incomeTax": 4430700,
+      "incomeTax": 4417300,
       "residentTax": 1800500,
-      "netIncome": 14104428,
-      "netIncomeRate": 64.111
+      "netIncome": 14117828,
+      "netIncomeRate": 64.1719
     },
     {
       "incomeMan": 2200,
@@ -2719,12 +2719,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 110000,
-      "taxableIncomeIncomeTax": 17425000,
+      "taxableIncomeIncomeTax": 17385000,
       "taxableIncomeResident": 17625000,
-      "incomeTax": 4302700,
+      "incomeTax": 4289200,
       "residentTax": 1767500,
-      "netIncome": 14265428,
-      "netIncomeRate": 64.8429
+      "netIncome": 14278928,
+      "netIncomeRate": 64.9042
     },
     {
       "incomeMan": 2200,
@@ -2735,12 +2735,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 110000,
-      "taxableIncomeIncomeTax": 17045000,
+      "taxableIncomeIncomeTax": 17005000,
       "taxableIncomeResident": 17295000,
-      "incomeTax": 4174700,
+      "incomeTax": 4161200,
       "residentTax": 1734500,
-      "netIncome": 14426428,
-      "netIncomeRate": 65.5747
+      "netIncome": 14439928,
+      "netIncomeRate": 65.636
     },
     {
       "incomeMan": 2200,
@@ -2751,12 +2751,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 110000,
-      "taxableIncomeIncomeTax": 16665000,
+      "taxableIncomeIncomeTax": 16625000,
       "taxableIncomeResident": 16965000,
-      "incomeTax": 4046600,
+      "incomeTax": 4033200,
       "residentTax": 1701500,
-      "netIncome": 14587528,
-      "netIncomeRate": 66.3069
+      "netIncome": 14600928,
+      "netIncomeRate": 66.3679
     },
     {
       "incomeMan": 2250,
@@ -2767,12 +2767,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 112500,
-      "taxableIncomeIncomeTax": 18303000,
+      "taxableIncomeIncomeTax": 18263000,
       "taxableIncomeResident": 18453000,
-      "incomeTax": 4620200,
+      "incomeTax": 4603800,
       "residentTax": 1850300,
-      "netIncome": 14362628,
-      "netIncomeRate": 63.8339
+      "netIncome": 14379028,
+      "netIncomeRate": 63.9068
     },
     {
       "incomeMan": 2250,
@@ -2783,12 +2783,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 112500,
-      "taxableIncomeIncomeTax": 17923000,
+      "taxableIncomeIncomeTax": 17883000,
       "taxableIncomeResident": 18123000,
-      "incomeTax": 4470500,
+      "incomeTax": 4457000,
       "residentTax": 1817300,
-      "netIncome": 14545328,
-      "netIncomeRate": 64.6459
+      "netIncome": 14558828,
+      "netIncomeRate": 64.7059
     },
     {
       "incomeMan": 2250,
@@ -2799,12 +2799,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 112500,
-      "taxableIncomeIncomeTax": 17543000,
+      "taxableIncomeIncomeTax": 17503000,
       "taxableIncomeResident": 17793000,
-      "incomeTax": 4342500,
+      "incomeTax": 4329000,
       "residentTax": 1784300,
-      "netIncome": 14706328,
-      "netIncomeRate": 65.3615
+      "netIncome": 14719828,
+      "netIncomeRate": 65.4215
     },
     {
       "incomeMan": 2250,
@@ -2815,12 +2815,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 112500,
-      "taxableIncomeIncomeTax": 17163000,
+      "taxableIncomeIncomeTax": 17123000,
       "taxableIncomeResident": 17463000,
-      "incomeTax": 4214400,
+      "incomeTax": 4200900,
       "residentTax": 1751300,
-      "netIncome": 14867428,
-      "netIncomeRate": 66.0775
+      "netIncome": 14880928,
+      "netIncomeRate": 66.1375
     },
     {
       "incomeMan": 2300,
@@ -2831,12 +2831,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 115000,
-      "taxableIncomeIncomeTax": 18800000,
+      "taxableIncomeIncomeTax": 18760000,
       "taxableIncomeResident": 18950000,
-      "incomeTax": 4823200,
+      "incomeTax": 4806800,
       "residentTax": 1900000,
-      "netIncome": 14607428,
-      "netIncomeRate": 63.5106
+      "netIncome": 14623828,
+      "netIncomeRate": 63.5819
     },
     {
       "incomeMan": 2300,
@@ -2847,12 +2847,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 115000,
-      "taxableIncomeIncomeTax": 18420000,
+      "taxableIncomeIncomeTax": 18380000,
       "taxableIncomeResident": 18620000,
-      "incomeTax": 4668000,
+      "incomeTax": 4651600,
       "residentTax": 1867000,
-      "netIncome": 14795628,
-      "netIncomeRate": 64.3288
+      "netIncome": 14812028,
+      "netIncomeRate": 64.4001
     },
     {
       "incomeMan": 2300,
@@ -2863,12 +2863,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 115000,
-      "taxableIncomeIncomeTax": 18040000,
+      "taxableIncomeIncomeTax": 18000000,
       "taxableIncomeResident": 18290000,
-      "incomeTax": 4512800,
+      "incomeTax": 4496400,
       "residentTax": 1834000,
-      "netIncome": 14983828,
-      "netIncomeRate": 65.1471
+      "netIncome": 15000228,
+      "netIncomeRate": 65.2184
     },
     {
       "incomeMan": 2300,
@@ -2879,12 +2879,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 115000,
-      "taxableIncomeIncomeTax": 17660000,
+      "taxableIncomeIncomeTax": 17620000,
       "taxableIncomeResident": 17960000,
-      "incomeTax": 4381900,
+      "incomeTax": 4368400,
       "residentTax": 1801000,
-      "netIncome": 15147728,
-      "netIncomeRate": 65.8597
+      "netIncome": 15161228,
+      "netIncomeRate": 65.9184
     },
     {
       "incomeMan": 2350,
@@ -2895,12 +2895,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 117500,
-      "taxableIncomeIncomeTax": 19298000,
+      "taxableIncomeIncomeTax": 19258000,
       "taxableIncomeResident": 19448000,
-      "incomeTax": 5026500,
+      "incomeTax": 5010200,
       "residentTax": 1949800,
-      "netIncome": 14851828,
-      "netIncomeRate": 63.1993
+      "netIncome": 14868128,
+      "netIncomeRate": 63.2686
     },
     {
       "incomeMan": 2350,
@@ -2911,12 +2911,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 117500,
-      "taxableIncomeIncomeTax": 18918000,
+      "taxableIncomeIncomeTax": 18878000,
       "taxableIncomeResident": 19118000,
-      "incomeTax": 4871300,
+      "incomeTax": 4855000,
       "residentTax": 1916800,
-      "netIncome": 15040028,
-      "netIncomeRate": 64.0001
+      "netIncome": 15056328,
+      "netIncomeRate": 64.0695
     },
     {
       "incomeMan": 2350,
@@ -2927,12 +2927,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 117500,
-      "taxableIncomeIncomeTax": 18538000,
+      "taxableIncomeIncomeTax": 18498000,
       "taxableIncomeResident": 18788000,
-      "incomeTax": 4716200,
+      "incomeTax": 4699800,
       "residentTax": 1883800,
-      "netIncome": 15228128,
-      "netIncomeRate": 64.8005
+      "netIncome": 15244528,
+      "netIncomeRate": 64.8703
     },
     {
       "incomeMan": 2350,
@@ -2943,12 +2943,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 117500,
-      "taxableIncomeIncomeTax": 18158000,
+      "taxableIncomeIncomeTax": 18118000,
       "taxableIncomeResident": 18458000,
-      "incomeTax": 4561000,
+      "incomeTax": 4544600,
       "residentTax": 1850800,
-      "netIncome": 15416328,
-      "netIncomeRate": 65.6014
+      "netIncome": 15432728,
+      "netIncomeRate": 65.6712
     },
     {
       "incomeMan": 2400,
@@ -2959,12 +2959,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 120000,
-      "taxableIncomeIncomeTax": 19795000,
+      "taxableIncomeIncomeTax": 19755000,
       "taxableIncomeResident": 19945000,
-      "incomeTax": 5229500,
+      "incomeTax": 5213200,
       "residentTax": 1999500,
-      "netIncome": 15096628,
-      "netIncomeRate": 62.9026
+      "netIncome": 15112928,
+      "netIncomeRate": 62.9705
     },
     {
       "incomeMan": 2400,
@@ -2975,12 +2975,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 120000,
-      "taxableIncomeIncomeTax": 19415000,
+      "taxableIncomeIncomeTax": 19375000,
       "taxableIncomeResident": 19615000,
-      "incomeTax": 5074300,
+      "incomeTax": 5058000,
       "residentTax": 1966500,
-      "netIncome": 15284828,
-      "netIncomeRate": 63.6868
+      "netIncome": 15301128,
+      "netIncomeRate": 63.7547
     },
     {
       "incomeMan": 2400,
@@ -2991,12 +2991,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 120000,
-      "taxableIncomeIncomeTax": 19035000,
+      "taxableIncomeIncomeTax": 18995000,
       "taxableIncomeResident": 19285000,
-      "incomeTax": 4919100,
+      "incomeTax": 4902800,
       "residentTax": 1933500,
-      "netIncome": 15473028,
-      "netIncomeRate": 64.471
+      "netIncome": 15489328,
+      "netIncomeRate": 64.5389
     },
     {
       "incomeMan": 2400,
@@ -3007,12 +3007,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 120000,
-      "taxableIncomeIncomeTax": 18655000,
+      "taxableIncomeIncomeTax": 18615000,
       "taxableIncomeResident": 18955000,
-      "incomeTax": 4763900,
+      "incomeTax": 4747600,
       "residentTax": 1900500,
-      "netIncome": 15661228,
-      "netIncomeRate": 65.2551
+      "netIncome": 15677528,
+      "netIncomeRate": 65.323
     },
     {
       "incomeMan": 2450,
@@ -3023,12 +3023,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 122500,
-      "taxableIncomeIncomeTax": 20293000,
+      "taxableIncomeIncomeTax": 20253000,
       "taxableIncomeResident": 20443000,
-      "incomeTax": 5432900,
+      "incomeTax": 5416600,
       "residentTax": 2049300,
-      "netIncome": 15340928,
-      "netIncomeRate": 62.616
+      "netIncome": 15357228,
+      "netIncomeRate": 62.6826
     },
     {
       "incomeMan": 2450,
@@ -3039,12 +3039,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 122500,
-      "taxableIncomeIncomeTax": 19913000,
+      "taxableIncomeIncomeTax": 19873000,
       "taxableIncomeResident": 20113000,
-      "incomeTax": 5277700,
+      "incomeTax": 5261400,
       "residentTax": 2016300,
-      "netIncome": 15529128,
-      "netIncomeRate": 63.3842
+      "netIncome": 15545428,
+      "netIncomeRate": 63.4507
     },
     {
       "incomeMan": 2450,
@@ -3055,12 +3055,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 122500,
-      "taxableIncomeIncomeTax": 19533000,
+      "taxableIncomeIncomeTax": 19493000,
       "taxableIncomeResident": 19783000,
-      "incomeTax": 5122500,
+      "incomeTax": 5106200,
       "residentTax": 1983300,
-      "netIncome": 15717328,
-      "netIncomeRate": 64.1524
+      "netIncome": 15733628,
+      "netIncomeRate": 64.2189
     },
     {
       "incomeMan": 2450,
@@ -3071,12 +3071,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 122500,
-      "taxableIncomeIncomeTax": 19153000,
+      "taxableIncomeIncomeTax": 19113000,
       "taxableIncomeResident": 19453000,
-      "incomeTax": 4967300,
+      "incomeTax": 4951000,
       "residentTax": 1950300,
-      "netIncome": 15905528,
-      "netIncomeRate": 64.9205
+      "netIncome": 15921828,
+      "netIncomeRate": 64.9871
     },
     {
       "incomeMan": 2500,
@@ -3087,12 +3087,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 125000,
-      "taxableIncomeIncomeTax": 20790000,
+      "taxableIncomeIncomeTax": 20750000,
       "taxableIncomeResident": 20940000,
-      "incomeTax": 5635900,
+      "incomeTax": 5619500,
       "residentTax": 2099000,
-      "netIncome": 15585728,
-      "netIncomeRate": 62.3429
+      "netIncome": 15602128,
+      "netIncomeRate": 62.4085
     },
     {
       "incomeMan": 2500,
@@ -3103,12 +3103,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 125000,
-      "taxableIncomeIncomeTax": 20410000,
+      "taxableIncomeIncomeTax": 20370000,
       "taxableIncomeResident": 20610000,
-      "incomeTax": 5480700,
+      "incomeTax": 5464300,
       "residentTax": 2066000,
-      "netIncome": 15773928,
-      "netIncomeRate": 63.0957
+      "netIncome": 15790328,
+      "netIncomeRate": 63.1613
     },
     {
       "incomeMan": 2500,
@@ -3119,12 +3119,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 125000,
-      "taxableIncomeIncomeTax": 20030000,
+      "taxableIncomeIncomeTax": 19990000,
       "taxableIncomeResident": 20280000,
-      "incomeTax": 5325500,
+      "incomeTax": 5309200,
       "residentTax": 2033000,
-      "netIncome": 15962128,
-      "netIncomeRate": 63.8485
+      "netIncome": 15978428,
+      "netIncomeRate": 63.9137
     },
     {
       "incomeMan": 2500,
@@ -3135,12 +3135,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 125000,
-      "taxableIncomeIncomeTax": 19650000,
+      "taxableIncomeIncomeTax": 19610000,
       "taxableIncomeResident": 19950000,
-      "incomeTax": 5170300,
+      "incomeTax": 5154000,
       "residentTax": 2000000,
-      "netIncome": 16150328,
-      "netIncomeRate": 64.6013
+      "netIncome": 16166628,
+      "netIncomeRate": 64.6665
     },
     {
       "incomeMan": 2550,
@@ -3151,12 +3151,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 127500,
-      "taxableIncomeIncomeTax": 21288000,
+      "taxableIncomeIncomeTax": 21388000,
       "taxableIncomeResident": 21438000,
-      "incomeTax": 5839300,
+      "incomeTax": 5880100,
       "residentTax": 2148800,
-      "netIncome": 15830028,
-      "netIncomeRate": 62.0785
+      "netIncome": 15789228,
+      "netIncomeRate": 61.9185
     },
     {
       "incomeMan": 2550,
@@ -3167,12 +3167,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 127500,
-      "taxableIncomeIncomeTax": 20908000,
+      "taxableIncomeIncomeTax": 21008000,
       "taxableIncomeResident": 21108000,
-      "incomeTax": 5684100,
+      "incomeTax": 5724900,
       "residentTax": 2115800,
-      "netIncome": 16018228,
-      "netIncomeRate": 62.8166
+      "netIncome": 15977428,
+      "netIncomeRate": 62.6566
     },
     {
       "incomeMan": 2550,
@@ -3183,12 +3183,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 127500,
-      "taxableIncomeIncomeTax": 20528000,
+      "taxableIncomeIncomeTax": 20628000,
       "taxableIncomeResident": 20778000,
-      "incomeTax": 5528900,
+      "incomeTax": 5569700,
       "residentTax": 2082800,
-      "netIncome": 16206428,
-      "netIncomeRate": 63.5546
+      "netIncome": 16165628,
+      "netIncomeRate": 63.3946
     },
     {
       "incomeMan": 2550,
@@ -3199,12 +3199,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 127500,
-      "taxableIncomeIncomeTax": 20148000,
+      "taxableIncomeIncomeTax": 20248000,
       "taxableIncomeResident": 20448000,
-      "incomeTax": 5373700,
+      "incomeTax": 5414500,
       "residentTax": 2049800,
-      "netIncome": 16394628,
-      "netIncomeRate": 64.2927
+      "netIncome": 16353828,
+      "netIncomeRate": 64.1327
     },
     {
       "incomeMan": 2600,
@@ -3215,12 +3215,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 130000,
-      "taxableIncomeIncomeTax": 21785000,
+      "taxableIncomeIncomeTax": 22045000,
       "taxableIncomeResident": 21935000,
-      "incomeTax": 6042200,
+      "incomeTax": 6148400,
       "residentTax": 2198500,
-      "netIncome": 16074928,
-      "netIncomeRate": 61.8266
+      "netIncome": 15968728,
+      "netIncomeRate": 61.4182
     },
     {
       "incomeMan": 2600,
@@ -3231,12 +3231,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 130000,
-      "taxableIncomeIncomeTax": 21405000,
+      "taxableIncomeIncomeTax": 21665000,
       "taxableIncomeResident": 21605000,
-      "incomeTax": 5887000,
+      "incomeTax": 5993200,
       "residentTax": 2165500,
-      "netIncome": 16263128,
-      "netIncomeRate": 62.5505
+      "netIncome": 16156928,
+      "netIncomeRate": 62.142
     },
     {
       "incomeMan": 2600,
@@ -3247,12 +3247,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 130000,
-      "taxableIncomeIncomeTax": 21025000,
+      "taxableIncomeIncomeTax": 21285000,
       "taxableIncomeResident": 21275000,
-      "incomeTax": 5731800,
+      "incomeTax": 5838000,
       "residentTax": 2132500,
-      "netIncome": 16451328,
-      "netIncomeRate": 63.2743
+      "netIncome": 16345128,
+      "netIncomeRate": 62.8659
     },
     {
       "incomeMan": 2600,
@@ -3263,12 +3263,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 130000,
-      "taxableIncomeIncomeTax": 20645000,
+      "taxableIncomeIncomeTax": 20905000,
       "taxableIncomeResident": 20945000,
-      "incomeTax": 5576700,
+      "incomeTax": 5682800,
       "residentTax": 2099500,
-      "netIncome": 16639428,
-      "netIncomeRate": 63.9978
+      "netIncome": 16533328,
+      "netIncomeRate": 63.5897
     },
     {
       "incomeMan": 2650,
@@ -3279,12 +3279,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 132500,
-      "taxableIncomeIncomeTax": 22283000,
+      "taxableIncomeIncomeTax": 22703000,
       "taxableIncomeResident": 22433000,
-      "incomeTax": 6245600,
+      "incomeTax": 6417100,
       "residentTax": 2248300,
-      "netIncome": 16319228,
-      "netIncomeRate": 61.582
+      "netIncome": 16147728,
+      "netIncomeRate": 60.9348
     },
     {
       "incomeMan": 2650,
@@ -3295,12 +3295,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 132500,
-      "taxableIncomeIncomeTax": 21903000,
+      "taxableIncomeIncomeTax": 22323000,
       "taxableIncomeResident": 22103000,
-      "incomeTax": 6090400,
+      "incomeTax": 6261900,
       "residentTax": 2215300,
-      "netIncome": 16507428,
-      "netIncomeRate": 62.2922
+      "netIncome": 16335928,
+      "netIncomeRate": 61.645
     },
     {
       "incomeMan": 2650,
@@ -3311,12 +3311,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 132500,
-      "taxableIncomeIncomeTax": 21523000,
+      "taxableIncomeIncomeTax": 21943000,
       "taxableIncomeResident": 21773000,
-      "incomeTax": 5935200,
+      "incomeTax": 6106800,
       "residentTax": 2182300,
-      "netIncome": 16695628,
-      "netIncomeRate": 63.0024
+      "netIncome": 16524028,
+      "netIncomeRate": 62.3548
     },
     {
       "incomeMan": 2650,
@@ -3327,12 +3327,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 132500,
-      "taxableIncomeIncomeTax": 21143000,
+      "taxableIncomeIncomeTax": 21563000,
       "taxableIncomeResident": 21443000,
-      "incomeTax": 5780000,
+      "incomeTax": 5951600,
       "residentTax": 2149300,
-      "netIncome": 16883828,
-      "netIncomeRate": 63.7126
+      "netIncome": 16712228,
+      "netIncomeRate": 63.065
     },
     {
       "incomeMan": 2700,
@@ -3343,12 +3343,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 135000,
-      "taxableIncomeIncomeTax": 22780000,
+      "taxableIncomeIncomeTax": 23360000,
       "taxableIncomeResident": 22930000,
-      "incomeTax": 6448600,
+      "incomeTax": 6685500,
       "residentTax": 2298000,
-      "netIncome": 16564028,
-      "netIncomeRate": 61.3483
+      "netIncome": 16327128,
+      "netIncomeRate": 60.4708
     },
     {
       "incomeMan": 2700,
@@ -3359,12 +3359,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 135000,
-      "taxableIncomeIncomeTax": 22400000,
+      "taxableIncomeIncomeTax": 22980000,
       "taxableIncomeResident": 22600000,
-      "incomeTax": 6293400,
+      "incomeTax": 6530300,
       "residentTax": 2265000,
-      "netIncome": 16752228,
-      "netIncomeRate": 62.0453
+      "netIncome": 16515328,
+      "netIncomeRate": 61.1679
     },
     {
       "incomeMan": 2700,
@@ -3375,12 +3375,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 135000,
-      "taxableIncomeIncomeTax": 22020000,
+      "taxableIncomeIncomeTax": 22600000,
       "taxableIncomeResident": 22270000,
-      "incomeTax": 6138200,
+      "incomeTax": 6375100,
       "residentTax": 2232000,
-      "netIncome": 16940428,
-      "netIncomeRate": 62.7423
+      "netIncome": 16703528,
+      "netIncomeRate": 61.8649
     },
     {
       "incomeMan": 2700,
@@ -3391,12 +3391,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 135000,
-      "taxableIncomeIncomeTax": 21640000,
+      "taxableIncomeIncomeTax": 22220000,
       "taxableIncomeResident": 21940000,
-      "incomeTax": 5983000,
+      "incomeTax": 6219900,
       "residentTax": 2199000,
-      "netIncome": 17128628,
-      "netIncomeRate": 63.4394
+      "netIncome": 16891728,
+      "netIncomeRate": 62.562
     },
     {
       "incomeMan": 2750,
@@ -3407,12 +3407,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 137500,
-      "taxableIncomeIncomeTax": 23278000,
+      "taxableIncomeIncomeTax": 23858000,
       "taxableIncomeResident": 23428000,
-      "incomeTax": 6652000,
+      "incomeTax": 6888800,
       "residentTax": 2347800,
-      "netIncome": 16808328,
-      "netIncomeRate": 61.1212
+      "netIncome": 16571528,
+      "netIncomeRate": 60.2601
     },
     {
       "incomeMan": 2750,
@@ -3423,12 +3423,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 137500,
-      "taxableIncomeIncomeTax": 22898000,
+      "taxableIncomeIncomeTax": 23478000,
       "taxableIncomeResident": 23098000,
-      "incomeTax": 6496800,
+      "incomeTax": 6733600,
       "residentTax": 2314800,
-      "netIncome": 16996528,
-      "netIncomeRate": 61.8056
+      "netIncome": 16759728,
+      "netIncomeRate": 60.9445
     },
     {
       "incomeMan": 2750,
@@ -3439,12 +3439,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 137500,
-      "taxableIncomeIncomeTax": 22518000,
+      "taxableIncomeIncomeTax": 23098000,
       "taxableIncomeResident": 22768000,
-      "incomeTax": 6341600,
+      "incomeTax": 6578500,
       "residentTax": 2281800,
-      "netIncome": 17184728,
-      "netIncomeRate": 62.4899
+      "netIncome": 16947828,
+      "netIncomeRate": 61.6285
     },
     {
       "incomeMan": 2750,
@@ -3455,12 +3455,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 137500,
-      "taxableIncomeIncomeTax": 22138000,
+      "taxableIncomeIncomeTax": 22718000,
       "taxableIncomeResident": 22438000,
-      "incomeTax": 6186400,
+      "incomeTax": 6423300,
       "residentTax": 2248800,
-      "netIncome": 17372928,
-      "netIncomeRate": 63.1743
+      "netIncome": 17136028,
+      "netIncomeRate": 62.3128
     },
     {
       "incomeMan": 2800,
@@ -3471,12 +3471,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 140000,
-      "taxableIncomeIncomeTax": 23775000,
+      "taxableIncomeIncomeTax": 24355000,
       "taxableIncomeResident": 23925000,
-      "incomeTax": 6854900,
+      "incomeTax": 7091800,
       "residentTax": 2397500,
-      "netIncome": 17053228,
-      "netIncomeRate": 60.9044
+      "netIncome": 16816328,
+      "netIncomeRate": 60.0583
     },
     {
       "incomeMan": 2800,
@@ -3487,12 +3487,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 140000,
-      "taxableIncomeIncomeTax": 23395000,
+      "taxableIncomeIncomeTax": 23975000,
       "taxableIncomeResident": 23595000,
-      "incomeTax": 6699800,
+      "incomeTax": 6936600,
       "residentTax": 2364500,
-      "netIncome": 17241328,
-      "netIncomeRate": 61.5762
+      "netIncome": 17004528,
+      "netIncomeRate": 60.7305
     },
     {
       "incomeMan": 2800,
@@ -3503,12 +3503,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 140000,
-      "taxableIncomeIncomeTax": 23015000,
+      "taxableIncomeIncomeTax": 23595000,
       "taxableIncomeResident": 23265000,
-      "incomeTax": 6544600,
+      "incomeTax": 6781400,
       "residentTax": 2331500,
-      "netIncome": 17429528,
-      "netIncomeRate": 62.2483
+      "netIncome": 17192728,
+      "netIncomeRate": 61.4026
     },
     {
       "incomeMan": 2800,
@@ -3519,12 +3519,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 140000,
-      "taxableIncomeIncomeTax": 22635000,
+      "taxableIncomeIncomeTax": 23215000,
       "taxableIncomeResident": 22935000,
-      "incomeTax": 6389400,
+      "incomeTax": 6626200,
       "residentTax": 2298500,
-      "netIncome": 17617728,
-      "netIncomeRate": 62.9205
+      "netIncome": 17380928,
+      "netIncomeRate": 62.0747
     },
     {
       "incomeMan": 2850,
@@ -3535,12 +3535,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 142500,
-      "taxableIncomeIncomeTax": 24273000,
+      "taxableIncomeIncomeTax": 24853000,
       "taxableIncomeResident": 24423000,
-      "incomeTax": 7058300,
+      "incomeTax": 7295200,
       "residentTax": 2447300,
-      "netIncome": 17297528,
-      "netIncomeRate": 60.6931
+      "netIncome": 17060628,
+      "netIncomeRate": 59.8619
     },
     {
       "incomeMan": 2850,
@@ -3551,12 +3551,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 142500,
-      "taxableIncomeIncomeTax": 23893000,
+      "taxableIncomeIncomeTax": 24473000,
       "taxableIncomeResident": 24093000,
-      "incomeTax": 6903100,
+      "incomeTax": 7140000,
       "residentTax": 2414300,
-      "netIncome": 17485728,
-      "netIncomeRate": 61.3534
+      "netIncome": 17248828,
+      "netIncomeRate": 60.5222
     },
     {
       "incomeMan": 2850,
@@ -3567,12 +3567,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 142500,
-      "taxableIncomeIncomeTax": 23513000,
+      "taxableIncomeIncomeTax": 24093000,
       "taxableIncomeResident": 23763000,
-      "incomeTax": 6747900,
+      "incomeTax": 6984800,
       "residentTax": 2381300,
-      "netIncome": 17673928,
-      "netIncomeRate": 62.0138
+      "netIncome": 17437028,
+      "netIncomeRate": 61.1826
     },
     {
       "incomeMan": 2850,
@@ -3583,12 +3583,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 142500,
-      "taxableIncomeIncomeTax": 23133000,
+      "taxableIncomeIncomeTax": 23713000,
       "taxableIncomeResident": 23433000,
-      "incomeTax": 6592800,
+      "incomeTax": 6829600,
       "residentTax": 2348300,
-      "netIncome": 17862028,
-      "netIncomeRate": 62.6738
+      "netIncome": 17625228,
+      "netIncomeRate": 61.8429
     },
     {
       "incomeMan": 2900,
@@ -3599,12 +3599,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 145000,
-      "taxableIncomeIncomeTax": 24770000,
+      "taxableIncomeIncomeTax": 25350000,
       "taxableIncomeResident": 24920000,
-      "incomeTax": 7261300,
+      "incomeTax": 7498200,
       "residentTax": 2497000,
-      "netIncome": 17542328,
-      "netIncomeRate": 60.4908
+      "netIncome": 17305428,
+      "netIncomeRate": 59.6739
     },
     {
       "incomeMan": 2900,
@@ -3615,12 +3615,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 145000,
-      "taxableIncomeIncomeTax": 24390000,
+      "taxableIncomeIncomeTax": 24970000,
       "taxableIncomeResident": 24590000,
-      "incomeTax": 7106100,
+      "incomeTax": 7343000,
       "residentTax": 2464000,
-      "netIncome": 17730528,
-      "netIncomeRate": 61.1398
+      "netIncome": 17493628,
+      "netIncomeRate": 60.3229
     },
     {
       "incomeMan": 2900,
@@ -3631,12 +3631,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 145000,
-      "taxableIncomeIncomeTax": 24010000,
+      "taxableIncomeIncomeTax": 24590000,
       "taxableIncomeResident": 24260000,
-      "incomeTax": 6950900,
+      "incomeTax": 7187800,
       "residentTax": 2431000,
-      "netIncome": 17918728,
-      "netIncomeRate": 61.7887
+      "netIncome": 17681828,
+      "netIncomeRate": 60.9718
     },
     {
       "incomeMan": 2900,
@@ -3647,12 +3647,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 145000,
-      "taxableIncomeIncomeTax": 23630000,
+      "taxableIncomeIncomeTax": 24210000,
       "taxableIncomeResident": 23930000,
-      "incomeTax": 6795700,
+      "incomeTax": 7032600,
       "residentTax": 2398000,
-      "netIncome": 18106928,
-      "netIncomeRate": 62.4377
+      "netIncome": 17870028,
+      "netIncomeRate": 61.6208
     },
     {
       "incomeMan": 2950,
@@ -3663,12 +3663,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 147500,
-      "taxableIncomeIncomeTax": 25268000,
+      "taxableIncomeIncomeTax": 25848000,
       "taxableIncomeResident": 25418000,
-      "incomeTax": 7464700,
+      "incomeTax": 7701600,
       "residentTax": 2546800,
-      "netIncome": 17786628,
-      "netIncomeRate": 60.2937
+      "netIncome": 17549728,
+      "netIncomeRate": 59.4906
     },
     {
       "incomeMan": 2950,
@@ -3679,12 +3679,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 147500,
-      "taxableIncomeIncomeTax": 24888000,
+      "taxableIncomeIncomeTax": 25468000,
       "taxableIncomeResident": 25088000,
-      "incomeTax": 7309500,
+      "incomeTax": 7546400,
       "residentTax": 2513800,
-      "netIncome": 17974828,
-      "netIncomeRate": 60.9316
+      "netIncome": 17737928,
+      "netIncomeRate": 60.1286
     },
     {
       "incomeMan": 2950,
@@ -3695,12 +3695,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 147500,
-      "taxableIncomeIncomeTax": 24508000,
+      "taxableIncomeIncomeTax": 25088000,
       "taxableIncomeResident": 24758000,
-      "incomeTax": 7154300,
+      "incomeTax": 7391200,
       "residentTax": 2480800,
-      "netIncome": 18163028,
-      "netIncomeRate": 61.5696
+      "netIncome": 17926128,
+      "netIncomeRate": 60.7665
     },
     {
       "incomeMan": 2950,
@@ -3711,12 +3711,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 147500,
-      "taxableIncomeIncomeTax": 24128000,
+      "taxableIncomeIncomeTax": 24708000,
       "taxableIncomeResident": 24428000,
-      "incomeTax": 6999100,
+      "incomeTax": 7236000,
       "residentTax": 2447800,
-      "netIncome": 18351228,
-      "netIncomeRate": 62.2076
+      "netIncome": 18114328,
+      "netIncomeRate": 61.4045
     },
     {
       "incomeMan": 3000,
@@ -3727,12 +3727,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 150000,
-      "taxableIncomeIncomeTax": 25765000,
+      "taxableIncomeIncomeTax": 26345000,
       "taxableIncomeResident": 25915000,
-      "incomeTax": 7667700,
+      "incomeTax": 7904500,
       "residentTax": 2596500,
-      "netIncome": 18031428,
-      "netIncomeRate": 60.1048
+      "netIncome": 17794628,
+      "netIncomeRate": 59.3154
     },
     {
       "incomeMan": 3000,
@@ -3743,12 +3743,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 150000,
-      "taxableIncomeIncomeTax": 25385000,
+      "taxableIncomeIncomeTax": 25965000,
       "taxableIncomeResident": 25585000,
-      "incomeTax": 7512500,
+      "incomeTax": 7749300,
       "residentTax": 2563500,
-      "netIncome": 18219628,
-      "netIncomeRate": 60.7321
+      "netIncome": 17982828,
+      "netIncomeRate": 59.9428
     },
     {
       "incomeMan": 3000,
@@ -3759,12 +3759,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 150000,
-      "taxableIncomeIncomeTax": 25005000,
+      "taxableIncomeIncomeTax": 25585000,
       "taxableIncomeResident": 25255000,
-      "incomeTax": 7357300,
+      "incomeTax": 7594100,
       "residentTax": 2530500,
-      "netIncome": 18407828,
-      "netIncomeRate": 61.3594
+      "netIncome": 18171028,
+      "netIncomeRate": 60.5701
     },
     {
       "incomeMan": 3000,
@@ -3775,12 +3775,12 @@
       "healthInsurance": 840672,
       "pensionInsurance": 713700,
       "employmentInsurance": 150000,
-      "taxableIncomeIncomeTax": 24625000,
+      "taxableIncomeIncomeTax": 25205000,
       "taxableIncomeResident": 24925000,
-      "incomeTax": 7202100,
+      "incomeTax": 7439000,
       "residentTax": 2497500,
-      "netIncome": 18596028,
-      "netIncomeRate": 61.9868
+      "netIncome": 18359128,
+      "netIncomeRate": 61.1971
     }
   ]
 }

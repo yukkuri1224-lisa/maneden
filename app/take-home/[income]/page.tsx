@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { BreakdownBar } from "@/components/common/BreakdownBar";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
+import { TaxYearNote } from "@/components/common/ToolMeta";
 import { JsonLd } from "@/components/common/JsonLd";
 import { buttonVariants } from "@/components/ui/button";
 import { calculateSalaryTakeHome } from "@/lib/calculators/salary-take-home";
@@ -28,6 +29,8 @@ export function generateStaticParams() {
 }
 
 const PUBLISHED = "2026-08-13T00:00:00+09:00";
+/** 令和8年度税制改正（基礎控除・給与所得控除の引き上げ）を計算に反映した日 */
+const MODIFIED = "2026-11-27T00:00:00+09:00";
 
 export async function generateMetadata({
   params,
@@ -157,7 +160,7 @@ export default async function TakeHomeLevelPage({
           description: `年収${level.man}万円の手取り額・手取り率と、社会保険料・所得税・住民税の内訳の解説。`,
           url: `${siteConfig.url}/take-home/${income}`,
           datePublished: PUBLISHED,
-          dateModified: PUBLISHED,
+          dateModified: MODIFIED,
         })}
       />
       <JsonLd data={faqJsonLd(faqs)} />
@@ -175,7 +178,7 @@ export default async function TakeHomeLevelPage({
           令和{TAX_YEAR - 2018}年度（{TAX_YEAR}年）税制で計算
         </span>
         <span className="text-xs text-muted-foreground">
-          最終更新：2026年8月13日
+          最終更新：2026年11月27日
         </span>
       </div>
       <h1 className="mt-2 text-2xl font-bold sm:text-3xl">
@@ -489,6 +492,9 @@ export default async function TakeHomeLevelPage({
             年度の税制・東京都の協会けんぽ令和8年度料率をもとにした、独身・扶養なし・40歳未満の会社員の概算です。加入する健康保険・都道府県・各種控除により実額は異なります。
           </p>
           <p className="mt-1">
+            <TaxYearNote kind="salary" />
+          </p>
+          <p className="mt-1">
             計算根拠：
             <a
               href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm"
@@ -497,6 +503,15 @@ export default async function TakeHomeLevelPage({
               className="underline"
             >
               国税庁 No.1410 給与所得控除
+            </a>
+            ／
+            <a
+              href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              No.1199 基礎控除
             </a>
             ／
             <a

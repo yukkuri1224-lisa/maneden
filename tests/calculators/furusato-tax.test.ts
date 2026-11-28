@@ -29,18 +29,20 @@ describe("calculateFurusato（給与・年収500万・単身）", () => {
     expect(r.totalIncome).toBe(3_560_000); // 500万 − 給与所得控除144万
   });
 
-  it("課税所得（所得税ベース）と限界税率", () => {
-    expect(r.taxableIncomeIncomeTax).toBe(2_230_000);
-    expect(r.incomeTaxRate).toBe(0.1);
+  it("課税所得（所得税ベース・令和8年分の基礎控除104万円）と限界税率", () => {
+    // 3,560,000 − 基礎控除1,040,000 − 社保750,000 = 1,770,000 → 税率5%帯
+    expect(r.taxableIncomeIncomeTax).toBe(1_770_000);
+    expect(r.incomeTaxRate).toBe(0.05);
   });
 
-  it("住民税所得割", () => {
+  it("住民税所得割（令和9年度分・基礎控除43万円は据え置き）", () => {
     expect(r.taxableIncomeResident).toBe(2_380_000);
     expect(r.residentTaxIncomeLevy).toBe(238_000);
   });
 
-  it("控除上限額の目安（年収500万 独身で約6万円台）", () => {
-    expect(r.donationLimit).toBe(61_600);
+  it("控除上限額の目安（年収500万 独身で約5.8万円）", () => {
+    // 238,000×20% ÷ (90% − 5%×1.021) + 2,000 = 58,069 → 百円未満切捨て 58,000
+    expect(r.donationLimit).toBe(58_000);
   });
 
   it("上限額ちょうどの寄付なら実質負担は2,000円", () => {
@@ -94,10 +96,10 @@ describe("ふるさと納税 早見表（buildFurusatoTable）", () => {
     }
   });
 
-  it("年収500万・独身（社保15%概算）は約6万円台", () => {
+  it("年収500万・独身（社保15%概算）は約5.8万円", () => {
     const row = rows.find((r) => r.income === 5_000_000)!;
-    // 社保750,000＝年収の15%。単体テストの前提と一致し 61,600 になる
-    expect(row.limits[0]).toBe(61_600);
+    // 社保750,000＝年収の15%。単体テストの前提と一致し 58,000 になる
+    expect(row.limits[0]).toBe(58_000);
   });
 
   it("同じ年収では扶養が増えるほど上限は下がる（独身 ≥ 夫婦＋子）", () => {

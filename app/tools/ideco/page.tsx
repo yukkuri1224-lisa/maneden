@@ -246,8 +246,9 @@ export default function IdecoPage() {
 
         <ToolMeta
           toolId="ideco"
-          updated="2026年8月9日"
+          updated="2026年11月27日"
           taxBasis
+          taxYearNote="salary"
           basis="掛金の所得控除による節税額のみの概算です。会社員・公務員（給与所得者）向けで、配偶者控除・扶養控除等は考慮していません。運用益や受取時の課税、口座管理手数料は含みません。"
         />
       </div>

@@ -1,15 +1,7 @@
-import { TAX_TABLES } from "@/lib/constants/tax-tables";
-
 import { clampMin0 } from "./helpers";
 
-/** 所得税の基礎控除（合計所得金額に応じて逓減） */
-export function basicDeductionIncomeTax(totalIncome: number): number {
-  const { basicDeduction } = TAX_TABLES.incomeTax;
-  if (totalIncome <= 24_000_000) return basicDeduction.base;
-  if (totalIncome <= 24_500_000) return basicDeduction.tier1;
-  if (totalIncome <= 25_000_000) return basicDeduction.tier2;
-  return 0;
-}
+/** 所得税の基礎控除（令和8年分。合計所得金額に応じた額）。共通の年分別テーブルを使う */
+export { basicDeductionIncomeTax } from "@/lib/calculators/common/salary-income";
 
 /** 扶養控除（概算：一般扶養のみ） */
 export function dependentDeduction(

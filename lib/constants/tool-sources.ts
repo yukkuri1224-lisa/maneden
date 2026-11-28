@@ -15,6 +15,14 @@ export const TOOL_SOURCES: Record<string, ToolSource[]> = {
       href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm",
     },
     {
+      label: "国税庁 No.1199 基礎控除",
+      href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
+    },
+    {
+      label: "国税庁 令和8年分 年末調整のしかた",
+      href: "https://www.nta.go.jp/publication/pamph/gensen/nencho2026/01.htm",
+    },
+    {
       label: "国税庁 No.2260 所得税の税率",
       href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
     },
@@ -32,6 +40,14 @@ export const TOOL_SOURCES: Record<string, ToolSource[]> = {
     },
   ],
   "bonus-take-home": [
+    {
+      label: "国税庁 No.1199 基礎控除",
+      href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
+    },
+    {
+      label: "国税庁 令和8年分 年末調整のしかた",
+      href: "https://www.nta.go.jp/publication/pamph/gensen/nencho2026/01.htm",
+    },
     {
       label: "厚生労働省 子ども・子育て支援金に関するQ&A",
       href: "https://www.mhlw.go.jp/hourei/doc/tsuchi/T260216S0101.pdf",
@@ -55,11 +71,23 @@ export const TOOL_SOURCES: Record<string, ToolSource[]> = {
   ],
   "furusato-tax": [
     {
+      label: "国税庁 No.1410 給与所得控除",
+      href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm",
+    },
+    {
+      label: "国税庁 No.1199 基礎控除",
+      href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
+    },
+    {
       label: "総務省 ふるさと納税ポータル（控除の仕組み）",
       href: "https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html",
     },
   ],
   "freelance-tax": [
+    {
+      label: "国税庁 No.1199 基礎控除",
+      href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
+    },
     {
       label: "国税庁 No.2210 やさしい必要経費の知識",
       href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2210.htm",
@@ -76,6 +104,10 @@ export const TOOL_SOURCES: Record<string, ToolSource[]> = {
     },
   ],
   ideco: [
+    {
+      label: "国税庁 No.1199 基礎控除",
+      href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
+    },
     {
       label: "国税庁 No.1135 小規模企業共済等掛金控除",
       href: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm",

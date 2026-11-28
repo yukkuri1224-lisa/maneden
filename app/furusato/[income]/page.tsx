@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Container } from "@/components/common/Container";
+import { TaxYearNote } from "@/components/common/ToolMeta";
 import { JsonLd } from "@/components/common/JsonLd";
 import { buttonVariants } from "@/components/ui/button";
 import { calculateFurusato } from "@/lib/calculators/furusato-tax";
@@ -28,6 +29,8 @@ export function generateStaticParams() {
 }
 
 const PUBLISHED = "2026-08-13T00:00:00+09:00";
+/** 令和8年度税制改正（基礎控除・給与所得控除の引き上げ）を計算に反映した日 */
+const MODIFIED = "2026-11-27T00:00:00+09:00";
 
 /** その年収（独身・扶養なし）でのふるさと納税上限額を、実社会保険料を用いて算出 */
 function furusatoLimitFor(income: number): number {
@@ -128,7 +131,7 @@ export default async function FurusatoLevelPage({
           description: `年収${level.man}万円のふるさと納税の控除上限額の目安と、計算方法・注意点の解説。`,
           url: `${siteConfig.url}/furusato/${income}`,
           datePublished: PUBLISHED,
-          dateModified: PUBLISHED,
+          dateModified: MODIFIED,
         })}
       />
       <JsonLd data={faqJsonLd(faqs)} />
@@ -146,7 +149,7 @@ export default async function FurusatoLevelPage({
           令和{TAX_YEAR - 2018}年度（{TAX_YEAR}年）税制で計算
         </span>
         <span className="text-xs text-muted-foreground">
-          最終更新：2026年8月13日
+          最終更新：2026年11月27日
         </span>
       </div>
       <h1 className="mt-2 text-2xl font-bold sm:text-3xl">
@@ -334,6 +337,10 @@ export default async function FurusatoLevelPage({
           <p>
             本ページは{TAX_YEAR}
             年度の税制をもとに、独身・扶養なし・給与所得者を前提とした概算です。他の控除の有無や自治体により上限は変わります。正確な金額は寄付先ポータルや自治体でご確認ください。
+          </p>
+          <p className="mt-1">
+            <TaxYearNote kind="salary" />
+            控除上限額は住民税の所得割をもとに計算し、所得税の改正は所得税率（限界税率）を通じて上限額に影響します。
           </p>
           <p className="mt-1">
             計算根拠：
